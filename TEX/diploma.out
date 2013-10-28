@@ -1,36 +1,18 @@
 \BOOKMARK [0][-]{chapter*.2}{Kivonat}{}% 1
 \BOOKMARK [0][-]{chapter*.3}{Abstract}{}% 2
 \BOOKMARK [0][-]{chapter*.4}{Bevezeto}{}% 3
-\BOOKMARK [0][-]{chapter.1}{1. fejezet}{}% 4
-\BOOKMARK [1][-]{section.1.1}{A szerkeszt\351shez haszn\341latos, Windows alap\372 eszk\366z\366k}{chapter.1}% 5
-\BOOKMARK [1][-]{section.1.2}{Motiv\341ci\363}{chapter.1}% 6
-\BOOKMARK [1][-]{section.1.3}{UAV}{chapter.1}% 7
-\BOOKMARK [2][-]{subsection.1.3.1}{UCAV}{section.1.3}% 8
-\BOOKMARK [2][-]{subsection.1.3.2}{Csoportos\355t\341s}{section.1.3}% 9
-\BOOKMARK [2][-]{subsection.1.3.3}{Felhaszn\341l\341si ter\374letek}{section.1.3}% 10
-\BOOKMARK [2][-]{subsection.1.3.4}{Hossz\372 rep\374l\351s}{section.1.3}% 11
-\BOOKMARK [1][-]{section.1.4}{F\366ldi \341llom\341s}{chapter.1}% 12
-\BOOKMARK [2][-]{subsection.1.4.1}{Hordozhat\363}{section.1.4}% 13
-\BOOKMARK [2][-]{subsection.1.4.2}{Komplex}{section.1.4}% 14
-\BOOKMARK [2][-]{subsection.1.4.3}{Kompatibilit\341s}{section.1.4}% 15
-\BOOKMARK [2][-]{subsection.1.4.4}{Megold\341sok}{section.1.4}% 16
-\BOOKMARK [1][-]{section.1.5}{Rep\374log\351p kialak\355t\341sa}{chapter.1}% 17
-\BOOKMARK [1][-]{section.1.6}{Saj\341t implement\341ci\363}{chapter.1}% 18
-\BOOKMARK [2][-]{subsection.1.6.1}{RS232}{section.1.6}% 19
-\BOOKMARK [2][-]{subsection.1.6.2}{Sebess\351g}{section.1.6}% 20
-\BOOKMARK [2][-]{subsection.1.6.3}{Ir\341ny}{section.1.6}% 21
-\BOOKMARK [2][-]{subsection.1.6.4}{GUI}{section.1.6}% 22
-\BOOKMARK [0][-]{chapter.2}{2.}{}% 23
-\BOOKMARK [1][-]{section.2.1}{A dolgozat kim\351rete}{chapter.2}% 24
-\BOOKMARK [0][-]{chapter.3}{3}{}% 25
-\BOOKMARK [1][-]{section.3.1}{C\355mk\351k \351s hivatkoz\341sok}{chapter.3}% 26
-\BOOKMARK [1][-]{section.3.2}{\301br\341k \351s t\341bl\341zatok}{chapter.3}% 27
-\BOOKMARK [1][-]{section.3.3}{Felsorol\341sok \351s list\341k}{chapter.3}% 28
-\BOOKMARK [1][-]{section.3.4}{K\351pletek}{chapter.3}% 29
-\BOOKMARK [1][-]{section.3.5}{Irodalmi hivatkoz\341sok}{chapter.3}% 30
-\BOOKMARK [1][-]{section.3.6}{A dolgozat szerkezete \351s a forr\341sf\341jlok}{chapter.3}% 31
-\BOOKMARK [1][-]{section.3.7}{Alapadatok megad\341sa}{chapter.3}% 32
-\BOOKMARK [1][-]{section.3.8}{\332j fejezet \355r\341sa}{chapter.3}% 33
-\BOOKMARK [0][-]{appendix*.35}{F\374ggel\351k}{}% 34
-\BOOKMARK [1][-]{section.F.1}{A TeXnicCenter fel\374lete}{appendix*.35}% 35
-\BOOKMARK [1][-]{section.F.2}{V\341lasz az ,,\311let, a vil\341gmindens\351g, meg minden'' k\351rd\351s\351re}{appendix*.35}% 36
+\BOOKMARK [0][-]{chapter.1}{H\341tt\351rismeret}{}% 4
+\BOOKMARK [1][-]{section.1.1}{MTA-SZATKI ORCA}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.2}{Hordozhat\363}{chapter.1}% 6
+\BOOKMARK [2][-]{subsection.1.2.1}{Komplex}{section.1.2}% 7
+\BOOKMARK [2][-]{subsection.1.2.2}{Kompatibilit\341s}{section.1.2}% 8
+\BOOKMARK [2][-]{subsection.1.2.3}{Megold\341sok}{section.1.2}% 9
+\BOOKMARK [0][-]{chapter.2}{Tervez\351s}{}% 10
+\BOOKMARK [0][-]{chapter.3}{Saj\341t implement\341ci\363}{}% 11
+\BOOKMARK [1][-]{section.3.1}{RS232}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.2}{Sebess\351g}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.3}{Ir\341ny}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.4}{GUI}{chapter.3}% 15
+\BOOKMARK [0][-]{chapter.4}{\326sszefoglal\341s}{}% 16
+\BOOKMARK [0][-]{appendix*.26}{F\374ggel\351k}{}% 17
+\BOOKMARK [1][-]{section.F.1}{F\374ggel\351k1}{appendix*.26}% 18

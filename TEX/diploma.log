@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.26)  27 OCT 2013 20:31
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.26)  28 OCT 2013 10:53
 entering extended mode
 **diploma.tex
 (C:\Users\bojtip\Desktop\UAV\TEX\diploma.tex
@@ -402,28 +402,31 @@ Package hyperref Info: Option `pdfnewwindow' set `true' on input line 73.
 Package hyperref Info: Option `colorlinks' set `true' on input line 73.
 (C:\Users\bojtip\Desktop\UAV\TEX\diploma.aux (C:\Users\bojtip\Desktop\UAV\TEX\titlepage.aux)
 (C:\Users\bojtip\Desktop\UAV\TEX\declaration.aux) (C:\Users\bojtip\Desktop\UAV\TEX\abstract.aux)
-(C:\Users\bojtip\Desktop\UAV\TEX\introduction.aux) (C:\Users\bojtip\Desktop\UAV\TEX\chapter2.aux)
-(C:\Users\bojtip\Desktop\UAV\TEX\chapter1.aux
+(C:\Users\bojtip\Desktop\UAV\TEX\introduction.aux) (C:\Users\bojtip\Desktop\UAV\TEX\chapter1.aux
 
 LaTeX Warning: Label `fig:hk' multiply defined.
 
-) (C:\Users\bojtip\Desktop\UAV\TEX\chapter3.aux) (C:\Users\bojtip\Desktop\UAV\TEX\appendices.aux))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 139.
-LaTeX Font Info:    ... okay on input line 139.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 139.
-LaTeX Font Info:    ... okay on input line 139.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 139.
-LaTeX Font Info:    ... okay on input line 139.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 139.
-LaTeX Font Info:    ... okay on input line 139.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 139.
-LaTeX Font Info:    ... okay on input line 139.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 139.
-LaTeX Font Info:    ... okay on input line 139.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 139.
-LaTeX Font Info:    ... okay on input line 139.
+) (C:\Users\bojtip\Desktop\UAV\TEX\chapter2.aux) (C:\Users\bojtip\Desktop\UAV\TEX\chapter3.aux)
+(C:\Users\bojtip\Desktop\UAV\TEX\chapter4.aux
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+LaTeX Warning: Label `sect:' multiply defined.
+
+) (C:\Users\bojtip\Desktop\UAV\TEX\appendices.aux))
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 140.
+LaTeX Font Info:    ... okay on input line 140.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count125
 \scratchdimen=\dimen140
@@ -444,12 +447,12 @@ Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             or
 (lastpage)             http://www.ctan.org/tex-archive/ 
 (lastpage)             install/macros/latex/contrib/pageslts.tds.zip
-(lastpage)             ! on input line 139.
+(lastpage)             ! on input line 140.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring ON on input line 139.
+Package hyperref Info: Link coloring ON on input line 140.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -458,9 +461,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count132
 )
-LaTeX Info: Redefining \ref on input line 139.
-LaTeX Info: Redefining \pageref on input line 139.
-LaTeX Info: Redefining \nameref on input line 139.
+LaTeX Info: Redefining \ref on input line 140.
+LaTeX Info: Redefining \pageref on input line 140.
+LaTeX Info: Redefining \nameref on input line 140.
 
 (C:\Users\bojtip\Desktop\UAV\TEX\diploma.out) (C:\Users\bojtip\Desktop\UAV\TEX\diploma.out)
 \@outlinefile=\write3
@@ -469,7 +472,7 @@ LaTeX Info: Redefining \nameref on input line 139.
 LaTeX Info: Redefining \cal on input line 586.
 LaTeX Info: Redefining \mit on input line 587.
 ) (C:\Users\bojtip\Desktop\UAV\TEX\titlepage.tex
-<figures/BMElogo.png, id=147, 975.645pt x 273.02pt>
+<figures/BMElogo.png, id=75, 975.645pt x 273.02pt>
 File: figures/BMElogo.png Graphic file (type png)
  <use figures/BMElogo.png>
 Package pdftex.def Info: figures/BMElogo.png used on input line 6.
@@ -488,27 +491,26 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/bojtip/Desktop/UAV/TEX/figures/BMElogo.png>]) (C:\Users\b
-ojtip\Desktop\UAV\TEX\diploma.tocpdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been alr
-eady used, duplicate ignored
+ojtip\Desktop\UAV\TEX\diploma.toc)
+\tf@toc=\write4
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.37 ... \'es a forr\'asf\'ajlok}{27}{section.3.6}
-                                                   [1
+l.149 \include{declaration}
+                            [1
 
 
 
 
 pdfTeX warning: pdflatex.exe: pop empty color page stack 0
-])
-\tf@toc=\write4
- [2] (C:\Users\bojtip\Desktop\UAV\TEX\declaration.tex [3
+] (C:\Users\bojtip\Desktop\UAV\TEX\declaration.tex [2
 
-]) (C:\Users\bojtip\Desktop\UAV\TEX\abstract.tex [4
+]) (C:\Users\bojtip\Desktop\UAV\TEX\abstract.tex [3
 
 
 
 
-]) [5
+]) [4
 
 ]
 (C:\Users\bojtip\Desktop\UAV\TEX\introduction.tex
@@ -516,333 +518,215 @@ pdfTeX warning: pdflatex.exe: pop empty color page stack 0
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 2.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 10.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 10.
-) [6
+) [5
 
 
 
 ] (C:\Users\bojtip\Desktop\UAV\TEX\chapter1.tex
 1. fejezet.
-[7
-
-
-
-] [8] <figures/hord.png, id=243, 417.81094pt x 424.58624pt>
-File: figures/hord.png Graphic file (type png)
- <use figures/hord.png>
-Package pdftex.def Info: figures/hord.png used on input line 74.
-(pdftex.def)             Requested size: 417.80992pt x 424.5852pt.
-
-<figures/komplex.png, id=245, 264.99pt x 242.40562pt>
-File: figures/komplex.png Graphic file (type png)
- <use figures/komplex.png>
-Package pdftex.def Info: figures/komplex.png used on input line 88.
-(pdftex.def)             Requested size: 264.98935pt x 242.40501pt.
- [9]
-<figures/kompat.png, id=257, 599.23875pt x 367.3725pt>
-File: figures/kompat.png Graphic file (type png)
- <use figures/kompat.png>
-Package pdftex.def Info: figures/kompat.png used on input line 100.
-(pdftex.def)             Requested size: 599.23729pt x 367.37158pt.
- [10 <C:/Users/bojtip/Desktop/UAV/TEX/figures/hord.png> <C:/Users/bojtip/Desktop/UAV/TEX/figures/komplex.png>]
-<figures/mit.png, id=274, 718.685pt x 512.91624pt>
-File: figures/mit.png Graphic file (type png)
- <use figures/mit.png>
-Package pdftex.def Info: figures/mit.png used on input line 116.
-(pdftex.def)             Requested size: 718.68324pt x 512.915pt.
-
-<figures/rodan.png, id=278, 1405.25pt x 1001.7425pt>
-File: figures/rodan.png Graphic file (type png)
- <use figures/rodan.png>
-Package pdftex.def Info: figures/rodan.png used on input line 129.
-(pdftex.def)             Requested size: 1405.24658pt x 1001.74005pt.
- [11 <C:/Users/bojtip/Desktop/UAV/TEX/figures/kompat.png> <C:/Users/bojtip/Desktop/UAV/TEX/figures/mit.png>] <figures/hk
-.png, id=293, 828.84656pt x 506.6428pt>
-File: figures/hk.png Graphic file (type png)
-
-<use figures/hk.png>
-Package pdftex.def Info: figures/hk.png used on input line 143.
-(pdftex.def)             Requested size: 828.84453pt x 506.64157pt.
- <figures/ardu.png, id=294, 602.25pt x 321.2pt>
-File: figures/ardu.png Graphic file (type png)
- <use figures/ardu.png>
-Package pdftex.def Info: figures/ardu.png used on input line 156.
-(pdftex.def)             Requested size: 602.24852pt x 321.19922pt.
-
-<figures/viking.png, id=296, 1288.815pt x 800.9925pt>
-File: figures/viking.png Graphic file (type png)
- <use figures/viking.png>
-Package pdftex.def Info: figures/viking.png used on input line 169.
-(pdftex.def)             Requested size: 1288.81187pt x 800.99054pt.
- [12 <C:/Users/bojtip/Desktop/UAV/TEX/figures/rodan.png> <C:/Users/bojtip/Desktop/UAV/TEX/figures/hk.png>]
-
-Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\H' on input line 186.
-
-<figures/orca.png, id=309, 415.5525pt x 235.63031pt>
+<figures/orca.png, id=131, 415.5525pt x 235.63031pt>
 File: figures/orca.png Graphic file (type png)
  <use figures/orca.png>
-Package pdftex.def Info: figures/orca.png used on input line 193.
+Package pdftex.def Info: figures/orca.png used on input line 10.
 (pdftex.def)             Requested size: 415.55148pt x 235.62973pt.
- [13 <C:/Users/bojtip/Desktop/UAV/TEX/figures/ardu.png> <C:/Users/bojtip/Desktop/UAV/TEX/figures/viking.png>] <figures/s
-ys.png, id=321, 6441.06375pt x 4899.30376pt>
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 17.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 17.
+ <figures/sys.png, id=133, 6441.06375pt x 4899.30376pt>
 File: figures/sys.png Graphic file (type png)
 
 <use figures/sys.png>
-Package pdftex.def Info: figures/sys.png used on input line 209.
+Package pdftex.def Info: figures/sys.png used on input line 26.
 (pdftex.def)             Requested size: 6441.04814pt x 4899.29187pt.
- [14 <C:/Users/bojtip/Desktop/UAV/TEX/figures/orca.png> <C:/Users/bojtip/Desktop/UAV/TEX/figures/sys.png>] <figures/xbee
-.png, id=330, 328.97906pt x 254.45062pt>
+ <figures/xbee.png, id=134, 328.97906pt x 254.45062pt>
 File: figures/xbee.png Graphic file (type png)
  <use figures/xbee.png>
-Package pdftex.def Info: figures/xbee.png used on input line 220.
+Package pdftex.def Info: figures/xbee.png used on input line 37.
 (pdftex.def)             Requested size: 328.97826pt x 254.45pt.
+ [6
 
-<figures/comnull.png, id=332, 416.30531pt x 362.10281pt>
-File: figures/comnull.png Graphic file (type png)
- <use figures/comnull.png>
-Package pdftex.def Info: figures/comnull.png used on input line 237.
-(pdftex.def)             Requested size: 416.30429pt x 362.10191pt.
 
-<figures/sorossend.png, id=333, 405.01312pt x 287.57437pt>
-File: figures/sorossend.png Graphic file (type png)
- <use figures/sorossend.png>
-Package pdftex.def Info: figures/sorossend.png used on input line 247.
-(pdftex.def)             Requested size: 405.01212pt x 287.57367pt.
- [15 <C:/Users/bojtip/Desktop/UAV/TEX/figures/xbee.png> <C:/Users/bojtip/Desktop/UAV/TEX/figures/comnull.png>]
-<figures/xvi.png, id=345, 575.14874pt x 404.26031pt>
-File: figures/xvi.png Graphic file (type png)
- <use figures/xvi.png>
-Package pdftex.def Info: figures/xvi.png used on input line 257.
-(pdftex.def)             Requested size: 575.14734pt x 404.25932pt.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 264.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
-File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-) [16 <C:/Users/bojtip/Desktop/UAV/TEX/figures/sorossend.png> <C:/Users/bojtip/Desktop/UAV/TEX/figures/xvi.png>] <figure
-s/ned.png, id=357, 376.40625pt x 362.10281pt>
-File: figures/ned.png Graphic file (type png)
+ <C:/Users/bojtip/Desktop/UAV/TEX/figures/orca.png>] <figures/hord.png, id=144, 417.81094pt x 424.58624pt>
+File: figures/hord.png Graphic file (type png)
+ <use figures/hord.png>
+Package pdftex.def Info: figures/hord.png used on input line 55.
+(pdftex.def)             Requested size: 417.80992pt x 424.5852pt.
+ [7 <C:/Users/bojtip/Desktop/UAV/TEX/figures/sys.png> <C:/Users/bojtip/Desktop/UAV/TEX/figures/xbee.png>]
+<figures/komplex.png, id=153, 264.99pt x 242.40562pt>
+File: figures/komplex.png Graphic file (type png)
+ <use figures/komplex.png>
+Package pdftex.def Info: figures/komplex.png used on input line 69.
+(pdftex.def)             Requested size: 264.98935pt x 242.40501pt.
+ [8 <C:/Users/bojtip/Desktop/UAV/TEX/figures/hord.png> <C:/Users/bojtip/Desktop/UAV/TEX/figures/komplex.png>]
+<figures/kompat.png, id=165, 599.23875pt x 367.3725pt>
+File: figures/kompat.png Graphic file (type png)
+ <use figures/kompat.png>
+Package pdftex.def Info: figures/kompat.png used on input line 81.
+(pdftex.def)             Requested size: 599.23729pt x 367.37158pt.
 
-<use figures/ned.png>
-Package pdftex.def Info: figures/ned.png used on input line 310.
-(pdftex.def)             Requested size: 376.40532pt x 362.10191pt.
- [17]) [18 <C:/Users/bojtip/Desktop/UAV/TEX/figures/ned.png>]
+<figures/mit.png, id=168, 718.685pt x 512.91624pt>
+File: figures/mit.png Graphic file (type png)
+ <use figures/mit.png>
+Package pdftex.def Info: figures/mit.png used on input line 97.
+(pdftex.def)             Requested size: 718.68324pt x 512.915pt.
+
+<figures/rodan.png, id=172, 1405.25pt x 1001.7425pt>
+File: figures/rodan.png Graphic file (type png)
+ <use figures/rodan.png>
+Package pdftex.def Info: figures/rodan.png used on input line 110.
+(pdftex.def)             Requested size: 1405.24658pt x 1001.74005pt.
+ [9 <C:/Users/bojtip/Desktop/UAV/TEX/figures/kompat.png>] <figures/hk.png, id=190, 828.84656pt x 506.6428pt>
+File: figures/hk.png Graphic file (type png)
+ <use figures/hk.png>
+Package pdftex.def Info: figures/hk.png used on input line 124.
+(pdftex.def)             Requested size: 828.84453pt x 506.64157pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figures/ardu.png, id=191, 602.25pt x 321.2pt>
+File: figures/ardu.png Graphic file (type png)
+ <use figures/ardu.png>
+Package pdftex.def Info: figures/ardu.png used on input line 137.
+(pdftex.def)             Requested size: 602.24852pt x 321.19922pt.
+
+<figures/viking.png, id=193, 1288.815pt x 800.9925pt>
+File: figures/viking.png Graphic file (type png)
+ <use figures/viking.png>
+Package pdftex.def Info: figures/viking.png used on input line 150.
+(pdftex.def)             Requested size: 1288.81187pt x 800.99054pt.
+ [10 <C:/Users/bojtip/Desktop/UAV/TEX/figures/mit.png> <C:/Users/bojtip/Desktop/UAV/TEX/figures/rodan.png>]) [11 <C:/Use
+rs/bojtip/Desktop/UAV/TEX/figures/hk.png> <C:/Users/bojtip/Desktop/UAV/TEX/figures/ardu.png> <C:/Users/bojtip/Desktop/UA
+V/TEX/figures/viking.png>]
 (C:\Users\bojtip\Desktop\UAV\TEX\chapter2.tex
 2. fejezet.
-) [19
+) [12
 
 
 
 ] (C:\Users\bojtip\Desktop\UAV\TEX\chapter3.tex
 3. fejezet.
-[20
+<figures/comnull.png, id=219, 416.30531pt x 362.10281pt>
+File: figures/comnull.png Graphic file (type png)
+ <use figures/comnull.png>
+Package pdftex.def Info: figures/comnull.png used on input line 11.
+(pdftex.def)             Requested size: 416.30429pt x 362.10191pt.
+
+<figures/sorossend.png, id=220, 405.01312pt x 287.57437pt>
+File: figures/sorossend.png Graphic file (type png)
+ <use figures/sorossend.png>
+Package pdftex.def Info: figures/sorossend.png used on input line 21.
+(pdftex.def)             Requested size: 405.01212pt x 287.57367pt.
+
+<figures/xvi.png, id=221, 575.14874pt x 404.26031pt>
+File: figures/xvi.png Graphic file (type png)
+ <use figures/xvi.png>
+Package pdftex.def Info: figures/xvi.png used on input line 31.
+(pdftex.def)             Requested size: 575.14734pt x 404.25932pt.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 38.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
+File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+) [13
+
+
+
+ <C:/Users/bojtip/Desktop/UAV/TEX/figures/comnull.png>] [14 <C:/Users/bojtip/Desktop/UAV/TEX/figures/sorossend.png> <C:/
+Users/bojtip/Desktop/UAV/TEX/figures/xvi.png>]
+<figures/ned.png, id=240, 376.40625pt x 362.10281pt>
+File: figures/ned.png Graphic file (type png)
+ <use figures/ned.png>
+Package pdftex.def Info: figures/ned.png used on input line 84.
+(pdftex.def)             Requested size: 376.40532pt x 362.10191pt.
+ [15 <C:/Users/bojtip/Desktop/UAV/TEX/figures/ned.png>]) [16] (C:\Users\bojtip\Desktop\UAV\TEX\chapter4.tex
+4. fejezet.
+) [17
 
 
 
 ]
-Overfull \hbox (2.40677pt too wide) in paragraph at lines 18--19
-\T1/cmr/m/n/10.95 Draw) és on-nan na-gyobb fel-bon-tás-sal rasz-teri-zál-va ki-ment-ha-t®k PNG for-má-tum-ban. Ugyan-
- []
-
-[21]
-
-LaTeX Warning: Reference `sect:LatexTools' on page 22 undefined on input line 41.
-
-
-LaTeX Warning: Reference `fig:TexnicCenter' on page 22 undefined on input line 41.
-
-<figures/TeXnicCenter.png, id=407, 847.66687pt x 520.19344pt>
-File: figures/TeXnicCenter.png Graphic file (type png)
- <use figures/TeXnicCenter.png>
-Package pdftex.def Info: figures/TeXnicCenter.png used on input line 45.
-(pdftex.def)             Requested size: 190.63345pt x 116.9829pt.
-File: figures/TeXnicCenter.png Graphic file (type png)
-
-<use figures/TeXnicCenter.png>
-Package pdftex.def Info: figures/TeXnicCenter.png used on input line 46.
-(pdftex.def)             Requested size: 190.63345pt x 116.9829pt.
-File: figures/TeXnicCenter.png Graphic file (type png)
- <use figures/TeXnicCenter.png>
-Package pdftex.def Info: figures/TeXnicCenter.png used on input line 47.
-(pdftex.def)             Requested size: 190.63345pt x 116.9829pt.
-File: figures/TeXnicCenter.png Graphic file (type png)
- <use figures/TeXnicCenter.png>
-Package pdftex.def Info: figures/TeXnicCenter.png used on input line 48.
-(pdftex.def)             Requested size: 190.63345pt x 116.9829pt.
- [22 <C:/Users/bojtip/Desktop/UAV/TEX/figures/TeXnicCenter.png (PNG copy)>]
-Overfull \hbox (1.5079pt too wide) in paragraph at lines 98--99
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[23]
-Overfull \hbox (2.29582pt too wide) in paragraph at lines 134--141
-[][][]$\T1/cmtt/m/n/10.95 http : / / www . ctan . org / tex-[]archive / info / symbols / comprehensive / symbols-[]a4 . 
-pdf$[][]\T1/cmr/m/n/10.95 , 
- []
-
-[24]
-
-LaTeX Warning: Citation `Wettl04' on page 25 undefined on input line 216.
-
-
-LaTeX Warning: Citation `Candy86' on page 25 undefined on input line 216.
-
-
-LaTeX Warning: Citation `Lee87' on page 25 undefined on input line 216.
-
-
-LaTeX Warning: Citation `KissPhD' on page 25 undefined on input line 216.
-
-
-LaTeX Warning: Citation `Schreier00' on page 25 undefined on input line 216.
-
-
-LaTeX Warning: Citation `DipPortal' on page 25 undefined on input line 216.
-
-
-Overfull \hbox (8.00322pt too wide) in paragraph at lines 218--219
-\T1/cmr/m/n/10.95 for-dul egy olyan do-ku-men-tum-ban, ami nem tar-tal-maz-za a []\T1/cmtt/m/n/10.95 \usepackage[latin2]
-{inputenc}
- []
-
-[25] [26] [27]) [28]
-Underfull \hbox (badness 2521) in paragraph at lines 171--172
+Underfull \hbox (badness 2521) in paragraph at lines 173--174
 []\T1/cmr/m/n/10.95 http://en.wikipedia.org/wiki/Hewitt-Sperry_Automatic_Airplane, 2013. má-jus 4,
  []
 
 
-Overfull \hbox (80.43513pt too wide) in paragraph at lines 181--182
+Overfull \hbox (80.43513pt too wide) in paragraph at lines 183--184
 []\T1/cmr/m/n/10.95 http://api.ning.com/files/ga5AVWy8xTu8cx9rHdzJ73Epc*dzb0uy*UPe0O8wFxogMF6WNRW8StK3x-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--182
+Underfull \hbox (badness 10000) in paragraph at lines 183--184
 \T1/cmr/m/n/10.95 xzkG2iBk16kNFpYTZe80NgM8kbXOiyxrEwUXIt/GroundControlStation.pdf,
  []
 
 
-Underfull \hbox (badness 4193) in paragraph at lines 184--185
+Underfull \hbox (badness 4193) in paragraph at lines 186--187
 []\T1/cmr/m/n/10.95 http://www.rodiangroup.com/uav-ground-control-station.html, 2013. már-ci-us 19.,
  []
 
 
-Underfull \hbox (badness 1418) in paragraph at lines 191--192
+Underfull \hbox (badness 1418) in paragraph at lines 193--194
 []\T1/cmr/m/n/10.95 http://www.vikingaero.com/uav_ground_control_station.html, 2013. már-ci-us 19.,
  []
 
-[29
+[18
 
 
-] (C:\Users\bojtip\Desktop\UAV\TEX\appendices.tex
-File: figures/TeXnicCenter.png Graphic file (type png)
- <use figures/TeXnicCenter.png>
-Package pdftex.def Info: figures/TeXnicCenter.png used on input line 17.
-(pdftex.def)             Requested size: 426.79134pt x 261.91376pt.
- [30
+] (C:\Users\bojtip\Desktop\UAV\TEX\appendices.tex) [19
 
-
-]) [31
 
 ]
 \tf@thm=\write5
-
-
+ 
 AED: lastpage setting LastPage
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 210.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 210.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 212.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 212.
 (C:\Users\bojtip\Desktop\UAV\TEX\diploma.aux (C:\Users\bojtip\Desktop\UAV\TEX\titlepage.aux)
 (C:\Users\bojtip\Desktop\UAV\TEX\declaration.aux) (C:\Users\bojtip\Desktop\UAV\TEX\abstract.aux)
 (C:\Users\bojtip\Desktop\UAV\TEX\introduction.aux) (C:\Users\bojtip\Desktop\UAV\TEX\chapter1.aux)
 (C:\Users\bojtip\Desktop\UAV\TEX\chapter2.aux) (C:\Users\bojtip\Desktop\UAV\TEX\chapter3.aux)
-(C:\Users\bojtip\Desktop\UAV\TEX\appendices.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 210.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 210.
-
-
-Package rerunfilecheck Warning: File `diploma.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `diploma.out':
-(rerunfilecheck)             Before: 2D44CFDBB6D46A743C7F96393AE56081;2467
-(rerunfilecheck)             After:  BEB4C8EA582BECAE61D1B7C2682EF3BF;2467.
-
-LaTeX Warning: There were undefined references.
+(C:\Users\bojtip\Desktop\UAV\TEX\chapter4.aux) (C:\Users\bojtip\Desktop\UAV\TEX\appendices.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 212.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 212.
+Package rerunfilecheck Info: File `diploma.out' has not changed.
+(rerunfilecheck)             Checksum: 4991D55A13D4EEA42F7F8E3492B501E2;1018.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 210.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 212.
  ) 
 Here is how much of TeX's memory you used:
- 10725 strings out of 493921
- 162254 string characters out of 3144872
- 304037 words of memory out of 3000000
- 13550 multiletter control sequences out of 15000+200000
- 28316 words of font info for 69 fonts, out of 3000000 for 9000
+ 10244 strings out of 493921
+ 157407 string characters out of 3144872
+ 254013 words of memory out of 3000000
+ 13241 multiletter control sequences out of 15000+200000
+ 25770 words of font info for 62 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 36i,16n,42p,1453b,1166s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{subsection.2.6.4} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.6.3} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.6.2} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.6.1} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.2.6} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.2.5} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.4.4} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.4.3} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.4.2} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.4.1} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.2.4} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.3.4} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.3.3} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.3.2} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.3.1} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.2.3} has been referenced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.2.2} has been referenced but does not exist, replaced by a fixed one
-
- <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti0600.pk> <C:\Users\bojtip\AppData\Loca
-l\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt0800.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\j
-knappen\ec\dpi600\ectt1095.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0900.pk>
- <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0600.pk> <C:\Users\bojtip\AppData\Loca
-l\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti0900.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\j
-knappen\ec\dpi600\ecbx1000.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0800.pk>
- <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\bojtip\AppData\Loca
-l\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\j
-knappen\ec\dpi600\ecrm1200.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1095.pk>
- <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\eccc1440.pk> <C:\Users\bojtip\AppData\Loca
-l\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2074.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\j
-knappen\ec\dpi600\ecrm1095.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1095.pk>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmbx8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmmi8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x8
-6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on diploma.pdf (32 pages, 7288527 bytes).
+ 36i,8n,39p,1192b,444s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1095.pk> <C:\Users\bojtip\AppData\Lo
+cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0900.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour
+\jknappen\ec\dpi600\ecrm0600.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0800.p
+k> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti0900.pk> <C:\Users\bojtip\AppData\Lo
+cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1000.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour
+\jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.p
+k> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\bojtip\AppData\Lo
+cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1095.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour
+\jknappen\ec\dpi600\eccc1440.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2074.p
+k> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1095.pk> <C:\Users\bojtip\AppData\Lo
+cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1095.pk><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmex10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+r10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on diploma.pdf (20 pages, 7054587 bytes).
 PDF statistics:
- 1380 PDF objects out of 1440 (max. 8388607)
- 247 named destinations out of 1000 (max. 500000)
- 374 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 807 PDF objects out of 1000 (max. 8388607)
+ 76 named destinations out of 1000 (max. 500000)
+ 225 words of extra memory for PDF output out of 10000 (max. 10000000)
 
