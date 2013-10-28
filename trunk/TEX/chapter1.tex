@@ -1,0 +1,339 @@
+%----------------------------------------------------------------------------
+\chapter{1. fejezet}\label{sect:}
+%----------------------------------------------------------------------------
+\section{A szerkesztéshez használatos, Windows alapú eszközök}
+%----------------------------------------------------------------------------
+
+\section{Motiváció}
+
+Félév során lehet\H{o}ségem volt a SZTAKI Irányítástechnikai Kutató Laboratóriumában egy UAV légi járm\H{u} fejlesztésében részt venni. Az itt kidolgozott szabályozó algoritmusok gyakorlatba való átültetésére egy pilóta nélküli járm\H{u}vet hoztak létre, mely a biztonságos üzemeltetés miatt, illetve az estelegesen el\H{o}fordulható hibák ellen redundáns hardware elemekkel védekezik.
+A feladatom ennek a repül\H{o}nek a földi állomásának a kialakítása volt, mely a redundánsan küldött rádiójelek feldolgozására és megfelel\H{o} megjelenítésre használandó. Az összehasonlításból kiderül, eddig a földi állomásokra nem volt jellemz\H{o} a redundancia. Kutatómunkám során összegy\H{u}jtöttem az UAV-k fejl\H{o}désének történetét, a piacon elérhet\H{o} programokat, összehasonlítottam a megoldásokat, majd ezekb\H{o}l ötletet merítve elkezdtem a program megírását. Konzultációk során finomhangolásokkal a megrendel\H{o} igényeihez formáltam az elképzelt megvalósítást.
+
+
+
+
+\section{UAV}
+\cite{bib:uav}A pilóta nélküli légi járm\H{u} gondolata egészen a XX. század elejére nyúlik vissza, mikor az I. világháborúban egy olyan távirányítású repül\H{o}t alkottak, mely robbanószerrel a fedélzeten a célpontba csapódva okozott kárt.
+\cite{bib:sperry}Els\H{o} nagyobb amerikai UAV projekt 1959-ben kezd\H{o}dött, mikor aggódtak az ellenséges területre berepül\H{o} pilóták életéért. Kés\H{o}bb a vietnámi háborúban több mint 3000 küldetésben vett részt ilyen repül\H{o} és mindössze 554 veszett oda. A technológiai korlátok miatt a f\H{o} funkcionalitása video felvétel készítése egy meghatározott útvonalon (általában egyenes vonal, körökkel kiegészítve) repülve, majd a bázisra való visszaérkezés. 
+A rádiótechnika fejl\H{o}dése miatt egyre összetettebb feladatok elvégzésére lettek képesek. A nagyobb átviteli sebességnek köszönhet\H{o}en valós id\H{o}ben, monitoron keresztül kezelheti az operátor a távirányítású repül\H{o}t. A mai UAV-k több üzemmódot is támogatnak, egyik az el\H{o}bb említett távirányítás, másik a fedélzeti intelligenciára hagyatkozó. Mind a hagyományos repül\H{o}iparban, mind ebben az érában, szükséges és célszer\H{u} az emberi terhelés csökkentése, utasszállító gépek esetében is a robotpilóta elvégez minden olyan korrekciót, melyet azel\H{o}tt a pilóta folyamatos figyelésével, koncentrációjával lehetett elérni. A modern integrációnak köszönhet\H{o}en, olyan fejlett feldolgozóegységgel dolgozhatjuk fel az adatokat, melyeknek nem jelent\H{o}s a fogyasztása, nem foglalnak sok helyet. A szenzorokból érkez\H{o} információkra, az algoritmusoknak köszönhet\H{o}en úgy tud reagálni, hogy az nem veszélyezteti a repül\H{o} leveg\H{o}ben maradását. Ám hiába a fejlett hardware, a valóban automatikus üzemeltetés még mindig távoli cél, emberi beavatkozás mindig is kelleni fog le,- felszállásoknál, illetve olyan helyzetekben melyre nincs el\H{o}re felkészítve az intelligenciája.
+
+
+\subsection{UCAV}
+\cite{bib:ucav}Katonai felhasználásban elengedhetetlen a fedélzeti fegyverzet, így ezekre a járm\H{u}vekre is felszerelésre került. Az ilyen drónok az estek többségében operátori irányítás alatt állnak, így emberi felel\H{o}sség van a fegyver használata során.
+
+\subsection{Csoportosítás}
+
+Amerikai légier\H{o} ezeket a csoportokat tartja nyilván
+\begin{itemize}
+\item Kézi indítású: 600 m magasság, 2 km hatótávolság
+\item Közeli: 1500 m magasság, 10 km hatótávolság
+\item MALE(Medium Altitude,Long Endurance)9 km magasság, 200 km hatótávolság
+\item HALE(High Altitude,Long Endurance) 9+ km magasság, 200+ km hatótávolság
+\end{itemize}
+
+\subsection{Felhasználási területek}
+
+\begin{description}
+\item[Célpont] kiképzésre használandó, légi fenyegetésként ellenséges célpont
+\item[Felderít\H{o}] harctéren nagyobb látóteret biztosít
+\item[Támadó] fegyverzettel ellátott, lég-föld, lég-lég rakétákkal csapások mérése
+\item[Szállító] raktérrel ellátott, nehezen megközelíthet\H{o} csapatok segítésére
+\item[Kísérleti] kés\H{o}bbi UAV-k kifejlesztéséhez
+\item[Civil] hétköznapi embereknek szórakozás céljából
+
+
+\item[Érzékelés] különböz\H{o} érzékel\H{o}kkel ellátva képes kémiai anyagok jelenlétét érzékelni, infrakamerákkal és radarral éjjel is látható az operátor számára a környezet
+
+\item[Megfigyelés] egyik legolcsóbb megfigyelési mód az UAV alkalmazása, kisebb üzemben tartási költsége van, mint egy repül\H{o}nek, pilóta bérének. Pl. vadak vonulásának követése
+
+\item[Geológiai felfedezés] mágneses érzékel\H{o}kkel a Föld mágnesesség változásának mérésével következtetni lehet a föld alatt található ércekre.
+
+\item[Mentés] természeti katasztrófa következtében bajbajutottak segítésére, ment\H{o}csapatok megfelel\H{o} irányba küldésére használatos
+
+\item[Erd\H{o}t\H{u}z detektálás] folyamatosan a megfigyelt terület felett repülve, infravörös kamerával a legkisebb t\H{u}z érzékelhet\H{o}. Szél és egyéb meteorológiai adatokkal szolgáltatva a t\H{u}zoltók munkáját segíti
+
+\end{description}
+
+\subsection{Hosszú repülés}
+Mivel az UAV-k nem rendelkeznek fedélzeti személyzettel, így a leveg\H{o}ben töltött idejüket kizárólag az energiaforrásuk sz\H{u}kössége határozza meg. Elektromos meghajtású gépek esetén, megfelel\H{o} méret\H{u} napelem alkalmazása esetén akár végtelenségig leveg\H{o}ben maradhatnak. A minél hosszabb fennmaradás el\H{o}nyös lehet taktika bevetések során, ahol megspórolható az oda-visszaút megtételéb\H{o}l származó kiesés. 
+Leghosszabb repült id\H{o} 2010. július. 9 -- 23 közt QinetiQ Zephyr Solar Electric érte el 336 óra 22 perccel (2 hét)
+
+\section{Földi állomás}
+Egy UAV vezetéséhez elengedhetetlen egy bázis, ahonnan a földi személyzet irányítja, monitorozhatja a repülést. Általában több funkciót lát el:
+\begin{itemize}
+\item Küldetés tervezés: útvonal meghatározása, illetve a célpontok kijelölése
+\item Adatok megjelenítése: megfelel\H{o} módon kijelezni a repül\H{o}gép állapotát, esetleges hibáit.
+\end{itemize}
+
+\subsection{Hordozható}
+Egy egységbe építették az akkumulátort, kijelz\H{o}t, kezel\H{o}szerveket, hordozhatósága miatt ez az elterjedtebb a kézzel indítható UAV-k esetében.
+
+\begin{figure}[!ht]
+	\centering
+	\resizebox{8cm}{!}{
+		\includegraphics{figures/hord.png}}
+	\caption{Hordozható GC}
+	\label{fig:hord}
+\end{figure}
+
+
+
+\subsection{Komplex}
+Általában közel a hadszíntérhez üzemeltetik a repül\H{o}ket, így a személyzetet, illetve a felszereléseket páncélozott járm\H{u}vel szállítják, védik.
+Pl. az MQ-1 Predator GCS egy utánfutóban helyezkedik el, mely szünetmentes tápegységet biztosít a pilóta és segédszemélyzeti, adatelemz\H{o}/rögzít\H{o} és radar munkaállomásoknak. A kommunikációt UHF és VHF frekvencián bonyolítják közvetlen rálátás esetén, azon kívül m\H{u}hold közbeiktatásával.
+
+\begin{figure}[!ht]
+	\centering
+	\resizebox{8cm}{!}{
+		\includegraphics{figures/komplex.png}}
+	\caption{Utánfutós megoldás}
+	\label{fig:komplex}
+\end{figure}
+
+
+\subsection{Kompatibilitás}
+\cite{bib:komp}Ahogy jöttek az újabb gépek, problémát okozott, hogy mindegyik földi állomása különbözött egymástól, így 2008-ban szorgalmaztak egy univerzális GCS architektúrát, mely minden addigi és jöv\H{o}beli katonai UAV-vel ugyanúgy tud kommunikálni, adatokat szolgáltatni. Így született a Raytheon s Common Ground Control System, melynek fejlesztéséhez videojátékokból merítettek ötleteket. Csökkenteni próbálták a kiképzési id\H{o}t, ne kelljen több hónapos kurzusokon részt venni, hanem úgy, mint egy videojátéknál, kisebb gyakorlás után már tudja az ember, mit hol kell keresni, illetve úgy érezze, hogy valóban \H{o} vezeti a repül\H{o}t.
+
+\begin{figure}[!ht]
+	\centering
+	\resizebox{10cm}{!}{
+		\includegraphics{figures/kompat.png}}
+	\caption{UGCS}
+	\label{fig:kompat}
+\end{figure}
+
+
+\subsection{Megoldások}
+Számos megoldás született a földi állomás GUI\footnote{Graphics User Interface, grafikus megjelenítés}-jának kialakítására. Els\H{o}dleges követelmény, hogy az operátor mindig a legfontosabb információkat láthassa, ehhez szoftverergonómiailag kell megtervezni a m\H{u}szerek, adatok elrendezését.
+Az alábbiakban összehasonlításra kerülnek a megjelenítési felületek.
+
+\subsubsection{MIT GCS}
+\cite{bib:mit}Els\H{o}dleges megfontolás az volt, hogy a m\H{u}szereket az értékeket linerisan jelenítsék-e meg, mivel az avionikában ez a kérdés már felmerült, így a valós m\H{u}szerek alapján a lineárisat választották. Másodlagos kérdés a m\H{u}szerek formája, itt megvalósítható lenne a csupán digitális értékek kiírása, de szintén a repülésb\H{o}l merítve a kör alakú egységeket választottak
+
+\begin{figure}[!ht]
+	\centering
+	\resizebox{10cm}{!}{
+		\includegraphics{figures/mit.png}}
+	\caption{Alap összeállítás}
+	\label{fig:mit}
+\end{figure}
+
+\subsubsection{Rodan}
+\cite{bib:rodan}Földi, légi, vízi jármüveket is támogat, TCP/IP-n keresztül kommunikál, így videó átküldésére is van sávszélesség. SIL\footnote{Software In the Loop} és HIL\footnote{Hardware In the Loop} támogatás.
+
+A GUI itt már összetettebb, a kamera képe foglalja el a képerny\H{o} nagyobbik részét, mellette egy térképen láthatjuk a járm\H{u} eddigi útvonalát. Egyetlen vizuális m\H{u}szer a m\H{u}horizont, a többi érték csak számadattal van jelezve.
+
+\begin{figure}[!ht]
+	\centering
+	\resizebox{10cm}{!}{
+		\includegraphics{figures/rodan.png}}
+	\caption{Rodan}
+	\label{fig:rodan}
+\end{figure}
+
+\subsubsection{HappyKillmore}
+\cite{bib:hk} Ez a GUI az ArduPlane nev\H{u} nyílt forráskódú, háziépítés\H{u} UAV-hoz készült.
+Itt is a térkép nézet dominál, oldalt mozgathatjuk számunkra megfelel\H{o} elrendezésbe a m\H{u}szereket.
+Több különböz\H{o} oldal közül választhatunk, ha pl. a bejöv\H{o} adatokra vagyunk kiváncsiak vagy a soros port port számát szeretnénk beállítani. Lehet\H{o}ségünk van exportálni is az adatokat.
+
+
+\begin{figure}[!h]
+	\centering
+	\resizebox{10cm}{!}{
+		\includegraphics{figures/hk.png}}
+		\caption{HK}
+	\label{fig:hk}
+\end{figure}
+
+
+\subsubsection{Arducopter}
+Az el\H{o}z\H{o}höz hasonlóan ez is az ArduCopterhez készült. Itt lehet\H{o}ségünk van térképen el\H{o}re kijelölni, milyen útvonalat járjon be felszállás után.
+
+
+\begin{figure}[!ht]
+	\centering
+	\resizebox{10cm}{!}{
+		\includegraphics{figures/ardu.png}}
+	\caption{Arducopter}
+	\label{fig:hk}
+\end{figure}
+
+
+\subsubsection{Viking}
+\cite{bib:viking} Itt egyértelm\H{u}en a térkép feletti pozicíón van a hangsúly, jobb oldalt néhány m\H{u}szer, illetve a fontosabb adatok számokkal
+
+
+\begin{figure}[!ht]
+	\centering
+	\resizebox{10cm}{!}{
+		\includegraphics{figures/viking.png}}
+	\caption{Viking}
+	\label{fig:viking}
+\end{figure}
+
+
+
+
+
+
+
+\subsubsection{NI LabWindows/CVI}
+Az el\H{o}z\H{o} Ground control forráskódját átnézve, annak továbbfejlesztése körülményes lenne, így a C\# nyelv  változatos API-jainak köszönhet\H{o}en egy új GUI megírása t\H{u}nik a legoptimálisabb megoldásnak. Soros port kezelésére van beépített \cite{bib:serial}system.io.ports.serialport osztály, mely megkönnyíti az adatok befogadását.
+
+
+
+
+\section{Repül\H{o}gép kialakítása}
+
+A SZTAKI-nak volt már egy hasonló projektje, mely egy kisebb, boltban beszerezhet\H{o} modellrepül\H{o}re épített saját irányítóegységgel repült. A számos tesztnek köszönhet\H{o}en felmerült az igény egy olyan, teljesen saját fejlesztés\H{u} repül\H{o} kialakítására, mely lehet\H{o}séget biztosít biztonságkritikus kialakításra, szemben a gyári alkatrészekkel, amelyek semmilyen visszajelzést nem adnak saját állapotukról, mely a szabályzásban jelent\H{o}s fontossággal bír.
+
+\begin{figure}[!ht]
+	\centering
+	\resizebox{10cm}{!}{
+		\includegraphics{figures/orca.png}}
+	\caption{}
+	\label{fig:orca}
+\end{figure}
+
+Így az új repül\H{o}gépen redundánsan fog szerepelni:
+\begin{itemize}
+\item motor
+\item akkumulátor
+\item központi számítógép
+\end{itemize}
+
+
+\begin{figure}[!ht]
+	\centering
+	\resizebox{10cm}{!}{
+		\includegraphics{figures/sys.png}}
+	\caption{}
+	\label{fig:sys}
+\end{figure}
+
+Látható, hogy központi számítógép kett\H{o}zött, párhuzamosan m\H{u}ködnek, irányítják a servo motorokat. A szenzorokból érkez\H{o} jelek egy Gateway-en keresztül az FCC-be jutnak, ahol a feldolgozás utána a szabályozó algoritmusok kiadják a megfelel\H{o} utasítást a kormányszerveknek. Ilyen utasítás lehet pl, a cs\H{u}r\H{o}lapok adott fokban történ\H{o} elmozdítása, motor fordulatszámának változtatása. A motorok, úgy mint a központi egység, külön tápellátást kapnak, ezzel is csökkentve a végzetes meghibásodás esélyét. Jelen esetben egyik legfontosabb elem a kommunikációért felel\H{o}s modem, mely soros porton keresztül kapcsolódik az FCC-hez. A vev\H{o} oldalon hasonló modem, szintén soros porton küldi a földi állomásnak a vett jelet, a köztük lév\H{o} vezeték nélküli kommunikáció saját szabványa a cégnek. A választás XBee-PRO 868 típusú modemre esett, mely alacsony fogyasztása és nagy hatótávolsága miatt ideális egy ilyen környezetbe.
+
+
+\begin{figure}[!ht]
+	\centering
+	\resizebox{7cm}{!}{
+		\includegraphics{figures/xbee.png}}
+	\caption{}
+	\label{fig:xbee}
+\end{figure}
+
+
+
+
+
+\section{Saját implementáció}
+
+\subsection{RS232}
+A modemb\H{o}l érkez\H{o} adatokat soros porton keresztül fogadja a program, a tesztkörnyezet felállításához HIL adatok szolgáltak. A küldött log fájlokat egy programmal beolvasom és egy \cite{bib:null}null-modem segítségével sorosporton keresztül küldöm a megfelel\H{o} portra. 
+
+\begin{figure}[!ht]
+	\centering
+	\resizebox{10cm}{!}{
+		\includegraphics{figures/comnull.png}}
+	\caption{}
+	\label{fig:comnull}
+\end{figure}
+
+Beállítottam 2 párt, COM20-COM21 és COM10-COM11 közt, a pároson küldöm, páratlanon fogadom az üzeneteket. 
+
+\begin{figure}[!ht]
+	\centering
+	\resizebox{10cm}{!}{
+		\includegraphics{figures/sorossend.png}}
+	\caption{}
+	\label{fig:sorossend}
+\end{figure}
+
+153 bájtos egy csomag, melyet egy UUT  3 bájtos fejléc és egy 2 bájtos checksum zár. A checksum a hasznos bájtok 16 bitre csonkolt összege. Minden fogadott csomagnál, a feldolgozás el\H{o}tt kiszámolom az összeget és ellen\H{o}rzöm, az egyezést, a rossz csomagok egyel\H{o}re eldobásra kerülnek.
+
+\begin{figure}[!ht]
+	\centering
+	\resizebox{10cm}{!}{
+		\includegraphics{figures/xvi.png}}
+	\caption{}
+	\label{fig:xvi}
+\end{figure}
+
+Fogadó oldalon a két sorosport aszinkron ír 1-1 byte tömböt, melyb\H{o}l egy dekódoló függvénnyel nyerjük ki a sebesség, pozíció, irány, stb. adatokat.
+
+\begin{verbatim}
+public double[] Decode(byte[] array)
+\end{verbatim}
+
+Ebben a függvényben ellen\H{o}rzöm, a checksum-ot, illetve a kezd\H{o} UUT bájt hármast.
+Mivel bájtosával lehet feldolgozni az adatokat, így pl. a 4 bájtos id\H{o}bélyeget 4 db egymás után jöv\H{o} bájtból kell összerakni:
+
+\begin{verbatim}
+uint ido = (uint)array[3]<<24 | (uint)array[4]<<16 |
+(uint)array[5]<<8 | (uint)array[6];
+\end{verbatim}
+
+Ugyanígy folytatódik az adatok feldolgozása, az el\H{o}re megadott protokoll szerint.
+
+\begin{center}
+    \begin{tabular}{| l | l | l | l |l |}
+    \hline
+    bájt index & leírás & típus & skálázás & offset \\ \hline
+    1 & start & char(fix 'U') &   &    \\ \hline
+		2 & start & char(fix 'U') &   &    \\ \hline
+		3 & start & char(fix 'T') &   &    \\ \hline
+		4 & id\H{o} 1/4 & unsigned int & 10000 & 0  \\ \hline
+		5 & id\H{o} 2/4 &   &   &    \\ \hline
+		6 & id\H{o} 3/4 &   &   &    \\ \hline
+		7 & id\H{o} 4/4 &   &   &    \\ \hline
+		\dots &  &  &   &    \\ \hline
+		26 & északi irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
+		28 & keleti irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
+		30 & lefelé irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
+		\dots &   &   &   &    \\ \hline
+		
+    \hline
+    \end{tabular}
+\end{center}
+
+
+Mivel a változások Hamming-távolsága\footnote{Bináris számok XOR képzésével kapott 1-esek száma} kicsi lenne, az eredeti számábrázoláson, így skálázással és offset képzéssel megnöveljük. A sebesség adatoknál a visszakódolás:\\
+$eredeti  = (nyers adat/skalazas) - offset$ képlettel oldható meg. 
+
+\subsection{Sebesség}
+A sebesség NED\footnote{Nort East Down, Local Tangent Pane, helyi koordináta rendszer} koordinátarendszerben van megadva, mely a repül\H{o} középpontjából indul. Mivel kis magasságban repül a repül\H{o}, így síknak közelíthetjük  a Föld felületét, ez számítások szempontjából el\H{o}nyös, mivel könnyebb vele dolgozni.
+A sebesség számítási módja: $ \sqrt[2]{(V_E)^2 + (V_N)^2}$ \\
+Emelkedés: $ -V_D$
+\begin{figure}[!ht]
+	\centering
+	\resizebox{8cm}{!}{
+		\includegraphics{figures/ned.png}}
+	\caption{Koordináta rendszer}
+	\label{fig:ned}
+\end{figure}
+
+\subsection{Irány}
+Az irány meghatározásához a 4 negyedsíkot külön kellett választani:
+\begin{verbatim}
+					if (Ecomp > 0 && Ncomp > 0)
+					{
+						heading = Math.Atan(Ecomp * Ncomp);
+					}
+					else if (Ecomp > 0 && Ncomp < 0)
+					{
+						heading = Math.Atan(Ecomp * Math.Abs(Ncomp)) + 90;
+					}
+					else if (Ecomp < 0 && Ncomp < 0)
+					{
+						heading = Math.Atan(Math.Abs(Ecomp) * Math.Abs(Ncomp)) + 180;
+					}
+					else if (Ecomp < 0 && Ncomp > 0)
+					{
+						heading = Math.Atan(Math.Abs(Ecomp) * Ncomp) + 270;
+					}
+
+\end{verbatim}
+
+\subsection{GUI}
+A grafikus felület kialakítása során figyelembe kell venni, hogy els\H{o} ránézésre a legfontosabb adatok látszódjanak. Kett\H{o} fül közül az els\H{o} oldalon a legfontosabb m\H{u}szerek találhatóak, jobb oldalon egy Google Maps térkép. A térkép egy lokális cache-b\H{o}l tölti be az el\H{o}re letöltött térképszelvényeket, így a terepen lehet\H{o}ség van offline módon is használni ezt a funkciót.
+
