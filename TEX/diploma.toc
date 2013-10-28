@@ -2,22 +2,17 @@
 \select@language {magyar} \contentsline {chapter}{Abstract}{4}{chapter*.3}
 \select@language {magyar} \contentsline {chapter}{Bevezet\H o}{5}{chapter*.4}
 \select@language {magyar} \contentsline {chapter}{\numberline {1}H\'att\'erismeret}{6}{chapter.1}
-\select@language {magyar} \contentsline {section}{\numberline {1.1}MTA-SZATKI ORCA}{6}{section.1.1}
-\select@language {magyar} \contentsline {section}{\numberline {1.2}Hordozhat\'o}{7}{section.1.2}
-\select@language {magyar} \contentsline {subsection}{\numberline {1.2.1}Komplex}{7}{subsection.1.2.1}
-\select@language {magyar} \contentsline {subsection}{\numberline {1.2.2}Kompatibilit\'as}{8}{subsection.1.2.2}
-\select@language {magyar} \contentsline {subsection}{\numberline {1.2.3}Megold\'asok}{9}{subsection.1.2.3}
-\select@language {magyar} \contentsline {subsubsection}{MIT GCS}{9}{section*.11}
-\select@language {magyar} \contentsline {subsubsection}{Rodan}{9}{section*.13}
-\select@language {magyar} \contentsline {subsubsection}{HappyKillmore}{10}{section*.15}
-\select@language {magyar} \contentsline {subsubsection}{Arducopter}{10}{section*.17}
-\select@language {magyar} \contentsline {subsubsection}{Viking}{11}{section*.19}
-\select@language {magyar} \contentsline {chapter}{\numberline {2}Tervez\'es}{12}{chapter.2}
-\select@language {magyar} \contentsline {chapter}{\numberline {3}Saj\'at implement\'aci\'o}{13}{chapter.3}
-\select@language {magyar} \contentsline {section}{\numberline {3.1}RS232}{13}{section.3.1}
-\select@language {magyar} \contentsline {section}{\numberline {3.2}Sebess\'eg}{15}{section.3.2}
-\select@language {magyar} \contentsline {section}{\numberline {3.3}Ir\'any}{16}{section.3.3}
-\select@language {magyar} \contentsline {section}{\numberline {3.4}GUI}{16}{section.3.4}
-\select@language {magyar} \contentsline {chapter}{\numberline {4}\"Osszefoglal\'as}{17}{chapter.4}
-\select@language {magyar} \contentsline {chapter}{F\"uggel\'ek}{19}{appendix*.26}
-\select@language {magyar} \contentsline {section}{\numberline {F.1}F\"uggel\'ek1}{19}{section.F.1}
+\select@language {magyar} \contentsline {section}{\numberline {1.1}Rep\"ul\H og\'ep fel\'ep\IeC {\'\i }t\'ese}{6}{section.1.1}
+\select@language {magyar} \contentsline {section}{\numberline {1.2}F\"oldi \'allom\'asok}{7}{section.1.2}
+\select@language {magyar} \contentsline {subsection}{\numberline {1.2.1}Komplex}{8}{subsection.1.2.1}
+\select@language {magyar} \contentsline {subsection}{\numberline {1.2.2}Paparazzi}{8}{subsection.1.2.2}
+\select@language {magyar} \contentsline {subsection}{\numberline {1.2.3}ArduPilot}{8}{subsection.1.2.3}
+\select@language {magyar} \contentsline {chapter}{\numberline {2}Tervez\'es}{9}{chapter.2}
+\select@language {magyar} \contentsline {chapter}{\numberline {3}Saj\'at implement\'aci\'o}{10}{chapter.3}
+\select@language {magyar} \contentsline {section}{\numberline {3.1}RS232}{10}{section.3.1}
+\select@language {magyar} \contentsline {section}{\numberline {3.2}Sebess\'eg}{12}{section.3.2}
+\select@language {magyar} \contentsline {section}{\numberline {3.3}Ir\'any}{13}{section.3.3}
+\select@language {magyar} \contentsline {section}{\numberline {3.4}GUI}{13}{section.3.4}
+\select@language {magyar} \contentsline {chapter}{\numberline {4}\"Osszefoglal\'as}{14}{chapter.4}
+\select@language {magyar} \contentsline {chapter}{F\"uggel\'ek}{16}{appendix*.15}
+\select@language {magyar} \contentsline {section}{\numberline {F.1}F\"uggel\'ek1}{16}{section.F.1}
