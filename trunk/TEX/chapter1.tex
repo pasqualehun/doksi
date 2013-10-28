@@ -1,8 +1,7 @@
 \chapter{Háttérismeret}
 
 
-\section{MTA-SZATKI ORCA}
-
+\section{Repülõgép felépítése}
 
 \begin{figure}[!ht]
 	\centering
@@ -28,7 +27,7 @@ A repülõgépen redundánsan szerepel:
 	\label{fig:sys}
 \end{figure}
 
-Látható, hogy központi számítógép kettõzött, párhuzamosan mûködnek, irányítják a servo motorokat. A szenzorokból érkezõ jelek egy Gateway-en keresztül az FCC-be jutnak, ahol a feldolgozás utána a szabályozó algoritmusok kiadják a megfelelõ utasítást a kormányszerveknek. Ilyen utasítás lehet pl, a csûrõlapok adott fokban történõ elmozdítása, motor fordulatszámának változtatása. A motorok, úgy mint a központi egység, külön tápellátást kapnak, ezzel is csökkentve a végzetes meghibásodás esélyét. Jelen esetben egyik legfontosabb elem a kommunikációért felelõs modem, mely soros porton keresztül kapcsolódik az FCC-hez. A vevõ oldalon hasonló modem, szintén soros porton küldi a földi állomásnak a vett jelet, a köztük lévõ vezeték nélküli kommunikáció saját szabványa a cégnek. A választás XBee-PRO 868 típusú modemre esett, mely alacsony fogyasztása és nagy hatótávolsága miatt ideális egy ilyen környezetbe.
+Látható, hogy központi számítógép kettõzött, párhuzamosan mûködnek, irányítják a servo motorokat. A szenzorokból érkezõ jelek egy Gateway-en keresztül az FCC-be jutnak, ahol a feldolgozás után a szabályozó algoritmusok kiadják a megfelelõ utasítást a kormányszerveknek. Ilyen utasítás lehet pl, a csûrõlapok adott fokban történõ elmozdítása, motor fordulatszámának változtatása. A motorok, úgy mint a központi egység, külön tápellátást kapnak, ezzel is csökkentve a végzetes meghibásodás esélyét. Jelen esetben egyik legfontosabb elem a kommunikációért felelõs modem, mely soros porton keresztül kapcsolódik az FCC-hez. A vevõ oldalon hasonló modem, szintén soros porton küldi a földi állomásnak a vett jelet, a köztük lévõ vezeték nélküli kommunikáció saját szabványa a cégnek. A választás XBee-PRO 868 típusú modemre esett, mely alacsony fogyasztása és nagy hatótávolsága miatt ideális egy ilyen környezetbe.
 
 
 \begin{figure}[!ht]
@@ -46,7 +45,10 @@ Egy UAV vezetéséhez elengedhetetlen egy bázis, ahonnan a földi személyzet irányí
 \item Adatok megjelenítése: megfelelõ módon kijelezni a repülõgép állapotát, esetleges hibáit.
 \end{itemize}
 
-\section{Hordozható}
+\section{Földi állomások}
+Számos megoldás született a földi állomás GUI\footnote{Graphics User Interface, grafikus megjelenítés}-jának kialakítására. Elsõdleges követelmény, hogy az operátor mindig a legfontosabb információkat láthassa, ehhez szoftverergonómiailag kell megtervezni a mûszerek, adatok elrendezését.
+Az alábbiakban összehasonlításra kerülnek a megjelenítési felületek.
+
 Egy egységbe építették az akkumulátort, kijelzõt, kezelõszerveket, hordozhatósága miatt ez az elterjedtebb a kézzel indítható UAV-k esetében.
 
 \begin{figure}[!ht]
@@ -71,91 +73,7 @@ Pl. az MQ-1 Predator GCS egy utánfutóban helyezkedik el, mely szünetmentes tápeg
 	\label{fig:komplex}
 \end{figure}
 
-
-\subsection{Kompatibilitás}
-\cite{bib:komp}Ahogy jöttek az újabb gépek, problémát okozott, hogy mindegyik földi állomása különbözött egymástól, így 2008-ban szorgalmaztak egy univerzális GCS architektúrát, mely minden addigi és jövõbeli katonai UAV-vel ugyanúgy tud kommunikálni, adatokat szolgáltatni. Így született a Raytheon s Common Ground Control System, melynek fejlesztéséhez videojátékokból merítettek ötleteket. Csökkenteni próbálták a kiképzési idõt, ne kelljen több hónapos kurzusokon részt venni, hanem úgy, mint egy videojátéknál, kisebb gyakorlás után már tudja az ember, mit hol kell keresni, illetve úgy érezze, hogy valóban õ vezeti a repülõt.
-
-\begin{figure}[!ht]
-	\centering
-	\resizebox{10cm}{!}{
-		\includegraphics{figures/kompat.png}}
-	\caption{UGCS}
-	\label{fig:kompat}
-\end{figure}
+\subsection{Paparazzi}
 
 
-\subsection{Megoldások}
-Számos megoldás született a földi állomás GUI\footnote{Graphics User Interface, grafikus megjelenítés}-jának kialakítására. Elsõdleges követelmény, hogy az operátor mindig a legfontosabb információkat láthassa, ehhez szoftverergonómiailag kell megtervezni a mûszerek, adatok elrendezését.
-Az alábbiakban összehasonlításra kerülnek a megjelenítési felületek.
-
-\subsubsection{MIT GCS}
-\cite{bib:mit}Elsõdleges megfontolás az volt, hogy a mûszereket az értékeket linerisan jelenítsék-e meg, mivel az avionikában ez a kérdés már felmerült, így a valós mûszerek alapján a lineárisat választották. Másodlagos kérdés a mûszerek formája, itt megvalósítható lenne a csupán digitális értékek kiírása, de szintén a repülésbõl merítve a kör alakú egységeket választottak
-
-\begin{figure}[!ht]
-	\centering
-	\resizebox{10cm}{!}{
-		\includegraphics{figures/mit.png}}
-	\caption{Alap összeállítás}
-	\label{fig:mit}
-\end{figure}
-
-\subsubsection{Rodan}
-\cite{bib:rodan}Földi, légi, vízi jármüveket is támogat, TCP/IP-n keresztül kommunikál, így videó átküldésére is van sávszélesség. SIL\footnote{Software In the Loop} és HIL\footnote{Hardware In the Loop} támogatás.
-
-A GUI itt már összetettebb, a kamera képe foglalja el a képernyõ nagyobbik részét, mellette egy térképen láthatjuk a jármû eddigi útvonalát. Egyetlen vizuális mûszer a mûhorizont, a többi érték csak számadattal van jelezve.
-
-\begin{figure}[!ht]
-	\centering
-	\resizebox{10cm}{!}{
-		\includegraphics{figures/rodan.png}}
-	\caption{Rodan}
-	\label{fig:rodan}
-\end{figure}
-
-\subsubsection{HappyKillmore}
-\cite{bib:hk} Ez a GUI az ArduPlane nevû nyílt forráskódú, háziépítésû UAV-hoz készült.
-Itt is a térkép nézet dominál, oldalt mozgathatjuk számunkra megfelelõ elrendezésbe a mûszereket.
-Több különbözõ oldal közül választhatunk, ha pl. a bejövõ adatokra vagyunk kiváncsiak vagy a soros port port számát szeretnénk beállítani. Lehetõségünk van exportálni is az adatokat.
-
-
-\begin{figure}[!h]
-	\centering
-	\resizebox{10cm}{!}{
-		\includegraphics{figures/hk.png}}
-		\caption{HK}
-	\label{fig:hk}
-\end{figure}
-
-
-\subsubsection{Arducopter}
-Az elõzõhöz hasonlóan ez is az ArduCopterhez készült. Itt lehetõségünk van térképen elõre kijelölni, milyen útvonalat járjon be felszállás után.
-
-
-\begin{figure}[!ht]
-	\centering
-	\resizebox{10cm}{!}{
-		\includegraphics{figures/ardu.png}}
-	\caption{Arducopter}
-	\label{fig:hk}
-\end{figure}
-
-
-\subsubsection{Viking}
-\cite{bib:viking} Itt egyértelmûen a térkép feletti pozicíón van a hangsúly, jobb oldalt néhány mûszer, illetve a fontosabb adatok számokkal
-
-
-\begin{figure}[!ht]
-	\centering
-	\resizebox{10cm}{!}{
-		\includegraphics{figures/viking.png}}
-	\caption{Viking}
-	\label{fig:viking}
-\end{figure}
-
-
-
-
-
-
-
-
+\subsection{ArduPilot}
