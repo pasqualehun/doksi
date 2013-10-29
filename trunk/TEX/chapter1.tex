@@ -1,7 +1,16 @@
-\chapter{Háttérismeret}
+\chapter{Elõzmények (irodalomkutatás, hasonló alkotások), az ezekbõl levonható következtetések}
 
 
 \section{Repülõgép felépítése}
+
+A repülõgép egy saját fejlesztésû modell, a tervek alapján a laborban készült el. 
+A biztonságkritikusság miatt redundánsan szerepel:
+
+\begin{itemize}
+\item motor
+\item akkumulátor
+\item központi számítógép
+\end{itemize}
 
 \begin{figure}[!ht]
 	\centering
@@ -11,23 +20,30 @@
 	\label{fig:orca}
 \end{figure}
 
-A repülõgépen redundánsan szerepel:
-\begin{itemize}
-\item motor
-\item akkumulátor
-\item központi számítógép
-\end{itemize}
-
 
 \begin{figure}[!ht]
 	\centering
-	\resizebox{10cm}{!}{
+	\resizebox{12cm}{!}{
 		\includegraphics{figures/sys.png}}
 	\caption{}
 	\label{fig:sys}
 \end{figure}
 
-Látható, hogy központi számítógép kettõzött, párhuzamosan mûködnek, irányítják a servo motorokat. A szenzorokból érkezõ jelek egy Gateway-en keresztül az FCC-be jutnak, ahol a feldolgozás után a szabályozó algoritmusok kiadják a megfelelõ utasítást a kormányszerveknek. Ilyen utasítás lehet pl, a csûrõlapok adott fokban történõ elmozdítása, motor fordulatszámának változtatása. A motorok, úgy mint a központi egység, külön tápellátást kapnak, ezzel is csökkentve a végzetes meghibásodás esélyét. Jelen esetben egyik legfontosabb elem a kommunikációért felelõs modem, mely soros porton keresztül kapcsolódik az FCC-hez. A vevõ oldalon hasonló modem, szintén soros porton küldi a földi állomásnak a vett jelet, a köztük lévõ vezeték nélküli kommunikáció saját szabványa a cégnek. A választás XBee-PRO 868 típusú modemre esett, mely alacsony fogyasztása és nagy hatótávolsága miatt ideális egy ilyen környezetbe.
+ \figref{sys} ábrán látható, hogy központi számítógép kettõzött, párhuzamosan mûködnek, irányítják a servo motorokat. A szenzorokból érkezõ jelek egy Gateway-en keresztül az FCC-be jutnak, ahol a feldolgozás után a szabályozó algoritmusok kiadják a megfelelõ utasítást a kormányszerveknek. Ilyen utasítás lehet pl, a csûrõlapok adott fokban történõ elmozdítása, motor fordulatszámának változtatása. A motorok, úgy mint a központi egység, külön tápellátást kapnak, ezzel is csökkentve a végzetes meghibásodás esélyét. Jelen esetben egyik legfontosabb elem a kommunikációért felelõs modem, mely soros porton keresztül kapcsolódik az FCC-hez. A vevõ oldalon hasonló modem, szintén soros porton küldi a földi állomásnak a vett jelet, a köztük lévõ vezeték nélküli kommunikáció saját szabványa a cégnek. A választás \cite{bib:xbee}XBee-PRO 868 típusú modemre esett, mely alacsony fogyasztása és nagy hatótávolsága miatt ideális egy ilyen környezetbe.
+
+\section{Vezeték nélküli modem}
+
+A kiválasztott modem kétféleképpen képes kommunikálni egy másik modemmel:
+
+\begin{itemize}
+\item API csomagküldés
+\item AT transzparens
+\end{itemize}
+
+\textbf{API} módban egy eszköz több eszköztõl tud csomagokat venni, ha egy csomag megérkezett a küldõtõl a fogadóig, egy ACK\footnote{Acknowledgement, nyugtázó üzenet} üzenettel válaszol, ha ezt nem kapja meg, újraküldi. Egy csomag többek közt tartalmazza a küldõ és a fogadó címét, lehetõség van broadcast üzenetek küldésére is, melyet minden eszköz megkap. Továbbá az adatintegritás céljából checksum mezõjében összesítve van egy csomag adata.
+
+
+\textbf{AT} mód nem más mint egy vezetéknélküli kapcsolat 2 sorosport közt. Nem csinál mást, mint a soros portján bejövõ adatokat egy XBee szabvány szerint rádiójelekké alakítja, melyet a virtuális kapcsolat végpontja fogad és visszaalakítja sorosportra. Ez pont-pont kommunikációra hivatott.
 
 
 \begin{figure}[!ht]
@@ -39,13 +55,16 @@ Látható, hogy központi számítógép kettõzött, párhuzamosan mûködnek, irányítják a
 \end{figure}
 
 
+\section{Földi állomások}
+
 Egy UAV vezetéséhez elengedhetetlen egy bázis, ahonnan a földi személyzet irányítja, monitorozhatja a repülést. Általában több funkciót lát el:
 \begin{itemize}
 \item Küldetés tervezés: útvonal meghatározása, illetve a célpontok kijelölése
 \item Adatok megjelenítése: megfelelõ módon kijelezni a repülõgép állapotát, esetleges hibáit.
 \end{itemize}
 
-\section{Földi állomások}
+
+
 Számos megoldás született a földi állomás GUI\footnote{Graphics User Interface, grafikus megjelenítés}-jának kialakítására. Elsõdleges követelmény, hogy az operátor mindig a legfontosabb információkat láthassa, ehhez szoftverergonómiailag kell megtervezni a mûszerek, adatok elrendezését.
 Az alábbiakban összehasonlításra kerülnek a megjelenítési felületek.
 
@@ -74,6 +93,21 @@ Pl. az MQ-1 Predator GCS egy utánfutóban helyezkedik el, mely szünetmentes tápeg
 \end{figure}
 
 \subsection{Paparazzi}
+Ez egy több platformos GCS, mely különbözõ projektekben létrehozott repülõkhöz használható valós-idejû monitorozásra. Könnyen testre szabható az igényeknek megfelelõen.
+
+ ?	Simultaneous flying multi UAS support
+?	Multi-system support (multiple procotols, multiple autopilots/projects) by writing a IVY Plugin
+?	2D Map capable of displaying Google Satellite, OpenStreetMaps Images and Microsoft Satellite Maps
+?	Mission planning
+?	Realtime movable waypoints
+?	Realtime flightplan adjustments if needed
+?	System status overview
+?	Realtime Airframe in Air tuning and calibration
+?	Supports rotary and fixed-wing e.g. Airplanes, helicopters, coaxial and quadrotors
+?	Definable Hotkeys for quick simple in the field control
+?	Voice status output
+?	Full freely configurable GUI layout
 
 
 \subsection{ArduPilot}
+TODO
