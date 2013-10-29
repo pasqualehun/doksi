@@ -1,4 +1,27 @@
 %----------------------------------------------------------------------------
-\chapter{Tervezés}\label{sect:}
+\chapter{Tervezés részletes leírása, a döntési lehetõségek értékelése és a választott megoldások}\label{sect:}
 %----------------------------------------------------------------------------
+
+\section{Kommunikáció}
+
+\section{Redundáns jelek feldolgozása}
+
+\section{Feltöltés}
+
+A repülõgép által lerepülendõ feladat útvonalpontjait hasonlóképpen, mint az adatok fogadását, vezeték nélküli csatornán küldjük fel. A feltöltendõ adat küldésének protokollja létfontosságú, mivel ha valamilyen hiba kerül a kommunikációba akkor az akár végzetes is lehet. Gondolok itt olyan hibára, hogy egy fordulópont koordinátája úgy kerül feltöltésre, hogy az kiesik a repülõ hatósugarából és ezzel nem számolva, lemerül a tápellátást szolgáló akkumulátor. Az ilyen hibák ellen célszerû a feltöltés protokolljába hibadetektálást építeni, hogy ezek a feldolgozás( estetlegesen felszállás ) elõtt kiderüljenek ki.
+
+\subsection{Protokoll}
+
+A követendõ fordulópontokat egy fejléccel és egy checksum-mal ellátott csomagban küldjük el a repülõnek. Mivel a modem is duplikált, így a 2 sorosportra csatlakoztatott modemmel redundánsan küldjük el a csomagot. Ha a csomag sértetlenül megérkezett, ACK jelzéssel válaszol.
+
+
+\section{GUI kialakításának szempontjai}
+
+Az elõzõ fejezetben ismertetett grafikus felületekbõl levonva a következtetéseket, nyilvánvaló, hogy a GUI kialakításában fontos a repülõgép aktuális pozíciójának térképen való mutatása, az repülési állapot könnyen értelmezhetõ megjelenítése, illetve az esetlegesen elõforduló problémák feltûnõ jelzése.
+
+\subsection{}
+
+
+
+
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.26)  28 OCT 2013 22:24
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.26)  29 OCT 2013 17:01
 entering extended mode
 **diploma.tex
 (C:\Users\bojtip\Desktop\UAV\doksi\TEX\diploma.tex
@@ -402,27 +402,27 @@ Package hyperref Info: Option `pdfnewwindow' set `true' on input line 73.
 Package hyperref Info: Option `colorlinks' set `true' on input line 73.
 (C:\Users\bojtip\Desktop\UAV\doksi\TEX\diploma.aux (C:\Users\bojtip\Desktop\UAV\doksi\TEX\titlepage.aux)
 (C:\Users\bojtip\Desktop\UAV\doksi\TEX\declaration.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\abstract.aux)
-(C:\Users\bojtip\Desktop\UAV\doksi\TEX\introduction.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter1.aux)
-(C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter2.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter3.aux)
-(C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter4.aux
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\introduction.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter0.aux)
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter1.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter2.aux)
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter3.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter4.aux
 
 LaTeX Warning: Label `sect:' multiply defined.
 
 ) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\appendices.aux))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -445,12 +445,12 @@ Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             or
 (lastpage)             http://www.ctan.org/tex-archive/ 
 (lastpage)             install/macros/latex/contrib/pageslts.tds.zip
-(lastpage)             ! on input line 140.
+(lastpage)             ! on input line 141.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring ON on input line 140.
+Package hyperref Info: Link coloring ON on input line 141.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -459,9 +459,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count132
 )
-LaTeX Info: Redefining \ref on input line 140.
-LaTeX Info: Redefining \pageref on input line 140.
-LaTeX Info: Redefining \nameref on input line 140.
+LaTeX Info: Redefining \ref on input line 141.
+LaTeX Info: Redefining \pageref on input line 141.
+LaTeX Info: Redefining \nameref on input line 141.
 
 (C:\Users\bojtip\Desktop\UAV\doksi\TEX\diploma.out) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\diploma.out)
 \@outlinefile=\write3
@@ -470,7 +470,7 @@ LaTeX Info: Redefining \nameref on input line 140.
 LaTeX Info: Redefining \cal on input line 586.
 LaTeX Info: Redefining \mit on input line 587.
 ) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\titlepage.tex
-<figures/BMElogo.png, id=75, 975.645pt x 273.02pt>
+<figures/BMElogo.png, id=119, 975.645pt x 273.02pt>
 File: figures/BMElogo.png Graphic file (type png)
  <use figures/BMElogo.png>
 Package pdftex.def Info: figures/BMElogo.png used on input line 6.
@@ -489,189 +489,231 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/BMElogo.png>]) (C:\U
-sers\bojtip\Desktop\UAV\doksi\TEX\diploma.toc)
-\tf@toc=\write4
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+sers\bojtip\Desktop\UAV\doksi\TEX\diploma.tocpdfTeX warning (ext4): destination with the same identifier (name{page.1}) 
+has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.149 \include{declaration}
-                            [1
+l.27 ...rline {5}\"Osszefoglal\'as}{19}{chapter.5}
+                                                   [1
 
 
 
 
 pdfTeX warning: pdflatex.exe: pop empty color page stack 0
-] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\declaration.tex [2
+])
+\tf@toc=\write4
+ [2] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\declaration.tex [3
 
 ]) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\abstract.tex
-[3
+[4
 
 
 
 
-]) [4
+]) [5
 
 ] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\introduction.tex
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 2.
 
-) [5
+) [6
+
+
+
+] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter0.tex
+1. fejezet.
+) [7
 
 
 
 ] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter1.tex
-1. fejezet.
+2. fejezet.
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\H' on input line 1.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\H' on input line 1.
+
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 4.
 
-<figures/orca.png, id=129, 415.5525pt x 235.63031pt>
-File: figures/orca.png Graphic file (type png)
- <use figures/orca.png>
-Package pdftex.def Info: figures/orca.png used on input line 9.
-(pdftex.def)             Requested size: 415.55148pt x 235.62973pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 16.
-
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 10.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 16.
- <figures/sys.png, id=131, 6441.06375pt x 4899.30376pt>
-File: figures/sys.png Graphic file (type png)
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 10.
+ <figures/orca.png, id=196, 415.5525pt x 235.63031pt>
+File: figures/orca.png Graphic file (type png)
 
-<use figures/sys.png>
-Package pdftex.def Info: figures/sys.png used on input line 25.
+<use figures/orca.png>
+Package pdftex.def Info: figures/orca.png used on input line 18.
+(pdftex.def)             Requested size: 415.55148pt x 235.62973pt.
+ <figures/sys.png, id=198, 6441.06375pt x 4899.30376pt>
+File: figures/sys.png Graphic file (type png)
+ <use figures/sys.png>
+Package pdftex.def Info: figures/sys.png used on input line 27.
 (pdftex.def)             Requested size: 6441.04814pt x 4899.29187pt.
- <figures/xbee.png, id=132, 328.97906pt x 254.45062pt>
+ [8
+
+
+
+ <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/orca.png>] <figures/xbee.png, id=211, 328.97906pt x 254.45062pt>
 File: figures/xbee.png Graphic file (type png)
  <use figures/xbee.png>
-Package pdftex.def Info: figures/xbee.png used on input line 36.
+Package pdftex.def Info: figures/xbee.png used on input line 52.
 (pdftex.def)             Requested size: 328.97826pt x 254.45pt.
- [6
 
-
-
- <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/orca.png>] <figures/hord.png, id=143, 417.81094pt x 424.58624pt>
+[9 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/sys.png>] <figures/hord.png, id=223, 417.81094pt x 424.58624pt>
 File: figures/hord.png Graphic file (type png)
- <use figures/hord.png>
-Package pdftex.def Info: figures/hord.png used on input line 57.
-(pdftex.def)             Requested size: 417.80992pt x 424.5852pt.
 
-[7 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/sys.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/xbee.png>]
-<figures/komplex.png, id=156, 264.99pt x 242.40562pt>
+<use figures/hord.png>
+Package pdftex.def Info: figures/hord.png used on input line 76.
+(pdftex.def)             Requested size: 417.80992pt x 424.5852pt.
+ <figures/komplex.png, id=224, 264.99pt x 242.40562pt>
 File: figures/komplex.png Graphic file (type png)
  <use figures/komplex.png>
-Package pdftex.def Info: figures/komplex.png used on input line 71.
+Package pdftex.def Info: figures/komplex.png used on input line 90.
 (pdftex.def)             Requested size: 264.98935pt x 242.40501pt.
-) [8 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/hord.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/komplex.png
->]
-(C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter2.tex
-2. fejezet.
-) [9
-
-
-
-] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter3.tex
+ [10 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/xbee.png>]) [11 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/hord.
+png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/komplex.png>] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter2.tex
 3. fejezet.
-<figures/comnull.png, id=171, 416.30531pt x 362.10281pt>
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\H' on input line 2.
+
+) [12
+
+
+
+] [13] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter3.tex
+4. fejezet.
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\H' on input line 2.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\H' on input line 2.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\H' on input line 6.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\H' on input line 6.
+
+<figures/comnull.png, id=251, 416.30531pt x 362.10281pt>
 File: figures/comnull.png Graphic file (type png)
  <use figures/comnull.png>
-Package pdftex.def Info: figures/comnull.png used on input line 11.
+Package pdftex.def Info: figures/comnull.png used on input line 19.
 (pdftex.def)             Requested size: 416.30429pt x 362.10191pt.
 
-<figures/sorossend.png, id=172, 405.01312pt x 287.57437pt>
+<figures/sorossend.png, id=252, 405.01312pt x 287.57437pt>
 File: figures/sorossend.png Graphic file (type png)
  <use figures/sorossend.png>
-Package pdftex.def Info: figures/sorossend.png used on input line 21.
+Package pdftex.def Info: figures/sorossend.png used on input line 29.
 (pdftex.def)             Requested size: 405.01212pt x 287.57367pt.
 
-<figures/xvi.png, id=173, 575.14874pt x 404.26031pt>
+<figures/xvi.png, id=253, 575.14874pt x 404.26031pt>
 File: figures/xvi.png Graphic file (type png)
  <use figures/xvi.png>
-Package pdftex.def Info: figures/xvi.png used on input line 31.
+Package pdftex.def Info: figures/xvi.png used on input line 39.
 (pdftex.def)             Requested size: 575.14734pt x 404.25932pt.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 38.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 46.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-) [10
-
-
-
- <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/comnull.png>] [11 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/sorosse
-nd.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/xvi.png>] <figures/ned.png, id=192, 376.40625pt x 362.10281pt>
-File: figures/ned.png Graphic file (type png)
- <use figures/ned.png>
-Package pdftex.def Info: figures/ned.png used on input line 84.
-(pdftex.def)             Requested size: 376.40532pt x 362.10191pt.
- [12 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/ned.png>]) [13] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter4.tex
-4. fejezet.
 ) [14
 
 
 
+] [15 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/comnull.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/sorosse
+nd.png>]
+<figures/ned.png, id=270, 376.40625pt x 362.10281pt>
+File: figures/ned.png Graphic file (type png)
+ <use figures/ned.png>
+Package pdftex.def Info: figures/ned.png used on input line 92.
+(pdftex.def)             Requested size: 376.40532pt x 362.10191pt.
+ [16 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/xvi.png>]) [17 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/ned.pn
+g>] [18]
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter4.tex
+5. fejezet.
+) [19
+
+
+
 ]
-Underfull \hbox (badness 2521) in paragraph at lines 173--174
+Underfull \hbox (badness 2521) in paragraph at lines 175--176
 []\T1/cmr/m/n/10.95 http://en.wikipedia.org/wiki/Hewitt-Sperry_Automatic_Airplane, 2013. má-jus 4,
  []
 
 
-Overfull \hbox (80.43513pt too wide) in paragraph at lines 183--184
+Overfull \hbox (80.43513pt too wide) in paragraph at lines 185--186
 []\T1/cmr/m/n/10.95 http://api.ning.com/files/ga5AVWy8xTu8cx9rHdzJ73Epc*dzb0uy*UPe0O8wFxogMF6WNRW8StK3x-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--184
+Underfull \hbox (badness 10000) in paragraph at lines 185--186
 \T1/cmr/m/n/10.95 xzkG2iBk16kNFpYTZe80NgM8kbXOiyxrEwUXIt/GroundControlStation.pdf,
  []
 
 
-Underfull \hbox (badness 4193) in paragraph at lines 186--187
+Underfull \hbox (badness 4193) in paragraph at lines 188--189
 []\T1/cmr/m/n/10.95 http://www.rodiangroup.com/uav-ground-control-station.html, 2013. már-ci-us 19.,
  []
 
 
-Underfull \hbox (badness 1418) in paragraph at lines 193--194
+Underfull \hbox (badness 1418) in paragraph at lines 195--196
 []\T1/cmr/m/n/10.95 http://www.vikingaero.com/uav_ground_control_station.html, 2013. már-ci-us 19.,
  []
 
-[15
+
+Underfull \hbox (badness 10000) in paragraph at lines 207--208
+[]\T1/cmr/m/n/10.95 http://www.digi.com/products/wireless-wired-embedded-solutions/zigbee-rf-
+ []
+
+[20
 
 
-] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\appendices.tex) [16
+] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\appendices.tex) [21
 
 
 ]
 \tf@thm=\write5
  
 AED: lastpage setting LastPage
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 212.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 212.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 217.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 217.
 (C:\Users\bojtip\Desktop\UAV\doksi\TEX\diploma.aux (C:\Users\bojtip\Desktop\UAV\doksi\TEX\titlepage.aux)
 (C:\Users\bojtip\Desktop\UAV\doksi\TEX\declaration.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\abstract.aux)
-(C:\Users\bojtip\Desktop\UAV\doksi\TEX\introduction.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter1.aux)
-(C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter2.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter3.aux)
-(C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter4.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\appendices.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 212.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 212.
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\introduction.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter0.aux)
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter1.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter2.aux)
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter3.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter4.aux)
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\appendices.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 217.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 217.
 Package rerunfilecheck Info: File `diploma.out' has not changed.
-(rerunfilecheck)             Checksum: 7594F02A58CEC60586A11C0EB8D15F54;1037.
+(rerunfilecheck)             Checksum: 9452720050DF5196A71ABEE4A705C872;2120.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 212.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 217.
  ) 
 Here is how much of TeX's memory you used:
- 10194 strings out of 493921
- 157016 string characters out of 3144872
- 252794 words of memory out of 3000000
- 13212 multiletter control sequences out of 15000+200000
+ 10233 strings out of 493921
+ 157694 string characters out of 3144872
+ 254307 words of memory out of 3000000
+ 13226 multiletter control sequences out of 15000+200000
  25770 words of font info for 62 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 36i,8n,39p,1268b,444s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,8n,39p,1268b,499s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1095.pk> <C:\Users\bojtip\AppData\Lo
 cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti0900.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour
 \jknappen\ec\dpi600\ecrm0900.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0600.p
@@ -687,9 +729,9 @@ onts/cm/cmex10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfont
 MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 r10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on diploma.pdf (17 pages, 2268133 bytes).
+Output written on diploma.pdf (22 pages, 2292446 bytes).
 PDF statistics:
- 739 PDF objects out of 1000 (max. 8388607)
- 60 named destinations out of 1000 (max. 500000)
- 195 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 858 PDF objects out of 1000 (max. 8388607)
+ 78 named destinations out of 1000 (max. 500000)
+ 283 words of extra memory for PDF output out of 10000 (max. 10000000)
 
