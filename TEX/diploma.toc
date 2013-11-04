@@ -6,7 +6,7 @@
 \select@language {magyar} \contentsline {section}{\numberline {2.1}Rep\"ul\H og\'ep fel\'ep\IeC {\'\i }t\'ese}{8}{section.2.1}
 \select@language {magyar} \contentsline {section}{\numberline {2.2}Vezet\'ek n\'elk\"uli modem}{9}{section.2.2}
 \select@language {magyar} \contentsline {section}{\numberline {2.3}F\"oldi \'allom\'asok}{10}{section.2.3}
-\select@language {magyar} \contentsline {subsection}{\numberline {2.3.1}Komplex}{10}{subsection.2.3.1}
+\select@language {magyar} \contentsline {subsection}{\numberline {2.3.1}Had\'aszati}{10}{subsection.2.3.1}
 \select@language {magyar} \contentsline {subsection}{\numberline {2.3.2}Paparazzi}{10}{subsection.2.3.2}
 \select@language {magyar} \contentsline {subsection}{\numberline {2.3.3}ArduPilot}{11}{subsection.2.3.3}
 \select@language {magyar} \contentsline {chapter}{\numberline {3}Tervez\'es r\'eszletes le\IeC {\'\i }r\'asa, a d\"ont\'esi lehet\H os\'egek \'ert\'ekel\'ese \'es a v\'alasztott megold\'asok}{12}{chapter.3}

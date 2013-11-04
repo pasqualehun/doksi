@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.26)  30 OCT 2013 11:42
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.26)  4 NOV 2013 14:57
 entering extended mode
 **diploma.tex
 (C:\Users\bojtip\Desktop\UAV\doksi\TEX\diploma.tex
@@ -568,19 +568,19 @@ File: figures/xbee.png Graphic file (type png)
 Package pdftex.def Info: figures/xbee.png used on input line 52.
 (pdftex.def)             Requested size: 328.97826pt x 254.45pt.
 
-[9 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/sys.png>] <figures/hord.png, id=223, 417.81094pt x 424.58624pt>
-File: figures/hord.png Graphic file (type png)
-
-<use figures/hord.png>
-Package pdftex.def Info: figures/hord.png used on input line 76.
-(pdftex.def)             Requested size: 417.80992pt x 424.5852pt.
- <figures/komplex.png, id=224, 264.99pt x 242.40562pt>
+[9 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/sys.png>] <figures/komplex.png, id=223, 264.99pt x 242.40562pt>
 File: figures/komplex.png Graphic file (type png)
- <use figures/komplex.png>
-Package pdftex.def Info: figures/komplex.png used on input line 90.
+
+<use figures/komplex.png>
+Package pdftex.def Info: figures/komplex.png used on input line 78.
 (pdftex.def)             Requested size: 264.98935pt x 242.40501pt.
- [10 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/xbee.png>]) [11 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/hord.
-png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/komplex.png>] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter2.tex
+ <figures/hord.png, id=225, 417.81094pt x 424.58624pt>
+File: figures/hord.png Graphic file (type png)
+ <use figures/hord.png>
+Package pdftex.def Info: figures/hord.png used on input line 89.
+(pdftex.def)             Requested size: 417.80992pt x 424.5852pt.
+ [10 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/xbee.png>]) [11 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/kompl
+ex.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/hord.png>] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter2.tex
 3. fejezet.
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
@@ -608,19 +608,19 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 6.
 
-<figures/comnull.png, id=251, 416.30531pt x 362.10281pt>
+<figures/comnull.png, id=252, 416.30531pt x 362.10281pt>
 File: figures/comnull.png Graphic file (type png)
  <use figures/comnull.png>
 Package pdftex.def Info: figures/comnull.png used on input line 19.
 (pdftex.def)             Requested size: 416.30429pt x 362.10191pt.
 
-<figures/sorossend.png, id=252, 405.01312pt x 287.57437pt>
+<figures/sorossend.png, id=253, 405.01312pt x 287.57437pt>
 File: figures/sorossend.png Graphic file (type png)
  <use figures/sorossend.png>
 Package pdftex.def Info: figures/sorossend.png used on input line 29.
 (pdftex.def)             Requested size: 405.01212pt x 287.57367pt.
 
-<figures/xvi.png, id=253, 575.14874pt x 404.26031pt>
+<figures/xvi.png, id=254, 575.14874pt x 404.26031pt>
 File: figures/xvi.png Graphic file (type png)
  <use figures/xvi.png>
 Package pdftex.def Info: figures/xvi.png used on input line 39.
@@ -635,7 +635,7 @@ File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 
 ] [15 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/comnull.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/sorosse
 nd.png>]
-<figures/ned.png, id=270, 376.40625pt x 362.10281pt>
+<figures/ned.png, id=271, 376.40625pt x 362.10281pt>
 File: figures/ned.png Graphic file (type png)
  <use figures/ned.png>
 Package pdftex.def Info: figures/ned.png used on input line 92.
@@ -699,7 +699,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 217.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 217.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 217.
 Package rerunfilecheck Info: File `diploma.out' has not changed.
-(rerunfilecheck)             Checksum: 9452720050DF5196A71ABEE4A705C872;2120.
+(rerunfilecheck)             Checksum: B6B930C9584FDD1034E5D9C87B54FD80;2125.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -729,9 +729,9 @@ onts/cm/cmex10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfont
 MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 r10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on diploma.pdf (22 pages, 2292046 bytes).
+Output written on diploma.pdf (22 pages, 2291919 bytes).
 PDF statistics:
- 857 PDF objects out of 1000 (max. 8388607)
+ 858 PDF objects out of 1000 (max. 8388607)
  78 named destinations out of 1000 (max. 500000)
  283 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -68,7 +68,20 @@ Egy UAV vezetéséhez elengedhetetlen egy bázis, ahonnan a földi személyzet irányí
 Számos megoldás született a földi állomás GUI\footnote{Graphics User Interface, grafikus megjelenítés}-jának kialakítására. Elsõdleges követelmény, hogy az operátor mindig a legfontosabb információkat láthassa, ehhez szoftverergonómiailag kell megtervezni a mûszerek, adatok elrendezését.
 Az alábbiakban összehasonlításra kerülnek a megjelenítési felületek.
 
-Egy egységbe építették az akkumulátort, kijelzõt, kezelõszerveket, hordozhatósága miatt ez az elterjedtebb a kézzel indítható UAV-k esetében.
+\subsection{Hadászati}
+Általában közel a hadszíntérhez üzemeltetik a repülõket, így a személyzetet, illetve a felszereléseket páncélozott jármûvel szállítják, védik.
+Pl. az MQ-1 Predator GCS egy utánfutóban helyezkedik el, mely szünetmentes tápegységet biztosít a pilóta és segédszemélyzeti, adatelemzõ/rögzítõ és radar munkaállomásoknak. A kommunikációt UHF és VHF frekvencián bonyolítják közvetlen rálátás esetén, azon kívül mûhold közbeiktatásával.
+
+\begin{figure}[!ht]
+	\centering
+	\resizebox{8cm}{!}{
+		\includegraphics{figures/komplex.png}}
+	\caption{Utánfutós megoldás}
+	\label{fig:komplex}
+\end{figure}
+
+
+A \figref{hord} ábrán egy hordozható állomás látható, mely magában foglalja az akkumulátort, kijelzõt, kezelõszerveket. Kompaktsága miatt ez a legelterjedtebb a kézzel indítható UAV-k esetében.
 
 \begin{figure}[!ht]
 	\centering
@@ -80,17 +93,6 @@ Egy egységbe építették az akkumulátort, kijelzõt, kezelõszerveket, hordozhatóság
 
 
 
-\subsection{Komplex}
-Általában közel a hadszíntérhez üzemeltetik a repülõket, így a személyzetet, illetve a felszereléseket páncélozott jármûvel szállítják, védik.
-Pl. az MQ-1 Predator GCS egy utánfutóban helyezkedik el, mely szünetmentes tápegységet biztosít a pilóta és segédszemélyzeti, adatelemzõ/rögzítõ és radar munkaállomásoknak. A kommunikációt UHF és VHF frekvencián bonyolítják közvetlen rálátás esetén, azon kívül mûhold közbeiktatásával.
-
-\begin{figure}[!ht]
-	\centering
-	\resizebox{8cm}{!}{
-		\includegraphics{figures/komplex.png}}
-	\caption{Utánfutós megoldás}
-	\label{fig:komplex}
-\end{figure}
 
 \subsection{Paparazzi}
 Ez egy több platformos GCS, mely különbözõ projektekben létrehozott repülõkhöz használható valós-idejû monitorozásra. Könnyen testre szabható az igényeknek megfelelõen.
