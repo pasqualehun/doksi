@@ -14,11 +14,13 @@
 \select@language {magyar} \contentsline {section}{\numberline {3.2}Redund\'ans jelek feldolgoz\'asa}{12}{section.3.2}
 \select@language {magyar} \contentsline {section}{\numberline {3.3}Felt\"olt\'es}{12}{section.3.3}
 \select@language {magyar} \contentsline {subsection}{\numberline {3.3.1}Protokoll}{12}{subsection.3.3.1}
-\select@language {magyar} \contentsline {section}{\numberline {3.4}GUI kialak\IeC {\'\i }t\'as\'anak szempontjai}{12}{section.3.4}
-\select@language {magyar} \contentsline {subsection}{\numberline {3.4.1}}{13}{subsection.3.4.1}
+\select@language {magyar} \contentsline {section}{\numberline {3.4}GUI kialak\IeC {\'\i }t\'as\'anak szempontjai}{13}{section.3.4}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.4.1}\'Attekint\H o k\'eperny\H o}{13}{subsection.3.4.1}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.4.2}Tervez\H o k\'eperny\H o}{13}{subsection.3.4.2}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.4.3}Diagnosztikai k\'eperny\H o}{13}{subsection.3.4.3}
 \select@language {magyar} \contentsline {chapter}{\numberline {4}Megtervezett m\H uszaki alkot\'as \'ert\'ekel\'ese, kritikai elemz\'ese, tov\'abbfejlesz\'esi leeht\H os\'egek}{14}{chapter.4}
 \select@language {magyar} \contentsline {section}{\numberline {4.1}F\H ok\'eperny\H o}{14}{section.4.1}
-\select@language {magyar} \contentsline {section}{\numberline {4.2}Diagnosztikai adatok}{14}{section.4.2}
+\select@language {magyar} \contentsline {section}{\numberline {4.2}Tervez\'es k\'eperny\H o}{14}{section.4.2}
 \select@language {magyar} \contentsline {section}{\numberline {4.3}Hibadiagnosztika}{14}{section.4.3}
 \select@language {magyar} \contentsline {section}{\numberline {4.4}RS232}{14}{section.4.4}
 \select@language {magyar} \contentsline {section}{\numberline {4.5}Sebess\'eg}{16}{section.4.5}
