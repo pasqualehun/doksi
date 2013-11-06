@@ -4,7 +4,16 @@
 
 \section{Kommunikáció}
 
+A kommunikáció egy csatornán 2 db modem segítségével történik, a modemek egymás közt vezeték nélkül, rádióhullámokkal, felhasználó oldalon soros portot biztosítanak. Így a program majd csak egy soros porthoz csatlakozik, onnan kapja az adatokat.
+
+TODO: baud...
+TODO: kapott csomag leírása? ide kell?
+
 \section{Redundáns jelek feldolgozása}
+
+A redundanciából következõen külön, külön kell kezelni a 2 párhuzamos csatornán kapott adatokat.
+
+TODO
 
 \section{Feltöltés}
 
@@ -15,18 +24,31 @@ A repülõgép által lerepülendõ feladat útvonalpontjait hasonlóképpen, mint az ada
 
 Több megoldás is lehetséges a fordulópontok feltöltésére:
 \begin{itemize}
-\item 
+\item Rögzített maximális darabszám elküldése egy csomagban
+\item Változó darabszám esetén egy fordulópont egy csomagban
 \end{itemize}
 
-A követendõ fordulópontokat egy fejléccel és egy checksum-mal ellátott csomagban küldjük el a repülõnek. Mivel a modem is duplikált, így a 2 sorosportra csatlakoztatott modemmel redundánsan küldjük el a csomagot. Ha a csomag sértetlenül megérkezett, ACK jelzéssel válaszol.
+
+Az elsõ megoldásban rögzítenénk a fordulópontok maximális számát. Mely azt eredményezné, hogy egy csomagban el lehetne küldeni az egész lerepülendõ feladatot. Ha egy pont koordinátájának ábrázolására elég 2x4 byte, így ha feltételezünk egy 160 byte-os csomagot, akkor abba beleférne kb 15 darab. Egy csomag állna egy fejlécbõl, a feltöltendõ pontok számából, a pontokból, és egy checkszámból. 
+
+Másik lehetõségnél N db-t lehetne feltölteni: egy csomag szerkezete: fejléc, küldendõ pontok száma, aktuális pont sorszáma, koordinátái, checkszám. Ha a  küldendõ pontok száma és az aktuális pont sorszáma megegyezik és megérkezett minden csomag akkor ACK-val válaszol ha kész a feltöltés. 
+
+
+Mivel az eddig használt megoldásban a kódba ,,bele volt égetve'' az útvonalterv, mely 5-6 pontot tartalmazott, az elsõ megoldás tûnik kedvezõbbnek. Fogadó oldalon is könnyebb egy ilyen lehetõségre felkészíteni. Ha esetlegesen a jövõben több fordulópontont feltöltésére lesz igény, az is megoldható kis átprogramozással.
+
+A modem is duplikált, így a 2 soros portra csatlakoztatott modemmel redundánsan küldjük el a csomagot. Ha a csomag sértetlenül megérkezett, ACK jelzéssel válaszol.
 
 
 \section{GUI kialakításának szempontjai}
 
 Az elõzõ fejezetben ismertetett grafikus felületekbõl levonva a következtetéseket, nyilvánvaló, hogy a GUI kialakításában fontos a repülõgép aktuális pozíciójának térképen való mutatása, az repülési állapot könnyen értelmezhetõ megjelenítése, illetve az esetlegesen elõforduló problémák feltûnõ jelzése.
 
-\subsection{}
+\subsection{Áttekintõ képernyõ}
 
+
+\subsection{Tervezõ képernyõ}
+
+\subsection{Diagnosztikai képernyõ}
 
 
 
