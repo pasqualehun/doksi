@@ -20,6 +20,7 @@
 \usepackage{setspace}  % Ettol a tablazatok, abrak, labjegyzetek maradnak 1-es sorkozzel!
 \usepackage[hang]{caption}
 \usepackage{hyperref}
+\usepackage{float}
 
 %--------------------------------------------------------------------------------------
 % Main variables
@@ -115,10 +116,11 @@
 	declaration,%
 	abstract,%
 	introduction,%
-	chapter0, %
-	chapter1,%
-	chapter2,%
-	chapter3,%
+	%chapter0, %
+	elozmenyek,%
+	tervezes,%
+	kivitelezes,%
+	ertekeles,%
 	chapter4,%
 	appendices,%
 }
@@ -150,10 +152,11 @@ aboveskip=10pt}
 \include{declaration}
 \include{abstract}
 \include{introduction}
-\include{chapter0}
-\include{chapter1}
-\include{chapter2}
-\include{chapter3}
+%\include{chapter0}
+\include{elozmenyek}
+\include{tervezes}
+\include{kivitelezes}
+\include{ertekeles}
 \include{chapter4}
 %\include{acknowledgement}
 

@@ -1,31 +1,31 @@
 \BOOKMARK [0][-]{chapter*.2}{Kivonat}{}% 1
 \BOOKMARK [0][-]{chapter*.3}{Abstract}{}% 2
 \BOOKMARK [0][-]{chapter*.4}{Bevezeto}{}% 3
-\BOOKMARK [0][-]{chapter.1}{A feladatki\355r\341s pontos\355t\341sa \351s r\351szletes elemz\351se}{}% 4
-\BOOKMARK [0][-]{chapter.2}{Elozm\351nyek \(irodalomkutat\341s, hasonl\363 alkot\341sok\), az ezekbol levonhat\363 k\366vetkeztet\351sek}{}% 5
-\BOOKMARK [1][-]{section.2.1}{Rep\374log\351p fel\351p\355t\351se}{chapter.2}% 6
-\BOOKMARK [1][-]{section.2.2}{Vezet\351k n\351lk\374li modem}{chapter.2}% 7
-\BOOKMARK [1][-]{section.2.3}{F\366ldi \341llom\341sok}{chapter.2}% 8
-\BOOKMARK [2][-]{subsection.2.3.1}{Had\341szati}{section.2.3}% 9
-\BOOKMARK [2][-]{subsection.2.3.2}{Paparazzi}{section.2.3}% 10
-\BOOKMARK [2][-]{subsection.2.3.3}{ArduPilot}{section.2.3}% 11
-\BOOKMARK [0][-]{chapter.3}{Tervez\351s r\351szletes le\355r\341sa, a d\366nt\351si lehetos\351gek \351rt\351kel\351se \351s a v\341lasztott megold\341sok}{}% 12
-\BOOKMARK [1][-]{section.3.1}{Kommunik\341ci\363}{chapter.3}% 13
-\BOOKMARK [1][-]{section.3.2}{Redund\341ns jelek feldolgoz\341sa}{chapter.3}% 14
-\BOOKMARK [1][-]{section.3.3}{Felt\366lt\351s}{chapter.3}% 15
-\BOOKMARK [2][-]{subsection.3.3.1}{Protokoll}{section.3.3}% 16
-\BOOKMARK [1][-]{section.3.4}{GUI kialak\355t\341s\341nak szempontjai}{chapter.3}% 17
-\BOOKMARK [2][-]{subsection.3.4.1}{\301ttekinto k\351pernyo}{section.3.4}% 18
-\BOOKMARK [2][-]{subsection.3.4.2}{Tervezo k\351pernyo}{section.3.4}% 19
-\BOOKMARK [2][-]{subsection.3.4.3}{Diagnosztikai k\351pernyo}{section.3.4}% 20
-\BOOKMARK [0][-]{chapter.4}{Megtervezett muszaki alkot\341s \351rt\351kel\351se, kritikai elemz\351se, tov\341bbfejlesz\351si leehtos\351gek}{}% 21
-\BOOKMARK [1][-]{section.4.1}{Fok\351pernyo}{chapter.4}% 22
-\BOOKMARK [1][-]{section.4.2}{Tervez\351s k\351pernyo}{chapter.4}% 23
-\BOOKMARK [1][-]{section.4.3}{Hibadiagnosztika}{chapter.4}% 24
-\BOOKMARK [1][-]{section.4.4}{RS232}{chapter.4}% 25
-\BOOKMARK [1][-]{section.4.5}{Sebess\351g}{chapter.4}% 26
-\BOOKMARK [1][-]{section.4.6}{Ir\341ny}{chapter.4}% 27
-\BOOKMARK [1][-]{section.4.7}{GUI}{chapter.4}% 28
+\BOOKMARK [0][-]{chapter.1}{Elozm\351nyek}{}% 4
+\BOOKMARK [1][-]{section.1.1}{Rep\374log\351p fel\351p\355t\351se}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.2}{Hibatur\351s}{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.3}{Vezet\351k n\351lk\374li modem}{chapter.1}% 7
+\BOOKMARK [1][-]{section.1.4}{F\366ldi \341llom\341sok}{chapter.1}% 8
+\BOOKMARK [2][-]{subsection.1.4.1}{ArduPilot}{section.1.4}% 9
+\BOOKMARK [2][-]{subsection.1.4.2}{Paparazzi}{section.1.4}% 10
+\BOOKMARK [0][-]{chapter.2}{Tervez\351s}{}% 11
+\BOOKMARK [1][-]{section.2.1}{Kommunik\341ci\363}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.2}{Redund\341ns jelek feldolgoz\341sa}{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.3}{Felt\366lt\351s}{chapter.2}% 14
+\BOOKMARK [2][-]{subsection.2.3.1}{Protokoll}{section.2.3}% 15
+\BOOKMARK [1][-]{section.2.4}{GUI kialak\355t\341s\341nak szempontjai}{chapter.2}% 16
+\BOOKMARK [2][-]{subsection.2.4.1}{\301ttekinto k\351pernyo}{section.2.4}% 17
+\BOOKMARK [2][-]{subsection.2.4.2}{Tervezo k\351pernyo}{section.2.4}% 18
+\BOOKMARK [2][-]{subsection.2.4.3}{Diagnosztikai k\351pernyo}{section.2.4}% 19
+\BOOKMARK [0][-]{chapter.3}{Megval\363s\355t\341s}{}% 20
+\BOOKMARK [1][-]{section.3.1}{Fok\351pernyo}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.2}{Tervez\351s k\351pernyo}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.3}{Hibadiagnosztika}{chapter.3}% 23
+\BOOKMARK [1][-]{section.3.4}{RS232}{chapter.3}% 24
+\BOOKMARK [1][-]{section.3.5}{Sebess\351g}{chapter.3}% 25
+\BOOKMARK [1][-]{section.3.6}{Ir\341ny}{chapter.3}% 26
+\BOOKMARK [1][-]{section.3.7}{GUI}{chapter.3}% 27
+\BOOKMARK [0][-]{chapter.4}{\311rt\351kel\351s}{}% 28
 \BOOKMARK [0][-]{chapter.5}{\326sszefoglal\341s}{}% 29
-\BOOKMARK [0][-]{appendix*.15}{F\374ggel\351k}{}% 30
-\BOOKMARK [1][-]{section.F.1}{F\374ggel\351k1}{appendix*.15}% 31
+\BOOKMARK [0][-]{appendix*.17}{F\374ggel\351k}{}% 30
+\BOOKMARK [1][-]{section.F.1}{F\374ggel\351k1}{appendix*.17}% 31
