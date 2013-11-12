@@ -1,0 +1,125 @@
+\chapter{Elõzmények}
+
+Feladatom egy olyan grafikus felhasználói felülettel ellátott földi irányító állomás kifejlesztése egy biztonságkritikus robotrepülõhöz, ami képes a redundáns kommunikációs csatornán küldött adatok kezelésére és megjelenítésére. Ehhez szükséges megoldanom a kapcsolatot biztosító modem jeleinek vételét. Mivel hibatûrõ kialakítása révén redundánsan szerelt, így a párhuzamos csatornákon érkezõ adatok egymástól való eltérésének a kijelzése is megvalósítandó. Az eltérésnek több oka is lehetséges, elõfordulhat, hogy az egyik meghibásodásából következõen nem küld semmilyen értéket vagy amit küld az teljesen hibás, 
+Továbbá, ez a program a földön tartózkodó személyzet kiszolgálására készül, így ami a legfontosabb, hogy õk a repülõvel kapcsolatos információkat könnyen értelmezhessék. Így szükséges megoldani, hogy a kialakítandó felület felhasználóbarát legyen, ehhez több nézeti oldal szükséges: 
+\begin{itemize}
+\item Egy áttekintõ képernyõ, mely a legfontosabb adatokat jeleníti meg a repülõvel kapcsolatban ( pozíció, sebesség, irány)
+\item Egy tervezõ modul, amin a lerepülendõ útvonalhoz tartozó fordulópontok kijelölése lehetséges
+\item Egy diagnosztikai nézet, melyen az alacsonyabb prioritású adatok tekinthetõek át
+\end{itemize}
+
+
+\section{Repülõgép felépítése}
+
+Az MTA SZTAKI-ban futó ``Nagy megbízhatóságú pilóta nélküli légijármû projekt'' keretében egy olyan avionikai rendszer fejlesztése folyik, amelyben cél minden egyes repülõgép alrendszer meghibásodásának diagnosztizálása, a diagnosztikai információkat felhasználva a repülõgép átkonfigurálása. A megbízhatóság növelése érdekében redundáns hardware elemekkel szerelték a repülõgépet, melyek:
+
+\begin{itemize}
+\item motor
+\item kormányfelületek és ezeket mozgat
+\item tápellátás
+\item központi számítógép
+\end{itemize}
+
+A jelenlegi repülõ egy saját építésû 3.2 m fesztávolságú modell, melybe diagnosztikai és hibadetekciós célokra egyedi tervezésû komponensek kerültek. A kommerciális célokra szánt servo motorok nem szolgálnak elég információval a kitérésükrõl, fogyasztásukról, ezért ezek mérésérõl gondoskodni kellet. 
+\begin{figure}[!ht]
+	\centering
+	\resizebox{10cm}{!}{
+		\includegraphics{figures/orca.png}}
+	\caption{}
+	\label{fig:orca}
+\end{figure}
+
+\section{Hibatûrés}
+
+TODO
+
+
+\begin{figure}[!ht]
+	\centering
+	\resizebox{12cm}{!}{
+		\includegraphics{figures/sys.png}}
+	\caption{}
+	\label{fig:sys}
+\end{figure}
+
+ \figref{sys} ábrán látható, hogy központi számítógép kettõzött, párhuzamosan mûködnek, irányítják a servo motorokat. A szenzorokból érkezõ jelek egy Gateway-en keresztül az FCC-be jutnak, ahol a feldolgozás után a szabályozó algoritmusok kiadják a megfelelõ utasítást a kormányszerveknek. Ilyen utasítás lehet pl, a csûrõlapok adott fokban történõ elmozdítása, motor fordulatszámának változtatása. A motorok, úgy mint a központi egység, külön tápellátást kapnak, ezzel is csökkentve a végzetes meghibásodás esélyét. A dolgozat szempontjából egyik legfontosabb elem a kommunikációért felelõs modem, mely soros porton keresztül kapcsolódik az FCC-hez. A vevõ oldalon hasonló modem, szintén soros porton küldi a földi állomásnak a vett jelet, a köztük lévõ vezeték nélküli kommunikáció saját szabványa a gyártónak. A választás \cite{bib:xbee}XBee-PRO 868 típusú modemre esett, mely alacsony fogyasztása és nagy hatótávolsága miatt ideális egy ilyen környezetbe.
+
+\section{Vezeték nélküli modem}
+
+A kiválasztott modem kétféleképpen képes kommunikálni egy másik modemmel:
+
+\begin{itemize}
+\item API csomagküldés
+\item AT transzparens
+\end{itemize}
+
+\textbf{API} módban egy eszköz több eszköztõl tud csomagokat venni, ha egy csomag megérkezett a küldõtõl a fogadóig, egy ACK\footnote{Acknowledgement, nyugtázó üzenet} üzenettel válaszol, ha ezt nem kapja meg, újraküldi. Egy csomag többek közt tartalmazza a küldõ és a fogadó címét, lehetõség van broadcast üzenetek küldésére is, melyet minden eszköz megkap. Továbbá az adatintegritás céljából checksum mezõjében összesítve van egy csomag adata.
+
+
+\textbf{AT} mód nem más mint egy vezetéknélküli kapcsolat 2 sorosport közt. Nem csinál mást, mint a soros portján bejövõ adatokat egy XBee szabvány szerint rádiójelekké alakítja, melyet a virtuális kapcsolat végpontja fogad és visszaalakítja sorosportra. Ez pont-pont kommunikációra hivatott.
+
+
+\begin{figure}[!ht]
+	\centering
+	\resizebox{7cm}{!}{
+		\includegraphics{figures/xbee.png}}
+	\caption{}
+	\label{fig:xbee}
+\end{figure}
+
+
+\section{Földi állomások}
+
+Egy UAV vezetéséhez elengedhetetlen egy bázis, ahonnan a földi személyzet irányítja, monitorozhatja a repülést. Általában több funkciót lát el:
+\begin{itemize}
+\item Küldetés tervezés: útvonal meghatározása, illetve a célpontok kijelölése
+\item Adatok megjelenítése: megfelelõ módon kijelezni a repülõgép állapotát, esetleges hibáit.
+\end{itemize}
+
+
+
+Számos megoldás született a földi állomás GUI\footnote{Graphics User Interface, grafikus megjelenítés}-jának kialakítására. Elsõdleges követelmény, hogy az operátor mindig a legfontosabb információkat láthassa, ehhez szoftverergonómiailag kell megtervezni a mûszerek, adatok elrendezését.
+Az alábbiakban összehasonlításra kerülnek a megjelenítési felületek.
+
+
+\subsection{ArduPilot}
+
+Az Ardupilot projekt létrejöttének motivációja, hogy otthoni körülmények között, nem ipari alkatrészekbõl bárki összehasonlításon egy autonóm jármûvet, mely az elõre betáplált utasításokat végrehajtja. Központi eleme az Arduino cég által készített ATMel mikroprocesszorra épített platform, mely felhasználóbarátabbá teszi a mikroprocesszor programozását. Magas szintû utasításokkal segíti az eszközzel való barátkozást, nincs szükség assembly szintû tudásra. Erre a platformra hozták létre az ArduPilot programot, képes vezérelni többféle autonóm jármûvet:
+\begin{itemize}
+\item robotrepülõgép
+\item ArduCopter néven futó változata 4, 6 propelleres helikopter
+\item 4 kerekû autó
+\end{itemize}
+Sikerességének fõ oka, a nyílt forráskód, egy Arduino panel alacsony ára (~5 ezer Ft) és a projekt mögött álló lelkes közösség.
+
+Ennek a közösségnek köszönhetõen született a Mission Planner nevû szoftver, mely teljes körû támogatást nyújt a jármûvekkel kapcsolatban.
+
+
+\subsubsection{Fõképernyõ}
+
+Több nézet segítségével könnyen átlátható a funkcionalitása, repülés szempontjából a fõképernyõn a legfontosabb adatok találhatóak. A repülõgép orientációját, sebességét, irányát egy mûhorizonton láthatja a felhasználó, ez vizuálisan szemlélteti, hogy hány fokos bedöntéssel repül, milyen állásszöggel emelkedik. Alatta lévõ területen elõre beállított adatokat jelenít meg, pl. GPS magasság, GPS sebesség, szélirány( valós mágneses irány és a sebesség vektor különbségébõl számítható). A legnagyobb területet a térkép foglalja el, melyen az aktuális irány, lerepült útvonal, fordulópontok láthatóak. Megfigyelhetõ, hogy ez kapja arányaiban a legnagyobb területet.
+
+\begin{figure}[H]
+	\centering
+	\resizebox{15cm}{!}{
+		\includegraphics{figures/ardu.png}}
+	\caption{}
+	\label{fig:ardu}
+\end{figure}
+
+Ez a nézet akkor jöhet jól, mikor olyan meghibásodás történik, melyre nincs felkészítve az irányítóegység és szükséges lehet a kézi üzemmódra váltás. Elõfordulhat ilyen esetben, hogy nincs vizuális rálátás az operátor és a repülõgép között, ekkor csak az itt látható mûszerek és térkép alapján szükséges irányítania. Szerencsére ez az avionikában már bizonyított, hogy mûszerek segítségével, ``vakon'' is lehetséges repülni, itt azonban ez az eset csak pár percig szükséges.
+\\
+\textbf{Tervezõ és útvonalfeltöltõ}\\
+Másik nézet lehetõséget biztosít útvonalpontok kijelölésére, az útvonalpontokhoz egy listából kiválasztható, hogy az adott pont a start-, forduló-, végpont. Az útvonalpontok pozícióját egérrel módosíthatjuk, törölhetjük. Bal felsõ sarokban a kijelölt tervnek hosszát láthatjuk, ez segítséget nyújt, nehogy túlhaladjuk a rádiókapcsolat és a repülõ hatósugarát. Az elkészített tervet feltölthetjük a csatlakoztatott eszközre.
+\\
+\textbf{Beállítások}\\
+\\
+\textbf{Terminál}\\
+
+
+
+\subsection{Paparazzi}
+Ez egy több platformos GCS, mely különbözõ projektekben létrehozott repülõkhöz használható valós-idejû monitorozásra. Könnyen testre szabható az igényeknek megfelelõen.
+
+ 
+

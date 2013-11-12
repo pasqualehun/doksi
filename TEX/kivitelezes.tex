@@ -1,0 +1,135 @@
+%----------------------------------------------------------------------------
+\chapter{Megvalósítás}
+%--------------------------------------
+
+\section{Fõképernyõ}
+
+\begin{figure}[H]
+	\centering
+	\resizebox{15cm}{!}{
+		\includegraphics{figures/fokepernyo.png}}
+	\caption{}
+	\label{fig:fokepernyo}
+\end{figure}
+
+\section{Tervezés képernyõ}
+
+\begin{figure}[H]
+	\centering
+	\resizebox{15cm}{!}{
+		\includegraphics{figures/tervkepernyo.png}}
+	\caption{}
+	\label{fig:tervkepernyo}
+\end{figure}
+
+\section{Hibadiagnosztika}
+
+
+\section{RS232}
+A modembõl érkezõ adatokat soros porton keresztül fogadja a program, a tesztkörnyezet felállításához HIL adatok szolgáltak. A küldött log fájlokat egy programmal beolvasom és egy \cite{bib:null}null-modem segítségével sorosporton keresztül küldöm a megfelelõ portra. 
+
+\begin{figure}[!ht]
+	\centering
+	\resizebox{10cm}{!}{
+		\includegraphics{figures/comnull.png}}
+	\caption{}
+	\label{fig:comnull}
+\end{figure}
+
+Beállítottam 2 párt, COM20-COM21 és COM10-COM11 közt, a pároson küldöm, páratlanon fogadom az üzeneteket. 
+
+\begin{figure}[!ht]
+	\centering
+	\resizebox{10cm}{!}{
+		\includegraphics{figures/sorossend.png}}
+	\caption{}
+	\label{fig:sorossend}
+\end{figure}
+
+153 bájtos egy csomag, melyet egy UUT  3 bájtos fejléc és egy 2 bájtos checksum zár. A checksum a hasznos bájtok 16 bitre csonkolt összege. Minden fogadott csomagnál, a feldolgozás elõtt kiszámolom az összeget és ellenõrzöm, az egyezést, a rossz csomagok egyelõre eldobásra kerülnek.
+
+\begin{figure}[!ht]
+	\centering
+	\resizebox{10cm}{!}{
+		\includegraphics{figures/xvi.png}}
+	\caption{}
+	\label{fig:xvi}
+\end{figure}
+
+Fogadó oldalon a két sorosport aszinkron ír 1-1 byte tömböt, melybõl egy dekódoló függvénnyel nyerjük ki a sebesség, pozíció, irány, stb. adatokat.
+
+\begin{verbatim}
+public double[] Decode(byte[] array)
+\end{verbatim}
+
+Ebben a függvényben ellenõrzöm, a checksum-ot, illetve a kezdõ UUT bájt hármast.
+Mivel bájtosával lehet feldolgozni az adatokat, így pl. a 4 bájtos idõbélyeget 4 db egymás után jövõ bájtból kell összerakni:
+
+\begin{verbatim}
+uint ido = (uint)array[3]<<24 | (uint)array[4]<<16 |
+(uint)array[5]<<8 | (uint)array[6];
+\end{verbatim}
+
+Ugyanígy folytatódik az adatok feldolgozása, az elõre megadott protokoll szerint.
+
+\begin{center}
+    \begin{tabular}{| l | l | l | l |l |}
+    \hline
+    bájt index & leírás & típus & skálázás & offset \\ \hline
+    1 & start & char(fix 'U') &   &    \\ \hline
+		2 & start & char(fix 'U') &   &    \\ \hline
+		3 & start & char(fix 'T') &   &    \\ \hline
+		4 & idõ 1/4 & unsigned int & 10000 & 0  \\ \hline
+		5 & idõ 2/4 &   &   &    \\ \hline
+		6 & idõ 3/4 &   &   &    \\ \hline
+		7 & idõ 4/4 &   &   &    \\ \hline
+		\dots &  &  &   &    \\ \hline
+		26 & északi irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
+		28 & keleti irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
+		30 & lefelé irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
+		\dots &   &   &   &    \\ \hline
+		
+    \hline
+    \end{tabular}
+\end{center}
+
+
+Mivel a változások Hamming-távolsága\footnote{Bináris számok XOR képzésével kapott 1-esek száma} kicsi lenne, az eredeti számábrázoláson, így skálázással és offset képzéssel megnöveljük. A sebesség adatoknál a visszakódolás:\\
+$eredeti  = (nyers adat/skalazas) - offset$ képlettel oldható meg. 
+
+\section{Sebesség}
+A sebesség NED\footnote{Nort East Down, Local Tangent Pane, helyi koordináta rendszer} koordinátarendszerben van megadva, mely a repülõ középpontjából indul. Mivel kis magasságban repül a repülõ, így síknak közelíthetjük  a Föld felületét, ez számítások szempontjából elõnyös, mivel könnyebb vele dolgozni.
+A sebesség számítási módja: $ \sqrt[2]{(V_E)^2 + (V_N)^2}$ \\
+Emelkedés: $ -V_D$
+\begin{figure}[!ht]
+	\centering
+	\resizebox{8cm}{!}{
+		\includegraphics{figures/ned.png}}
+	\caption{Koordináta rendszer}
+	\label{fig:ned}
+\end{figure}
+
+\section{Irány}
+Az irány meghatározásához a 4 negyedsíkot külön kellett választani:
+\begin{verbatim}
+					if (Ecomp > 0 && Ncomp > 0)
+					{
+						heading = Math.Atan(Ecomp * Ncomp);
+					}
+					else if (Ecomp > 0 && Ncomp < 0)
+					{
+						heading = Math.Atan(Ecomp * Math.Abs(Ncomp)) + 90;
+					}
+					else if (Ecomp < 0 && Ncomp < 0)
+					{
+						heading = Math.Atan(Math.Abs(Ecomp) * Math.Abs(Ncomp)) + 180;
+					}
+					else if (Ecomp < 0 && Ncomp > 0)
+					{
+						heading = Math.Atan(Math.Abs(Ecomp) * Ncomp) + 270;
+					}
+
+\end{verbatim}
+
+\section{GUI}
+A grafikus felület kialakítása során figyelembe kell venni, hogy elsõ ránézésre a legfontosabb adatok látszódjanak. Kettõ fül közül az elsõ oldalon a legfontosabb mûszerek találhatóak, jobb oldalon egy Google Maps térkép. A térkép egy lokális cache-bõl tölti be az elõre letöltött térképszelvényeket, így a terepen lehet\H{o}ség van offline módon is használni ezt a funkciót.
