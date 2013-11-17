@@ -1,12 +1,17 @@
 \chapter{Elõzmények}
 
-Feladatom egy olyan grafikus felhasználói felülettel ellátott földi irányító állomás kifejlesztése egy biztonságkritikus robotrepülõhöz, ami képes a redundáns kommunikációs csatornán küldött adatok kezelésére és megjelenítésére. Ehhez szükséges megoldanom a kapcsolatot biztosító modem jeleinek vételét. Mivel hibatûrõ kialakítása révén redundánsan szerelt, így a párhuzamos csatornákon érkezõ adatok egymástól való eltérésének a kijelzése is megvalósítandó. Az eltérésnek több oka is lehetséges, elõfordulhat, hogy az egyik meghibásodásából következõen nem küld semmilyen értéket vagy amit küld az teljesen hibás, 
+Feladatom egy olyan grafikus felhasználói felülettel ellátott földi irányító állomás kifejlesztése egy biztonságkritikus robotrepülõhöz, ami képes redundáns kommunikációs csatornán küldött adatok kezelésére és megjelenítésére. Ehhez szükséges megoldanom a kapcsolatot biztosító modem jeleinek vételét. Mivel hibatûrõ kialakítása révén redundánsan szerelt, így a párhuzamos csatornákon érkezõ adatok egymástól való eltérésének a kijelzése is megvalósítandó. Az eltérésnek több oka is lehetséges, elõfordulhat, hogy az egyik meghibásodásából következõen nem küld semmilyen értéket vagy amit küld az teljesen hibás, 
 Továbbá, ez a program a földön tartózkodó személyzet kiszolgálására készül, így ami a legfontosabb, hogy õk a repülõvel kapcsolatos információkat könnyen értelmezhessék. Így szükséges megoldani, hogy a kialakítandó felület felhasználóbarát legyen, ehhez több nézeti oldal szükséges: 
 \begin{itemize}
 \item Egy áttekintõ képernyõ, mely a legfontosabb adatokat jeleníti meg a repülõvel kapcsolatban ( pozíció, sebesség, irány)
 \item Egy tervezõ modul, amin a lerepülendõ útvonalhoz tartozó fordulópontok kijelölése lehetséges
 \item Egy diagnosztikai nézet, melyen az alacsonyabb prioritású adatok tekinthetõek át
 \end{itemize}
+
+
+\section{Motiváció}
+ 
+Az MTA-SZTAKI Rendszer és Irányításelméleti Kutatólaboratóriumában folyó kísérletek, szabályozó algoritmusok mûködésének demonstrálására szükség volt egy kézzelfogható eszköz megalkotására, mely egy laikus számára is értelmezhetõ mûködéssel bír. Egy repülõgép irányítása kellõ kihívást nyújtott, így esett a választás egy levegõben mozgó autonóm jármûre. Egy stabil repülési tulajdonságokkal bíró repülõ levegõben tartása sem triviális, szükség van a kormányszervek harmonikus mozgatására, a tolóerõ szabályzására. Ezen túlmenõen ha feladatot kell végrehajtania, pl. fordulópontokat követve feltérképezni az alatta lévõ területet, már számolni kell a széllel, mely eltérítheti a kurzusról, felszálló légáramlatok ellen gyors reagálással válaszolni. Idõvel, (számos sikertelen ``földet érés'' után) jött az igény, a repülõ biztonságkritikussá tételére, mely a kialakuló hibák ellen megfelelõen tud védekezni.
 
 
 \section{Repülõgép felépítése}
@@ -29,9 +34,17 @@ A jelenlegi repülõ egy saját építésû 3.2 m fesztávolságú modell, melybe diagnosz
 	\label{fig:orca}
 \end{figure}
 
-\section{Hibatûrés}
+\section{Hibakezelés}
 
-TODO
+A program megalkotásához nem használok automatikus kódgeneráló és formális módszereket támogató segédeszközöket, így a fejlesztési folyamatba 1000 sorból kb.10 hiba\cite{bib:hiba} maradhat a rendszerben. Ami odafigyeléssel és teszteléssel, illetve a tervezés során elvégzendõ validációval és verifikációval lejjebb vihetõ. Az implementáció során elkövetett meghibásodásból, pl. egy számláló rosszul megírt növelésébõl, ha ráfut a vezérlés akkor hiba keletkezik, mely a felhasználó szempontjából hibajelenséget okoz. A hatásláncot a meghibásodási tényezõ csökkentésével és hibajelenség kialakulásának megakadályozásával lehet befolyásolni. Elõbbit ellenõrzéssel és teszteléssel, utóbbit helyes kivételkezeléssel. Több hibatípus léphet fel, egyik az elõre ismert, másik az elõre nem ismert. Az elõre ismert hibatípusokat optimálisan lehet kezelni a tervezés során, az elõre nem ismertek ellen megfelelõ rendszerstukatúra kialakítása szükséges. Esetünkben elõre ismert hiba lehet 
+\begin{itemize}
+\item egy vagy kettõ csatorna kiesése
+\item csomagvesztés
+\item küldött érték beragadása
+\item küldött érték túl gyors változása
+\end{itemize}
+
+Hibatûrõ kialakításra redundanciával törekedhetünk, mellyel sikerül a SPOF kivédése\footnote{Single Point Of Failure, olyan meghibásodás, mely ha bekövetkezik, a rendszer számára végzetes}, így ha az egyik kommunikációs csatorna nem mûködik, támaszkodhatunk a meglévõ mûködésére. A repülõgépen duplikált megoldásokat alkalmaznak, sajnos méretébõl adódóan térbeli távolsággal nem lehetséges a megbízhatóságot növelni, mint pl. harci repülõgépek fedélzeti számítógépeinél, melyek a találat kockázata miatt elszórva, akár 4--5x-ve vannak. A repülõgép fedélzetén a biztonságkritikus kialakítás miatt a következõ architektúra lett kialakítva:
 
 
 \begin{figure}[!ht]
@@ -42,7 +55,7 @@ TODO
 	\label{fig:sys}
 \end{figure}
 
- \figref{sys} ábrán látható, hogy központi számítógép kettõzött, párhuzamosan mûködnek, irányítják a servo motorokat. A szenzorokból érkezõ jelek egy Gateway-en keresztül az FCC-be jutnak, ahol a feldolgozás után a szabályozó algoritmusok kiadják a megfelelõ utasítást a kormányszerveknek. Ilyen utasítás lehet pl, a csûrõlapok adott fokban történõ elmozdítása, motor fordulatszámának változtatása. A motorok, úgy mint a központi egység, külön tápellátást kapnak, ezzel is csökkentve a végzetes meghibásodás esélyét. A dolgozat szempontjából egyik legfontosabb elem a kommunikációért felelõs modem, mely soros porton keresztül kapcsolódik az FCC-hez. A vevõ oldalon hasonló modem, szintén soros porton küldi a földi állomásnak a vett jelet, a köztük lévõ vezeték nélküli kommunikáció saját szabványa a gyártónak. A választás \cite{bib:xbee}XBee-PRO 868 típusú modemre esett, mely alacsony fogyasztása és nagy hatótávolsága miatt ideális egy ilyen környezetbe.
+ \figref{sys} ábrán látható, hogy központi számítógép kettõzött, párhuzamos mûködésûek. A szenzorokból érkezõ jelek egy Gateway-en keresztül az FCC-be jutnak, ahol a feldolgozás után a szabályozó algoritmusok kiadják a megfelelõ utasítást a kormányszerveknek. Ilyen utasítás lehet pl, a csûrõlapok adott fokban történõ elmozdítása, motor fordulatszámának változtatása. A motorok, úgy mint a központi egység, külön tápellátást kapnak, ezzel is csökkentve a végzetes meghibásodás esélyét. A dolgozat szempontjából egyik legfontosabb elem a kommunikációért felelõs modem, mely soros porton keresztül kapcsolódik az FCC-hez. A vevõ oldalon hasonló modem, szintén soros porton küldi a földi állomásnak a vett jelet, a köztük lévõ vezeték nélküli kommunikáció saját szabványa a gyártónak. A választás \cite{bib:xbee}XBee-PRO 868 típusú modemre esett, mely alacsony fogyasztása és nagy hatótávolsága miatt ideális egy ilyen környezetbe.
 
 \section{Vezeték nélküli modem}
 
@@ -108,13 +121,15 @@ Több nézet segítségével könnyen átlátható a funkcionalitása, repülés szempontjáb
 \end{figure}
 
 Ez a nézet akkor jöhet jól, mikor olyan meghibásodás történik, melyre nincs felkészítve az irányítóegység és szükséges lehet a kézi üzemmódra váltás. Elõfordulhat ilyen esetben, hogy nincs vizuális rálátás az operátor és a repülõgép között, ekkor csak az itt látható mûszerek és térkép alapján szükséges irányítania. Szerencsére ez az avionikában már bizonyított, hogy mûszerek segítségével, ``vakon'' is lehetséges repülni, itt azonban ez az eset csak pár percig szükséges.
-\\
-\textbf{Tervezõ és útvonalfeltöltõ}\\
+
+\subsubsection{Tervezõ és útvonalfeltöltõ}
+
 Másik nézet lehetõséget biztosít útvonalpontok kijelölésére, az útvonalpontokhoz egy listából kiválasztható, hogy az adott pont a start-, forduló-, végpont. Az útvonalpontok pozícióját egérrel módosíthatjuk, törölhetjük. Bal felsõ sarokban a kijelölt tervnek hosszát láthatjuk, ez segítséget nyújt, nehogy túlhaladjuk a rádiókapcsolat és a repülõ hatósugarát. Az elkészített tervet feltölthetjük a csatlakoztatott eszközre.
-\\
-\textbf{Beállítások}\\
-\\
-\textbf{Terminál}\\
+
+
+\subsubsection{Beállítások}
+
+\subsubsection{Terminál}
 
 
 

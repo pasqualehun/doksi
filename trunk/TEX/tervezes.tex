@@ -4,13 +4,41 @@
 \textbf{Tervezés részletes leírása, a döntési lehetõségek értékelése és a választott megoldások}
 \section{Kommunikáció}
 
-A kommunikáció csatornánként 2 db modem segítségével történik, a modemek egymás közt vezeték nélkül csatlakoznak, felhasználó oldalon soros portot biztosítanak. Így az elkészítendõ programnak elég csak egy soros portra csatlakoznia. Az elõre meghatározott átviteli értékek alapján képes fogadnia  repülõrõl érkezõ csomagokat.
+A kommunikáció csatornánként 2 db modem segítségével történik, a modemek egymás közt vezeték nélkül csatlakoznak, felhasználói oldalon soros portot biztosítanak. Így az elkészítendõ programnak elég csak a soros port jeleinek vételével foglalkoznia. A modemek adatátviteli sebessége változó lehet, így azt a felhasználó egy listából választhatja csatlakozás elõtt.
 
-\section{Redundáns jelek feldolgozása}
+\section{Adatok fogadása}
 
-A redundanciából következõen külön, külön kell kezelni a 2 párhuzamos csatornán kapott adatokat. Mivel aszinkron módon érkeznek a csomagok, így kettõ tároló kell, mely a legutóbb küldöttet tárolja.
+A redundanciából következõen külön, külön kell kezelni a 2 párhuzamos csatornán kapott adatokat. Mivel aszinkron módon érkeznek a csomagok, így kettõ tároló kell, mely a legutóbb küldötteket tárolja. 
 
-\section{Feltöltés}
+\subsection{Protokoll}
+
+Az adatokat a repülõgép 2 Hz-s frekvenciával küldi, ezek csomagokban érkeznek, melyeknek a felépítése:
+\begin{center}
+    \begin{tabular}{| l | l | l | l |l |}
+    \hline
+    bájt index 	& leírás 				& típus 				& skálázás 		& offset \\ \hline
+    1 					& start 				& char(fix 'U') &   					&    \\ \hline
+		2 					& start 				& char(fix 'U') &   					&    \\ \hline
+		3						& start 				& char(fix 'T') &   					&    \\ \hline
+		4 					& idõ  					& uint32 				& 10000 			& 0  \\ \hline
+		8 					& magasság 			& uin16 				& 0x7fff/1000	&    \\ \hline
+		6 & idõ 3/4 &   &   &    \\ \hline
+		7 & idõ 4/4 &   &   &    \\ \hline
+		\dots &  &  &   &    \\ \hline
+		26 & északi irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
+		28 & keleti irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
+		30 & lefelé irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
+		\dots &   &   &   &    \\ \hline
+
+    \hline
+    \end{tabular}
+\end{center}
+
+A skálázás és offset képzés azért szükséges, hogy az adott szélességen (8, 16, 32 bit) minél több biten legyen ábrázolva egy érték, mivel kis változások esetén a Hamming-távolság\footnote{Bináris számok XOR képzésével kapott 1-esek száma} kicsi lenne az eredeti számábrázoláson. Ahol szükésges, ott a  visszakódolás az alábbi formában történik : \\
+$eredeti  = (nyers adat/skalazas) - offset$ \\
+Az értékek megfelelõ kiválasztása a minél nagyobb szétszóráshoz szükséges.
+
+\section{Adatok küldése}
 
 A repülõgép által lerepülendõ feladat útvonalpontjait hasonlóképpen, mint az adatok fogadását, vezeték nélküli csatornán küldjük fel. A feltöltendõ adat küldésének protokollja létfontosságú, mivel ha valamilyen hiba kerül a kommunikációba akkor az akár végzetes is lehet. Gondolok itt olyan hibára, hogy egy fordulópont koordinátája úgy kerül feltöltésre, hogy az kiesik a repülõ hatósugarából és ezzel nem számolva, lemerül a tápellátást szolgáló akkumulátor. Az ilyen hibák ellen célszerû a feltöltés protokolljába hibadetektálást építeni, hogy ezek a feldolgozás( esetlegesen felszállás ) elõtt kiderüljenek ki.
 
@@ -34,14 +62,15 @@ Mivel az eddig használt megoldásban a kódba ,,bele volt égetve'' az útvonalterv,
 A modem is duplikált, így a 2 soros portra csatlakoztatott modemmel redundánsan küldjük el a csomagot. Ha a csomag sértetlenül megérkezett, ACK jelzéssel válaszol.
 
 
-\section{GUI kialakításának szempontjai}
+\section{Grafikus felület}
 
 Az elõzõ fejezetben ismertetett grafikus felületekbõl levonva a következtetéseket, nyilvánvaló, hogy a GUI kialakításában fontos a repülõgép aktuális pozíciójának térképen való mutatása, az repülési állapot könnyen értelmezhetõ megjelenítése, illetve az esetlegesen elõforduló problémák feltûnõ jelzése.
 
-\subsection{Áttekintõ képernyõ}
+\subsection{Fõképernyõ}
 
+A fõképernyõn látható lesz a repülõgép aktuális pozíciója és iránya. A pozicionálást segítendõ, egy térkép lesz egy repülõgép ikon hátterében. Ez a rész a képernyõ kb. 2/3-át fogja elfoglalni. Az oldalsó sávban a ``Glass Cockpit'' kerül kialakításra, ez egy mûhorizont, mely a gép által küldött orientációs adatokból az operátor számára informatívan ábrázolja a repülési állapotot. Ez a nézet tartalmazza még a gép aktuális sebességét, irányát, melyet egy iránytû segítségével láthat. Valószínûleg ez a képernyõ lesz legnagyobb százalékban használva, így a kritikus hibákról itt kell feltûnõ értesítést adni.
 
-\subsection{Tervezõ képernyõ}
+\subsection{Tervezés képernyõ}
 
 \subsection{Diagnosztikai képernyõ}
 
