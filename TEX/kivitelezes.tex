@@ -72,27 +72,6 @@ uint ido = (uint)array[3]<<24 | (uint)array[4]<<16 |
 
 Ugyanígy folytatódik az adatok feldolgozása, az elõre megadott protokoll szerint.
 
-\begin{center}
-    \begin{tabular}{| l | l | l | l |l |}
-    \hline
-    bájt index & leírás & típus & skálázás & offset \\ \hline
-    1 & start & char(fix 'U') &   &    \\ \hline
-		2 & start & char(fix 'U') &   &    \\ \hline
-		3 & start & char(fix 'T') &   &    \\ \hline
-		4 & idõ 1/4 & unsigned int & 10000 & 0  \\ \hline
-		5 & idõ 2/4 &   &   &    \\ \hline
-		6 & idõ 3/4 &   &   &    \\ \hline
-		7 & idõ 4/4 &   &   &    \\ \hline
-		\dots &  &  &   &    \\ \hline
-		26 & északi irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
-		28 & keleti irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
-		30 & lefelé irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
-		\dots &   &   &   &    \\ \hline
-		
-    \hline
-    \end{tabular}
-\end{center}
-
 
 Mivel a változások Hamming-távolsága\footnote{Bináris számok XOR képzésével kapott 1-esek száma} kicsi lenne, az eredeti számábrázoláson, így skálázással és offset képzéssel megnöveljük. A sebesség adatoknál a visszakódolás:\\
 $eredeti  = (nyers adat/skalazas) - offset$ képlettel oldható meg. 

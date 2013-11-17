@@ -52,12 +52,12 @@ Több megoldás is lehetséges a fordulópontok feltöltésére:
 \end{itemize}
 
 
-Az elsõ megoldásban rögzítenénk a fordulópontok maximális számát. Mely azt eredményezné, hogy egy csomagban el lehetne küldeni az egész lerepülendõ feladatot. Ha egy pont koordinátájának ábrázolására elég 2x4 byte, így ha feltételezünk egy 160 byte-os csomagot, akkor abba beleférne kb 15 darab. Egy csomag állna egy fejlécbõl, a feltöltendõ pontok számából, a pontokból, és egy checkszámból. 
+Az elsõ megoldásban rögzítenénk a fordulópontok maximális számát. Mely azt eredményezné, hogy egy csomagban el lehetne küldeni az egész lerepülendõ feladatot. Ha egy pont koordinátájának ábrázolására elég 2x4 byte, így ha feltételezünk egy MAX_POINT byte-os csomagot, akkor abba beleférne kb MAX_POINT darab. Egy csomag állna egy fejlécbõl, a feltöltendõ pontok számából, a pontokból, és egy checkszámból. 
 
 Másik lehetõségnél N db-t lehetne feltölteni: egy csomag szerkezete: fejléc, küldendõ pontok száma, aktuális pont sorszáma, koordinátái, checkszám. Ha a  küldendõ pontok száma és az aktuális pont sorszáma megegyezik és megérkezett minden csomag akkor ACK-val válaszol ha kész a feltöltés. 
 
 
-Mivel az eddig használt megoldásban a kódba ,,bele volt égetve'' az útvonalterv, mely 5-6 pontot tartalmazott, az elsõ megoldás tûnik kedvezõbbnek. Fogadó oldalon is könnyebb egy ilyen lehetõségre felkészíteni. Ha esetlegesen a jövõben több fordulópontont feltöltésére lesz igény, az is megoldható kis átprogramozással.
+Mivel az eddig használt megoldásban a kódba ,,bele volt égetve'' az útvonalterv, mely 5-6 pontot tartalmazott, az elsõ megoldás tûnik kedvezõbbnek. Fogadó oldalon is könnyebb egy ilyen lehetõségre felkészíteni. Ha esetlegesen a jövõben több fordulópontont feltöltésére lesz igény, az is megoldható kis módosítással.
 
 A modem is duplikált, így a 2 soros portra csatlakoztatott modemmel redundánsan küldjük el a csomagot. Ha a csomag sértetlenül megérkezett, ACK jelzéssel válaszol.
 
@@ -71,6 +71,8 @@ Az elõzõ fejezetben ismertetett grafikus felületekbõl levonva a következtetéseke
 A fõképernyõn látható lesz a repülõgép aktuális pozíciója és iránya. A pozicionálást segítendõ, egy térkép lesz egy repülõgép ikon hátterében. Ez a rész a képernyõ kb. 2/3-át fogja elfoglalni. Az oldalsó sávban a ``Glass Cockpit'' kerül kialakításra, ez egy mûhorizont, mely a gép által küldött orientációs adatokból az operátor számára informatívan ábrázolja a repülési állapotot. Ez a nézet tartalmazza még a gép aktuális sebességét, irányát, melyet egy iránytû segítségével láthat. Valószínûleg ez a képernyõ lesz legnagyobb százalékban használva, így a kritikus hibákról itt kell feltûnõ értesítést adni.
 
 \subsection{Tervezés képernyõ}
+
+Ezen a képernyõn a felhasználó kijelölheti a lerepülendõ útvonalhoz tartozó fordulópontokat, melyet csatlakozás után aszinkron módon feltölthet a repülõre. Mivel a kommunikációs protokoll MAX_POINT pontot enged meg, így ennél többet itt ki sem jelölhet, a lerakott pontok helyét a megszokott Google Maps-hoz hasonló módon hosszan kattintva átrakhatónak kell lennie, illetve köztes pontoknak törölhetõeknek kell lenniük.
 
 \subsection{Diagnosztikai képernyõ}
 
