@@ -11,8 +11,8 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=32
-NormalPos.right=849
-NormalPos.bottom=199
+NormalPos.right=1612
+NormalPos.bottom=659
 Class=LaTeXView
 Document=diploma.tex
 
@@ -29,14 +29,14 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=32
-NormalPos.right=849
-NormalPos.bottom=199
+NormalPos.right=1612
+NormalPos.bottom=659
 Class=LaTeXView
 Document=introduction.tex
 
 [Frame1_View0,0]
 TopLine=0
-Cursor=79
+Cursor=1338
 
 [Frame2]
 Flags=0
@@ -47,13 +47,13 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=32
-NormalPos.right=849
-NormalPos.bottom=199
+NormalPos.right=1612
+NormalPos.bottom=659
 Class=LaTeXView
 Document=tervezes.tex
 
 [Frame2_View0,0]
-TopLine=8
+TopLine=5
 Cursor=1853
 
 [Frame3]
@@ -65,8 +65,8 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=32
-NormalPos.right=849
-NormalPos.bottom=199
+NormalPos.right=1612
+NormalPos.bottom=659
 Class=LaTeXView
 Document=ertekeles.tex
 
@@ -83,14 +83,14 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=32
-NormalPos.right=849
-NormalPos.bottom=199
+NormalPos.right=1612
+NormalPos.bottom=659
 Class=LaTeXView
-Document=kivitelezes.tex
+Document=elozmenyek.tex
 
 [Frame4_View0,0]
 TopLine=0
-Cursor=380
+Cursor=24
 
 [Frame5]
 Flags=0
@@ -101,34 +101,16 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=32
-NormalPos.right=849
-NormalPos.bottom=199
-Class=LaTeXView
-Document=elozmenyek.tex
-
-[Frame5_View0,0]
-TopLine=142
-Cursor=6384
-
-[Frame6]
-Flags=0
-ShowCmd=1
-MinPos.x=-1
-MinPos.y=-1
-MaxPos.x=-1
-MaxPos.y=-1
-NormalPos.left=4
-NormalPos.top=32
-NormalPos.right=849
-NormalPos.bottom=199
+NormalPos.right=1612
+NormalPos.bottom=659
 Class=LaTeXView
 Document=abstract.tex
 
-[Frame6_View0,0]
-TopLine=2
+[Frame5_View0,0]
+TopLine=1
 Cursor=1871
 
 [SessionInfo]
-FrameCount=7
-ActiveFrame=5
+FrameCount=6
+ActiveFrame=4
 
