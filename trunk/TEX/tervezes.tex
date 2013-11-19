@@ -35,7 +35,7 @@ Az adatokat a repülõgép 2 Hz-s frekvenciával küldi, ezek csomagokban érkeznek, m
 \end{center}
 
 A skálázás és offset képzés azért szükséges, hogy az adott szélességen (8, 16, 32 bit) minél több biten legyen ábrázolva egy érték, mivel kis változások esetén a Hamming-távolság\footnote{Bináris számok XOR képzésével kapott 1-esek száma} kicsi lenne az eredeti számábrázoláson. Ahol szükésges, ott a  visszakódolás az alábbi formában történik : \\
-$eredeti  = (nyers adat/skalazas) - offset$ \\
+$eredeti  = (nyers adat/skalazas) - offset $ \\
 Az értékek megfelelõ kiválasztása a minél nagyobb szétszóráshoz szükséges.
 
 \section{Adatok küldése}
@@ -52,7 +52,7 @@ Több megoldás is lehetséges a fordulópontok feltöltésére:
 \end{itemize}
 
 
-Az elsõ megoldásban rögzítenénk a fordulópontok maximális számát. Mely azt eredményezné, hogy egy csomagban el lehetne küldeni az egész lerepülendõ feladatot. Ha egy pont koordinátájának ábrázolására elég 2x4 byte, így ha feltételezünk egy MAX_POINT byte-os csomagot, akkor abba beleférne kb MAX_POINT darab. Egy csomag állna egy fejlécbõl, a feltöltendõ pontok számából, a pontokból, és egy checkszámból. 
+Az elsõ megoldásban rögzítenénk a fordulópontok maximális számát. Mely azt eredményezné, hogy egy csomagban el lehetne küldeni az egész lerepülendõ feladatot. Ha egy pont koordinátájának ábrázolására elég 2*4 byte, így ha feltételezünk egy MAXPOINT byte-os csomagot, akkor abba beleférne kb. MAXPOINT darab. Egy csomag állna egy fejlécbõl, a feltöltendõ pontok számából, a pontokból, és egy checkszámból. 
 
 Másik lehetõségnél N db-t lehetne feltölteni: egy csomag szerkezete: fejléc, küldendõ pontok száma, aktuális pont sorszáma, koordinátái, checkszám. Ha a  küldendõ pontok száma és az aktuális pont sorszáma megegyezik és megérkezett minden csomag akkor ACK-val válaszol ha kész a feltöltés. 
 
@@ -72,7 +72,7 @@ A fõképernyõn látható lesz a repülõgép aktuális pozíciója és iránya. A pozicioná
 
 \subsection{Tervezés képernyõ}
 
-Ezen a képernyõn a felhasználó kijelölheti a lerepülendõ útvonalhoz tartozó fordulópontokat, melyet csatlakozás után aszinkron módon feltölthet a repülõre. Mivel a kommunikációs protokoll MAX_POINT pontot enged meg, így ennél többet itt ki sem jelölhet, a lerakott pontok helyét a megszokott Google Maps-hoz hasonló módon hosszan kattintva átrakhatónak kell lennie, illetve köztes pontoknak törölhetõeknek kell lenniük.
+Ezen a képernyõn a felhasználó kijelölheti a lerepülendõ útvonalhoz tartozó fordulópontokat, melyet csatlakozás után aszinkron módon feltölthet a repülõre. Mivel a kommunikációs protokoll MAXPOINT pontot enged meg, így ennél többet itt ki sem jelölhet, a lerakott pontok helyét a megszokott Google Maps-hoz hasonló módon hosszan kattintva átrakhatónak kell lennie, illetve köztes pontoknak törölhetõeknek kell lenniük.
 
 \subsection{Diagnosztikai képernyõ}
 
