@@ -1,7 +1,6 @@
 %----------------------------------------------------------------------------
 \chapter{Tervezés}
 %----------------------------------------------------------------------------
-\textbf{Tervezés részletes leírása, a döntési lehetõségek értékelése és a választott megoldások}
 \section{Kommunikáció}
 
 A kommunikáció csatornánként 2 db modem segítségével történik, a modemek egymás közt vezeték nélkül csatlakoznak, felhasználói oldalon soros portot biztosítanak. Így az elkészítendõ programnak elég csak a soros port jeleinek vételével foglalkoznia. A modemek adatátviteli sebessége változó lehet, így azt a felhasználó egy listából választhatja csatlakozás elõtt.
@@ -13,26 +12,27 @@ A redundanciából következõen külön, külön kell kezelni a 2 párhuzamos csatornán 
 \subsection{Protokoll}
 
 Az adatokat a repülõgép 2 Hz-s frekvenciával küldi, ezek csomagokban érkeznek, melyeknek a felépítése:
-\begin{center}
-    \begin{tabular}{| l | l | l | l |l |}
-    \hline
-    bájt index 	& leírás 				& típus 				& skálázás 		& offset \\ \hline
-    1 					& start 				& char(fix 'U') &   					&    \\ \hline
-		2 					& start 				& char(fix 'U') &   					&    \\ \hline
-		3						& start 				& char(fix 'T') &   					&    \\ \hline
-		4 					& idõ  					& uint32 				& 10000 			& 0  \\ \hline
-		8 					& magasság 			& uin16 				& 0x7fff/1000	&    \\ \hline
-		6 & idõ 3/4 &   &   &    \\ \hline
-		7 & idõ 4/4 &   &   &    \\ \hline
-		\dots &  &  &   &    \\ \hline
-		26 & északi irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
-		28 & keleti irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
-		30 & lefelé irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
-		\dots &   &   &   &    \\ \hline
 
-    \hline
-    \end{tabular}
-\end{center}
+\begin{table}
+	\begin{center}
+			\begin{tabular}{| l | l | l | l |l |}
+				\hline    bájt index 	& leírás 				& típus 				& skálázás 		& offset \\ \hline
+					1 					& start 				& char(fix 'U') &   					&    						 \\ \hline
+					2 					& start 				& char(fix 'U') &   					&    						 \\ \hline
+					3						& start 				& char(fix 'T') &   					&    						 \\ \hline
+					4 					& idõ  					& uint32 				& 10000 			& 0  						 \\ \hline
+					8 					& magasság 			& uin16 				& 0x7fff/1000	&    						 \\ \hline
+					\dots 			&   						&   						&   					&    						 \\ \hline
+					TODO & északi irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
+					28 & keleti irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
+					30 & lefelé irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
+				
+					\dots &   &   &   &    \\ \hline
+				\end{tabular}
+	\end{center}
+	\caption{Fogadás protokollja}
+	\label{tab:down}
+\end{table}
 
 A skálázás és offset képzés azért szükséges, hogy az adott szélességen (8, 16, 32 bit) minél több biten legyen ábrázolva egy érték, mivel kis változások esetén a Hamming-távolság\footnote{Bináris számok XOR képzésével kapott 1-esek száma} kicsi lenne az eredeti számábrázoláson. Ahol szükésges, ott a  visszakódolás az alábbi formában történik : \\
 $eredeti  = (nyers adat/skalazas) - offset $ \\
@@ -59,8 +59,32 @@ Másik lehetõségnél N db-t lehetne feltölteni: egy csomag szerkezete: fejléc, kül
 
 Mivel az eddig használt megoldásban a kódba ,,bele volt égetve'' az útvonalterv, mely 5-6 pontot tartalmazott, az elsõ megoldás tûnik kedvezõbbnek. Fogadó oldalon is könnyebb egy ilyen lehetõségre felkészíteni. Ha esetlegesen a jövõben több fordulópontont feltöltésére lesz igény, az is megoldható kis módosítással.
 
-A modem is duplikált, így a 2 soros portra csatlakoztatott modemmel redundánsan küldjük el a csomagot. Ha a csomag sértetlenül megérkezett, ACK jelzéssel válaszol.
+A modem is duplikált, így a 2 soros portra csatlakoztatott modemmel redundánsan küldjük el a csomagot. TODO TODO??? Ha a csomag sértetlenül megérkezett, ACK jelzéssel válaszol.
+\begin{table}
+	\begin{center}
+			\begin{tabular}{| l | l | l | l |l |}
+				\hline
+				bájt index 	& leírás 				& típus 				& skálázás 		& offset  \\ \hline
+				0 					& start 				& bájt(fix 'G') &   					&    			\\ \hline
+				1 					& start 				& bájt(fix 'P') &   					&    			\\ \hline
+				2						& start 				& bájt(fix 'S') &   					&    			\\ \hline
+				3 					& pontok száma	& bájt    			& 			 			&    			\\ \hline
+				4 					& pontok[0].lat & uin32 				& 0x7fff/360	&  180		\\ \hline
+				\dots 			&   						&   						&   					&    			\\ \hline
+				8 					& pontok[0].lon & uin32 				& 0x7fff/360	&  180		\\ \hline
+				\dots 			&   						&   						&   					&    			\\ \hline
+				12 					& pontok[1].lat & uin32 				& 0x7fff/360	&  180		\\ \hline
+				\dots 			&   						&   						&   					&    			\\ \hline
+				16 					& pontok[1].lon & uin32 				& 0x7fff/360	&  180		\\ \hline
+				\dots 			&   						&   						&   					&    			\\ \hline
+				78 					& checksum 1/2	& uin16 				& 						&  				\\ \hline
+				79 					& checksum 2/2 	& uin16 				& 						&  				\\ \hline
 
+			\end{tabular}
+	\end{center}
+	\caption{Küldés protokollja}
+	\label{tab:up}
+\end{table}
 
 \section{Grafikus felület}
 
@@ -76,6 +100,15 @@ Ezen a képernyõn a felhasználó kijelölheti a lerepülendõ útvonalhoz tartozó ford
 
 \subsection{Diagnosztikai képernyõ}
 
+A 2 porton érkezõ dekódolt értékek látszódnának 2 oszlopban, mellettük egy hibaérték, mely a különbözõ hibatípusok hibaszámának összege lenne. 
 
+\subsubsection{Hibatípusok}
+\begin{itemize}
+\item beragadás
+\item túl nagy változás
+\item túl nagy különbség a 2 vett értéken
+\end{itemize}
 
+Ezek feldolgozására 2 FIFO sort kell alkalmazni, melyek visszamenõleg tárolják a beérkezõ értékeket. Ez azért szükséges, mivel így a túlságosan kiugró értékeket detektálni lehet, illetve, ha az egész sorban ugyanazok az értékek vannak, gyanús a beragadás esélye.
+A harmadik esetben sajnos nem lehetséges a ``jó'' kiválasztása, mivel nem tudjuk, melyik modembõl érkezett adat a megfelelõ. Ezt csak háromszorozással és többségi szavazással lehetne megoldani.
 

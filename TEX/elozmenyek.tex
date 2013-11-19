@@ -135,9 +135,15 @@ Másik nézet lehetõséget biztosít útvonalpontok kijelölésére, az útvonalpontokhoz
 
 \subsubsection{Beállítások}
 
-Itt számos beállítás közül lehet választani, lehetõség van a nyelv és mértékegységek kiválasztására, naplózás sûrûségének meghatározására.
-Egy másik oldalon az aktuális jármûvet lehet beállítani, mivel más adatok fontosak egy földi és egy légi jármû esetében, továbbá a kommunikációs protokoll is változó.
-
+Itt lehetõség van a nyelv és mértékegységek kiválasztására, naplózás sûrûségének meghatározására.
+Egy másik oldalon az aktuális jármûvet lehet beállítani, mivel más adatok fontosak egy földi és egy légi jármû esetében, továbbá a kommunikációs protokoll is változó. Nem külön oldalon, hanem mindig látható a csatlakozás gomb, melynél a soros port és a jelsebesség beállítása után a csalatkozás gombbal csatlakozik a program a portra.
+\begin{figure}[H]
+	\centering
+	\resizebox{5cm}{!}{
+		\includegraphics{figures/ardu_conn.png}}
+	\caption{}
+	\label{fig:ardu_plan}
+\end{figure}
 \subsubsection{Terminál}
 
 Ezen az oldalon az USB-n csatlakoztatott eszközt lehet parancssoron konfigurálni. Az eszköz saját LOG fájljait letölteni.
@@ -147,7 +153,10 @@ Ezen az oldalon az USB-n csatlakoztatott eszközt lehet parancssoron konfigurálni
 Lehetõség van még az elmentett log fájlok szimulálására, van egy súgó oldal a program használatával kapcsolatban, illetve egy támogatói gomb, mely átirányít egy PayPal oldalra, ahol különbözõ összeggel támogathatjuk a fejlesztést.
 
 
-\subsubsection{Egyéb képernyõk}
+\subsubsection{Összegzés}
+
+Felhasználói szempontból barátságos felületet biztosít a különbözõ nézetekkel, gombok átgondolt elhelyezésével.
+Nem a program hibája, de nincs felkészítve párhuzamos csatornák kezelésére, ez az ArduPilot projekt egyszerûségének köszönhetõ, mivel nem használ redundanciát. De mivel a repülõ, melyhez a program készül, nagy megbízhatóságú, így szükséges megoldani a 2 port kezelését, és az azokon érkezõ adatok feldolgozását. Jó ötlet a csatlakozás gomb mindig látható elhelyezése, a fõképernyõn térképen ábrázolni a repülõ helyzetét, illetve a mûhorizont. Azonban hibadiagnosztikai kijelzés nincs megoldva, melynek szintén fontos a megvalósítása.
 
 \subsection{Paparazzi}
 Ez egy több platformos GCS, mely különbözõ projektekben létrehozott repülõkhöz használható valós-idejû monitorozásra. Könnyen testre szabható az igényeknek megfelelõen.
