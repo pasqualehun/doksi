@@ -97,13 +97,13 @@ Az alábbiakban összehasonlításra kerülnek a megjelenítési felületek.
 
 \subsection{ArduPilot}
 
-Az Ardupilot projekt létrejöttének motivációja, hogy otthoni körülmények között, nem ipari alkatrészekbõl bárki összehasonlításon egy autonóm jármûvet, mely az elõre betáplált utasításokat végrehajtja. Központi eleme az Arduino cég által készített ATMel mikroprocesszorra épített platform, mely felhasználóbarátabbá teszi a mikroprocesszor programozását. Magas szintû utasításokkal segíti az eszközzel való barátkozást, nincs szükség assembly szintû tudásra. Erre a platformra hozták létre az ArduPilot programot, képes vezérelni többféle autonóm jármûvet:
+Az Ardupilot projekt létrejöttének motivációja, hogy otthoni körülmények között, nem ipari alkatrészekbõl bárki összeállíthasson egy autonóm jármûvet, mely az elõre betáplált utasításokat végrehajtja. Központi eleme az Arduino cég által készített ATMel mikroprocesszorra épített platform, mely felhasználóbarátabbá teszi a mikroprocesszor programozását. Magas szintû utasításokkal segíti az eszközzel való barátkozást, nincs szükség assembly szintû tudásra. Erre a platformra hozták létre az ArduPilot programot, képes vezérelni többféle autonóm jármûvet:
 \begin{itemize}
-\item robotrepülõgép
-\item ArduCopter néven futó változata 4, 6 propelleres helikopter
-\item 4 kerekû autó
+\item ArduPlane néven futó változat: robotrepülõgép
+\item ArduCopter: 1, 3, 4, 6, 8, propelleres helikopter
+\item Ardurover: 4 kerekû autó
 \end{itemize}
-Sikerességének fõ oka, a nyílt forráskód, egy Arduino panel alacsony ára (~5 ezer Ft) és a projekt mögött álló lelkes közösség.
+Sikerességének fõ oka, a nyílt forráskód, Arduino panel alacsony ára (~5 ezer Ft) és a projekt mögött álló lelkes közösség.
 
 Ennek a közösségnek köszönhetõen született a Mission Planner nevû szoftver, mely teljes körû támogatást nyújt a jármûvekkel kapcsolatban.
 
@@ -124,14 +124,30 @@ Ez a nézet akkor jöhet jól, mikor olyan meghibásodás történik, melyre nincs felk
 
 \subsubsection{Tervezõ és útvonalfeltöltõ}
 
-Másik nézet lehetõséget biztosít útvonalpontok kijelölésére, az útvonalpontokhoz egy listából kiválasztható, hogy az adott pont a start-, forduló-, végpont. Az útvonalpontok pozícióját egérrel módosíthatjuk, törölhetjük. Bal felsõ sarokban a kijelölt tervnek hosszát láthatjuk, ez segítséget nyújt, nehogy túlhaladjuk a rádiókapcsolat és a repülõ hatósugarát. Az elkészített tervet feltölthetjük a csatlakoztatott eszközre.
-
+Másik nézet lehetõséget biztosít útvonalpontok kijelölésére, az útvonalpontokhoz egy listából kiválasztható, hogy az adott pont start-, forduló-, végpont és egyéb lehetõségek. Az útvonalpontok pozícióját egérrel módosíthatjuk, törölhetjük. Bal felsõ sarokban a kijelölt tervnek hosszát láthatjuk, ez segítséget nyújt, nehogy túlhaladjuk a rádiókapcsolat és a repülõ hatósugarát. Az elkészített tervet feltölthetjük a csatlakoztatott eszközre.
+\begin{figure}[H]
+	\centering
+	\resizebox{15cm}{!}{
+		\includegraphics{figures/ardu_plan.png}}
+	\caption{}
+	\label{fig:ardu_plan}
+\end{figure}
 
 \subsubsection{Beállítások}
 
+Itt számos beállítás közül lehet választani, lehetõség van a nyelv és mértékegységek kiválasztására, naplózás sûrûségének meghatározására.
+Egy másik oldalon az aktuális jármûvet lehet beállítani, mivel más adatok fontosak egy földi és egy légi jármû esetében, továbbá a kommunikációs protokoll is változó.
+
 \subsubsection{Terminál}
 
+Ezen az oldalon az USB-n csatlakoztatott eszközt lehet parancssoron konfigurálni. Az eszköz saját LOG fájljait letölteni.
 
+\subsubsection{Egyéb képernyõk}
+
+Lehetõség van még az elmentett log fájlok szimulálására, van egy súgó oldal a program használatával kapcsolatban, illetve egy támogatói gomb, mely átirányít egy PayPal oldalra, ahol különbözõ összeggel támogathatjuk a fejlesztést.
+
+
+\subsubsection{Egyéb képernyõk}
 
 \subsection{Paparazzi}
 Ez egy több platformos GCS, mely különbözõ projektekben létrehozott repülõkhöz használható valós-idejû monitorozásra. Könnyen testre szabható az igényeknek megfelelõen.
