@@ -1,3 +1,12 @@
 \chapter{Összefoglalás}\label{sect:}
 
 SZUMM
+
+
+A program megalkotásához nem használok automatikus kódgeneráló és formális módszereket támogató segédeszközöket, így a fejlesztési folyamatba 1000 sorból kb.10 hiba\cite{bib:hiba} maradhat a rendszerben. Ami odafigyeléssel és teszteléssel, illetve a tervezés során elvégzendõ validációval és verifikációval lejjebb vihetõ. Az implementáció során elkövetett meghibásodásból, pl. egy számláló rosszul megírt növelésébõl, ha ráfut a vezérlés akkor hiba keletkezik, mely a felhasználó szempontjából hibajelenséget okoz. A hatásláncot a meghibásodási tényezõ csökkentésével és hibajelenség kialakulásának megakadályozásával lehet befolyásolni. Elõbbit ellenõrzéssel és teszteléssel, utóbbit helyes kivételkezeléssel. Több hibatípus léphet fel, egyik az elõre ismert, másik az elõre nem ismert. Az elõre ismert hibatípusokat optimálisan lehet kezelni a tervezés során, az elõre nem ismertek ellen megfelelõ rendszerstukatúra kialakítása szükséges. Esetünkben elõre ismert hiba lehet 
+\begin{itemize}
+\item egy vagy kettõ csatorna kiesése
+\item csomagvesztés
+\item küldött érték beragadása
+\item küldött érték túl gyors változása
+\end{itemize}

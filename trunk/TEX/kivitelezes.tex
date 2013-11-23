@@ -31,7 +31,7 @@ C\# nyelven szükséges a program implementálása, a .NET keretrendszer szerencsére
 \section{Diagnosztikai képernyõ}
 
 
-\section{RS232}
+\section{Soros port}
 A modembõl érkezõ adatokat soros porton keresztül fogadja a program, a tesztkörnyezet felállításához HIL adatok szolgáltak. A küldött log fájlokat egy programmal beolvasom és egy \cite{bib:null}null-modem segítségével sorosporton keresztül küldöm a megfelelõ portra. 
 
 \begin{figure}[!ht]
@@ -79,42 +79,3 @@ uint ido = (uint)array[3]<<24 | (uint)array[4]<<16 |
 Ugyanígy folytatódik az adatok feldolgozása, az elõre megadott protokoll szerint.
 
 
-Mivel a változások Hamming-távolsága\footnote{Bináris számok XOR képzésével kapott 1-esek száma} kicsi lenne, az eredeti számábrázoláson, így skálázással és offset képzéssel megnöveljük. A sebesség adatoknál a visszakódolás:\\
-$eredeti  = (nyers adat/skalazas) - offset$ képlettel oldható meg. 
-
-\section{Sebesség}
-A sebesség NED\footnote{Nort East Down, Local Tangent Pane, helyi koordináta rendszer} koordinátarendszerben van megadva, mely a repülõ középpontjából indul. Mivel kis magasságban repül a repülõ, így síknak közelíthetjük  a Föld felületét, ez számítások szempontjából elõnyös, mivel könnyebb vele dolgozni.
-A sebesség számítási módja: $ \sqrt[2]{(V_E)^2 + (V_N)^2}$ \\
-Emelkedés: $ -V_D$
-\begin{figure}[!ht]
-	\centering
-	\resizebox{8cm}{!}{
-		\includegraphics{figures/ned.png}}
-	\caption{Koordináta rendszer}
-	\label{fig:ned}
-\end{figure}
-
-\section{Irány}
-Az irány meghatározásához a 4 negyedsíkot külön kellett választani:
-\begin{verbatim}
-					if (Ecomp > 0 && Ncomp > 0)
-					{
-						heading = Math.Atan(Ecomp * Ncomp);
-					}
-					else if (Ecomp > 0 && Ncomp < 0)
-					{
-						heading = Math.Atan(Ecomp * Math.Abs(Ncomp)) + 90;
-					}
-					else if (Ecomp < 0 && Ncomp < 0)
-					{
-						heading = Math.Atan(Math.Abs(Ecomp) * Math.Abs(Ncomp)) + 180;
-					}
-					else if (Ecomp < 0 && Ncomp > 0)
-					{
-						heading = Math.Atan(Math.Abs(Ecomp) * Ncomp) + 270;
-					}
-
-\end{verbatim}
-
-\section{GUI}
-A grafikus felület kialakítása során figyelembe kell venni, hogy elsõ ránézésre a legfontosabb adatok látszódjanak. Kettõ fül közül az elsõ oldalon a legfontosabb mûszerek találhatóak, jobb oldalon egy Google Maps térkép. A térkép egy lokális cache-bõl tölti be az elõre letöltött térképszelvényeket, így a terepen lehet\H{o}ség van offline módon is használni ezt a funkciót.
