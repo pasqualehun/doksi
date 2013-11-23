@@ -4,7 +4,7 @@
 \BOOKMARK [0][-]{chapter.1}{Elozm\351nyek}{}% 4
 \BOOKMARK [1][-]{section.1.1}{Motiv\341ci\363}{chapter.1}% 5
 \BOOKMARK [1][-]{section.1.2}{Rep\374log\351p fel\351p\355t\351se}{chapter.1}% 6
-\BOOKMARK [1][-]{section.1.3}{Hibakezel\351s}{chapter.1}% 7
+\BOOKMARK [1][-]{section.1.3}{Hibatur\351s}{chapter.1}% 7
 \BOOKMARK [1][-]{section.1.4}{Vezet\351k n\351lk\374li modem}{chapter.1}% 8
 \BOOKMARK [1][-]{section.1.5}{F\366ldi \341llom\341sok}{chapter.1}% 9
 \BOOKMARK [2][-]{subsection.1.5.1}{ArduPilot}{section.1.5}% 10
@@ -24,11 +24,8 @@
 \BOOKMARK [1][-]{section.3.2}{Fok\351pernyo}{chapter.3}% 24
 \BOOKMARK [1][-]{section.3.3}{Tervez\351s k\351pernyo}{chapter.3}% 25
 \BOOKMARK [1][-]{section.3.4}{Diagnosztikai k\351pernyo}{chapter.3}% 26
-\BOOKMARK [1][-]{section.3.5}{RS232}{chapter.3}% 27
-\BOOKMARK [1][-]{section.3.6}{Sebess\351g}{chapter.3}% 28
-\BOOKMARK [1][-]{section.3.7}{Ir\341ny}{chapter.3}% 29
-\BOOKMARK [1][-]{section.3.8}{GUI}{chapter.3}% 30
-\BOOKMARK [0][-]{chapter.4}{\311rt\351kel\351s}{}% 31
-\BOOKMARK [0][-]{chapter.5}{\326sszefoglal\341s}{}% 32
-\BOOKMARK [0][-]{appendix*.27}{F\374ggel\351k}{}% 33
-\BOOKMARK [1][-]{section.F.1}{F\374ggel\351k1}{appendix*.27}% 34
+\BOOKMARK [1][-]{section.3.5}{Soros port}{chapter.3}% 27
+\BOOKMARK [0][-]{chapter.4}{\311rt\351kel\351s}{}% 28
+\BOOKMARK [0][-]{chapter.5}{\326sszefoglal\341s}{}% 29
+\BOOKMARK [0][-]{appendix*.26}{F\374ggel\351k}{}% 30
+\BOOKMARK [1][-]{section.F.1}{F\374ggel\351k1}{appendix*.26}% 31
