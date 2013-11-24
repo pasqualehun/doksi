@@ -67,21 +67,21 @@ A kiválasztott modem kétféleképpen képes kommunikálni:
 
 \section{Földi állomások}
 
-Egy UAV vezetéséhez elengedhetetlen egy bázis, ahonnan a földi személyzet irányítja, monitorozhatja a repülést. Általában több funkciót lát el:
+Egy UAV vezetéséhez elengedhetetlen egy bázis, ahonnan a földi személyzet irányítja, monitorozhatja a repülést. Általában több \cite{bib:aimofuav} funkciót lát el:
 \begin{itemize}
 \item Küldetés tervezés: útvonal meghatározása, illetve a célpontok kijelölése
-\item Adatok megjelenítése: megfelelõ módon kijelezni a repülõgép állapotát, esetleges hibáit.
+\item Küldetés végrehajtás: távirányítással vezetve az operátor végrehajtja a feladatot
+\item Adatok megjelenítése: megfelelõ módon kijelezni a repülõgép állapotát, esetleges hibáit
 \end{itemize}
 
 
 
-Számos megoldás született a földi állomás GUI\footnote{Graphics User Interface, grafikus megjelenítés}-jának kialakítására. Elsõdleges követelmény, hogy az operátor mindig a legfontosabb információkat láthassa, ehhez szoftverergonómiailag kell megtervezni a mûszerek, adatok elrendezését.
-Az alábbiakban összehasonlításra kerülnek a megjelenítési felületek.
+Számos megoldás született a földi állomás GUI\footnote{Graphics User Interface, grafikus megjelenítés}-jának kialakítására. Elsõdleges követelmény, hogy az operátor mindig a legfontosabb információkat láthassa, ehhez szoftverergonómiailag kell megtervezni a mûszerek. \cite{bib:multimodal} Kísérleteket folytattak, milyen elrendezésben, hány képernyõn érdemes megjeleníteni az adatokat, úgy, hogy az még ne terhelje túl az operátort. Bebizonyosodott, hogy érdemes több érzékszerven keresztül jelzéseket adni, így pl. nagy prioritású eseménynél a figyelmeztetõ ablak megjelenését hanghatás is kíséri. Alábbiakban összehasonlításra kerülnek a piacon lévõ megjelenítési felületek, megoldások.
 
 
 \subsection{ArduPilot}
 
-Az Ardupilot projekt létrejöttének motivációja, hogy otthoni körülmények között, nem ipari alkatrészekbõl bárki összeállíthasson egy autonóm jármûvet, mely az elõre betáplált utasításokat végrehajtja. Központi eleme az Arduino cég által készített ATMel mikroprocesszorra épített platform, mely felhasználóbarátabbá teszi a mikroprocesszor programozását. Magas szintû utasításokkal segíti az eszközzel való barátkozást, nincs szükség assembly szintû tudásra. Erre a platformra hozták létre az ArduPilot programot, képes vezérelni többféle autonóm jármûvet:
+Az \cite{bib:ardu} Ardupilot projekt létrejöttének oka, hogy otthoni körülmények között, nem ipari alkatrészekbõl bárki összeállíthasson egy autonóm jármûvet, mely az elõre betáplált utasításokat végrehajtja. Központi eleme az Arduino cég által készített ATMel mikroprocesszorra épített platform, mely felhasználóbarátabbá teszi a mikroprocesszor programozását. Magas szintû utasításokkal segíti az eszközzel való barátkozást, nincs szükség assembly szintû tudásra. Erre a platformra hozták létre az ArduPilot programot, képes vezérelni többféle autonóm jármûvet:
 \begin{itemize}
 \item ArduPlane néven futó változat: robotrepülõgép
 \item ArduCopter: 1, 3, 4, 6, 8, propelleres helikopter
@@ -143,6 +143,54 @@ Felhasználói szempontból barátságos felületet biztosít a különbözõ nézetekkel, g
 Nem a program hibája, de nincs felkészítve párhuzamos csatornák kezelésére, ez az ArduPilot projekt egyszerûségének köszönhetõ, mivel nem használ redundanciát. De mivel a repülõ, melyhez a program készül, nagy megbízhatóságú, így szükséges megoldani a 2 port kezelését, és az azokon érkezõ adatok feldolgozását. Jó ötlet a csatlakozás gomb mindig látható elhelyezése, a fõképernyõn térképen ábrázolni a repülõ helyzetét, illetve a mûhorizont. Azonban hibadiagnosztikai kijelzés nincs megoldva, melynek szintén fontos a megvalósítása.
 
 \subsection{Paparazzi}
-Ez egy több platformos GCS, mely különbözõ projektekben létrehozott repülõkhöz használható valós-idejû monitorozásra. Könnyen testre szabható az igényeknek megfelelõen.
+\cite{bib:paparazzi}Ez egy több platformos GCS, mely különbözõ projektekben létrehozott repülõkhöz használható valós-idejû monitorozásra. Könnyen testre szabható az igényeknek megfelelõen.
 
 
+
+
+\subsection{MicroPilot}
+
+\cite{bib:makkay} Az 1995 óta mûködõ kanadai \cite{bib:micropilot} MicroPilot a világ egyik legismertebb robotpilóta gyártó cége. A néhány száz grammos repülõ modelltõl a gázturbinás repülõkig 60 országban több mint 600 alkalmazó használja az eszközeiket. Népszerûek az iskolákban, egyetemeken, kutató intézetekben, a gazdaság különbözõ területein, de a védelmi szféra is szép számmal használ robot légi jármûvein MicroPilot berendezéseket. A MicroPilot a repülõgép fedélzetére teljes duplex adatátviteli berendezést ajánl. A 2,4 GHz-es ipari csatornán mûködõ berendezéssel, irányított antennával akár 20 km-es hatótávolság is elérhetõ. A földi állomás irányított antennával követi a repülõgépet, ami megnöveli a hatótávolságot és az adatátvitel biztonságát különösen a gyakran manõverezõ, nagy bedöntésû fordulókat végrehajtó légi jármûvekkel. Az adatátviteli berendezés állapota a földi állomás jelzõfényei alapján ellenõrizhetõ, mindemellett a MicroPilot Horizon program képernyõjén a status sorban a zöld mezõ (LINK) jelzi a folyamatos adatkapcsolatot. Az adatátviteli csatorna ugyanazokat a funkciókat képes biztosítani, mint a programbevitelnél használt kábeles összeköttetés, így ezen keresztül repülés közben is módosítható az útvonal, a repülési paraméterek és az egyéb beállítások. A MicroPilot fedélzeti egysége ezen kívül egy rádió távirányító (RCON) vevõberendezést is fogad, amely lehetõséget teremt a földi adó konzoljáról az irányítás átvételére és  botkormányos kézi vezérlésre. Ezt alapvetõen a fel és leszállás idejére, illetve az útvonal kritikus szakaszain használják akkor, ha az automatikus üzem valamilyen okból nem biztosítható. Ez következhet be az adatkapcsolat megszakadásakor ilyenkor a beállított üzemmódnak megfelelõen vagy köröz az utolsó koordináta körül, vagy elindul a leszállóhely felé (ami nem feltétlenül a felszállóhely) majd a kapcsolat helyreállítóval folytatja a feladatot. Amennyiben az RC távirányítóval mûködõ repülõgép veszti el a kapcsolatot, akkor a fedélzeti vevõberendezés FAILSAFE üzemmódra kapcsol és annak beállítása szerint mûködteti a repülõgépet. A FAILSAFE vagy az utolsó szervó állást õrzi meg, vagy egy elõre programozott legbiztonságosabb földet érést ígérõ beállításra ugrik. 
+
+
+%http://www.szrfk.hu/rtk/folyoirat/2013_1/2013-1-04-Imre_Makkay.pdf
+%http://www.szrfk.hu/rtk/kulonszamok/2012_cikkek/77_Makkay_Imre-Papp_Timea.pdf
+%http://www.unmannedgroup.com/index.php?page=2&subpage=6&data=9
+%http://www.uavfactory.com/product/16
+
+
+\subsection{OpenPilot}
+\cite{bib:openpilot}
+
+
+\subsection{HumanPower}
+\cite{bib:humanpower}
+
+
+\subsection{HappyKillmore}
+\cite{bib:hk} Ez a GUI az ArduPlane nevû nyílt forráskódú, háziépítésû UAV-hoz készült.
+Itt is a térkép nézet dominál, oldalt mozgathatjuk számunkra megfelelõ elrendezésbe a mûszereket.
+Több különbözõ oldal közül választhatunk, ha pl. a bejövõ adatokra vagyunk kíváncsiak vagy a soros port port számát szeretnénk beállítani. Lehetõségünk van exportálni is az adatokat.
+
+
+\begin{figure}[!h]
+	\centering
+	\resizebox{10cm}{!}{
+		\includegraphics{figures/hk.png}}
+		\caption{}
+	\label{fig:hk}
+\end{figure}
+
+
+
+\subsection{Viking}
+\cite{bib:viking} Itt egyértelmûen a térkép feletti pozíción van a hangsúly, jobb oldalt néhány mûszer, illetve a fontosabb adatok számokkal
+
+
+\begin{figure}[!ht]
+	\centering
+	\resizebox{10cm}{!}{
+		\includegraphics{figures/viking.png}}
+	\caption{Viking}
+	\label{fig:viking}
+\end{figure}
