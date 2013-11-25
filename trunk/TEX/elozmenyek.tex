@@ -8,7 +8,7 @@ Az MTA SZTAKI Rendszer és Irányításelméleti Kutatólaboratóriumában folyó kutatás
 
 \section{Repülõgép felépítése}
 
-A jelenlegi repülõ egy saját építésû 3.2 m fesztávolságú modell, melybe diagnosztikai és hibadetekciós célokra egyedi tervezésû komponensek kerültek. A kommerciális célokra szánt szervo motorok nem szolgálnak elég információval a kitérésükrõl, fogyasztásukról, ezért ezek mérésérõl gondoskodni kellet. 
+A jelenlegi repülõ egy saját építésû 3.2 m fesztávolságú modell, melybe diagnosztikai és hibadetekciós célokra egyedi tervezésû komponensek kerültek. A kommerciális célokra szánt szervo motorok nem szolgálnak elég információval a kitérésükrõl, fogyasztásukról, ezért ezek mérésérõl gondoskodni kellett. 
 
 \begin{figure}[H]
 	\centering
@@ -235,12 +235,49 @@ Ez a program elsõsorban távirányításos üzemmód támogatására készült, mely során 
 
 
 \subsection{OpenPilot}
-\cite{bib:openpilot}
+\cite{bib:openpilot} A projekt célja, hogy nyílt forráskódú, magas minõségû robot pilótát hozzanak létre autonóm repülõkhöz. 2009-ben alakult, azóta már több mint 200 tagja vesz részt a fejlesztésben a világ 140 országából. A jelenlegi verzió, képes irányítani fix szárnyas repülõt és helikoptert 2-tõl 8 rotorig. 
+A robotpilóta egy Cortex-M3 32 bit ARM 72MHz mikrokontrollerre épül, 3 szabadsági fokos gyorsulásérzékelõvel és iránytûvel, GPS vevõvel, 12 bites A/D átalakítóval a mért értékek digitalizálására.
 
+A hozzá készült GCS több platformon mûködik: Windows, Mac OS, Linux, tervben van az Android támogatás is. Segítségével tölthetõ fel a panelra a fedélzeti program, illetve interface-t biztosít a repülés alatt.
+
+\subsubsection{Fõképernyõ}
+
+Bal oldalon mûhorizont látható, alatta az aktuális jármû orientációja külsõ nézetbõl, jobb oldalon a térkép az aktuális pozíció megjelenítésével.
+
+Ez a nézet szabadon módosítható, különféle ``gadget''-ek kiválasztásával, pl. a külsõ nézet helyett egy mért érték grafikus megjelenítésére kicserélhetõ. Ezek .xml fájlba elmenthetõek és visszatölthetõek, különbözõ konfiguráció igényeihez igazodva.
+
+
+\begin{figure}[H]
+	\centering
+	\resizebox{15cm}{!}{ 
+		\includegraphics{figures/openpilot.png}} 
+	\caption{}
+	\label{fig:openpilot}
+\end{figure}
+
+
+\subsubsection{Beállítások}
+
+Itt állíthatóak be a kommunikációs portok, az aktális jármû típusa, a térkép megjelenítése, a szervó motorok semleges helyzete.
+
+\subsubsection{Telemetria}
+
+A fogadott adatokat többféleképpen meg tudja jeleníteni. Lehetséges a kiválasztottakat egy skálán egyszerre kirajzolni, vagy külön-külön grafikonokon.
+
+\subsubsection{Összegzés}
+Rengeteg beállítási lehetõséget nyújt ez a program, lelkes közösség áll mögötte, minden olyan fontos elvárást kielégít, mely napjainkban felmerülhet egy UAV adatainak megjelenítésével kapcsolatban.
 
 \subsection{QGroundControl}
-\cite{bib:qground}
+\cite{bib:qground} 
 
+
+\begin{figure}[H]
+	\centering
+	\resizebox{15cm}{!}{
+		\includegraphics{figures/qground.png}}
+		\caption{}
+	\label{fig:qground}
+\end{figure}
 
 \subsection{HappyKillmore}
 \cite{bib:hk} Ez a GUI az ArduPlane nevû nyílt forráskódú, háziépítésû UAV-hoz készült.
@@ -248,7 +285,7 @@ Itt is a térkép nézet dominál, oldalt mozgathatjuk számunkra megfelelõ elrendezé
 Több különbözõ oldal közül választhatunk, ha pl. a bejövõ adatokra vagyunk kíváncsiak vagy a soros port port számát szeretnénk beállítani. Lehetõségünk van exportálni is az adatokat.
 
 
-\begin{figure}[!h]
+\begin{figure}[H]
 	\centering
 	\resizebox{10cm}{!}{
 		\includegraphics{figures/hk.png}}
@@ -256,16 +293,3 @@ Több különbözõ oldal közül választhatunk, ha pl. a bejövõ adatokra vagyunk kíván
 	\label{fig:hk}
 \end{figure}
 
-
-
-\subsection{Viking}
-\cite{bib:viking} Itt egyértelmûen a térkép feletti pozíción van a hangsúly, jobb oldalt néhány mûszer, illetve a fontosabb adatok számokkal
-
-
-\begin{figure}[!ht]
-	\centering
-	\resizebox{10cm}{!}{
-		\includegraphics{figures/viking.png}}
-	\caption{Viking}
-	\label{fig:viking}
-\end{figure}
