@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.26)  25 NOV 2013 23:11
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.26)  26 NOV 2013 00:04
 entering extended mode
 **diploma.tex
 (C:\Users\bojtip\Desktop\UAV\doksi\TEX\diploma.tex
@@ -417,9 +417,12 @@ LaTeX Warning: Label `fig:sys' multiply defined.
 
 LaTeX Warning: Label `fig:ardu_plan' multiply defined.
 
-) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\tervezes.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\kivitelezes.aux)
-(C:\Users\bojtip\Desktop\UAV\doksi\TEX\ertekeles.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter4.aux)
-(C:\Users\bojtip\Desktop\UAV\doksi\TEX\appendices.aux))
+) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\tervezes.aux
+
+LaTeX Warning: Label `tab:up' multiply defined.
+
+) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\kivitelezes.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\ertekeles.aux)
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter4.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\appendices.aux))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 143.
 LaTeX Font Info:    ... okay on input line 143.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 143.
@@ -482,7 +485,7 @@ LaTeX Info: Redefining \nameref on input line 143.
 LaTeX Info: Redefining \cal on input line 586.
 LaTeX Info: Redefining \mit on input line 587.
 ) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\titlepage.tex
-<figures/BMElogo.png, id=143, 975.645pt x 273.02pt>
+<figures/BMElogo.png, id=147, 975.645pt x 273.02pt>
 File: figures/BMElogo.png Graphic file (type png)
  <use figures/BMElogo.png>
 Package pdftex.def Info: figures/BMElogo.png used on input line 6.
@@ -505,7 +508,7 @@ sers\bojtip\Desktop\UAV\doksi\TEX\diploma.tocpdfTeX warning (ext4): destination 
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.52 ...mberline {3.5}Soros port}{24}{section.3.5}
+l.52 ...gnosztikai k\'eperny\H o}{25}{section.3.4}
                                                    [1
 
 
@@ -550,7 +553,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 9.
 
-<figures/orca.png, id=220, 415.5525pt x 235.63031pt>
+<figures/orca.png, id=225, 415.5525pt x 235.63031pt>
 File: figures/orca.png Graphic file (type png)
  <use figures/orca.png>
 Package pdftex.def Info: figures/orca.png used on input line 16.
@@ -564,37 +567,37 @@ Package pdftex.def Info: figures/orca.png used on input line 16.
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 22.
 
-<figures/sys.png, id=227, 6441.06375pt x 4899.30376pt>
+<figures/sys.png, id=232, 6441.06375pt x 4899.30376pt>
 File: figures/sys.png Graphic file (type png)
  <use figures/sys.png>
 Package pdftex.def Info: figures/sys.png used on input line 37.
 (pdftex.def)             Requested size: 6441.04814pt x 4899.29187pt.
- [8 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/orca.png>] <figures/xbee.png, id=246, 328.97906pt x 254.45062pt>
+ [8 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/orca.png>] <figures/xbee.png, id=251, 328.97906pt x 254.45062pt>
 File: figures/xbee.png Graphic file (type png)
  <use figures/xbee.png>
 Package pdftex.def Info: figures/xbee.png used on input line 62.
 (pdftex.def)             Requested size: 328.97826pt x 254.45pt.
  [9 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/sys.png>] [10 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/xbee.png
 >]
-<figures/ardu.png, id=267, 752.8125pt x 420.06938pt>
+<figures/ardu.png, id=272, 752.8125pt x 420.06938pt>
 File: figures/ardu.png Graphic file (type png)
  <use figures/ardu.png>
 Package pdftex.def Info: figures/ardu.png used on input line 102.
 (pdftex.def)             Requested size: 752.81065pt x 420.06836pt.
 
-<figures/ardu_plan.png, id=268, 531.78674pt x 119.84775pt>
+<figures/ardu_plan.png, id=273, 531.78674pt x 119.84775pt>
 File: figures/ardu_plan.png Graphic file (type png)
  <use figures/ardu_plan.png>
 Package pdftex.def Info: figures/ardu_plan.png used on input line 115.
 (pdftex.def)             Requested size: 531.78545pt x 119.84744pt.
- [11 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/ardu.png>] <figures/ardu_conn.png, id=277, 205.36725pt x 45.771pt>
+ [11 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/ardu.png>] <figures/ardu_conn.png, id=282, 205.36725pt x 45.771pt>
 File: figures/ardu_conn.png Graphic file (type png)
  <use figures/ardu_conn.png>
 Package pdftex.def Info: figures/ardu_conn.png used on input line 127.
 (pdftex.def)             Requested size: 205.36674pt x 45.77087pt.
 
 [12 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/ardu_plan.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/ardu_co
-nn.png>] <figures/paparazzi.png, id=292, 794.97pt x 612.75734pt>
+nn.png>] <figures/paparazzi.png, id=297, 794.97pt x 612.75734pt>
 File: figures/paparazzi.png Graphic file (type png)
  <use figures/paparazzi.png>
 Package pdftex.def Info: figures/paparazzi.png used on input line 168.
@@ -603,47 +606,47 @@ Package pdftex.def Info: figures/paparazzi.png used on input line 168.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[13] <figures/micropilot.png, id=303, 758.835pt x 474.27188pt>
+[13] <figures/micropilot.png, id=308, 758.835pt x 474.27188pt>
 File: figures/micropilot.png Graphic file (type png)
  <use figures/micropilot.png>
 Package pdftex.def Info: figures/micropilot.png used on input line 190.
 (pdftex.def)             Requested size: 758.83316pt x 474.27072pt.
  [14 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/paparazzi.png>] [15 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/m
 icropilot.png>]
-<figures/openpilot.png, id=325, 1156.32pt x 650.43pt>
+<figures/openpilot.png, id=330, 977.45175pt x 518.53725pt>
 File: figures/openpilot.png Graphic file (type png)
  <use figures/openpilot.png>
 Package pdftex.def Info: figures/openpilot.png used on input line 253.
-(pdftex.def)             Requested size: 1156.31718pt x 650.4284pt.
+(pdftex.def)             Requested size: 977.44937pt x 518.53598pt.
  [16]
-<figures/qground.png, id=337, 903.375pt x 554.07pt>
+<figures/qground.png, id=342, 903.375pt x 554.07pt>
 File: figures/qground.png Graphic file (type png)
  <use figures/qground.png>
 Package pdftex.def Info: figures/qground.png used on input line 277.
 (pdftex.def)             Requested size: 903.3728pt x 554.06865pt.
- [17 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/openpilot.png>] <figures/hk.png, id=348, 828.84656pt x 506.6428pt>
+ [17 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/openpilot.png>] <figures/hk.png, id=354, 828.84656pt x 506.6428pt>
 File: figures/hk.png Graphic file (type png)
  <use figures/hk.png>
 Package pdftex.def Info: figures/hk.png used on input line 291.
 (pdftex.def)             Requested size: 828.84453pt x 506.64157pt.
-) [18 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/qground.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/hk.png>
-]
+ [18 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/qground.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/hk.png>]
+) [19]
 (C:\Users\bojtip\Desktop\UAV\doksi\TEX\tervezes.tex
 2. fejezet.
-[19
+[20
 
 
 
-] [20]
-
-Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\H' on input line 93.
-
+] [21]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 93.
 
-[21]
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\H' on input line 93.
+
+[22]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 97.
@@ -652,7 +655,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 101.
 
-) [22] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\kivitelezes.tex
+) [23] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\kivitelezes.tex
 3. fejezet.
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
@@ -662,7 +665,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 11.
 
-<figures/fokepernyo.png, id=384, 583.58025pt x 311.36325pt>
+<figures/fokepernyo.png, id=395, 583.58025pt x 311.36325pt>
 File: figures/fokepernyo.png Graphic file (type png)
  <use figures/fokepernyo.png>
 Package pdftex.def Info: figures/fokepernyo.png used on input line 16.
@@ -672,12 +675,12 @@ Package pdftex.def Info: figures/fokepernyo.png used on input line 16.
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 21.
 
-<figures/tervkepernyo.png, id=385, 585.98924pt x 314.3745pt>
+<figures/tervkepernyo.png, id=396, 585.98924pt x 314.3745pt>
 File: figures/tervkepernyo.png Graphic file (type png)
  <use figures/tervkepernyo.png>
 Package pdftex.def Info: figures/tervkepernyo.png used on input line 26.
 (pdftex.def)             Requested size: 585.98781pt x 314.37372pt.
- [23
+ [24
 
 
 
@@ -686,20 +689,20 @@ Package pdftex.def Info: figures/tervkepernyo.png used on input line 26.
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 31.
 
-<figures/comnull.png, id=394, 416.30531pt x 362.10281pt>
+<figures/comnull.png, id=406, 416.30531pt x 362.10281pt>
 File: figures/comnull.png Graphic file (type png)
  <use figures/comnull.png>
 Package pdftex.def Info: figures/comnull.png used on input line 40.
 (pdftex.def)             Requested size: 416.30429pt x 362.10191pt.
- [24 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/tervkepernyo.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/com
+ [25 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/tervkepernyo.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/com
 null.png>]
-<figures/sorossend.png, id=405, 405.01312pt x 287.57437pt>
+<figures/sorossend.png, id=416, 405.01312pt x 287.57437pt>
 File: figures/sorossend.png Graphic file (type png)
  <use figures/sorossend.png>
 Package pdftex.def Info: figures/sorossend.png used on input line 50.
 (pdftex.def)             Requested size: 405.01212pt x 287.57367pt.
 
-<figures/xvi.png, id=406, 575.14874pt x 404.26031pt>
+<figures/xvi.png, id=417, 575.14874pt x 404.26031pt>
 File: figures/xvi.png Graphic file (type png)
  <use figures/xvi.png>
 Package pdftex.def Info: figures/xvi.png used on input line 60.
@@ -708,17 +711,17 @@ LaTeX Font Info:    Try loading font information for T1+cmtt on input line 67.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-) [25 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/sorossend.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/xvi.p
-ng>]) [26]
+) [26 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/sorossend.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/xvi.p
+ng>]) [27]
 (C:\Users\bojtip\Desktop\UAV\doksi\TEX\ertekeles.tex
 4. fejezet.
-) [27
+) [28
 
 
 
 ] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter4.tex
 5. fejezet.
-) [28
+) [29
 
 
 
@@ -747,10 +750,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 205--206
 []\T1/cmr/m/n/10.95 http://wiki.openpilot.org/display/Doc/OpenPilot+Documentation, 2013. no-vem-
  []
 
-[29
+[30
 
 
-] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\appendices.tex) [30
+] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\appendices.tex) [31
 
 
 ]
@@ -768,7 +771,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 234.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 234.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 234.
 Package rerunfilecheck Info: File `diploma.out' has not changed.
-(rerunfilecheck)             Checksum: 2D1EA59F0FF27EA4BA0B119EF92EA031;2209.
+(rerunfilecheck)             Checksum: 2B6F194A83BE6E69ECF149572F3D8DA5;2288.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -776,10 +779,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 234.
  ) 
 Here is how much of TeX's memory you used:
- 10395 strings out of 493921
- 160269 string characters out of 3144872
+ 10400 strings out of 493921
+ 160337 string characters out of 3144872
  257195 words of memory out of 3000000
- 13326 multiletter control sequences out of 15000+200000
+ 13328 multiletter control sequences out of 15000+200000
  25770 words of font info for 62 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  36i,9n,39p,1317b,496s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -796,9 +799,9 @@ k> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\
 cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1095.pk><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on diploma.pdf (31 pages, 8010531 bytes).
+Output written on diploma.pdf (32 pages, 7474422 bytes).
 PDF statistics:
- 974 PDF objects out of 1000 (max. 8388607)
- 129 named destinations out of 1000 (max. 500000)
- 366 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 992 PDF objects out of 1000 (max. 8388607)
+ 132 named destinations out of 1000 (max. 500000)
+ 374 words of extra memory for PDF output out of 10000 (max. 10000000)
 
