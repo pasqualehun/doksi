@@ -6,7 +6,9 @@ Az elõzõ fejezetekben összegyûjtöttem a megvalósításhoz szükséges információkat,
 
 \section{.NET}
 C\# nyelven szükséges a program implementálása, a .NET keretrendszer szerencsére sok API\footnote{Application Programming Interface, mely elõre megírt komponensek használatához biztosít interfészt}-t biztosít, hogy megkönnyítse és gyorsítsa fejlesztés folyamatot.
-A grafikus megjelenítéshez GDI-t használhatok, illetve a soros porti kommunikációra a SerialPort osztály adta lehetõségeket. 
+A grafikus megjelenítéshez GDI-t használhatok, illetve a soros porti kommunikációra a SerialPort osztály adta lehetõségeket.
+
+Fejlesztésre a Microsoft Visual Studio 2010-es IDE-t használok .NET 4.5-tel.
 
 \section{Program mûködése}
 
@@ -18,8 +20,33 @@ A grafikus megjelenítéshez GDI-t használhatok, illetve a soros porti kommunikáci
 	\label{fig:class}
 \end{figure}
 
+\subsection{Kapcsolódás megvalósítása}
 
-\section{Fõképernyõ}
+Sorosportok, SerialUtil
+
+\subsection{Redundáns adatok feldolgozása}
+
+DataElement...
+
+
+\section{Megjelenítés}
+
+\subsection{Fõképernyõ}
+
+Láthattuk a HappyKillmore (\sectref{happy} fejezet) minden mûszert külön View-ként valósít meg, így ezt a megoldást célszerû használni. Elkészítettem a magasságmérõ, emelkedésjelzõ, sebességmérõ és iránytû UserControll-t melyet a tervezõ nézetben ``Drag and Drop'' technológiával a megfelelõ helyre húzható és könnyen beköthetõ.
+
+\subsubsection{Sebességmérõ}
+Kör megoldása
+
+\subsubsection{Iránytû}
+Rotate....
+
+
+
+Bal oldalon az elõbb létrehozott UserControllok megjelenítése és elhelyezése a \figref{fokepernyo} ábrán látható. A látható terület nagyobb részét a térkép foglalja el, melyen a repülõgép aktuális pozíciója látható, illetve a múltban fogadott koordináták tört vonallal összekötve, mely a lerepült útvonalát ábrázolja. A program minimális méretében minden mûszer látszódik, a méret módosításával ezek fix pozícióban maradnak, a jobb oldali térkép a jobb alsó sarokhoz van horgonyozva, érdemben ezen látszódik ennek a megoldásnak az elõnye, mivel ha nagyobb területen szeretné bárki is szemlélni a térképen, az kirakható teljes képernyõre.
+
+\subsubsection{Kapcsolódás}
+Folyamatosan látszódik...
 
 \begin{figure}[H]
 	\centering
@@ -29,7 +56,7 @@ A grafikus megjelenítéshez GDI-t használhatok, illetve a soros porti kommunikáci
 	\label{fig:fokepernyo}
 \end{figure}
 
-\section{Tervezés képernyõ}
+\subsection{Tervezés képernyõ}
 
 \begin{figure}[H]
 	\centering
@@ -42,7 +69,7 @@ A grafikus megjelenítéshez GDI-t használhatok, illetve a soros porti kommunikáci
 \section{Diagnosztikai képernyõ}
 
 
-\section{Soros port}
+\section{fejlesztés menete}
 A modembõl érkezõ adatokat soros porton keresztül fogadja a program, a tesztkörnyezet felállításához HIL adatok szolgáltak. A küldött log fájlokat egy programmal beolvasom és egy \cite{bib:null}null-modem segítségével sorosporton keresztül küldöm a megfelelõ portra. 
 
 \begin{figure}[!ht]

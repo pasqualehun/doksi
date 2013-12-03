@@ -58,8 +58,9 @@ Az értékek megfelelõ kiválasztása a minél nagyobb szétszóráshoz szükséges.
 
 \section{Adatok küldése}
 
-A repülõgép által lerepülendõ feladat útvonalpontjait hasonlóképpen, mint az adatok fogadását, vezeték nélküli csatornán küldjük fel. A feltöltendõ adat küldésének protokollja létfontosságú, mivel ha valamilyen hiba kerül a kommunikációba akkor az akár végzetes is lehet. Gondolok itt olyan hibára, hogy egy fordulópont koordinátája úgy kerül feltöltésre, hogy az kiesik a repülõ hatósugarából és ezzel nem számolva, lemerül a tápellátást szolgáló akkumulátor. Az ilyen hibák ellen célszerû a feltöltés protokolljába hibadetektálást építeni, hogy ezek a feldolgozás( esetlegesen felszállás ) elõtt kiderüljenek ki.
+A repülõgép által lerepülendõ feladat útvonalpontjait hasonlóképpen, mint az adatok fogadását, vezeték nélküli csatornán küldjük fel. A feltöltendõ adat küldésének protokollja létfontosságú, mivel ha valamilyen hiba kerül a kommunikációba akkor az akár végzetes is lehet. Gondolok itt olyan hibára, hogy egy fordulópont koordinátája úgy kerül feltöltésre, hogy az kiesik a repülõ hatósugarából és ezzel nem számolva, lemerül a tápellátást szolgáló akkumulátor. Az ilyen hibák ellen célszerû a feltöltés protokolljába hibadetektálást építeni, hogy ezek a feldolgozás elõtt derüljenek ki.
 
+Felmerül a kérdés, hogy a küldés mikor engedélyezett, a felszállás elõtt vagy repülés közben is? Láthattuk néhány megoldásban, hogy lehetõség van az útvonal módosítására menet közben is, ez egy jó opció, így érdemes ezt is megvalósítani. Egyetlen probléma ennek mikéntje, ha csak egy pont koordinátáját módosítjuk, akkor csak ezt vagy az összeset küldjük? Ennek egyik megoldása az lehet, hogy korlátozzuk az elõször feltöltött pontok számára és az összes pontot újra elküldjük. A módosítás feldolgozását rábízzuk a fedélzeti implementációra, hogyha egy ponton áthaladt, akkor az utólag hiába lett módosítva, a következõ fordulópont felé halad. További stratégiák is elképzelhetõek, de a további fejezetekben taglaltak miatt, ezt érdemes választani.
 
 \subsection{Protokoll}
 
@@ -70,14 +71,16 @@ Több megoldás is lehetséges a fordulópontok feltöltésére:
 \end{itemize}
 
 
-Az elsõ megoldásban rögzítenénk a fordulópontok maximális számát. Mely azt eredményezné, hogy egy csomagban el lehetne küldeni az egész lerepülendõ feladatot. Ha egy pont koordinátájának ábrázolására elég 2*4 byte, így ha feltételezünk egy MAXPOINT byte-os csomagot, akkor abba beleférne kb. MAXPOINT darab. Egy csomag állna egy fejlécbõl, a feltöltendõ pontok számából, a pontokból, és egy checkszámból. 
-
-Másik lehetõségnél N db-t lehetne feltölteni: egy csomag szerkezete: fejléc, küldendõ pontok száma, aktuális pont sorszáma, koordinátái, checkszám. Ha a  küldendõ pontok száma és az aktuális pont sorszáma megegyezik és megérkezett minden csomag akkor ACK-val válaszol ha kész a feltöltés. 
+Az elsõ megoldásban rögzítenénk a fordulópontok maximális számát. Mely azt eredményezné, hogy egy csomagban el lehetne küldeni az egész lerepülendõ feladatot. Ha egy pont koordinátájának ábrázolására elég 2*4 byte, így ha feltételezünk egy 10 pontot tartalmazó (10*2*4 byte adat) csomagot, akkor annak mérete fejléccel (3 bájt), checksum mezõvel (2 bájt) 79 bájt. Ehhez hozzájönne még a pontok száma, mely a fogadó oldali feldolgozást segítené, ennek mérete 1 bájt.
 
 
-Mivel az eddig használt megoldásban a kódba ,,bele volt égetve'' az útvonalterv, mely 5-6 pontot tartalmazott, az elsõ megoldás tûnik kedvezõbbnek. Fogadó oldalon is könnyebb egy ilyen lehetõségre felkészíteni. Ha esetlegesen a jövõben több fordulópontont feltöltésére lesz igény, az is megoldható kis módosítással.
+Másik lehetõségnél bármennyit (N db) lehetne feltölteni: egy csomag szerkezete: fejléc, küldendõ pontok száma, aktuális pont sorszáma, koordinátái, checksum. Ha a  küldendõ pontok száma és az aktuális pont sorszáma megegyezik és megérkezett minden csomag akkor ACK-val válaszol ha kész a feltöltés. Ez hibakezelés szempontjából kedvezõbb, mivel ha egy pont sorszáma nem egyezik meg az elvárttal, akkor újraküldés kérésével elég csak az adott pont újraküldésével terhelni a csatornát.
 
-A modem is duplikált, így a 2 soros portra csatlakoztatott modemmel redundánsan küldjük el a csomagot. TODO TODO??? Ha a csomag sértetlenül megérkezett, ACK jelzéssel válaszol.
+Mivel az eddig használt megoldásban a kódba ,,bele volt égetve'' az útvonalterv, mely 5-6 pontot tartalmazott, az elsõ megoldás tûnik kedvezõbbnek. Fogadó oldalon is könnyebb egy ilyen lehetõségre felkészíteni. Ha esetlegesen a jövõben több fordulópontont feltöltésére lesz igény, az is megoldható módosításokkal.
+
+A feltöltés során mindkettõ csatlakoztatott modem segítségével redundánsan küldjük el az elõállított csomagot. Ha a csomag sértetlenül megérkezett, ACK jelzéssel válaszolnak, melyet fogadunk és visszajelezzük a kezelõnek.
+
+Egy 80 bájtos csomag tartalma:
 \begin{table}
 	\begin{center}
 			\begin{tabular}{| l | l | l | l |l |}
@@ -104,17 +107,19 @@ A modem is duplikált, így a 2 soros portra csatlakoztatott modemmel redundánsan 
 	\label{tab:up}
 \end{table}
 
+Felmerülhet a kérdés, hogy a feltöltés ezzel a protokollal elég hibatûrõ-e, mivel a fogadás protokollja is hasonlóan van megoldva, így elégségesnek tûnik. Mivel ha a küldés megfelelõen lezajlott, kapunk visszajelzést, ha nem akkor lehetõség van az újbóli elküldésre.
+
 \section{Grafikus felület}
 
 Az elõzõ fejezetben ismertetett grafikus felületekbõl levonva a következtetéseket, nyilvánvaló, hogy a GUI kialakításában fontos a repülõgép aktuális pozíciójának térképen való mutatása, az repülési állapot könnyen értelmezhetõ megjelenítése, illetve az esetlegesen elõforduló problémák feltûnõ jelzése.
 
 \subsection{Fõképernyõ}
 
-A fõképernyõn látható lesz a repülõgép aktuális pozíciója és iránya. A pozicionálást segítendõ, egy térkép lesz egy repülõgép ikon hátterében. Ez a rész a képernyõ kb. 2/3-át fogja elfoglalni. Az oldalsó sávban a ``Glass Cockpit'' kerül kialakításra, ez egy mûhorizont, mely a gép által küldött orientációs adatokból az operátor számára informatívan ábrázolja a repülési állapotot. Ez a nézet tartalmazza még a gép aktuális sebességét, irányát, melyet egy iránytû segítségével láthat. Valószínûleg ez a képernyõ lesz legnagyobb százalékban használva, így a kritikus hibákról itt kell feltûnõ értesítést adni.
+A fõképernyõn látható lesz a repülõgép aktuális pozíciója és iránya. A pozicionálást segítendõ, egy térkép lesz egy repülõgép ikon hátterében. Ez a rész a képernyõ kb. 2/3-át fogja elfoglalni. Az oldalsó sávban a ``Glass Cockpit'' kerül kialakításra, ez a nézet tartalmazza a gép aktuális sebességét, iránytû segítségével irányát, magasságát, emelkedésének sebességét. Valószínûleg ez a képernyõ lesz legnagyobb százalékban használva, így a kritikus hibákról itt kell feltûnõ értesítést adni. Melyet a háttérben dolgozó hibadetektáló algoritmus vált ki. Az értesítés egy felugró ablak lenne, mely tartalmazza, mely érték hibájából keletkezett.
 
 \subsection{Tervezés képernyõ}
 
-Ezen a képernyõn a felhasználó kijelölheti a lerepülendõ útvonalhoz tartozó fordulópontokat, melyet csatlakozás után aszinkron módon feltölthet a repülõre. Mivel a kommunikációs protokoll MAXPOINT pontot enged meg, így ennél többet itt ki sem jelölhet, a lerakott pontok helyét a megszokott Google Maps-hoz hasonló módon hosszan kattintva átrakhatónak kell lennie, illetve köztes pontoknak törölhetõeknek kell lenniük.
+Ezen a képernyõn a felhasználó kijelölheti a lerepülendõ útvonalhoz tartozó fordulópontokat, melyet csatlakozás után aszinkron módon feltölthet a repülõre. Mivel a kommunikációs protokoll 10 pontot enged meg, így ennél többet itt ki sem jelölhet, a lerakott pontok helyét a megszokott Google Maps-hoz hasonló módon hosszan kattintva átrakhatónak kell lennie, illetve köztes pontoknak törölhetõeknek kell lenniük. Láthattuk, hogy érdemes a kijelölt útvonal hosszáról tájékoztatni a felhasználót, így ez egy hasznos funkció.
 
 \subsection{Diagnosztikai képernyõ}
 
@@ -128,7 +133,7 @@ A 2 porton érkezõ dekódolt értékek látszódnának 2 oszlopban, mellettük egy hibaé
 \end{itemize}
 
 Ezek feldolgozására 2 FIFO sort kell alkalmazni, melyek visszamenõleg tárolják a beérkezõ értékeket. Ez azért szükséges, mivel így a túlságosan kiugró értékeket detektálni lehet, illetve, ha az egész sorban ugyanazok az értékek vannak, gyanús a beragadás esélye.
-A harmadik esetben sajnos nem lehetséges a ``jó'' kiválasztása, mivel nem tudjuk, melyik modembõl érkezett adat a megfelelõ. Ezt csak háromszorozással és többségi szavazással lehetne megoldani.
+A harmadik esetben sajnos nem lehetséges a ``jó'' kiválasztása, mivel nem tudjuk, melyik modembõl érkezett adat a megfelelõ. Ezt csak háromszorozással és többségi szavazással lehetne megoldani. Így a kettõ érték átlagát lehet csak felhasználni.
 
 \subsection{Terminál képernyõ}
 
