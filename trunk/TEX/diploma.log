@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.26)  3 DEC 2013 12:46
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.26)  4 DEC 2013 00:28
 entering extended mode
 **diploma.tex
 (C:\Users\bojtip\Desktop\UAV\doksi\TEX\diploma.tex
@@ -632,7 +632,7 @@ Package pdftex.def Info: figures/micropilot.png used on input line 241.
 (pdftex.def)             Requested size: 758.83316pt x 474.27072pt.
 
 [17 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/micropilot.png>]
-<figures/openpilot.png, id=406, 977.45175pt x 518.53725pt>
+<figures/openpilot.png, id=405, 977.45175pt x 518.53725pt>
 File: figures/openpilot.png Graphic file (type png)
  <use figures/openpilot.png>
 Package pdftex.def Info: figures/openpilot.png used on input line 283.
@@ -656,13 +656,13 @@ Overfull \hbox (14.1732pt too wide) in paragraph at lines 329--339
 
 ) [21] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\tervezes.tex
 2. fejezet.
-<figures/downprot.png, id=444, 693.792pt x 914.2155pt>
+<figures/downprot.png, id=444, 681.14474pt x 1064.778pt>
 File: figures/downprot.png Graphic file (type png)
  <use figures/downprot.png>
 Package pdftex.def Info: figures/downprot.png used on input line 19.
-(pdftex.def)             Requested size: 693.7903pt x 914.21327pt.
+(pdftex.def)             Requested size: 681.14308pt x 1064.7754pt.
 
-Overfull \hbox (59.3634pt too wide) in paragraph at lines 17--20
+Overfull \hbox (2.43181pt too wide) in paragraph at lines 17--20
 []|  [] 
  []
 
@@ -671,7 +671,7 @@ Overfull \hbox (59.3634pt too wide) in paragraph at lines 17--20
 
 
 ]
-Overfull \vbox (53.30418pt too high) has occurred while \output is active []
+Overfull \vbox (59.44225pt too high) has occurred while \output is active []
 
  [23 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/downprot.png>] [24]
 
@@ -697,23 +697,19 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 
 [26]) [27] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\kivitelezes.tex
 3. fejezet.
-
-Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\H' on input line 8.
-
 <figures/classdiagram.png, id=481, 505.28775pt x 266.1945pt>
 File: figures/classdiagram.png Graphic file (type png)
  <use figures/classdiagram.png>
-Package pdftex.def Info: figures/classdiagram.png used on input line 13.
+Package pdftex.def Info: figures/classdiagram.png used on input line 15.
 (pdftex.def)             Requested size: 505.28651pt x 266.19385pt.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\H' on input line 29.
+(hyperref)                removing `\H' on input line 31.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\H' on input line 29.
+(hyperref)                removing `\H' on input line 31.
 
 [28
 
@@ -723,48 +719,48 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 <figures/fokepernyo.png, id=490, 583.58025pt x 311.36325pt>
 File: figures/fokepernyo.png Graphic file (type png)
  <use figures/fokepernyo.png>
-Package pdftex.def Info: figures/fokepernyo.png used on input line 50.
+Package pdftex.def Info: figures/fokepernyo.png used on input line 52.
 (pdftex.def)             Requested size: 583.57881pt x 311.36249pt.
-
+ [29]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\H' on input line 55.
+(hyperref)                removing `\H' on input line 57.
 
-<figures/tervkepernyo.png, id=491, 585.98924pt x 314.3745pt>
+<figures/tervkepernyo.png, id=499, 585.98924pt x 314.3745pt>
 File: figures/tervkepernyo.png Graphic file (type png)
  <use figures/tervkepernyo.png>
-Package pdftex.def Info: figures/tervkepernyo.png used on input line 60.
+Package pdftex.def Info: figures/tervkepernyo.png used on input line 62.
 (pdftex.def)             Requested size: 585.98781pt x 314.37372pt.
- [29 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/fokepernyo.png>]
+
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\H' on input line 65.
+(hyperref)                removing `\H' on input line 67.
 
-<figures/comnull.png, id=502, 416.30531pt x 362.10281pt>
+<figures/comnull.png, id=501, 416.30531pt x 362.10281pt>
 File: figures/comnull.png Graphic file (type png)
  <use figures/comnull.png>
-Package pdftex.def Info: figures/comnull.png used on input line 74.
+Package pdftex.def Info: figures/comnull.png used on input line 76.
 (pdftex.def)             Requested size: 416.30429pt x 362.10191pt.
- [30 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/tervkepernyo.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/com
-null.png>]
-<figures/sorossend.png, id=513, 405.01312pt x 287.57437pt>
+
+<figures/sorossend.png, id=502, 405.01312pt x 287.57437pt>
 File: figures/sorossend.png Graphic file (type png)
  <use figures/sorossend.png>
-Package pdftex.def Info: figures/sorossend.png used on input line 84.
+Package pdftex.def Info: figures/sorossend.png used on input line 86.
 (pdftex.def)             Requested size: 405.01212pt x 287.57367pt.
-
-<figures/xvi.png, id=514, 575.14874pt x 404.26031pt>
+ [30 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/fokepernyo.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/tervk
+epernyo.png>]
+<figures/xvi.png, id=512, 575.14874pt x 404.26031pt>
 File: figures/xvi.png Graphic file (type png)
  <use figures/xvi.png>
-Package pdftex.def Info: figures/xvi.png used on input line 94.
+Package pdftex.def Info: figures/xvi.png used on input line 96.
 (pdftex.def)             Requested size: 575.14734pt x 404.25932pt.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 101.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 103.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-) [31 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/sorossend.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/xvi.p
-ng>]) [32]
-(C:\Users\bojtip\Desktop\UAV\doksi\TEX\ertekeles.tex
+) [31 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/comnull.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/sorosse
+nd.png>]) [32 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/xvi.png>] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\ertekeles.
+tex
 4. fejezet.
 ) [33
 
@@ -827,7 +823,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 241.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 241.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 241.
 Package rerunfilecheck Info: File `diploma.out' has not changed.
-(rerunfilecheck)             Checksum: 7586710D94E99A6EE6E8784CA3B89912;3227.
+(rerunfilecheck)             Checksum: 72C5D03C2C82D11731D457DF8686DB48;3232.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -841,7 +837,7 @@ Here is how much of TeX's memory you used:
  13563 multiletter control sequences out of 15000+200000
  25770 words of font info for 62 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 39i,9n,77p,1330b,522s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,9n,77p,1333b,522s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1095.pk> <C:\Users\bojtip\AppData\Lo
 cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti0900.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour
 \jknappen\ec\dpi600\ecrm0900.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0600.p
@@ -853,11 +849,10 @@ cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1095.pk> <C:\Users\bojtip\
 \jknappen\ec\dpi600\eccc1440.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2074.p
 k> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1095.pk> <C:\Users\bojtip\AppData\Lo
 cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1095.pk><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on diploma.pdf (38 pages, 7575783 bytes).
+onts/cm/cmsy10.pfb>
+Output written on diploma.pdf (38 pages, 7582638 bytes).
 PDF statistics:
- 1122 PDF objects out of 1200 (max. 8388607)
+ 1131 PDF objects out of 1200 (max. 8388607)
  155 named destinations out of 1000 (max. 500000)
  472 words of extra memory for PDF output out of 10000 (max. 10000000)
 

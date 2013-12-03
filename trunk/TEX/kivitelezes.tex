@@ -5,11 +5,13 @@
 Az elõzõ fejezetekben összegyûjtöttem a megvalósításhoz szükséges információkat, tervezési lépéseket. Ebben a fejezetben a konkrét implementációt fogom bemutatni.
 
 
-\section{Program mûködése}
+\section{Program felépítése}
+
+A \figref{class} ábrán láthatóak a programban használt osztályok. A \textit{Program} statikus osztály a main függvényt, mint belépési pontot tartalmazza. Ez példányosítja az \textit{Instruments} osztályt, mely a különbözõ \textit{View}-ok megjelenítéséért felelõs.
 
 \begin{figure}[H]
 	\centering
-	\resizebox{10cm}{!}{
+	\resizebox{13cm}{!}{
 		\includegraphics{figures/classdiagram.png}}
 	\caption{}
 	\label{fig:class}

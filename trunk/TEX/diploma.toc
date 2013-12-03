@@ -24,7 +24,7 @@
 \select@language {magyar} \contentsline {subsubsection}{F\H ok\'eperny\H o}{16}{section*.19}
 \select@language {magyar} \contentsline {subsubsection}{\"Osszegz\'es}{17}{section*.21}
 \select@language {magyar} \contentsline {subsection}{\numberline {1.4.3}MicroPilot Horizon}{17}{subsection.1.4.3}
-\select@language {magyar} \contentsline {subsubsection}{F\H ok\'eperny\H o}{17}{section*.23}
+\select@language {magyar} \contentsline {subsubsection}{F\H ok\'eperny\H o}{18}{section*.23}
 \select@language {magyar} \contentsline {subsubsection}{Tervez\H o k\'eperny\H o}{18}{section*.24}
 \select@language {magyar} \contentsline {subsubsection}{\"Osszegz\'es}{18}{section*.25}
 \select@language {magyar} \contentsline {subsection}{\numberline {1.4.4}OpenPilot}{18}{subsection.1.4.4}
@@ -32,7 +32,7 @@
 \select@language {magyar} \contentsline {subsection}{\numberline {1.4.5}QGroundControl}{19}{subsection.1.4.5}
 \select@language {magyar} \contentsline {subsubsection}{F\H ok\'eperny\H o}{19}{section*.28}
 \select@language {magyar} \contentsline {subsection}{\numberline {1.4.6}HappyKillmore}{20}{subsection.1.4.6}
-\select@language {magyar} \contentsline {subsection}{\numberline {1.4.7}\"Osszehasonl\IeC {\'\i }t\'as}{20}{subsection.1.4.7}
+\select@language {magyar} \contentsline {subsection}{\numberline {1.4.7}\"Osszehasonl\IeC {\'\i }t\'as}{21}{subsection.1.4.7}
 \select@language {magyar} \contentsline {chapter}{\numberline {2}Tervez\'es}{22}{chapter.2}
 \select@language {magyar} \contentsline {section}{\numberline {2.1}Kommunik\'aci\'o}{22}{section.2.1}
 \select@language {magyar} \contentsline {section}{\numberline {2.2}Adatok fogad\'asa}{22}{section.2.2}
@@ -40,7 +40,7 @@
 \select@language {magyar} \contentsline {section}{\numberline {2.3}Adatok k\"uld\'ese}{24}{section.2.3}
 \select@language {magyar} \contentsline {subsection}{\numberline {2.3.1}Protokoll}{24}{subsection.2.3.1}
 \select@language {magyar} \contentsline {section}{\numberline {2.4}Grafikus fel\"ulet}{25}{section.2.4}
-\select@language {magyar} \contentsline {subsection}{\numberline {2.4.1}F\H ok\'eperny\H o}{25}{subsection.2.4.1}
+\select@language {magyar} \contentsline {subsection}{\numberline {2.4.1}F\H ok\'eperny\H o}{26}{subsection.2.4.1}
 \select@language {magyar} \contentsline {subsection}{\numberline {2.4.2}Tervez\'es k\'eperny\H o}{26}{subsection.2.4.2}
 \select@language {magyar} \contentsline {subsection}{\numberline {2.4.3}Diagnosztikai k\'eperny\H o}{26}{subsection.2.4.3}
 \select@language {magyar} \contentsline {subsubsection}{Hibat\IeC {\'\i }pusok}{26}{section*.34}
@@ -49,11 +49,11 @@
 \select@language {magyar} \contentsline {subsection}{\numberline {2.5.1}.NET}{27}{subsection.2.5.1}
 \select@language {magyar} \contentsline {subsection}{\numberline {2.5.2}GDI+}{27}{subsection.2.5.2}
 \select@language {magyar} \contentsline {chapter}{\numberline {3}Megval\'os\IeC {\'\i }t\'as}{28}{chapter.3}
-\select@language {magyar} \contentsline {section}{\numberline {3.1}Program m\H uk\"od\'ese}{28}{section.3.1}
+\select@language {magyar} \contentsline {section}{\numberline {3.1}Program fel\'ep\IeC {\'\i }t\'ese}{28}{section.3.1}
 \select@language {magyar} \contentsline {subsection}{\numberline {3.1.1}Kapcsol\'od\'as megval\'os\IeC {\'\i }t\'asa}{28}{subsection.3.1.1}
 \select@language {magyar} \contentsline {subsection}{\numberline {3.1.2}Redund\'ans adatok feldolgoz\'asa}{28}{subsection.3.1.2}
-\select@language {magyar} \contentsline {section}{\numberline {3.2}Megjelen\IeC {\'\i }t\'es}{28}{section.3.2}
-\select@language {magyar} \contentsline {subsection}{\numberline {3.2.1}F\H ok\'eperny\H o}{28}{subsection.3.2.1}
+\select@language {magyar} \contentsline {section}{\numberline {3.2}Megjelen\IeC {\'\i }t\'es}{29}{section.3.2}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.2.1}F\H ok\'eperny\H o}{29}{subsection.3.2.1}
 \select@language {magyar} \contentsline {subsubsection}{Sebess\'egm\'er\H o}{29}{section*.36}
 \select@language {magyar} \contentsline {subsubsection}{Ir\'anyt\H u}{29}{section*.37}
 \select@language {magyar} \contentsline {subsubsection}{Kapcsol\'od\'as}{29}{section*.38}

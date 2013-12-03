@@ -53,7 +53,7 @@ A repülõ méretébõl adódóan térbeli szeparációval nem lehetséges a megbízhatóság 
 
 \end{itemize}
 
-A központi számítógépek(ábrán zölddel jelölve 1-es 2-es) 1--1 szendvics panelen helyezkednek el, központi elemük az FCC, mely az irányításért felelõs. A navigációs (NAV) eszköz szolgáltatja a GPS-bõl érkezõ magasság és pozíció adatokat, az IMU\footnote{}-ból érkezõ orientációt, a nyomásmérõbõl a légsebesség és magasság értékeket. Ezen egy mikrokontroller elõfeldolgozást végez, így már csak a ténylegesen feldolgozandó információval kell az FCC-nek számolnia. Az FCC és a NAV közötti kommunikáció CAN buszon keresztül zajlik. Az ábrán látható S és M-mel jelölt elemek rendre a szervó motorok és a meghajtásért felelõs motorok, melyek redundáns FlexRay kommunikációs csatornán kapják az utasításokat az FCC-bõl. A CAN--FlexRay és FlexRay--CAN átalakítást a Gateway egység végzi. A szervók és motorok nem szolgálnak elég információval saját állapotukról, így ezek át vannak alakítva, hogy a FlexRay hálózatra illesztésért felelõs szabályozóelektronikájuk (Sx, Mx) megfelelõen mûködhessen. Ezekre bármilyen szabályzóalgoritmus írható, hibadiagnosztikai célokra fault detection filtert vagy Kármán szûrõ alkalmazható. A szervók mágneses enkódere a kitérésrõl, a motorok elektronikája a fogyasztásról ad információt. 
+A központi számítógépek(ábrán zölddel jelölve 1-es 2-es) 1--1 szendvics panelen helyezkednek el, központi elemük az FCC, mely az irányításért felelõs. A navigációs (NAV) eszköz szolgáltatja a GPS-bõl érkezõ magasság és pozíció adatokat, az IMU\footnote{Inertial Measurement Unit, orientáció- és gyorsulásmérõ berendezés}-ból érkezõ orientációt, a nyomásmérõbõl a légsebesség és magasság értékeket. Ezen egy mikrokontroller elõfeldolgozást végez, így már csak a ténylegesen feldolgozandó információval kell az FCC-nek számolnia. Az FCC és a NAV közötti kommunikáció CAN buszon keresztül zajlik. Az ábrán látható S és M-mel jelölt elemek rendre a szervó motorok és a meghajtásért felelõs motorok, melyek redundáns FlexRay kommunikációs csatornán kapják az utasításokat az FCC-bõl. A CAN--FlexRay és FlexRay--CAN átalakítást a Gateway egység végzi. A szervók és motorok nem szolgálnak elég információval saját állapotukról, így ezek át vannak alakítva, hogy a FlexRay hálózatra illesztésért felelõs szabályozóelektronikájuk (Sx, Mx) megfelelõen mûködhessen. Ezekre bármilyen szabályzóalgoritmus írható, hibadiagnosztikai célokra fault detection filtert vagy Kármán szûrõ alkalmazható. A szervók mágneses enkódere a kitérésrõl, a motorok elektronikája a fogyasztásról ad információt. 
 A dolgozat szempontjából a legérdekesebb egység a modem (MOD) mely az FCC-vel soros porton kommunikál.
 Hibatûrésbõl adódóan az energiaforrások is redundánsan szerepelnek, a központi számítógépek a B3 és B4-gyel jelölt akkumulátorból nyerhetnek energiát, a választást a PWR néven jelzett egység végzi. Különbözõ stratégiák választhatók az akkumulátor átkapcsolását illetõen, lehetséges mindig a legnagyobb feszültséggel operálót választani vagy egyiket lemeríteni bizonyos százalékig és ezután váltani. A B5 és B6 a motorokat hivatottak kiszolgálni, ezek a legnagyobb fogyasztásúak, így ezek kapacitása a legnagyobb. B1 és B2 biztosítja az aktuátoroknak, az hozzájuk tartozó vezérlõknek az áramforrást.
 Továbbá, mivel a repülõgép jelenleg csak távirányítással tud felszállni, így a távvezérlõ egység (RC) és a PWM-CAN átalakításért felelõs PIC is ezt a 2 akkumulátort használja. A PIC közvetlenül az szabályzó elektronikákhoz csatlakozik CAN interface-en, ez a legközvetlenebb módja a kézi irányításnak.
@@ -70,7 +70,7 @@ A kiválasztott modem kétféleképpen képes kommunikálni:
 \item AT transzparens
 \end{itemize}
 
-\textbf{API} módban egy eszköz több eszköztõl tud csomagokat venni, ha egy csomag megérkezik a küldõtõl a fogadóig, egy ACK\footnote{Acknowledgement, nyugtázó üzenet} üzenettel válaszol, ha ezt nem kapja meg, a csomagot újraküldi, lehetõség van broadcast üzenetek küldésére is, melyet minden eszköz megkap. Egy csomag többek közt tartalmazza a küldõ és a fogadó címét, az adatot és adatintegritás céljából checksum mezõjében összesítve csomag tartalmát.
+\textbf{API} módban egy eszköz több eszköztõl tud csomagokat venni, ha egy csomag megérkezik a küldõtõl a fogadóig, egy ACK\footnote{Acknowledgement, nyugtázó üzenet, melyet a fogadó küld a feladónak egy csomag sikeres vétele esetén} üzenettel válaszol, ha ezt nem kapja meg, a csomagot újraküldi, lehetõség van broadcast üzenetek küldésére is, melyet minden eszköz megkap. Egy csomag többek közt tartalmazza a küldõ és a fogadó címét, az adatot és adatintegritás céljából checksum mezõjében összesítve csomag tartalmát.
 
 
 \textbf{AT} mód egy vezeték nélküli kapcsolatot jelent 2 sorosport közt. A modem a soros portján bejövõ adatokat rádiójelekké alakítja, melyet a virtuális kapcsolat végpontja fogad és visszaalakítja soros portra. Ez pont-pont kommunikációra hivatott, egyéb topológia nem támogatott.
@@ -237,7 +237,7 @@ Egy képernyõ szolgál a navigációra és az útvonal-kijelölésre, mely szerintem nem
 A hozzá készített földi irányító egység a MicroPilot Horizon nevet viseli. 
 \begin{figure}[h]
 	\centering
-	\resizebox{10cm}{!}{ 
+	\resizebox{15cm}{!}{ 
 		\includegraphics{figures/micropilot.png}} 
 	\caption{}
 	\label{fig:micropilot}
@@ -291,7 +291,7 @@ Rengeteg beállítási lehetõséget nyújt ez a program, lelkes közösség áll mögötte,
 \cite{bib:qground} MAVLink protokollt használ a kommunikációra, a repülõgép a programon keresztül vezethetõ, ha átkapcsolás szükséges. A MAVLink kifejezetten GCS--UAV összeköttetésére lett kifejlesztve. 
 
 \subsubsection{Fõképernyõ}
-Érdekesség, hogy 3D-ban is meg tudja jeleníteni a repülõ aktuális pozícióját. A protokollnak köszönhetõen 255 jármû egyidejû kezelésére alkalmas.
+Érdekesség, hogy 3D-ben is meg tudja jeleníteni a repülõ aktuális pozícióját. A protokollnak köszönhetõen 255 jármû egyidejû kezelésére alkalmas.
 Útvonalpontok menet közben is változtathatóak.
 
 
@@ -310,7 +310,7 @@ Támogatja többek között az ArduPilot és a MAVLINK protokollokat.
 
 \begin{figure}[H]
 	\centering
-	\resizebox{10cm}{!}{
+	\resizebox{15cm}{!}{
 		\includegraphics{figures/hk.png}}
 		\caption{}
 	\label{fig:hk}
