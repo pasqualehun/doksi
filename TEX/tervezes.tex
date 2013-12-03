@@ -3,36 +3,54 @@
 %----------------------------------------------------------------------------
 \section{Kommunikáció}
 
-A kommunikáció csatornánként 2 db modem segítségével történik, a modemek egymás közt vezeték nélkül csatlakoznak, felhasználói oldalon soros portot biztosítanak. Így az elkészítendõ programnak elég csak a soros port jeleinek vételével foglalkoznia. A modemek adatátviteli sebessége változó lehet, így azt a felhasználó egy listából választhatja csatlakozás elõtt.
+A kommunikáció csatornánként 2 db modem segítségével történik, a modemek egymás közt vezeték nélkül csatlakoznak, felhasználói oldalon soros portot biztosítanak. Így az elkészítendõ programnak elég csak a soros port jeleinek vételével foglalkoznia. A modemek adatátviteli sebessége változó lehet, így azt a felhasználó egy listából választhatja csatlakozás elõtt. Átalakítóval lehetõség adatik USB-n keresztül soros port megvalósítására, így könnyen kezelhetõvé válik a periféria illesztés
 
 \section{Adatok fogadása}
 
-A redundanciából következõen külön, külön kell kezelni a 2 párhuzamos csatornán kapott adatokat. Mivel aszinkron módon érkeznek a csomagok, így kettõ tároló kell, mely a legutóbb küldötteket tárolja. 
+A redundanciából következõen külön, külön kell kezelni a 2 párhuzamos csatornán kapott adatokat. Mivel aszinkron módon érkeznek a csomagok, így kettõ tároló kell, mely a legutóbb küldötteket tárolja egy FIFO listában.
 
 \subsection{Protokoll}
 
 Az adatokat a repülõgép 2 Hz-s frekvenciával küldi, ezek csomagokban érkeznek, melyeknek a felépítése:
 
-\begin{table}[H]
-	\begin{center}
-			\begin{tabular}{| l | l | l | l |l |}
-				\hline    bájt index 	& leírás 				& típus 				& skálázás 		& offset \\ \hline
-					1 					& start 				& char(fix 'U') &   					&    						 \\ \hline
-					2 					& start 				& char(fix 'U') &   					&    						 \\ \hline
-					3						& start 				& char(fix 'T') &   					&    						 \\ \hline
-					4 					& idõ  					& uint32 				& 10000 			& 0  						 \\ \hline
-					8 					& magasság 			& uin16 				& 0x7fff/1000	&    						 \\ \hline
-					\dots 			&   						&   						&   					&    						 \\ \hline
-					TODO & északi irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
-					28 & keleti irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
-					30 & lefelé irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
-				
-					\dots &   &   &   &    \\ \hline
-				\end{tabular}
-	\end{center}
-	\caption{Fogadás protokollja}
-	\label{tab:down}
-\end{table}
+\begin{figure}[H]
+ \hspace*{-3cm}  
+	\resizebox{20cm}{!}{
+		\includegraphics{figures/downprot.png}}
+\end{figure}
+
+
+%\begin{table}[H]
+%\begin{center}
+%		\begin{tabular}{| l | l | l | l |l |}
+%			\hline    bájt index 	& leírás 				& típus & skálázás 		       & offset \\ \hline
+%				1 					& start 				& char(fix 'U') &   					       &    						 \\ \hline
+%				2 					& start 				& char(fix 'U') &   					       &    						 \\ \hline
+%				3						& start 				& char(fix 'T') &   					       &    						 \\ \hline
+%				4 					& idõ  					& uint32 				& 10000 			       & 0  						 \\ \hline
+%				8 					& magasság 			& uin16 				& 0x7fff/1000	       &    						 \\ \hline
+%				\dots 			&   						&   						&   					       &    						 \\ \hline
+%				\dots 			&   						&   						&   					       &    						 \\ \hline
+%				\dots 			&   						&   						&   					       &    						 \\ \hline
+%				\dots 			&   						&   						&   					       &    						 \\ \hline
+%				\dots 			&   						&   						&   					       &    						 \\ \hline
+%				\dots 			&   						&   						&   					       &    						 \\ \hline
+%				\dots 			&   						&   						&   					       &    						 \\ \hline
+%				\dots 			&   						&   						&   					       &    						 \\ \hline
+%				\dots 			&   						&   						&   					       &    						 \\ \hline
+%				\dots 			&   						&   						&   					       &    						 \\ \hline
+%				\dots 			&   						&   						&   					       &    						 \\ \hline
+%				\dots 			&   						&   						&   					       &    						 \\ \hline
+%				TODO & északi irány 1/2 	& unsigned short & 0x7FFF/400 &  200 \\ \hline
+%				28 & keleti irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
+%				30 & lefelé irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
+%			
+%				\dots &   &   &   &    \\ \hline
+%			\end{tabular}
+%\end{center}
+%	\caption{Fogadás protokollja}
+% \label{tab:down}
+%\end{table}
 
 A skálázás és offset képzés azért szükséges, hogy az adott szélességen (8, 16, 32 bit) minél több biten legyen ábrázolva egy érték, mivel kis változások esetén a Hamming-távolság\footnote{Bináris számok XOR képzésével kapott 1-esek száma} kicsi lenne az eredeti számábrázoláson. Ahol szükséges, ott a  visszakódolás az alábbi formában történik : \\
 $eredeti  = (nyers adat/skalazas) - offset $ \\
@@ -112,3 +130,6 @@ A 2 porton érkezõ dekódolt értékek látszódnának 2 oszlopban, mellettük egy hibaé
 Ezek feldolgozására 2 FIFO sort kell alkalmazni, melyek visszamenõleg tárolják a beérkezõ értékeket. Ez azért szükséges, mivel így a túlságosan kiugró értékeket detektálni lehet, illetve, ha az egész sorban ugyanazok az értékek vannak, gyanús a beragadás esélye.
 A harmadik esetben sajnos nem lehetséges a ``jó'' kiválasztása, mivel nem tudjuk, melyik modembõl érkezett adat a megfelelõ. Ezt csak háromszorozással és többségi szavazással lehetne megoldani.
 
+\subsection{Terminál képernyõ}
+
+Lehetõség nyílik a fogadott csomagok hexadecimális formában történõ megjelenítése, így az operátor alacsony szinten megbizonyosodhat a kapcsolat létrejöttében, mivel láthatja a csomagok felépítését. Ha a fejléc a csomag elején látszódik, akkor mûködnie kell a további dekódolásnak, melyet a többi nézet használ fel. Ha nem látna itt adatokat, akkor ellenõrizheti, hogy valóban jó portot illetve adatsebességet választott-e ki.
