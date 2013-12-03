@@ -29,17 +29,19 @@
 \BOOKMARK [2][-]{subsection.2.4.2}{Tervez\351s k\351pernyo}{section.2.4}% 29
 \BOOKMARK [2][-]{subsection.2.4.3}{Diagnosztikai k\351pernyo}{section.2.4}% 30
 \BOOKMARK [2][-]{subsection.2.4.4}{Termin\341l k\351pernyo}{section.2.4}% 31
-\BOOKMARK [0][-]{chapter.3}{Megval\363s\355t\341s}{}% 32
-\BOOKMARK [1][-]{section.3.1}{.NET}{chapter.3}% 33
-\BOOKMARK [1][-]{section.3.2}{Program muk\366d\351se}{chapter.3}% 34
-\BOOKMARK [2][-]{subsection.3.2.1}{Kapcsol\363d\341s megval\363s\355t\341sa}{section.3.2}% 35
-\BOOKMARK [2][-]{subsection.3.2.2}{Redund\341ns adatok feldolgoz\341sa}{section.3.2}% 36
-\BOOKMARK [1][-]{section.3.3}{Megjelen\355t\351s}{chapter.3}% 37
-\BOOKMARK [2][-]{subsection.3.3.1}{Fok\351pernyo}{section.3.3}% 38
-\BOOKMARK [2][-]{subsection.3.3.2}{Tervez\351s k\351pernyo}{section.3.3}% 39
-\BOOKMARK [1][-]{section.3.4}{Diagnosztikai k\351pernyo}{chapter.3}% 40
-\BOOKMARK [1][-]{section.3.5}{fejleszt\351s menete}{chapter.3}% 41
-\BOOKMARK [0][-]{chapter.4}{\311rt\351kel\351s}{}% 42
-\BOOKMARK [0][-]{chapter.5}{\326sszefoglal\341s}{}% 43
-\BOOKMARK [0][-]{appendix*.45}{F\374ggel\351k}{}% 44
-\BOOKMARK [1][-]{section.F.1}{F\374ggel\351k1}{appendix*.45}% 45
+\BOOKMARK [1][-]{section.2.5}{Haszn\341lt technol\363gi\341k}{chapter.2}% 32
+\BOOKMARK [2][-]{subsection.2.5.1}{.NET}{section.2.5}% 33
+\BOOKMARK [2][-]{subsection.2.5.2}{GDI+}{section.2.5}% 34
+\BOOKMARK [0][-]{chapter.3}{Megval\363s\355t\341s}{}% 35
+\BOOKMARK [1][-]{section.3.1}{Program muk\366d\351se}{chapter.3}% 36
+\BOOKMARK [2][-]{subsection.3.1.1}{Kapcsol\363d\341s megval\363s\355t\341sa}{section.3.1}% 37
+\BOOKMARK [2][-]{subsection.3.1.2}{Redund\341ns adatok feldolgoz\341sa}{section.3.1}% 38
+\BOOKMARK [1][-]{section.3.2}{Megjelen\355t\351s}{chapter.3}% 39
+\BOOKMARK [2][-]{subsection.3.2.1}{Fok\351pernyo}{section.3.2}% 40
+\BOOKMARK [2][-]{subsection.3.2.2}{Tervez\351s k\351pernyo}{section.3.2}% 41
+\BOOKMARK [1][-]{section.3.3}{Diagnosztikai k\351pernyo}{chapter.3}% 42
+\BOOKMARK [1][-]{section.3.4}{fejleszt\351s menete}{chapter.3}% 43
+\BOOKMARK [0][-]{chapter.4}{\311rt\351kel\351s}{}% 44
+\BOOKMARK [0][-]{chapter.5}{\326sszefoglal\341s}{}% 45
+\BOOKMARK [0][-]{appendix*.45}{F\374ggel\351k}{}% 46
+\BOOKMARK [1][-]{section.F.1}{F\374ggel\351k1}{appendix*.45}% 47

@@ -138,3 +138,14 @@ A harmadik esetben sajnos nem lehetséges a ``jó'' kiválasztása, mivel nem tudjuk
 \subsection{Terminál képernyõ}
 
 Lehetõség nyílik a fogadott csomagok hexadecimális formában történõ megjelenítése, így az operátor alacsony szinten megbizonyosodhat a kapcsolat létrejöttében, mivel láthatja a csomagok felépítését. Ha a fejléc a csomag elején látszódik, akkor mûködnie kell a további dekódolásnak, melyet a többi nézet használ fel. Ha nem látna itt adatokat, akkor ellenõrizheti, hogy valóban jó portot illetve adatsebességet választott-e ki.
+
+\section{Használt technológiák}
+
+\subsection{.NET}
+C\# nyelven szükséges a program implementálása, a .NET keretrendszer szerencsére sok API\footnote{Application Programming Interface, mely elõre megírt komponensek használatához biztosít interfészt}-t biztosít, hogy megkönnyítse és gyorsítsa fejlesztés folyamatot.
+A grafikus megjelenítéshez GDI+-t használhatok, illetve a soros porti kommunikációra a SerialPort osztály adta lehetõségeket.
+
+Fejlesztésre a Microsoft Visual Studio 2010-es IDE-t használok .NET 4.5-tel.
+
+\subsection{GDI+}
+\cite{bib:gdi} A GDI (Graphic Device Interface) egy Windows API, célja,az alkalmazások számára grafikus támogatást biztosítani. Olyan eljárások és függvények gyûjteménye, amelyek nagyban megkönnyítik a grafikus elemek (görbék, alakzatok, BMP képek) megjelenítését, szövegek kiíratását. A GDI+ ennek továbbfejlesztett változata, mely képes ezen elemek manipulációjához alkalmas mátrixtranszfomációkat kezelni. Továbbá egyéb képformátumok kezelésével bõvítették.
