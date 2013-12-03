@@ -88,7 +88,7 @@ A kiválasztott modem kétféleképpen képes kommunikálni:
 \label{sect:prot}
 Az IEEE\footnote{Institute of Electrical and Electronics Engineers}-nek egy csoportja a 802.15 mely a WPAN\footnote{Wireless Personal Area Network} hálózatok szabványosításával foglalkozik, 7 alcsoportja közül a 802.15.4 \cite{bib:ieee} a Low Rate WPAN nevet viseli. Ez a szabvány a kis fogyasztású, olcsó és alacsony sávszélességû vezeték nélküli kommunikációval foglalkozik. Az OSI modell elsõ (fizikai) és második (adatkapcsolati) rétegét valósítja meg, erre építkezik a ZigBee \cite{bib:zigbee} cég által specifikált protokoll verem.
 
-A fizikai réteg feladata fizikai összeköttetést teremteni a hardware-rel, specifikálja, mûködési feszültséget, szabályozza a használandó frekvenciát, ami Európában 868-868.6 MHz, Észak-Amerikában 902-928 MHz, világszerte 2.4-2.4835 GHz-es ISM\footnote{Industrial, Scientific and Medical (ISM) sávok, melyek szabadon használhatóak ipari, tudományos és orvosi területen } tartományban helyezkedik el. Továbbá átjárást biztosít a felette lévõ adatkapcsolati rétegnek, melynek feladata a hibamentes átvitel biztosítása 2 pont között hibajavítással/jelzéssel és forgalomszabályzással. A biteket keretekbe ágyazva küldi a felsõbb rétegnek, maximális mérete 127 byte melynek formátuma a IEEE 802.15.4-2011-ben van specifikálva.
+A fizikai réteg feladata fizikai összeköttetést teremteni a hardware-rel, specifikálja, mûködési feszültséget, szabályozza a használandó frekvenciát, ami Európában 868-868.6 MHz, Észak-Amerikában 902-928 MHz, világszerte 2.4-2.4835 GHz-es ISM\footnote{Industrial, Scientific and Medical (ISM) sávok, melyek szabadon használhatóak ipari, tudományos és orvosi területen } tartományban helyezkedik el. Továbbá átjárást biztosít a felette lévõ adatkapcsolati rétegnek, melynek feladata a hibamentes átvitel biztosítása 2 pont között hibajavítással/jelzéssel és forgalomszabályzással. A biteket keretekbe ágyazva küldi a felsõbb rétegnek, maximális mérete 127 byte melynek formátuma a IEEE 802.15.4-2011-ben van specifikálva, 16 bites CRC ellenõrzõ kóddal zárul.
 
 \begin{figure}[h]
 	\centering
@@ -102,15 +102,13 @@ A fizikai réteg feladata fizikai összeköttetést teremteni a hardware-rel, specif
 
 A Zigbee 2 újabb réteget helyez az eddigiek fölé, a hálózati és az alkalmazásit, melybe belekerült a ZDOs\footnote{ZigBee Device Objects}, mely az eszközök csatlakozásáért, felderítéséért és biztonságáért felelõs.
 
+Alacsony fogyasztása abban rejlik, hogy alvó állapotból 30 ms alatt aktívra tud váltani, így gyakran tud alacsony fogyasztású állapotban lenni, jelentõs késleltetés nélkül. Nagy hatótávolságot a 868 MHz-es verziónál a BPSK \cite{bib:network} (Binary Phase-Shift Keying) és Direct Sequence Spread Spectrum (DSSS) technológiák keresztezésével érték el, mely nagy jel-zaj viszonyt biztosít. Az BPSK lényege, a 0-1 és 1-0 átmenetet a vivõfrekvencia 180 fokos fordításával reprezentálja, mely jelentõs zajt képes elviselni, a DSSS egy bitet 4 biten reprezentál, igaz ez csökkenti a sávszélességet, de robosztusabbá teszi az információt. A megbízhatóságot Carrier Sense Multiple Access Collision Avoidance (CSMA/CA) segítségével érték el, mielõtt egy állomás adna, megnézi hogy a csatornán zajlik-e kommunikáció, ha igen akkor különbözõ stratégiák segítségével vár az üzenet küldésének újbóli próbálásával.
+
+Az XBee a Zigbee protokollt megvalósító bejegyzett márkaneve, melynek tulajdonosa a Digi cég.
+
 \section{Saját feladat}
 
-Feladatom közé tartozik a kapcsolat felépítése a repülõgép és a földi állomás között, melynek során meg kell oldanom a soros porti kommunikáció létrehozását és a független adatok feldolgozását, kijelzését. Ahhoz hogy a kialakítandó megjelenítés felhasználóbarát legyen, több nézeti oldal szükséges: 
-\begin{itemize}
-\item Egy áttekintõ képernyõ, mely a legfontosabb adatokat jeleníti meg a repülõvel kapcsolatban ( pozíció, sebesség, irány)
-\item Egy tervezõ modul, amin a lerepülendõ útvonalhoz tartozó fordulópontok kijelölése lehetséges
-\item Egy diagnosztikai nézet, melyen az alacsonyabb prioritású adatok tekinthetõek át
-\end{itemize}
-
+Feladatom közé tartozik a kapcsolat kiépítése a repülõgép és a földi állomás között, melynek során meg kell oldanom a soros porti kommunikáció létrehozását majd a fogadott független adatok feldolgozását és kijelzését.
 
 \subsection{Mi a földi irányító állomás feladata?} 
 
@@ -126,7 +124,7 @@ Egy UAV vezetéséhez elengedhetetlen egy bázis, ahonnan a földi személyzet irányí
 
 \subsubsection{Modem kommunikáció}
 
-A modem soros port interface-t biztosít, egy USB-RS232 átalakítóval USB porton keresztül megoldható egy olyan számítógéppel is az összeköttetés, mely nem rendelkezik soros porttal, pl. saját energiaellátással rendelkezõ modern laptop.
+A modem soros port interface-t biztosít, egy USB-RS232 átalakítóval USB porton keresztül megoldható egy olyan számítógéppel is az összeköttetés, mely nem rendelkezik soros porttal, pl. saját energiaellátással rendelkezõ modern laptop. Figyelembe kell venni, hogy feladataim közé tartozik az útvonalpontok feltöltésének lehtõségét  
 
 \subsubsection{Párhuzamos csatornák}
 
@@ -137,12 +135,19 @@ Mivel a repülõgépen duplikáltak az elemek, így a küldõ oldali modem is, a függet
 2 irányú kommunikáció kialakítása a cél, így a küldendõ adatok csomagjának biztonságos protokollját ki kell dolgozni, mely az adatintegritás megõrzése érdekében hibajelzésre alkalmazható.
 
 \subsection{Grafikus felhasználói felület}
-asd
+
+Ahhoz hogy a kialakítandó megjelenítés felhasználóbarát legyen, több nézeti oldal szükséges: 
+\begin{itemize}
+\item Egy áttekintõ képernyõ, mely a legfontosabb adatokat jeleníti meg a repülõvel kapcsolatban (pozíció, sebesség, irány)
+\item Egy tervezõ modul, amin a lerepülendõ útvonalhoz tartozó fordulópontok kijelölése lehetséges
+\item Egy diagnosztikai nézet, melyen az alacsonyabb prioritású adatok tekinthetõek át
+\item A kommunikáció alacsony szintû megjelenítésére egy terminál ablak létrehozása, melyen a kapott nyers adatok látszódnak
+\end{itemize}
 
 
 \section{Földi állomások}
 
-Számos megoldás született földi állomások GUI\footnote{Graphics User Interface, grafikus megjelenítés}-jainak kialakítására. Elsõdleges követelmény, hogy az operátor mindig a legfontosabb információkat láthassa, ehhez szoftverergonómiailag kell megtervezni a mûszerek. \cite{bib:multimodal} Kísérleteket folytattak, milyen elrendezésben, hány képernyõn érdemes megjeleníteni az adatokat, úgy, hogy az még ne terhelje túl az operátort. Bebizonyosodott, hogy érdemes több érzékszerven keresztül jelzéseket adni, így pl. nagy prioritású eseménynél a figyelmeztetõ ablak megjelenését hanghatás is kíséri. Alábbiakban összehasonlításra kerülnek a piacon lévõ megjelenítési felületek, megoldások.
+Számos megoldás született földi állomások GUI\footnote{Graphics User Interface, grafikus megjelenítés}-jainak kialakítására. Elsõdleges követelmény, hogy az operátor mindig a legfontosabb információkat láthassa, ehhez szoftverergonómiailag kell megtervezni a mûszerek. \cite{bib:multimodal} Kísérleteket folytattak, milyen elrendezésben, hány képernyõn érdemes megjeleníteni az adatokat, úgy, hogy az még ne terhelje túl az operátort. Bebizonyosodott, hogy érdemes több módon jelzést adni, így pl. nagy prioritású eseménynél a figyelmeztetõ ablak megjelenését hanghatás is kíséri. Alábbiakban összehasonlításra kerülnek a piacon lévõ megjelenítési felületek, megoldások.
 
 
 \subsection{ArduPilot}
@@ -150,17 +155,17 @@ Számos megoldás született földi állomások GUI\footnote{Graphics User Interface, 
 Az \cite{bib:ardu} Ardupilot projekt létrejöttének oka, hogy otthoni körülmények között, nem ipari alkatrészekbõl bárki összeállíthasson egy autonóm jármûvet, mely az elõre betáplált utasításokat végrehajtja. Központi eleme az Arduino cég által készített ATMel mikroprocesszorra épített platform, mely felhasználóbarátabbá teszi a mikroprocesszor programozását. Magas szintû utasításokkal segíti az eszközzel való barátkozást, nincs szükség assembly szintû tudásra. Erre a platformra hozták létre az ArduPilot programot, képes vezérelni többféle autonóm jármûvet:
 \begin{itemize}
 \item ArduPlane néven futó változat: robotrepülõgép
-\item ArduCopter: 1, 3, 4, 6, 8, propelleres helikopter
+\item ArduCopter: 1, 3, 4, 6, 8 propelleres helikopter
 \item Ardurover: 4 kerekû autó
 \end{itemize}
 Sikerességének fõ oka, a nyílt forráskód, Arduino panel alacsony ára (~5 ezer Ft) és a projekt mögött álló lelkes közösség.
 
-Ennek a közösségnek köszönhetõen született a Mission Planner nevû szoftver, mely teljes körû támogatást nyújt a jármûvekkel kapcsolatban.
+Ennek a közösségnek köszönhetõen született a Mission Planner nevû szoftver, mely teljes körû támogatást nyújt a csatlakoztatott jármûveknek.
 
 
 \subsubsection{Fõképernyõ}
 
-Több nézet segítségével könnyen átlátható a funkcionalitása, repülés szempontjából a fõképernyõn a legfontosabb adatok találhatóak. A repülõgép orientációját, sebességét, irányát egy mûhorizonton láthatja a felhasználó, ez vizuálisan szemlélteti, hogy hány fokos bedöntéssel repül, milyen állásszöggel emelkedik. Alatta lévõ területen elõre beállított adatokat jelenít meg, pl. GPS magasság, GPS sebesség, szélirány( valós mágneses irány és a sebesség vektor különbségébõl számítható). A legnagyobb területet a térkép foglalja el, melyen az aktuális irány, lerepült útvonal, fordulópontok láthatóak. Megfigyelhetõ, hogy ez kapja arányaiban a legnagyobb területet.
+Több nézet segítségével könnyen átlátható a funkcionalitása, repülés szempontjából a fõképernyõn a legfontosabb adatok találhatóak. A repülõgép orientációját, sebességét, irányát egy mûhorizonton láthatja a felhasználó, ez vizuálisan szemlélteti, hogy hány fokos bedöntéssel repül, milyen állásszöggel emelkedik. Alatta lévõ területen elõre beállított adatokat jelenít meg, pl. GPS magasság, GPS sebesség, szélirány (valós mágneses irány és a sebesség vektor különbségébõl számítható). A legnagyobb területet a térkép foglalja el, melyen az aktuális irány, lerepült útvonal, fordulópontok láthatóak. Megfigyelhetõ, hogy ez kapja arányaiban a legnagyobb területet.
 
 \begin{figure}[H]
 	\centering
@@ -183,24 +188,7 @@ Másik nézet lehetõséget biztosít útvonalpontok kijelölésére, az útvonalpontokhoz
 	\label{fig:ardu_plan}
 \end{figure}
 
-\subsubsection{Beállítások}
-
-Itt lehetõség van a nyelv és mértékegységek kiválasztására, naplózás sûrûségének meghatározására.
-Egy másik oldalon az aktuális jármûvet lehet beállítani, mivel más adatok fontosak egy földi és egy légi jármû esetében, továbbá a kommunikációs protokoll is változó. Nem külön oldalon, hanem mindig látható a csatlakozás gomb, melynél a soros port és a jelsebesség beállítása után a csalatkozás gombbal csatlakozik a program a portra.
-\begin{figure}[H]
-	\centering
-	\resizebox{5cm}{!}{ 
-		\includegraphics{figures/ardu_conn.png}} %conn
-	\caption{}
-	\label{fig:ardu_plan}
-\end{figure}
-\subsubsection{Terminál}
-
-Ezen az oldalon az USB-n csatlakoztatott eszközt lehet parancssoron konfigurálni. Az eszköz saját LOG fájljait letölteni.
-
-\subsubsection{Egyéb képernyõk}
-
-Lehetõség van még az elmentett log fájlok szimulálására, van egy súgó oldal a program használatával kapcsolatban, illetve egy támogatói gomb, mely átirányít egy PayPal oldalra, ahol különbözõ összeggel támogathatjuk a fejlesztést.
+Mindig látható a csatlakozás gomb, melynél a soros port és a jelsebesség beállítása után a csalatkozás gombbal csatlakozik a program a portra.
 
 
 \subsubsection{Összegzés}
@@ -219,10 +207,7 @@ A program a következõ funkciókkal rendelkezik:
 \item Google Maps, OpenStreetMaps, Microsoft Maps térképes megjelenítés
 \item küldetés tervezés
 \item mozgatható iránypontok
-\item valósidejû fedélzeti paraméter állítás
-\item gyorsbillentyû
 \item hangjelzés
-\item teljesen átszabható grafikus felület
 \end{itemize}
 
 
@@ -239,12 +224,12 @@ A program a következõ funkciókkal rendelkezik:
 \figref{paparazzi} ábrán látható képernyõ nagy százalékát a térkép foglalja el, melyen a lerepült útvonal és a fordulópontok láthatóak. A repülõ aktuális helyzete mellett a neve, sebessége és repülési magassága is kijelezve van. Bal oldalt egy információs sávban a következõ fontosabb adatok láthatóak: akkumulátor töltöttsége, sebesség, tolóerõ, magasság, illetve utasítások: fel-, leszállás, megfigyelés indítása. Jobb felsõ sarokban a kurzor térképen lévõ koordinátája kerül megjelenítésre. 
 
 
-A térképet a kék nyilakra való kattintással és a billentyûzet nyilainak lenyomásával lehet mozgatni, nagyítani az egér görgõjével és a ``Page up/down'' gombokkal. Az \textbf{f} gomb megnyomásával az összes fordulópont látható a képernyõn. A fordulópontokat is ezen a felületen lehet szerkeszteni. A módosítások egy megerõsítõ üzenet jóváhagyása után töltõdnek fel a repülõre, melyre az egy megerõsítõ válasszal reagál. Újat csak felszállás elõtt lehetséges feltölteni.
+A térképet billentyûzettel és egérrel lehet mozgatni, nagyítani. A fordulópontokat is ezen a felületen lehet szerkeszteni. A módosítások egy megerõsítõ üzenet jóváhagyása után töltõdnek fel a repülõre, melyre az egy megerõsítõ válasszal reagál. Új pontot csak felszállás elõtt lehetséges feltölteni.
 
 Középen alul található egy több füllel ellátott rész, melynél kiválasztható, hogy éppen egy mûhorizontot, a GPS által vett adatokat, az útvonaltervet vagy a beállításokat szeretnénk-e látni.
 
 \subsubsection{Összegzés}
-Itt sem létfontosságú tényezõ az elemek redundanciája, így nincs felkészítve egy jármûbõl érkezõ párhuzamos jelek fogadására. Egy képernyõ szolgál a navigációra és az útvonal-kijelölésre, mely szerintem nem a legjobb megoldás. Összességében ez is egy nagyon jól használható program, mely teljesen kiszolgálja az UAV-kat melyhez készítették
+Egy képernyõ szolgál a navigációra és az útvonal-kijelölésre, mely szerintem nem a legjobb megoldás, mivel nincs elválasztva ez a két funkcionalitás. Összességében ez is egy nagyon jól használható program, mely teljesen kiszolgálja az UAV-kat melyhez készítették.
 
 \subsection{MicroPilot Horizon}
 
@@ -257,40 +242,20 @@ A hozzá készített földi irányító egység a MicroPilot Horizon nevet viseli.
 	\caption{}
 	\label{fig:micropilot}
 \end{figure}
-Többek közt a következõ tulajdonságok jellemzik:
 
-\subsubsection{Biztonság}
+\subsubsection{Fõképernyõ}
 
-A térképen kijelölhetõek azok a területek, ahova nem szabad berepülni, ha a közelébe kerülne a repülõ, figyelmeztetést kap az operátor. Automatikus tengerszint feletti magasság  és leszállóhely beállítás, arra az esetre, ha a kapcsolat megszakadna a földi irányítással.
+A repülõgépre szerelt kamera képének megjelenítése kulcsfontosságú, mivel a kezelõ ezzel láthatja leginkább a repülõgép helyzetét és a megfigyelt célpontot. Ebben a módban a legfontosabb repüléssel kapcsolatos információk átlátszóan jelennek meg, így nem kell másik képernyõre tekintenie a kezelõnek.
+Több eszközhöz tud egyszerre csatlakozni és kiszolgálni, mindegyikhez külön név rendelhetõ. Az összes csatlakoztatott jármû között szinkronizálva vannak az útvonalpontok. Számunkra érdekes lehet, hogy a felmerülõ hibákhoz lehetõség van különbözõ prioritási szintek meghatározására, hangjelzés hozzárendelésére. Így egy bizonyos szint alatti hibák nem terelik el az operátor figyelmét.
 
-\subsubsection{Operátor központúság}
+\subsubsection{Tervezõ képernyõ}
 
-Repülési terv könnyen, kattintással összeállítható és módosítható, mind repülés elõtt és közben. POI\footnote{Point Of Interest, érdekes hely mely GPS koordinátával megjelölhetõ} gombnyomásra lerakható a térképen, a jövõbeni kivizsgáláshoz. Vonalzó eszköz segítségével könnyen végezhet számítást az útvonal hosszával kapcsolatban. Gazdag online súgója gyorsan választ ad a kérdésekre.
-
-\subsubsection{Több eszköz egyidejû kezelése}
-
-Több eszközhöz tud egyszerre csatlakozni és kiszolgálni, legyen az repülõ vagy helikopter, mindegyikhez külön név rendelhetõ. Az összes csatlakoztatott jármû között szinkronizálva vannak az útvonalpontok, egy-több és több-több topológia kialakítására is van lehetõség.
-
-\subsubsection{Szimuláció}
-
-Már a legelsõ kiadásnál rájöttek a szimuláció jelentõségére, mivel ezzel a megoldással a legegyszerûbb a jövõbeli operátorok kiképzése. Lehetõség van minden platform szimulálására SIL módban.
-
-\subsubsection{Kamera}
-
-A repülõgépre szerelt kamera képének megjelenítése kulcsfontosságú, mivel a kezelõ ezzel láthatja leginkább a repülõgép helyzetét és a megfigyelt célpontot. MPEG4 tömörítés csökkenti a szükséges sávszélességet. Ebben a módban a legfontosabb repüléssel kapcsolatos információk átlátszóan jelennek meg, így nem kell másik képernyõre tekintenie a kezelõnek.
-
-
-\subsubsection{Figyelmeztetés}
-
-Különbözõ hibák léphetnek fel repülés közben, ezeket egy naplóban tárolja a program. Lehetõség van különbözõ prioritási szintek meghatározására, hangjelzés hozzárendelésére. Így egy bizonyos szint alatti hibák nem terelik el az operátor figyelmét.
-
-\subsubsection{Telemetrikai adatok megjelenítése}
-
-15 érzékelõ adatait tudja grafikusan ábrázolni, elmenteni, betölteni. Statisztikai analízist biztosít, átlag, minimum, maximum keresésre. Kiugró értékeket pirossal megjelöl, hogy könnyen észrevehetõ legyen egy jel határon kívüli értéke.
+Repülési terv könnyen, kattintással összeállítható és módosítható, mind repülés elõtt és közben. POI\footnote{Point Of Interest, érdekes hely mely GPS koordinátával megjelölhetõ} gombnyomásra lerakható a térképen, ha esetleg valami olyat lát az operátor, amit érdemes utána ismét megvizsgálni. Az útvonal hosszát folyamatosan kijelzi tervezés üzemmódban.
 
 \subsubsection{Összegzés}
 
 Ez a program elsõsorban távirányításos üzemmód támogatására készült, mely során az operátor irányítja a gépet és ehhez a legtöbb információt szolgáltatja. Így kulcsfontosságú a videókép átvitel támogatása és a legfelhasználóbarátabb megjelenítés.
+
 
 
 
@@ -302,7 +267,6 @@ Ez a program elsõsorban távirányításos üzemmód támogatására készült, mely során 
 
 \subsection{OpenPilot}
 \cite{bib:openpilot} A projekt célja, hogy nyílt forráskódú, magas minõségû robot pilótát hozzanak létre autonóm repülõkhöz. 2009-ben alakult, azóta már több mint 200 tagja vesz részt a fejlesztésben a világ 140 országából. A jelenlegi verzió, képes irányítani fix szárnyas repülõt és helikoptert 2-tõl 8 rotorig. 
-A robotpilóta egy Cortex-M3 32 bit ARM 72MHz mikrokontrollerre épül, 3 szabadsági fokos gyorsulásérzékelõvel és iránytûvel, GPS vevõvel, 12 bites A/D átalakítóval a mért értékek digitalizálására.
 
 A hozzá készült GCS több platformon mûködik: Windows, Mac OS, Linux, tervben van az Android támogatás is. Segítségével tölthetõ fel a panelra a fedélzeti program, illetve interface-t biztosít a repülés alatt.
 
@@ -321,20 +285,14 @@ Ez a nézet szabadon módosítható, különféle ``gadget''-ek kiválasztásával, pl. a 
 	\label{fig:openpilot}
 \end{figure}
 
-
-\subsubsection{Beállítások}
-
-Itt állíthatóak be a kommunikációs portok, az aktális jármû típusa, a térkép megjelenítése, a szervó motorok semleges helyzete.
-
-\subsubsection{Telemetria}
-
-A fogadott adatokat többféleképpen meg tudja jeleníteni. Lehetséges a kiválasztottakat egy skálán egyszerre kirajzolni, vagy külön-külön grafikonokon.
-
-\subsubsection{Összegzés}
 Rengeteg beállítási lehetõséget nyújt ez a program, lelkes közösség áll mögötte, minden olyan fontos elvárást kielégít, mely napjainkban felmerülhet egy UAV adatainak megjelenítésével kapcsolatban.
 
 \subsection{QGroundControl}
-\cite{bib:qground} 
+\cite{bib:qground} MAVLink protokollt használ a kommunikációra, a repülõgép a programon keresztül vezethetõ, ha átkapcsolás szükséges. A MAVLink kifejezetten GCS--UAV összeköttetésére lett kifejlesztve. 
+
+\subsubsection{Fõképernyõ}
+Érdekesség, hogy 3D-ban is meg tudja jeleníteni a repülõ aktuális pozícióját. A protokollnak köszönhetõen 255 jármû egyidejû kezelésére alkalmas.
+Útvonalpontok menet közben is változtathatóak.
 
 
 \begin{figure}[H]
@@ -345,22 +303,38 @@ Rengeteg beállítási lehetõséget nyújt ez a program, lelkes közösség áll mögötte,
 	\label{fig:qground}
 \end{figure}
 
+\subsection{HappyKillmore}
+
+\cite{bib:hk} ArduPilot-hoz készült nyílt forráskódú GCS, a Planner-hez képest ez inkább az egyszerûség híve, kevés mûszer található rajta, de ezekrõl minden információ megtudható. Itt is a térkép nézet dominál, oldalt mozgathatjuk számunkra megfelelõ elrendezésbe a mûszereket. Útvonalpontok feltöltésére szintén van lehetõség.
+Támogatja többek között az ArduPilot és a MAVLINK protokollokat.
+
+\begin{figure}[H]
+	\centering
+	\resizebox{10cm}{!}{
+		\includegraphics{figures/hk.png}}
+		\caption{}
+	\label{fig:hk}
+\end{figure}
+
 
 
 \subsection{Összehasonlítás}
 
-A felsorolt megoldások összehasonlításából kiderül, hogy egyik sem alkalmaz redundanciát a kommunikáció megvalósítására. Az összesre jellemzõ, a pozíció térképen történõ vizualizációja.
+A felsorolt megoldások összehasonlításából kiderül, hogy egyik sem alkalmaz redundanciát a kommunikáció megvalósítására. Az összesre jellemzõ, hogy a repülõgép pozíciója valamilyen térképen kerül megjelenítésre. Általában a fõképernyõn a sebesség, magasság adatok mindig látszódnak, így az elkészítendõ felületre célszerû egy térképes megjelenítést és a legfontosabb információk kijelzését megoldani. Számos program különválasztotta az útvonal-kijelölés felületét a fõképernyõtõl, így ebbõl merítve készíthetõ egy olyan felület, melyen útvonalpontok hozzáadhatóak, módosíthatóak és feltölthetõk. Mivel redundanciával nem foglalkozik egyik sem, így a dolgozat szempontjából érdekes hibadetektációra nem találunk példát. Jelenleg egy gép kiszolgálása szükséges, de ha felmerül az igény látható, hogy megoldható hogy egy program több eszközt szolgáljon ki.
+A megoldások forráskódja elég változatos a választott nyelv tekintetében, mondhatni, a nyílt forráskódúak az összes manapság használatos programozási nyelvet felhasználják. A nem nyílt programokról sajnos nem találtam információt.
 
-\begin{table}
+
+\begin{table}[H]
 	\begin{center}
-			\begin{tabular}{| l | l | l | l |}
+			\begin{tabular}{| l | l | l | l |l| }
 				\hline
-				Program		 			& Forráskód 				& Elõny 				& Hátrány 					  \\ \hline
-				Ardupilot				& C\#, nyílt 				& 						  & nincs redundancia	 	\\ \hline
-				Paparazzi 			& ?, nem nyílt			&								& nincs redundancia	 	\\ \hline
-				MicroPilot 			& 									&								& nincs redundancia	 	\\ \hline
-				QGroundControl 	& C++, nyílt				&								& nincs redundancia	 	\\ \hline
-			\end{tabular}
+				Program		 			& Forráskód 							&Több eszköz         &Útvonal szerkesztése & Elõny 					  	\\ \hline
+				Ardupilot				& C\#, nyílt 							& 		-				  		 &				-						 & - 	\\ \hline
+				Paparazzi 			& ?, nem nyílt						&			+							 &				-					 & 	\\ \hline
+				MicroPilot 			& ?, nem nyílt						&			+							 &				+				   & hangjelzés	 	\\ \hline
+				QGroundControl 	& C++, nyílt							&			+							 &				-					 & 	\\ \hline
+				HappyKillMore 	& Visual Basic, nyílt			&			-							 &				-					 & 	\\ \hline
+			\end{tabular}                                                                         
 	\end{center}
 	\caption{Összefoglalás}
 	\label{tab:up}
