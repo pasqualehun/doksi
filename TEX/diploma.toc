@@ -45,22 +45,26 @@
 \select@language {magyar} \contentsline {subsection}{\numberline {2.4.3}Diagnosztikai k\'eperny\H o}{26}{subsection.2.4.3}
 \select@language {magyar} \contentsline {subsubsection}{Hibat\IeC {\'\i }pusok}{26}{section*.34}
 \select@language {magyar} \contentsline {subsection}{\numberline {2.4.4}Termin\'al k\'eperny\H o}{26}{subsection.2.4.4}
-\select@language {magyar} \contentsline {section}{\numberline {2.5}Haszn\'alt technol\'ogi\'ak}{27}{section.2.5}
+\select@language {magyar} \contentsline {section}{\numberline {2.5}Haszn\'alt technol\'ogi\'ak bemutat\'asa}{27}{section.2.5}
 \select@language {magyar} \contentsline {subsection}{\numberline {2.5.1}.NET}{27}{subsection.2.5.1}
-\select@language {magyar} \contentsline {subsection}{\numberline {2.5.2}GDI+}{27}{subsection.2.5.2}
-\select@language {magyar} \contentsline {chapter}{\numberline {3}Megval\'os\IeC {\'\i }t\'as}{28}{chapter.3}
-\select@language {magyar} \contentsline {section}{\numberline {3.1}Program fel\'ep\IeC {\'\i }t\'ese}{28}{section.3.1}
-\select@language {magyar} \contentsline {subsection}{\numberline {3.1.1}Kapcsol\'od\'as megval\'os\IeC {\'\i }t\'asa}{28}{subsection.3.1.1}
-\select@language {magyar} \contentsline {subsection}{\numberline {3.1.2}Redund\'ans adatok feldolgoz\'asa}{28}{subsection.3.1.2}
-\select@language {magyar} \contentsline {section}{\numberline {3.2}Megjelen\IeC {\'\i }t\'es}{29}{section.3.2}
-\select@language {magyar} \contentsline {subsection}{\numberline {3.2.1}F\H ok\'eperny\H o}{29}{subsection.3.2.1}
-\select@language {magyar} \contentsline {subsubsection}{Sebess\'egm\'er\H o}{29}{section*.36}
-\select@language {magyar} \contentsline {subsubsection}{Ir\'anyt\H u}{29}{section*.37}
-\select@language {magyar} \contentsline {subsubsection}{Kapcsol\'od\'as}{29}{section*.38}
-\select@language {magyar} \contentsline {subsection}{\numberline {3.2.2}Tervez\'es k\'eperny\H o}{30}{subsection.3.2.2}
-\select@language {magyar} \contentsline {section}{\numberline {3.3}Diagnosztikai k\'eperny\H o}{30}{section.3.3}
-\select@language {magyar} \contentsline {section}{\numberline {3.4}fejleszt\'es menete}{30}{section.3.4}
-\select@language {magyar} \contentsline {chapter}{\numberline {4}\'Ert\'ekel\'es}{33}{chapter.4}
-\select@language {magyar} \contentsline {chapter}{\numberline {5}\"Osszefoglal\'as}{34}{chapter.5}
-\select@language {magyar} \contentsline {chapter}{F\"uggel\'ek}{37}{appendix*.45}
-\select@language {magyar} \contentsline {section}{\numberline {F.1}F\"uggel\'ek1}{37}{section.F.1}
+\select@language {magyar} \contentsline {subsubsection}{Common Language Runtime}{27}{section*.36}
+\select@language {magyar} \contentsline {subsubsection}{Base Class Library}{27}{section*.37}
+\select@language {magyar} \contentsline {subsubsection}{Common Language Specification}{28}{section*.38}
+\select@language {magyar} \contentsline {subsubsection}{Windows Forms}{28}{section*.39}
+\select@language {magyar} \contentsline {subsubsection}{C\# nyelv}{28}{section*.40}
+\select@language {magyar} \contentsline {chapter}{\numberline {3}Megval\'os\IeC {\'\i }t\'as}{29}{chapter.3}
+\select@language {magyar} \contentsline {section}{\numberline {3.1}Program fel\'ep\IeC {\'\i }t\'ese}{29}{section.3.1}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.1.1}Kapcsol\'od\'as megval\'os\IeC {\'\i }t\'asa}{29}{subsection.3.1.1}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.1.2}Redund\'ans adatok feldolgoz\'asa}{29}{subsection.3.1.2}
+\select@language {magyar} \contentsline {section}{\numberline {3.2}Megjelen\IeC {\'\i }t\'es}{30}{section.3.2}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.2.1}F\H ok\'eperny\H o}{30}{subsection.3.2.1}
+\select@language {magyar} \contentsline {subsubsection}{Sebess\'egm\'er\H o}{30}{section*.42}
+\select@language {magyar} \contentsline {subsubsection}{Ir\'anyt\H u}{30}{section*.43}
+\select@language {magyar} \contentsline {subsubsection}{Kapcsol\'od\'as}{30}{section*.44}
+\select@language {magyar} \contentsline {subsection}{\numberline {3.2.2}Tervez\'es k\'eperny\H o}{31}{subsection.3.2.2}
+\select@language {magyar} \contentsline {section}{\numberline {3.3}Diagnosztikai k\'eperny\H o}{31}{section.3.3}
+\select@language {magyar} \contentsline {section}{\numberline {3.4}fejleszt\'es menete}{31}{section.3.4}
+\select@language {magyar} \contentsline {chapter}{\numberline {4}\'Ert\'ekel\'es}{34}{chapter.4}
+\select@language {magyar} \contentsline {chapter}{\numberline {5}\"Osszefoglal\'as}{35}{chapter.5}
+\select@language {magyar} \contentsline {chapter}{F\"uggel\'ek}{38}{appendix*.51}
+\select@language {magyar} \contentsline {section}{\numberline {F.1}F\"uggel\'ek1}{38}{section.F.1}

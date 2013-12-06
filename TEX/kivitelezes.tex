@@ -28,12 +28,14 @@ DataElement...
 
 \section{Megjelenítés}
 
+Bal oldalon a létrehozott UserControllok megjelenítése és elhelyezése a \figref{fokepernyo} ábrán látható. A terület nagyobb részét a térkép foglalja el, melyen a repülõgép aktuális pozíciója látható, illetve a múltban fogadott koordináták tört vonallal összekötve, mely a lerepült útvonalat ábrázolja. A program minimális méretében minden mûszer látszódik, a méret módosításával ezek fix pozícióban maradnak, a jobb oldali térkép a jobb alsó sarokhoz van horgonyozva, így ha nagyobb területen szeretné bárki is szemlélni a térképet, akkor látszódik ennek a megoldásnak az elõnye.
+
 \subsection{Fõképernyõ}
 
-Láthattuk a HappyKillmore (\sectref{happy} fejezet) minden mûszert külön View-ként valósít meg, így ezt a megoldást célszerû használni. Elkészítettem a magasságmérõ, emelkedésjelzõ, sebességmérõ és iránytû UserControll-t melyek tervezõ nézetben ``Drag and Drop'' technológiával a megfelelõ helyre húzható és könnyen beköthetõ.
+A HappyKillmore (\sectref{happy} fejezet) forráskódjának tanulmányozása során látható, hogy minden mûszert külön View-ként valósít meg, így ezt a megoldást célszerû használni. Elkészítettem a magasságmérõ, emelkedésjelzõ, sebességmérõ és iránytû UserControll-t melyek tervezõ nézetben ``Drag and Drop'' technológiával a megfelelõ helyre húzható és könnyen beköthetõ.
 
 \subsubsection{Sebességmérõ}
-A View egy UserControll-ból származik, annak a OnPaint() metódusát írom felül, melyben a mûszer különbözõ elemeit pozicionálom a megfelelõ helyre. Az OnPaint() függvény minden olyan esetben meghívódik, mikor valamely része érvénytelenné, nem láthatóvá válik. Ekkor szükséges az elem újra rajzolása, ezt mi a View Invalidate() metódusával explicit is kiválthatjuk.
+A \textit{View} egy \textit{UserControll}-ból származik, annak a \textit{OnPaint()} metódusát írom felül, melyben a mûszer különbözõ elemeit pozicionálom a megfelelõ helyre. Az OnPaint() függvény minden olyan esetben meghívódik, mikor valamely része érvénytelenné, nem láthatóvá válik. Ekkor szükséges az elem újra rajzolása, ezt mi a View Invalidate() metódusával explicit is kiválthatjuk.
 GDI+ segítségével egy piros kört rajzolok
 
 \subsubsection{Iránytû}
@@ -41,7 +43,6 @@ Rotate....
 
 
 
-Bal oldalon az elõbb létrehozott UserControllok megjelenítése és elhelyezése a \figref{fokepernyo} ábrán látható. A terület nagyobb részét a térkép foglalja el, melyen a repülõgép aktuális pozíciója látható, illetve a múltban fogadott koordináták tört vonallal összekötve, mely a lerepült útvonalat ábrázolja. A program minimális méretében minden mûszer látszódik, a méret módosításával ezek fix pozícióban maradnak, a jobb oldali térkép a jobb alsó sarokhoz van horgonyozva, így ha nagyobb területen szeretné bárki is szemlélni a térképet, akkor látszódik ennek a megoldásnak az elõnye.
 
 \subsubsection{Kapcsolódás}
 Folyamatosan látszódik...
