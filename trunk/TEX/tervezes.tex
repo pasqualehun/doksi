@@ -71,7 +71,7 @@ Több megoldás is lehetséges a fordulópontok feltöltésére:
 \end{itemize}
 
 
-Az elsõ megoldásban rögzítenénk a fordulópontok maximális számát. Mely azt eredményezné, hogy egy csomagban el lehetne küldeni az egész lerepülendõ feladatot. Ha egy pont koordinátájának ábrázolására elég 2*4 byte, így ha feltételezünk egy 10 pontot tartalmazó (10*2*4 byte adat) csomagot, akkor annak mérete fejléccel (3 bájt), checksum mezõvel (2 bájt) 79 bájt. Ehhez hozzájönne még a pontok száma, mely a fogadó oldali feldolgozást segítené, ennek mérete 1 bájt.
+Az elsõ megoldásban rögzítenénk a fordulópontok maximális számát. Mely azt eredményezné, hogy egy csomagban el lehetne küldeni az egész lerepülendõ feladatot. Ha egy pont koordinátájának ábrázolására elég 2*4 byte, így ha feltételezünk egy 10 pontot tartalmazó (10*2*4 byte adat) csomagot, akkor annak mérete fejléccel (3 bájt), checksum mezõvel (2 bájt) 85 bájt. Ehhez hozzájönne még a pontok száma, mely a fogadó oldali feldolgozást segítené, ennek mérete 1 bájt.
 
 
 Másik lehetõségnél bármennyit (N db) lehetne feltölteni: egy csomag szerkezete: fejléc, küldendõ pontok száma, aktuális pont sorszáma, koordinátái, checksum. Ha a  küldendõ pontok száma és az aktuális pont sorszáma megegyezik és megérkezett minden csomag akkor ACK-val válaszol ha kész a feltöltés. Ez hibakezelés szempontjából kedvezõbb, mivel ha egy pont sorszáma nem egyezik meg az elvárttal, akkor újraküldés kérésével elég csak az adott pont újraküldésével terhelni a csatornát.
@@ -80,7 +80,7 @@ Mivel az eddig használt megoldásban a kódba ,,bele volt égetve'' az útvonalterv,
 
 A feltöltés során mindkettõ csatlakoztatott modem segítségével redundánsan küldjük el az elõállított csomagot. Ha a csomag sértetlenül megérkezett, ACK jelzéssel válaszolnak, melyet fogadunk és visszajelezzük a kezelõnek.
 
-Egy 80 bájtos csomag tartalma:
+Egy 86 bájtos csomag tartalma:
 \begin{table}[H]
 	\begin{center}
 			\begin{tabular}{| l | l | l | l |l |}
@@ -90,16 +90,16 @@ Egy 80 bájtos csomag tartalma:
 				1 					& start 				& bájt(fix 'P') &   					&    			\\ \hline
 				2						& start 				& bájt(fix 'S') &   					&    			\\ \hline
 				3 					& pontok száma	& bájt    			& 			 			&    			\\ \hline
-				4 					& pontok[0].lat & uin32 				& 0x7fff/360	&  180		\\ \hline
+				4 					& pontok[0].lat & uin32 				& UInt32.MaxValue/360	&  180		\\ \hline
 				\dots 			&   						&   						&   					&    			\\ \hline
-				8 					& pontok[0].lon & uin32 				& 0x7fff/360	&  180		\\ \hline
+				8 					& pontok[0].lon & uin32 				& UInt32.MaxValue/360	&  180		\\ \hline
 				\dots 			&   						&   						&   					&    			\\ \hline
-				12 					& pontok[1].lat & uin32 				& 0x7fff/360	&  180		\\ \hline
+				12 					& pontok[1].lat & uin32 				& UInt32.MaxValue/360	&  180		\\ \hline
 				\dots 			&   						&   						&   					&    			\\ \hline
-				16 					& pontok[1].lon & uin32 				& 0x7fff/360	&  180		\\ \hline
+				16 					& pontok[1].lon & uin32 				& UInt32.MaxValue/360	&  180		\\ \hline
 				\dots 			&   						&   						&   					&    			\\ \hline
-				78 					& checksum 1/2	& uin16 				& 						&  				\\ \hline
-				79 					& checksum 2/2 	& uin16 				& 						&  				\\ \hline
+				84 					& checksum 1/2	& uin16 				& 						&  				\\ \hline
+				85 					& checksum 2/2 	& uin16 				& 						&  				\\ \hline
 
 			\end{tabular}
 	\end{center}
@@ -107,7 +107,7 @@ Egy 80 bájtos csomag tartalma:
 	\label{tab:up}
 \end{table}
 
-Felmerülhet a kérdés, hogy a feltöltés ezzel a protokollal elég hibatûrõ-e, mivel a fogadás protokollja is hasonlóan van megoldva, így elégségesnek tûnik. Mivel ha a küldés megfelelõen lezajlott, kapunk visszajelzést, ha nem akkor lehetõség van az újbóli elküldésre.
+Felmerülhet a kérdés, hogy a feltöltés ezzel a protokollal elég hibatûrõ-e, mivel a fogadás protokollja is hasonló hibadetektálást biztosít, így elégségesnek tûnik, tovább, ha a küldés megfelelõen lezajlott, kapunk visszajelzést. Ha ez elmaradna, akkor lehetõség van az üzenet újbóli elküldésre.
 
 \section{Grafikus felület}
 
@@ -137,15 +137,45 @@ A harmadik esetben sajnos nem lehetséges a ``jó'' kiválasztása, mivel nem tudjuk
 
 \subsection{Terminál képernyõ}
 
-Lehetõség nyílik a fogadott csomagok hexadecimális formában történõ megjelenítése, így az operátor alacsony szinten megbizonyosodhat a kapcsolat létrejöttében, mivel láthatja a csomagok felépítését. Ha a fejléc a csomag elején látszódik, akkor mûködnie kell a további dekódolásnak, melyet a többi nézet használ fel. Ha nem látna itt adatokat, akkor ellenõrizheti, hogy valóban jó portot illetve adatsebességet választott-e ki.
+Lehetõség nyílik a fogadott csomagok hexadecimális vagy decimális formában történõ megjelenítése, így az operátor alacsony szinten megbizonyosodhat a kapcsolat létrejöttében, mivel láthatja a csomagok beérkezését. Ha a fejléc a csomag elején látszódik, akkor mûködnie kell a további dekódolásnak, melyet a többi nézet használ fel. Ha nem lát itt adatokat, akkor ellenõrizheti, hogy valóban jó portot illetve adatsebességet választott-e ki.
 
-\section{Használt technológiák}
+\section{Használt technológiák bemutatása}
+
+A programot C\# nyelven, Microsoft Visual Studio 2010-es verziójával készítem, a használt .NET keretrendszer verziója: 4.5.
 
 \subsection{.NET}
-C\# nyelven szükséges a program implementálása, a .NET keretrendszer szerencsére sok API\footnote{Application Programming Interface, mely elõre megírt komponensek használatához biztosít interfészt}-t biztosít, hogy megkönnyítse és gyorsítsa fejlesztés folyamatot.
-A grafikus megjelenítéshez GDI+-t használhatok, illetve a soros porti kommunikációra a SerialPort osztály adta lehetõségeket.
 
-Fejlesztésre a Microsoft Visual Studio 2010-es IDE-t használok .NET 4.5-tel.
+\begin{figure}[H]
+	\centering
+	\resizebox{10cm}{!}{ 
+		\includegraphics{figures/net.png}} 
+	\caption{}
+	\label{fig:net}
+\end{figure}
 
-\subsection{GDI+}
-\cite{bib:gdi} A GDI (Graphic Device Interface) egy Windows API, célja,az alkalmazások számára grafikus támogatást biztosítani. Olyan eljárások és függvények gyûjteménye, amelyek nagyban megkönnyítik a grafikus elemek (görbék, alakzatok, BMP képek) megjelenítését, szövegek kiíratását. A GDI+ ennek továbbfejlesztett változata, mely képes ezen elemek manipulációjához alkalmas mátrixtranszfomációkat kezelni. Továbbá egyéb képformátumok kezelésével bõvítették.
+\cite{bib:netstart} A .NET egy menedzselt végrehajtási környezetet biztosító keretrendszer, mely számos szolgáltatást nyújt a benne futtatott programoknak. Két fõ részbõl áll: CLR\footnote{Common Language Runtime (közös nyelvi futtatókörnyezet) }, mely a programok végrehajtásáért felelõs és a .NET BLR\footnote{Base Class Library}, mely tesztelt, újra felhasználható programkönyvtárakat tartalmaz.
+
+
+\subsubsection{Common Language Runtime} 
+
+\cite{bib:net} A menedzselt környezetet a CLR biztosítja, a memóriakezelést kiveszi a programozók feladatai közül, mely az egyik legnagyobb odafigyelést igényelte, további feladata a kód végrehajtása, verifikációja, fordítása. Garbage Collector nevû memóriafelszabadítást végzõ eszköze automatikusan törli a memóriából a már nem hivatkozott elemeket.
+
+\subsubsection{Base Class Library}
+
+API\footnote{Application Programming Interface, mely elõre megírt komponensek használatához biztosít interfészt}-k összesége, célja hogy megkönnyítse és gyorsítsa fejlesztés folyamatát. A feladatom megoldásához egyik legfontosabb osztály a \textit{SerialPort}\cite{bib:serial} osztály, mely megkönnyíti a soros port kezelését.
+
+\subsubsection{Common Language Specification} 
+
+\cite{bib:aut} A .NET nyelvfüggetlen, így a keretrendszer szolgáltatásai hozzáférhetõek minden nyelv számára, mely nyelvi specifikációnak megfelel. Többek között ezek a nyelvek támogatottak: C\#, C++, Visual Basic.
+
+\subsubsection{Windows Forms} 
+
+Grafikus megjelenítést biztosít az alkalmazásoknak, különbözõ elemek (beviteli mezõ, gomb, kép, választó lista) helyezhetõek el rá. \cite{bib:gdi} GDI\footnote{Graphic Device Interface} segítségével történik a kirajzolás. A GDI olyan függvények gyûjteménye, amelyek a grafikus elemek (görbék, alakzatok, BMP képek) megjelenítését, szövegek kiíratását teszi lehetõvé. A GDI+ ennek továbbfejlesztett változata, mely képes ezen elemek manipulációjához alkalmas mátrixtranszfomációkat kezelni és egyéb képformátumok támogatása is megjelent.
+
+\subsubsection{C\# nyelv} 
+\cite{bib:aut} A C/C++ család elsõ valódi objektumorientált tagja, a keretrendszer nagy része C\#-ban készült.
+Más nyelvekkel összehasonlítva tisztább, mint a C++, nagy hasonlóságot mutat a Java nyelvvel.
+
+
+
+
