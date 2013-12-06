@@ -35,13 +35,34 @@ Bal oldalon a létrehozott UserControllok megjelenítése és elhelyezése a \figref{
 A HappyKillmore (\sectref{happy} fejezet) forráskódjának tanulmányozása során látható, hogy minden mûszert külön View-ként valósít meg, így ezt a megoldást célszerû használni. Elkészítettem a magasságmérõ, emelkedésjelzõ, sebességmérõ és iránytû UserControll-t melyek tervezõ nézetben ``Drag and Drop'' technológiával a megfelelõ helyre húzható és könnyen beköthetõ.
 
 \subsubsection{Sebességmérõ}
-A \textit{View} egy \textit{UserControll}-ból származik, annak a \textit{OnPaint()} metódusát írom felül, melyben a mûszer különbözõ elemeit pozicionálom a megfelelõ helyre. Az OnPaint() függvény minden olyan esetben meghívódik, mikor valamely része érvénytelenné, nem láthatóvá válik. Ekkor szükséges az elem újra rajzolása, ezt mi a View Invalidate() metódusával explicit is kiválthatjuk.
+A \textit{View} egy \textit{UserControll}-ból származik, annak a \textit{OnPaint()} metódusát írom felül, melyben a mûszer különbözõ elemeit pozicionálom a megfelelõ helyre. Az \textit{OnPaint()} függvény minden olyan esetben meghívódik, mikor valamely része érvénytelenné, nem láthatóvá válik. Ekkor szükséges az elem újra rajzolása, ezt mi a View Invalidate() metódusával explicit is kiválthatjuk.
 GDI+ segítségével egy piros kört rajzolok
 
 \subsubsection{Iránytû}
-Rotate....
+Az iránytû felépítése hasonló , mint a sebességmérõ mûszernek, jelentõs változás az égtájak és a fokok forgatását végzõ transzformáció. Elõször a kiírandó karaktert a grafikai koordináta-rendszer középpontjába tolom el, ekkor lehetséges az adott szöggel történõ elforgatás, majd a megfelelõ helyre eltolás, mely az a látszatot kelti, mintha úgy lenne egy tárcsára felírva, hogy az csak akkor olvasható, amikor felsõ helyzetben van.
+A kirajzolást végzõ grafikus megjelenítõ pipeline tulajdonsága miatt ezeket a mûveleteket fordított sorrendben kell elvégezni a \textit{private void DrawNumbers(Graphics g)} metódusban:
+\begin{verbatim}
+//measure the size of the degree, which is written
+ SizeF stringSize = g.MeasureString(degree, this.Font);
 
+//calculate the radian of i.th iteration's degree
+float angle2 = -CalculateRadian((float)i * 30+(float)heading +180);
+ 
+//translate to the proper position
+g.TranslateTransform(center.X + (float)((size / 2) - 20) * (float)Math.Sin(angle2) - 0, center.Y + (float)((size / 2) - 20) * (float)Math.Cos(angle2) - 0);
 
+//rotate with the needed degree
+g.RotateTransform(i * 30 + (float)heading + 180 + 180);
+
+//translate to the center of the string
+g.TranslateTransform(-stringSize.Width / 2, -stringSize.Height / 2);
+
+//draw the string
+g.DrawString(degree, new Font("Arial", 8), new SolidBrush(Color.Blue), 0F, 0F);
+
+//reset the matrices
+g.ResetTransform();
+\end{verbatim}
 
 
 \subsubsection{Kapcsolódás}
@@ -66,27 +87,29 @@ Folyamatosan látszódik...
 \end{figure}
 
 \section{Diagnosztikai képernyõ}
+Diagnoszta
 
 
-\section{fejlesztés menete}
-A modembõl érkezõ adatokat soros porton keresztül fogadja a program, a tesztkörnyezet felállításához HIL adatok szolgáltak. A küldött log fájlokat egy programmal beolvasom és egy \cite{bib:null}null-modem segítségével sorosporton keresztül küldöm a megfelelõ portra. 
 
-\begin{figure}[!ht]
-	\centering
-	\resizebox{10cm}{!}{
-		\includegraphics{figures/comnull.png}}
-	\caption{}
+\section{Fejlesztés menete}
+
+Az önálló, otthoni fejlesztést megkönnyítendõ, a repülõgép HIL\footnote{Hardware In the Loop, todo} szimulációjából nyert log file-okat használtam fel, így nem volt szükséges ez idõ alatt a repülõ közelében lennem, elég volt csak a végleges stádiumban kipróbálni a mûködést. A kapott file-ok felhasználásához elõször is biztosítani kellett, hogy a fejlesztendõ program soros porton keresztül ugyanúgy fogadhassa a csomagokat, mintha azt a repülõgép modemei küldenék. Ehhez készítettem 1-1 programot melyek ezeket a file-okat beolvassák és két kiválasztott soros portra 500 ms-onként egy csomagot küldenek, melyet egy emulátor programmal hoztam létre. Ez az \cite{bib:null} emulátor képes null-modemként viselkedni, melynek lényege, hogy software-es úton biztosít két soros port között kapcsolatot. Így létrehoztam egy COM20-COM21 és egy COM10-COM11 összeköttetést, az egyik program a COM20-ra másik a COM10-re csatlakozik, a fejlesztendõ program ezen párok másik portját használja kommunikációra. Mivel szükséges a kétirányú kapcsolat kiépítése, így a log file-okat feldolgozó programba beépítésre került egy beérkezõ üzeneteket feldolgozó függvény, mely kiírja a konzolos felületére a beérkezett csomagot, így ellenõrizhetõ, hogy azt küldi-e el amit szeretnék.
+
+\begin{figure}[H]
+	\centering	
+	\begin{minipage}[b]{0.45\linewidth}
+		\resizebox{7cm}{!}{
+			\includegraphics{figures/comnull.png}}
+		\caption{}
 	\label{fig:comnull}
-\end{figure}
-
-Beállítottam 2 párt, COM20-COM21 és COM10-COM11 közt, a pároson küldöm, páratlanon fogadom az üzeneteket. 
-
-\begin{figure}[!ht]
-	\centering
-	\resizebox{10cm}{!}{
-		\includegraphics{figures/sorossend.png}}
-	\caption{}
-	\label{fig:sorossend}
+	\end{minipage}
+	\quad
+	\begin{minipage}[b]{0.45\linewidth}
+		\resizebox{7cm}{!}{
+			\includegraphics{figures/sorossend.png}}
+		\caption{}
+		\label{fig:sorossend}
+	\end{minipage}
 \end{figure}
 
 153 bájtos egy csomag, melyet egy UUT  3 bájtos fejléc és egy 2 bájtos checksum zár. A checksum a hasznos bájtok 16 bitre csonkolt összege. Minden fogadott csomagnál, a feldolgozás elõtt kiszámolom az összeget és ellenõrzöm, az egyezést, a rossz csomagok egyelõre eldobásra kerülnek.
