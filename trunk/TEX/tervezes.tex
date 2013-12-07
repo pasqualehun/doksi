@@ -10,7 +10,7 @@ A kommunikáció csatornánként 2 db modem segítségével történik, a modemek egymás 
 A redundanciából következõen külön, külön kell kezelni a 2 párhuzamos csatornán kapott adatokat. Mivel aszinkron módon érkeznek a csomagok, így kettõ tároló kell, mely a legutóbb küldötteket tárolja egy FIFO listában.
 
 \subsection{Protokoll}
-
+\label{sect:protokoll}
 Az adatokat a repülõgép 2 Hz-s frekvenciával küldi, ezek csomagokban érkeznek, melyeknek a felépítése:
 
 \begin{figure}[H]
