@@ -1,16 +1,16 @@
 \BOOKMARK [0][-]{chapter*.2}{Kivonat}{}% 1
 \BOOKMARK [0][-]{chapter*.3}{Abstract}{}% 2
-\BOOKMARK [0][-]{chapter*.4}{Bevezeto}{}% 3
-\BOOKMARK [0][-]{chapter.1}{Elozm\351nyek}{}% 4
-\BOOKMARK [1][-]{section.1.1}{Motiv\341ci\363}{chapter.1}% 5
-\BOOKMARK [1][-]{section.1.2}{Rep\374log\351p fel\351p\355t\351se}{chapter.1}% 6
-\BOOKMARK [2][-]{subsection.1.2.1}{Architekt\372ra}{section.1.2}% 7
-\BOOKMARK [2][-]{subsection.1.2.2}{Kommunik\341ci\363}{section.1.2}% 8
-\BOOKMARK [1][-]{section.1.3}{Saj\341t feladat}{chapter.1}% 9
+\BOOKMARK [0][-]{chapter.1}{Bevezet\351s}{}% 3
+\BOOKMARK [1][-]{section.1.1}{Motiv\341ci\363}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.2}{Elozm\351nyek}{chapter.1}% 5
+\BOOKMARK [2][-]{subsection.1.2.1}{Rep\374log\351p fel\351p\355t\351se}{section.1.2}% 6
+\BOOKMARK [2][-]{subsection.1.2.2}{Architekt\372ra}{section.1.2}% 7
+\BOOKMARK [2][-]{subsection.1.2.3}{Kommunik\341ci\363}{section.1.2}% 8
+\BOOKMARK [1][-]{section.1.3}{Saj\341t feladatom r\351szletez\351se}{chapter.1}% 9
 \BOOKMARK [2][-]{subsection.1.3.1}{Mi a f\366ldi ir\341ny\355t\363 \341llom\341s feladata?}{section.1.3}% 10
 \BOOKMARK [2][-]{subsection.1.3.2}{Hibaturo kommunik\341ci\363 kialak\355t\341sa}{section.1.3}% 11
 \BOOKMARK [2][-]{subsection.1.3.3}{Grafikus felhaszn\341l\363i fel\374let}{section.1.3}% 12
-\BOOKMARK [1][-]{section.1.4}{F\366ldi \341llom\341sok}{chapter.1}% 13
+\BOOKMARK [1][-]{section.1.4}{F\366ldi \341llom\341sok bemutat\341sa}{chapter.1}% 13
 \BOOKMARK [2][-]{subsection.1.4.1}{ArduPilot}{section.1.4}% 14
 \BOOKMARK [2][-]{subsection.1.4.2}{Paparazzi}{section.1.4}% 15
 \BOOKMARK [2][-]{subsection.1.4.3}{MicroPilot Horizon}{section.1.4}% 16
@@ -44,5 +44,5 @@
 \BOOKMARK [1][-]{section.3.5}{Fejleszt\351s menete}{chapter.3}% 44
 \BOOKMARK [0][-]{chapter.4}{\311rt\351kel\351s}{}% 45
 \BOOKMARK [0][-]{chapter.5}{\326sszefoglal\341s}{}% 46
-\BOOKMARK [0][-]{appendix*.52}{F\374ggel\351k}{}% 47
-\BOOKMARK [1][-]{section.F.1}{F\374ggel\351k1}{appendix*.52}% 48
+\BOOKMARK [0][-]{appendix*.51}{F\374ggel\351k}{}% 47
+\BOOKMARK [1][-]{section.F.1}{F\374ggel\351k1}{appendix*.51}% 48
