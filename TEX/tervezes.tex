@@ -7,11 +7,12 @@ A kommunikáció csatornánként 2 db modem segítségével történik, a modemek egymás 
 
 \section{Adatok fogadása}
 
-A redundanciából következõen külön, külön kell kezelni a 2 párhuzamos csatornán kapott adatokat. Mivel aszinkron módon érkeznek a csomagok, így kettõ tároló kell, mely a legutóbb küldötteket tárolja egy FIFO listában.
+A redundanciából következõen külön, külön kell kezelni a 2 párhuzamos csatornán kapott adatokat. Mivel aszinkron módon érkeznek a csomagok, így kettõ tároló kell, mely a legutóbb küldötteket tárolja egy FIFO listában. 
 
 \subsection{Protokoll}
 \label{sect:protokoll}
 Az adatokat a repülõgép 2 Hz-s frekvenciával küldi, ezek csomagokban érkeznek, melyeknek a felépítése:
+Egy UUT fejléc, adattagok, checksum, ha a ez nem egyezik a csomag összegével, akkor az a csomag eldobásra kerül.
 
 \begin{figure}[H]
  \hspace*{-2cm}  
@@ -54,7 +55,7 @@ Az adatokat a repülõgép 2 Hz-s frekvenciával küldi, ezek csomagokban érkeznek, m
 
 A skálázás és offset képzés azért szükséges, hogy az adott szélességen (8, 16, 32 bit) minél több biten legyen ábrázolva egy érték, mivel kis változások esetén a Hamming-távolság\footnote{Bináris számok XOR képzésével kapott 1-esek száma} kicsi lenne az eredeti számábrázoláson. Ahol szükséges, ott a  visszakódolás az alábbi formában történik : \\
 \textit{eredeti  = (nyers adat/skálazás) - offset} \\
-Az értékek megfelelõ kiválasztása a minél nagyobb szétszóráshoz szükséges.
+Az értékek megfelelõ kiválasztása a minél nagyobb szétszóráshoz szükséges, érdemes a legnagyobb értékkel elosztani és annak felével eltolni.
 
 \section{Adatok küldése}
 
@@ -122,7 +123,7 @@ A fõképernyõn látható lesz a repülõgép aktuális pozíciója és iránya. A pozicioná
 Ezen a képernyõn a felhasználó kijelölheti a lerepülendõ útvonalhoz tartozó fordulópontokat, melyet csatlakozás után aszinkron módon feltölthet a repülõre. Mivel a kommunikációs protokoll 10 pontot enged meg, így ennél többet itt ki sem jelölhet, a lerakott pontok helyét a megszokott Google Maps-hoz hasonló módon hosszan kattintva átrakhatónak kell lennie, illetve köztes pontoknak törölhetõeknek kell lenniük. Láthattuk, hogy érdemes a kijelölt útvonal hosszáról tájékoztatni a felhasználót, így ez egy hasznos funkció.
 
 \subsection{Diagnosztikai képernyõ}
-
+\label{sect:terv_diagkepernyo}
 A 2 porton érkezõ dekódolt értékek látszódnának 2 oszlopban, mellettük egy hibaérték, mely a különbözõ hibatípusok hibaszámának összege lenne. 
 
 \subsubsection{Hibatípusok}
@@ -153,12 +154,12 @@ A programot C\# nyelven, Microsoft Visual Studio 2010-es verziójával készítem, a
 	\label{fig:net}
 \end{figure}
 
-\cite{bib:netstart} A .NET egy menedzselt végrehajtási környezetet biztosító keretrendszer, mely számos szolgáltatást nyújt a benne futtatott programoknak. Két fõ részbõl áll: CLR\footnote{Common Language Runtime (közös nyelvi futtatókörnyezet) }, mely a programok végrehajtásáért felelõs és a .NET BLR\footnote{Base Class Library}, mely tesztelt, újra felhasználható programkönyvtárakat tartalmaz.
+A .NET \cite{bib:netstart} egy menedzselt végrehajtási környezetet biztosító keretrendszer, mely számos szolgáltatást nyújt a benne futtatott programoknak. Két fõ részbõl áll: CLR\footnote{Common Language Runtime (közös nyelvi futtatókörnyezet) }, mely a programok végrehajtásáért felelõs és a .NET BLR\footnote{Base Class Library}, mely tesztelt, újra felhasználható programkönyvtárakat tartalmaz.
 
 
 \subsubsection{Common Language Runtime} 
 
-\cite{bib:net} A menedzselt környezetet a CLR biztosítja, a memóriakezelést kiveszi a programozók feladatai közül, mely az egyik legnagyobb odafigyelést igényelte, további feladata a kód végrehajtása, verifikációja, fordítása. Garbage Collector nevû memóriafelszabadítást végzõ eszköze automatikusan törli a memóriából a már nem hivatkozott elemeket.
+A menedzselt környezetet a CLR \cite{bib:net} biztosítja, a memóriakezelést kiveszi a programozók feladatai közül, mely az egyik legnagyobb odafigyelést igényelte, további feladata a kód végrehajtása, verifikációja, fordítása. Garbage Collector nevû memóriafelszabadítást végzõ eszköze automatikusan törli a memóriából a már nem hivatkozott elemeket.
 
 \subsubsection{Base Class Library}
 
@@ -166,13 +167,13 @@ API\footnote{Application Programming Interface, mely elõre megírt komponensek ha
 
 \subsubsection{Common Language Specification} 
 
-\cite{bib:aut} A .NET nyelvfüggetlen, így a keretrendszer szolgáltatásai hozzáférhetõek minden nyelv számára, mely nyelvi specifikációnak megfelel. Többek között ezek a nyelvek támogatottak: C\#, C++, Visual Basic.
+A .NET nyelvfüggetlen, így a keretrendszer szolgáltatásai hozzáférhetõek minden nyelv számára, mely nyelvi specifikációnak megfelel. Többek között ezek a nyelvek támogatottak: C\#, C++, Visual Basic \cite{bib:aut}.
 
 \subsubsection{Windows Forms} 
 
-Grafikus megjelenítést biztosít az alkalmazásoknak, különbözõ elemek (beviteli mezõ, gomb, kép, választó lista) helyezhetõek el rá. \cite{bib:gdi} GDI\footnote{Graphic Device Interface} segítségével történik a kirajzolás. A GDI olyan függvények gyûjteménye, amelyek a grafikus elemek (görbék, alakzatok, BMP képek) megjelenítését, szövegek kiíratását teszi lehetõvé. A GDI+ ennek továbbfejlesztett változata, mely képes ezen elemek manipulációjához alkalmas mátrixtranszfomációkat kezelni és egyéb képformátumok támogatása is megjelent.
+Grafikus megjelenítést biztosít az alkalmazásoknak, különbözõ elemek (beviteli mezõ, gomb, kép, választó lista) helyezhetõek el rá. GDI\footnote{Graphic Device Interface} \cite{bib:gdi} segítségével történik a kirajzolás. A GDI olyan függvények gyûjteménye, amelyek a grafikus elemek (görbék, alakzatok, BMP képek) megjelenítését, szövegek kiíratását teszi lehetõvé. A GDI+ ennek továbbfejlesztett változata, mely képes ezen elemek manipulációjához alkalmas mátrixtranszfomációkat kezelni és egyéb képformátumok támogatása is megjelent.
 
 \subsubsection{C\# nyelv} 
-\cite{bib:aut} A C/C++ család elsõ valódi objektumorientált tagja, a keretrendszer nagy része C\#-ban készült.
+A C/C++ család elsõ valódi objektumorientált tagja, a keretrendszer nagy része C\#-ban készült \cite{bib:aut} .
 Más nyelvekkel összehasonlítva tisztább, mint a C++, nagy hasonlóságot mutat a Java nyelvvel.
 

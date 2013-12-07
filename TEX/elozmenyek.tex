@@ -1,12 +1,22 @@
-\chapter{Elõzmények}
+\chapter{Bevezetés}
 
 
 \section{Motiváció}
  
-Az MTA SZTAKI Rendszer és Irányításelméleti Kutatólaboratóriumában folyó kutatások eredményének demonstrálására szükség volt egy kézzelfogható eszköz megalkotására. A kifejlesztett szabályozó algoritmusok mûködésének bemutatásának az egyik leglátványosabb módja egy repülõgép irányítása. Egy stabil repülési tulajdonságokkal bíró repülõ levegõben tartása sem triviális, szükség van a kormányszervek harmonikus mozgatására, a tolóerõ szabályzására. Ezen túlmenõen ha feladatokkal látjuk el, pl. fordulópontokat követve feltérképezni az alatta lévõ területet, már számolni kell a széllel, mely eltérítheti az útvonaláról, felszálló légáramlatokkal, melyek ellen gyors reagálással kell válaszolnia. Mivel egy teljesen felszerelt repülõ összeállítása, felprogramozása nagy szakértelmet, sok idõt, energiát igényel és nem utolsó sorban anyagi ráfordítást, egy esetleges meghibásodás jelentõs kárt okozna. Ezen okok miatt felmerült az igény a repülõ megbízhatóságának növelésére, így a most folyamatban lévõ ``Nagy megbízhatóságú pilóta nélküli légijármû projekt'' keretében egy olyan avionikai rendszer fejlesztése is folyik, amelyben cél minden egyes repülõgép alrendszer meghibásodásának diagnosztizálása, a diagnosztikai információkat felhasználva a repülõgép átkonfigurálása. 
+Az MTA SZTAKI Rendszer és Irányításelméleti Kutatólaboratóriumában folyó kutatások eredményének demonstrálására szükség volt egy olyan eszköz megalkotására, mely a kifejlesztett szabályozó algoritmusok mûködését látványosan mutatja be. Így esett a választás egy repülõgépre, aminek a levegõben tartása sem triviális, szükség van a kormányszervek harmonikus mozgatására, a tolóerõ szabályzására. Ezen túlmenõen, ha komplikáltabb feladatok végrehajtására van szükség, pl. fordulópontokat követve feltérképezni egy ismeretlen területet, már számolni kell a széllel, mely eltérítheti az útvonaláról, felszálló légáramlatokkal, melyekre gyorsan kell reagálnia. Mivel egy teljesen felszerelt repülõ összeállítása, felprogramozása nagy szakértelmet, sok idõt, energiát igényel és nem utolsó sorban anyagi ráfordítást, egy esetleges meghibásodás jelentõs kárt okozna. Ezen okok miatt felmerült az igény a repülõ megbízhatóságának növelésére, így a most folyamatban lévõ ``Nagy megbízhatóságú pilóta nélküli légijármû projekt'' keretében egy olyan avionikai rendszer fejlesztése is folyik, amelyben cél minden egyes repülõgép alrendszer meghibásodásának diagnosztizálása, a diagnosztikai információkat felhasználva a repülõgép átkonfigurálása. 
+
+Feladatom egy olyan -- grafikus felhasználói felülettel ellátott -- földi irányító állomás kifejlesztése egy biztonságkritikus robotrepülõhöz, amely képes redundáns kommunikációs csatornán küldött adatok kezelésére és megjelenítésére. Ehhez több részfeladat megoldás is szükséges. Elsõ lépésként meg kell oldanom a kapcsolatot biztosító modem jeleinek vételét. Mivel a robotrepülõgép hibatûrõ kialakítása révén ez az egység is redundánsan szerelt, így az adatok két független csatornán, párhuzamosan érkeznek a földi irányító állomáshoz. Mivel az így beérkezõ adatok szükségszerûen eltérnek egymástól, ennek az eltérésnek a kijelzése és kezelése is megvalósítandó.
+Továbbá, mivel a földi irányító állomáshoz a repülõt távolról megfigyelõ és szükség szerint irányító földi személyzet kiszolgálására készül, így a legfontosabb cél, hogy õk a repülõvel kapcsolatos információkat könnyen értelmezhessék, és az esetleges meghibásodásokról is idõben értesüljenek.
 
 
-\section{Repülõgép felépítése}
+\section{Elõzmények}
+
+A pilóta nélküli légijármû, azaz UAV (Unamanned Aerial Vehicle) gondolata egészen a XX. század elejére nyúlik vissza, amikor az I. világháborúban egy olyan távirányítású repülõt alkottak, amely robbanószerrel a fedélzetén a célpontba csapódva okozott kárt.
+Késõbb a vietnámi háborúban az UAV-k több mint 3000 küldetésben vettek részt. Akkoriban a technológiai korlátok miatt az alkalmazott UAV-k fõ funkcionalitása videófelvétel készítése volt. Az akkori eszközök egy meghatározott útvonalat tudtak berepülni (ami tipikusan egyenes szakaszokkal leírt pálya volt, egyes pontokon a megfigyelés érdekében körökkel kiegészítve) repülve, majd a bevetés végén a bázisra való visszaérkezés volt az utolsó feladatuk.
+
+Idõvel a technika fejlõdésének köszönhetõen az UAV-k egyre összetettebb feladatok elvégzésére lettek képesek. A fejlettek rádiótechnika által biztosított nagyobb átviteli sebességnek köszönhetõen lehetõvé vált, hogy a gépet irányító operátor valós idõben, monitoron keresztül kezelhesse a távirányítású légijármûvet. A korszerû UAV-k ezért több üzemmódot is támogatnak, amelyek között megtalálhatõ az említett távirányítás, valamint a fedélzeti intelligenciára támaszkodó önálló repülés, azaz az autonóm mûködés is. Az alkalmazási területek köre is szélesebb lett, így a katonai feladatok mellett a polgári repülés, a mezõgazdaság és a katasztrófaelhárítás is rendszeresen alkalmaz ma már pilóta nélküli légijármûveket. Az autonóm mûködés emellet a pilóta által vezetett kaptonai és polgári repülõgépekben is egyre szélesebb felhasználási teret nyert. Ennek oka, hogy fontos és célszerû is az emberi terhelés csökkentése, ezzel növelve a repülésbiztonságot és csökkentve a költségeket. Utasszállító gépek esetében például a robotpilóta elvégez minden olyan korrekciót, amelyhez azelõtt a pilóta folyamatos figyelme, koncentrációja volt szükséges. Ám hiába a fejlett eszközháttér, mind a pilótával, mind a pilóta nélkül repülõ légijármûvek teljes körû automatikus üzemeltetése egyelõre távoli cél. Ma még az emberi beavatkozásnak rendelkezésre kell állnia olyan helyzetekben, amelyekre nincs elõre felkészítve az az automatikus irányítórendszer. UAV-k esetében ilyen beavatkozásokhoz létfontosságú, hogy az operátor lássa a gép aktuális pozícióját, diagnosztikai adatait. Ezt a feladatot látja el az ún. földi irányító állomás, azaz GCS (Ground Control Station). Diplomatervem célja egy meglevõ pilóta nélküli légijármû földi irányító állomásának megtervezése és elkészítése, a megbízható mûködés követelményeinek figyelembe vételével.
+
+\subsection{Repülõgép felépítése}
 
 A jelenlegi repülõ egy saját építésû 3.2 m fesztávolságú modell, melybe diagnosztikai és hibadetekciós célokra egyedi tervezésû komponensek kerültek. A kommerciális célokra szánt szervó motorok nem szolgálnak elég információval a kitérésükrõl, fogyasztásukról, ezért ezek mérésérõl gondoskodni kellett.
 
@@ -59,7 +69,7 @@ Hibatûrésbõl adódóan az energiaforrások is redundánsan szerepelnek, a központi s
 Továbbá, mivel a repülõgép jelenleg csak távirányítással tud felszállni, így a távvezérlõ egység (RC) és a PWM-CAN átalakításért felelõs PIC is ezt a 2 akkumulátort használja. A PIC közvetlenül az szabályzó elektronikákhoz csatlakozik CAN interface-en, ez a legközvetlenebb módja a kézi irányításnak.
 
 \subsection{Kommunikáció}
-A fedélzeti MOD egység egy \cite{bib:xbee} XBee-PRO 868 típusú modem, mely alacsony fogyasztása és nagy hatótávolsága miatt ideális egy ilyen környezetbe. Vevõ oldalon ugyanilyen modem található duplikáltan, mely szintén soros porton küldi a földi állomásnak a vett jelet, a modemek között lévõ vezeték nélküli protokoll: 802.15.4, mellyel a \sectref{prot} fejezet foglalkozik.
+A fedélzeti MOD egység egy XBee-PRO 868 típusú modem \cite{bib:xbee}, mely alacsony fogyasztása és nagy hatótávolsága miatt ideális egy ilyen környezetbe. Vevõ oldalon ugyanilyen modem található duplikáltan, mely szintén soros porton küldi a földi állomásnak a vett jelet, a modemek között lévõ vezeték nélküli protokoll: 802.15.4, mellyel a \sectref{prot} fejezet foglalkozik.
 
 \subsubsection{Vezeték nélküli modem}
 
@@ -106,7 +116,7 @@ Alacsony fogyasztása abban rejlik, hogy alvó állapotból 30 ms alatt aktívra tud 
 
 Az XBee a Zigbee protokollt megvalósító bejegyzett márkaneve, melynek tulajdonosa a Digi cég.
 
-\section{Saját feladat}
+\section{Saját feladatom részletezése}
 
 Feladatom közé tartozik a kapcsolat kiépítése a repülõgép és a földi állomás között, melynek során meg kell oldanom a soros porti kommunikáció létrehozását majd a fogadott független adatok feldolgozását és kijelzését.
 
@@ -145,14 +155,14 @@ Ahhoz hogy a kialakítandó megjelenítés felhasználóbarát legyen, több nézeti olda
 \end{itemize}
 
 
-\section{Földi állomások}
+\section{Földi állomások bemutatása}
 
-Számos megoldás született földi állomások GUI\footnote{Graphics User Interface, grafikus megjelenítés}-jainak kialakítására. Elsõdleges követelmény, hogy az operátor mindig a legfontosabb információkat láthassa, ehhez szoftverergonómiailag kell megtervezni a mûszerek. \cite{bib:multimodal} Kísérleteket folytattak, milyen elrendezésben, hány képernyõn érdemes megjeleníteni az adatokat, úgy, hogy az még ne terhelje túl az operátort. Bebizonyosodott, hogy érdemes több módon jelzést adni, így pl. nagy prioritású eseménynél a figyelmeztetõ ablak megjelenését hanghatás is kíséri. Alábbiakban összehasonlításra kerülnek a piacon lévõ megjelenítési felületek, megoldások.
+Számos megoldás született földi állomások GUI\footnote{Graphics User Interface, grafikus megjelenítés}-jainak kialakítására. Elsõdleges követelmény, hogy az operátor mindig a legfontosabb információkat láthassa, ehhez szoftverergonómiailag kell megtervezni a mûszerek. Kísérleteket folytattak, milyen elrendezésben, hány képernyõn érdemes megjeleníteni az adatokat, úgy, hogy az még ne terhelje túl az operátort \cite{bib:multimodal}. Bebizonyosodott, hogy érdemes több módon jelzést adni, így pl. nagy prioritású eseménynél a figyelmeztetõ ablak megjelenését hanghatás is kíséri. Alábbiakban összehasonlításra kerülnek a piacon lévõ megjelenítési felületek, megoldások.
 
 
 \subsection{ArduPilot}
 
-Az \cite{bib:ardu} Ardupilot projekt létrejöttének oka, hogy otthoni körülmények között, nem ipari alkatrészekbõl bárki összeállíthasson egy autonóm jármûvet, mely az elõre betáplált utasításokat végrehajtja. Központi eleme az Arduino cég által készített ATMel mikroprocesszorra épített platform, mely felhasználóbarátabbá teszi a mikroprocesszor programozását. Magas szintû utasításokkal segíti az eszközzel való barátkozást, nincs szükség assembly szintû tudásra. Erre a platformra hozták létre az ArduPilot programot, képes vezérelni többféle autonóm jármûvet:
+Az Ardupilot projekt \cite{bib:ardu} létrejöttének oka, hogy otthoni körülmények között, nem ipari alkatrészekbõl bárki összeállíthasson egy autonóm jármûvet, mely az elõre betáplált utasításokat végrehajtja. Központi eleme az Arduino cég által készített ATMel mikroprocesszorra épített platform, mely felhasználóbarátabbá teszi a mikroprocesszor programozását. Magas szintû utasításokkal segíti az eszközzel való barátkozást, nincs szükség assembly szintû tudásra. Erre a platformra hozták létre az ArduPilot programot, képes vezérelni többféle autonóm jármûvet:
 \begin{itemize}
 \item ArduPlane néven futó változat: robotrepülõgép
 \item ArduCopter: 1, 3, 4, 6, 8 propelleres helikopter
@@ -197,7 +207,7 @@ Felhasználói szempontból barátságos felületet biztosít a különbözõ nézetekkel, g
 Nem a program hibája, de nincs felkészítve párhuzamos csatornák kezelésére, ez az ArduPilot projekt egyszerûségének köszönhetõ, mivel nem használ redundanciát. Mivel a repülõ, melyhez a programot készítem, nagy megbízhatóságú, így szükséges megoldani a 2 port kezelését és az azokon érkezõ adatok feldolgozását. Jó ötlet a csatlakozás gomb mindig látható elhelyezése, a fõképernyõn térképen ábrázolni a repülõ helyzetét, illetve a mûhorizont. Azonban hibadiagnosztikai kijelzés nincs megoldva, melynek szintén fontos a megvalósítása.
 
 \subsection{Paparazzi}
-\cite{bib:paparazzi} Hasonlóan mint az ArduPilot, ez a projekt is a könnyen, otthon összeszerelhetõ repülõ megépítése jegyében született. Nem csak egy nyílt forráskódú robotpilótát ad, hanem komplett ``csináld magad'' készletet, melyben feszültségszabályzótól kezdve a GPS vevõig mindent megkaphatunk. Továbbá a hozzá készült földi állomáshoz antennát, modemet és programot is nyújt.
+Hasonlóan mint az ArduPilot, ez a projekt \cite{bib:paparazzi} is a könnyen, otthon összeszerelhetõ repülõ megépítése jegyében született. Nem csak egy nyílt forráskódú robotpilótát ad, hanem komplett ``csináld magad'' készletet, melyben feszültségszabályzótól kezdve a GPS vevõig mindent megkaphatunk. Továbbá a hozzá készült földi állomáshoz antennát, modemet és programot is nyújt.
 
 A program a következõ funkciókkal rendelkezik:
 
@@ -233,7 +243,7 @@ Egy képernyõ szolgál a navigációra és az útvonal-kijelölésre, mely szerintem nem
 
 \subsection{MicroPilot Horizon}
 
-\cite{bib:makkay} ``Az 1995 óta mûködõ kanadai \cite{bib:micropilot} MicroPilot a világ egyik legismertebb robotpilóta gyártó cége, 65 országban több mint 750 alkalmazó használja az eszközeiket. Népszerûek az iskolákban, egyetemeken, kutató intézetekben, a gazdaság különbözõ területein, de a védelmi szféra is szép számmal használ robot légi jármûvein MicroPilot berendezéseket. Az adatátviteli csatorna ugyanazokat a funkciókat képes biztosítani, mint a programbevitelnél használt kábeles összeköttetés, így ezen keresztül repülés közben is módosítható az útvonal, a repülési paraméterek és az egyéb beállítások. A MicroPilot fedélzeti egysége ezen kívül egy rádió távirányító (RCON) vevõberendezést is fogad, amely lehetõséget teremt a földi adó konzoljáról az irányítás átvételére és botkormányos kézi vezérlésre. Ezt alapvetõen a fel és leszállás idejére, illetve az útvonal kritikus szakaszain használják. Amennyiben az RC távirányítóval mûködõ repülõgép veszti el a kapcsolatot, akkor a fedélzeti vevõberendezés FAILSAFE üzemmódra kapcsol és annak beállítása szerint mûködteti a repülõgépet. A FAILSAFE vagy az utolsó szervo állást õrzi meg, vagy egy elõre programozott legbiztonságosabb földet érést ígérõ beállításra ugrik.''
+``Az 1995 óta mûködõ kanadai \cite{bib:micropilot} MicroPilot a világ egyik legismertebb robotpilóta gyártó cége, 65 országban több mint 750 alkalmazó használja az eszközeiket. Népszerûek az iskolákban, egyetemeken, kutató intézetekben, a gazdaság különbözõ területein, de a védelmi szféra is szép számmal használ robot légi jármûvein MicroPilot berendezéseket. Az adatátviteli csatorna ugyanazokat a funkciókat képes biztosítani, mint a programbevitelnél használt kábeles összeköttetés, így ezen keresztül repülés közben is módosítható az útvonal, a repülési paraméterek és az egyéb beállítások. A MicroPilot fedélzeti egysége ezen kívül egy rádió távirányító (RCON) vevõberendezést is fogad, amely lehetõséget teremt a földi adó konzoljáról az irányítás átvételére és botkormányos kézi vezérlésre. Ezt alapvetõen a fel és leszállás idejére, illetve az útvonal kritikus szakaszain használják. Amennyiben az RC távirányítóval mûködõ repülõgép veszti el a kapcsolatot, akkor a fedélzeti vevõberendezés FAILSAFE üzemmódra kapcsol és annak beállítása szerint mûködteti a repülõgépet. A FAILSAFE vagy az utolsó szervo állást õrzi meg, vagy egy elõre programozott legbiztonságosabb földet érést ígérõ beállításra ugrik.'' \cite{bib:makkay}
 A hozzá készített földi irányító egység a MicroPilot Horizon nevet viseli. 
 \begin{figure}[h]
 	\centering
@@ -266,7 +276,7 @@ Ez a program elsõsorban távirányításos üzemmód támogatására készült, mely során 
 
 
 \subsection{OpenPilot}
-\cite{bib:openpilot} A projekt célja, hogy nyílt forráskódú, magas minõségû robot pilótát hozzanak létre autonóm repülõkhöz. 2009-ben alakult, azóta már több mint 200 tagja vesz részt a fejlesztésben a világ 140 országából. A jelenlegi verzió, képes irányítani fix szárnyas repülõt és helikoptert 2-tõl 8 rotorig. 
+A projekt célja \cite{bib:openpilot}, hogy nyílt forráskódú, magas minõségû robot pilótát hozzanak létre autonóm repülõkhöz. 2009-ben alakult, azóta már több mint 200 tagja vesz részt a fejlesztésben a világ 140 országából. A jelenlegi verzió, képes irányítani fix szárnyas repülõt és helikoptert 2-tõl 8 rotorig. 
 
 A hozzá készült GCS több platformon mûködik: Windows, Mac OS, Linux, tervben van az Android támogatás is. Segítségével tölthetõ fel a panelra a fedélzeti program, illetve interface-t biztosít a repülés alatt.
 
@@ -288,7 +298,7 @@ Ez a nézet szabadon módosítható, különféle ``gadget''-ek kiválasztásával, pl. a 
 Rengeteg beállítási lehetõséget nyújt ez a program, lelkes közösség áll mögötte, minden olyan fontos elvárást kielégít, mely napjainkban felmerülhet egy UAV adatainak megjelenítésével kapcsolatban.
 
 \subsection{QGroundControl}
-\cite{bib:qground} MAVLink protokollt használ a kommunikációra, a repülõgép a programon keresztül vezethetõ, ha átkapcsolás szükséges. A MAVLink kifejezetten GCS--UAV összeköttetésére lett kifejlesztve. 
+MAVLink protokollt használ a kommunikációra, a repülõgép a programon keresztül vezethetõ, ha átkapcsolás szükséges. A MAVLink kifejezetten GCS--UAV összeköttetésére lett kifejlesztve \cite{bib:qground}.
 
 \subsubsection{Fõképernyõ}
 Érdekesség, hogy 3D-ben is meg tudja jeleníteni a repülõ aktuális pozícióját. A protokollnak köszönhetõen 255 jármû egyidejû kezelésére alkalmas.
@@ -305,7 +315,7 @@ Rengeteg beállítási lehetõséget nyújt ez a program, lelkes közösség áll mögötte,
 
 \subsection{HappyKillmore}
 \label{sect:happy}
-\cite{bib:hk} ArduPilot-hoz készült nyílt forráskódú GCS, a Planner-hez képest ez inkább az egyszerûség híve, kevés mûszer található rajta, de ezekrõl minden információ megtudható. Itt is a térkép nézet dominál, oldalt mozgathatjuk számunkra megfelelõ elrendezésbe a mûszereket. Útvonalpontok feltöltésére szintén van lehetõség.
+ArduPilot-hoz készült nyílt forráskódú GCS \cite{bib:hk}, a Planner-hez képest ez inkább az egyszerûség híve, kevés mûszer található rajta, de ezekrõl minden információ megtudható. Itt is a térkép nézet dominál, oldalt mozgathatjuk számunkra megfelelõ elrendezésbe a mûszereket. Útvonalpontok feltöltésére szintén van lehetõség.
 Támogatja többek között az ArduPilot és a MAVLINK protokollokat.
 
 \begin{figure}[H]
@@ -337,7 +347,8 @@ A megoldások forráskódja elég változatos a választott nyelv tekintetében, mondha
 				%HappyKillMore 	& Visual Basic, nyílt			&			-							 &				-					   & 	-									\\ \hline
 				
 				\hline
-				\textbf{Program}    	& \textbf{Ardupilot}			&\textbf{Paparazzi}	 &\textbf{MicroPilot}		& \textbf{QGroundControl} & 	\textbf{HappyKillMore}				  	\\ \hline \hline
+				\textbf{Program}    	& \textbf{Ardupilot}			&\textbf{Paparazzi}	 &\textbf{MicroPilot}		& \textbf{QGround} & 	\textbf{HappyKillMore}\\
+												      &       								  &									   & 									    &	\textbf{Control} &                        \\\hline\hline
 				Forráskód							& C\#, nyílt 							& 		?, nem nyílt	 &?, nem nyílt				 & C++, nyílt 		&		VB, nyílt		\\ \hline
 				Több eszköz 					&     		        				&			 							 &				 					   & 	-	      			&			\\ \hline
 				Útvonal 							& -												&			+							 &				+				     & -	          	&	\\ 

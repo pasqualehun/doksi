@@ -7,7 +7,7 @@ Az elõzõ fejezetekben összegyûjtöttem a megvalósításhoz szükséges információkat,
 
 \section{Program felépítése}
 
-A \figref{class} ábrán láthatóak a programban használt osztályok. A \textit{Program} statikus osztály a main függvényt, mint belépési pontot tartalmazza. Ez példányosítja az \textit{Instruments} osztályt, mely a különbözõ \textit{View}-ok megjelenítéséért felelõs. Az Altimeter, Compass, Speed, Vario a mûszereket megvalósító osztályok, a PlanView a tervezõképernyõ, az ErrorOverview osztály a diagnosztikai képernyõ implementációja. A soros portból érkezõ adatokat a SerialUtil statikus osztály dolgozza fel, a kapott csomag egy-egy adattagját egy DataElement objektumba helyezi, mely a hibadiagnosztikát valósítja meg a benne található elemre.
+A \figref{class} ábrán láthatóak a programban használt osztályok. A \textit{Program} statikus osztály a main függvényt, mint belépési pontot tartalmazza. Ez példányosítja az \textit{Instruments} osztályt, mely a különbözõ \textit{View}-ok megjelenítéséért felelõs. Az \textit{Altimeter, Compass, Speed, Vario} a mûszereket megvalósító osztályok, a PlanView a tervezõképernyõ, az \textit{ErrorOverview} osztály a diagnosztikai képernyõ implementációja. A soros portból érkezõ adatokat a \textit{SerialUtil} statikus osztály dolgozza fel, a kapott csomag egy-egy adattagját egy \textit{DataElement} objektumba helyezi, mely a hibadiagnosztikát valósítja meg a benne található elemre.
 
 \begin{figure}[H]
 	\centering
@@ -28,13 +28,20 @@ Mivel párhuzamos csatornákon kapja az adatokat, így az elõzõ fejezetben ismertet
 
 \subsection{Redundáns adatok hibadetektációja}
 
-Minden fogadott adat egy DataElement objektumban tárolódik, ebben 2 FIFO lista szerepel, egyik az ``A'', másik a ``B'' portból érkezõeknek. Mikor ``A''-ból érkezik egy, az AddA(double item) függvénye teszi bele az ``A'' FIFO végére, ugyanez a másik portra is érvényes. Mikor egy mûszer elkéri az értéket, melyet mutatni szeretne, akkor a GetData() függvényhívással megkapja. A hibakezelés ezen függvényekben van megoldva, mindkettõ FIFO sor rendelkezik egy hibaszámlálóval, mely különbözõ feltételek mellett nõ vagy csökken. A GetData() függvény aszerint, hogy mely sornak kisebb ez a hibaszámlálója, dönti el, hogy melyikbõl veszi ki az elemet.
-TODO
+Minden fogadott adat egy \textit{DataElement} objektumban tárolódik, ebben 2 FIFO lista szerepel, egyik az ``A'', másik a ``B'' portból érkezõeknek. Mikor ``A''-ból érkezik egy, az \textit{AddA(double item)} függvény teszi bele az ``A'' FIFO végére, ugyanez a másik portra is érvényes. Mikor egy mûszer elkéri az értéket, melyet mutatni szeretne, akkor a \textit{GetData()} függvényhívással megkapja. A hibakezelés ezen függvényekben van megoldva, mindkettõ FIFO sor rendelkezik egy hibaszámlálóval, mely különbözõ feltételek mellett nõ vagy csökken. A \textit{GetData()} függvény aszerint, hogy mely sornak kisebb ez a hibaszámlálója, dönti el, hogy melyikbõl választaja ki az elemet.
+A \sectref{terv_diagkepernyo} fejezetben ismertetett hibatípusokat a következõ detektációs algoritmusok érzékelik:
 
+\textbf{Port kiesése:} Ha egyik porton érkezõ adat és érvényes csomag és azt dekódolás után a hozzátartozó tárolóba teszem, akkor egy számlálót is növelek. Amelyik porton érkezett az adat annak a számlálóját nullázom, így ha csak az egyik portról érkezik adat, akkor csak a másik számlálója növekszik. Ha ez a számláló elérte a FIFO sor méretét, akkor növekszik az adott port hibaszámlálója, ez a port kiesését jelenti.
+
+\textbf{Beragadás:} Egy jelet akkor tekintek beragadt állapotúnak, ha értéke egy bizonyos ideig változatlan marad, jelen esetben a tároló körbefordulási ideje. Ha a sor legutóbbi és a legújabb eleme közti különbség egy $\epsilon$\footnote{ez esetben 0.0001}-nál kisebb, akkor növelem a port hibaszámlálóját.
+
+\textbf{Túl nagy ugrás:}   TODO
+
+\textbf{Kettõ jel eltérése:} TODO
 
 \section{Megjelenítés}
 
-Bal oldalon a létrehozott UserControllok megjelenítése és elhelyezése a \figref{fokepernyo} ábrán látható. A terület nagyobb részét a térkép foglalja el, melyen a repülõgép aktuális pozíciója látható, illetve a múltban fogadott koordináták tört vonallal összekötve, mely a lerepült útvonalat ábrázolja. A program minimális méretében minden mûszer látszódik, a méret módosításával ezek fix pozícióban maradnak, a jobb oldali térkép a jobb alsó sarokhoz van horgonyozva, így ha nagyobb területen szeretné bárki is szemlélni a térképet, akkor látszódik ennek a megoldásnak az elõnye.
+Bal oldalon a létrehozott \textit{UserControl}-ok megjelenítése és elhelyezése a \figref{fokepernyo} ábrán látható. A terület nagyobb részét a térkép foglalja el, melyen a repülõgép aktuális pozíciója látható, illetve a múltban fogadott koordináták tört vonallal összekötve, mely a lerepült útvonalat ábrázolja. A program minimális méretében minden mûszer látszódik, a méret módosításával ezek fix pozícióban maradnak, a jobb oldali térkép a jobb alsó sarokhoz van horgonyozva, így ha nagyobb területen szeretné bárki is szemlélni a térképet, akkor látszódik ennek a megoldásnak az elõnye.
 
 \subsection{Fõképernyõ}
 
@@ -101,7 +108,7 @@ TODO
 
 \section{Fejlesztés menete}
 \label{sect:fejlesztes}
-Az önálló, otthoni fejlesztést megkönnyítendõ, a repülõgép HIL\footnote{Hardware In the Loop, todo} szimulációjából nyert log file-okat használtam fel, így nem volt szükséges ez idõ alatt a repülõ közelében lennem, elég volt csak a végleges stádiumban kipróbálni a mûködést. A kapott file-ok felhasználásához elõször is biztosítani kellett, hogy a fejlesztendõ program soros porton keresztül ugyanúgy fogadhassa a csomagokat, mintha azt a repülõgép modemei küldenék. Ehhez készítettem 1-1 programot melyek ezeket a file-okat beolvassák és két kiválasztott soros portra 500 ms-onként egy csomagot küldenek, melyet egy emulátor programmal hoztam létre. Ez az \cite{bib:null} emulátor képes null-modemként viselkedni, melynek lényege, hogy software-es úton biztosít két soros port között kapcsolatot. Így létrehoztam egy COM20-COM21 és egy COM10-COM11 összeköttetést, az egyik program a COM20-ra másik a COM10-re csatlakozik, a fejlesztendõ program ezen párok másik portját használja kommunikációra. Mivel szükséges a kétirányú kapcsolat kiépítése, így a log file-okat feldolgozó programba beépítésre került egy beérkezõ üzeneteket feldolgozó függvény, mely kiírja a konzolos felületére a beérkezett csomagot, így ellenõrizhetõ, hogy azt küldi-e el amit szeretnék.
+Az önálló, otthoni fejlesztést megkönnyítendõ, a repülõgép HIL\footnote{Hardware In the Loop, todo} szimulációjából nyert log file-okat használtam fel, így nem volt szükséges ez idõ alatt a repülõ közelében lennem, elég volt csak a végleges stádiumban kipróbálni a mûködést. A kapott file-ok felhasználásához elõször is biztosítani kellett, hogy a fejlesztendõ program soros porton keresztül ugyanúgy fogadhassa a csomagokat, mintha azt a repülõgép modemei küldenék. Ehhez készítettem 1-1 programot melyek ezeket a file-okat beolvassák és két kiválasztott soros portra 500 ms-onként egy csomagot küldenek, melyet egy emulátor programmal hoztam létre. Ez az emulátor \cite{bib:null} képes null-modemként viselkedni, melynek lényege, hogy software-es úton biztosít két soros port között kapcsolatot. Így létrehoztam egy COM20-COM21 és egy COM10-COM11 összeköttetést, az egyik program a COM20-ra másik a COM10-re csatlakozik, a fejlesztendõ program ezen párok másik portját használja kommunikációra. Mivel szükséges a kétirányú kapcsolat kiépítése, így a log file-okat feldolgozó programba beépítésre került egy beérkezõ üzeneteket feldolgozó függvény, mely kiírja a konzolos felületére a beérkezett csomagot, így ellenõrizhetõ, hogy azt küldi-e el amit szeretnék.
 
 \begin{figure}[H]
 	\centering	
@@ -120,29 +127,13 @@ Az önálló, otthoni fejlesztést megkönnyítendõ, a repülõgép HIL\footnote{Hardware
 	\end{minipage}
 \end{figure}
 
+A kapott log file-ok szerkezetét XVI32 nevû programmal tanulmányoztam és ismertem meg egy csomag felépítését és méretét. Látható, hogy egy csomag mérete valóban a specifikációban megadott 75 byte. Ezt a programot használtam az elküldött iránypontok csomagjának helyességérõl is.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
 	\centering
 	\resizebox{10cm}{!}{
 		\includegraphics{figures/xvi.png}}
 	\caption{}
 	\label{fig:xvi}
 \end{figure}
-
-TODO
-
-\begin{verbatim}
-public double[] Decode(byte[] array)
-\end{verbatim}
-
-Ebben a függvényben ellenõrzöm, a checksum-ot, illetve a kezdõ UUT bájt hármast.
-Mivel bájtosával lehet feldolgozni az adatokat, így pl. a 4 bájtos idõbélyeget 4 db egymás után jövõ bájtból kell összerakni:
-
-\begin{verbatim}
-uint ido = (uint)array[3]<<24 | (uint)array[4]<<16 |
-(uint)array[5]<<8 | (uint)array[6];
-\end{verbatim}
-
-Ugyanígy folytatódik az adatok feldolgozása, az elõre megadott protokoll szerint.
-
 
