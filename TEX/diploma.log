@@ -1,18 +1,18 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2012.11.9)  6 DEC 2013 23:19
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.26)  7 DEC 2013 11:48
 entering extended mode
 **diploma.tex
-("C:\Documents and Settings\user\Asztal\UAV\TEX\diploma.tex"
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\diploma.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, arabic, armenian, assamese, basque, bengali
 , bokmal, bulgarian, catalan, coptic, croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, galic
-ian, german, german-x-2009-06-19, greek, gujarati, hindi, hungarian, icelandic, indonesian, interlingua, irish, italian,
- kannada, kurmanji, lao, latin, latvian, lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, ng
-erman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese, romanian, russian, sanskrit, serbian, slovak, s
-lovenian, spanish, swedish, swissgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usenglishm
-ax, welsh, loaded.
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\report.cls"
+ian, german, german-x-2012-05-30, greek, gujarati, hindi, hungarian, icelandic, indonesian, interlingua, irish, italian,
+ kannada, kurmanji, latin, latvian, lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, ngerman
+-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, romanian, russian, sanskrit, serbian, slovak, sloven
+ian, spanish, swedish, swissgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usenglishmax, w
+elsh, loaded.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\report.cls"
 Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\size11.clo"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size11.clo"
 File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -27,49 +27,53 @@ File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.sty"
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.sty"
 Package: t1enc 1994/06/01 Standard LaTeX package
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\latin2.def"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\latin2.def"
 File: latin2.def 2008/03/30 v1.1d Input encoding file
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
-Package: amsmath 2000/07/18 v2.13 AMS math features
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
 Package: amstext 2000/06/29 v2.01
- ("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen103
-)) ("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsbsy.sty"
+))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen104
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count88
-LaTeX Info: Redefining \frac on input line 211.
+LaTeX Info: Redefining \frac on input line 210.
 \uproot@=\count89
 \leftroot@=\count90
-LaTeX Info: Redefining \overline on input line 307.
+LaTeX Info: Redefining \overline on input line 306.
 \classnum@=\count91
 \DOTSCASE@=\count92
-LaTeX Info: Redefining \ldots on input line 379.
-LaTeX Info: Redefining \dots on input line 382.
-LaTeX Info: Redefining \cdots on input line 467.
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
 \Mathstrutbox@=\box26
 \strutbox@=\box27
 \big@size=\dimen105
-LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \macc@depth=\count93
 \c@MaxMatrixCols=\count94
 \dotsspace@=\muskip10
@@ -90,27 +94,27 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 \multlinegap=\skip44
 \multlinetaggap=\skip45
 \mathdisplay@stack=\toks20
-LaTeX Info: Redefining \[ on input line 2666.
-LaTeX Info: Redefining \] on input line 2667.
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
-Package: amssymb 2009/06/22 v3.00
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
-Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\enumerate.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\enumerate.sty"
 Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
 \@enLab=\toks21
 )
-("C:\Documents and Settings\user\Application Data\MiKTeX\2.9\tex\latex\ntheorem\ntheorem.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ntheorem\ntheorem.sty"
 Style `ntheorem', Version 1.33 <2011/08/15>
 Package: ntheorem 2011/08/15 1.33
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \theorem@style=\toks22
@@ -147,34 +151,36 @@ Package ntheorem Info: Option `thmmarks' loaded on input line 1175.
 \c@endNonectr=\count100
 \c@currNonectr=\count101
 \mysavskip=\skip54
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
- ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count102
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\epsfig.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\epsfig.sty"
 Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks40
 )
@@ -184,7 +190,7 @@ Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \epsfxsize=\dimen118
 \epsfysize=\dimen119
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.sty"
 \lst@mode=\count103
 \lst@gtempboxa=\box28
 \lst@token=\toks41
@@ -198,27 +204,29 @@ Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \lst@lineno=\count108
 \lst@maxwidth=\dimen123
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
 File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
 \c@lstnumber=\count109
 \lst@skipnumbers=\count110
 \lst@framebox=\box29
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.cfg"
 File: listings.cfg 2013/08/26 1.5b listings configuration
 ))
 Package: listings 2013/08/26 1.5b (Carsten Heinz)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\color.sty"
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
- ("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
-) ("C:\Documents and Settings\user\Application Data\MiKTeX\2.9\tex\latex\lastpage\lastpage.sty"
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lastpage\lastpage.sty"
 Package: lastpage 2013/01/28 v1.2l Refers to last page's name (HMM; JPG)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\anysize.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\anysize.sty"
 Package: anysize 1994/08/13 1.0 Contributed LaTeX2e package
 
 Package: `anysize' 1.0 <1994/08/13>
@@ -226,17 +234,18 @@ Package: `anysize' 1.0 <1994/08/13>
 \@Rightmargin=\dimen125
 \@Topmargin=\dimen126
 \@Bottommargin=\dimen127
-) ("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\babel.sty"
 Package: babel 2008/07/08 v3.8m The Babel package
 
 *************************************
 * Local config file bblopts.cfg used
 *
-("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
 File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
-) ("C:\Documents and Settings\user\Asztal\UAV\TEX\magyar.ldf"
+) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\magyar.ldf
 Language: magyar 2007/10/19 v1.5 Magyar support from the babel v3.7 system
- ("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\babel.def"
 File: babel.def 2008/07/08 v3.8m Babel common definitions
 \babel@savecnt=\count111
 \U@D=\dimen128
@@ -245,16 +254,16 @@ Package babel Info: Making ` an active character on input line 2609.
 \c@footnote@add=\count112
 \c@footnote@ch=\count113
 ))
-("C:\Documents and Settings\user\Application Data\MiKTeX\2.9\tex\latex\sectsty\sectsty.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\sectsty\sectsty.sty"
 Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading styles
 )
-("C:\Documents and Settings\user\Application Data\MiKTeX\2.9\tex\latex\setspace\setspace.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
-("C:\Documents and Settings\user\Application Data\MiKTeX\2.9\tex\latex\caption\caption.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption.sty"
 Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
 
-("C:\Documents and Settings\user\Application Data\MiKTeX\2.9\tex\latex\caption\caption3.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption3.sty"
 Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 57.
 \captionmargin=\dimen129
@@ -269,13 +278,13 @@ Package caption3 Info: TeX engine: e-TeX on input line 57.
 Package caption Info: magyar babel option is loaded.
 Package caption Info: listings package is loaded.
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
-Package: hyperref 2012/05/13 v6.82q Hypertext links for LaTeX
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
+Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
 Package: hobsub-hyperref 2012/04/25 v1.12 Bundle oberdiek, subset hyperref (HO)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
 Package: hobsub-generic 2012/04/25 v1.12 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2012/04/25 v1.12 Construct package bundles (HO)
 Package hobsub Info: Skipping package `infwarerr' (already loaded).
@@ -314,49 +323,54 @@ Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
 Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
 Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
 \@linkdim=\dimen136
 \Hy@linkcounter=\count115
 \Hy@pagecounter=\count116
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
-File: pd1enc.def 2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
+File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 )
 \Hy@SavedSpaceFactor=\count117
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
-Package hyperref Info: Hyper figures OFF on input line 4062.
-Package hyperref Info: Link nesting OFF on input line 4067.
-Package hyperref Info: Hyper index ON on input line 4070.
-Package hyperref Info: Plain pages OFF on input line 4077.
-Package hyperref Info: Backreferencing OFF on input line 4082.
+Package hyperref Info: Hyper figures OFF on input line 4443.
+Package hyperref Info: Link nesting OFF on input line 4448.
+Package hyperref Info: Hyper index ON on input line 4451.
+Package hyperref Info: Plain pages OFF on input line 4458.
+Package hyperref Info: Backreferencing OFF on input line 4463.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4300.
+Package hyperref Info: Bookmarks ON on input line 4688.
 \c@Hy@tempcnt=\count118
- ("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
 \Urlmuskip=\muskip11
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 4653.
+LaTeX Info: Redefining \url on input line 5041.
+\XeTeXLinkMargin=\dimen137
 \Fld@menulength=\count119
-\Field@Width=\dimen137
-\Fld@charsize=\dimen138
-Package hyperref Info: Hyper figures OFF on input line 5773.
-Package hyperref Info: Link nesting OFF on input line 5778.
-Package hyperref Info: Hyper index ON on input line 5781.
-Package hyperref Info: backreferencing OFF on input line 5788.
-Package hyperref Info: Link coloring OFF on input line 5793.
-Package hyperref Info: Link coloring with OCG OFF on input line 5798.
-Package hyperref Info: PDF/A mode OFF on input line 5803.
-LaTeX Info: Redefining \ref on input line 5843.
-LaTeX Info: Redefining \pageref on input line 5847.
+\Field@Width=\dimen138
+\Fld@charsize=\dimen139
+Package hyperref Info: Hyper figures OFF on input line 6295.
+Package hyperref Info: Link nesting OFF on input line 6300.
+Package hyperref Info: Hyper index ON on input line 6303.
+Package hyperref Info: backreferencing OFF on input line 6310.
+Package hyperref Info: Link coloring OFF on input line 6315.
+Package hyperref Info: Link coloring with OCG OFF on input line 6320.
+Package hyperref Info: PDF/A mode OFF on input line 6325.
+LaTeX Info: Redefining \ref on input line 6365.
+LaTeX Info: Redefining \pageref on input line 6369.
 \Hy@abspage=\count120
 \c@Item=\count121
 \c@Hfootnote=\count122
@@ -364,18 +378,18 @@ LaTeX Info: Redefining \pageref on input line 5847.
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
-File: hpdftex.def 2012/05/13 v6.82q Hyperref driver for pdfTeX
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
+File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
 \Fld@listcount=\count123
 \c@bookmark@seq@number=\count124
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 282.
 )
 \Hy@SectionHShift=\skip55
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\float\float.sty"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count125
 \float@exts=\toks42
@@ -383,17 +397,17 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks43
 \@floatcapt=\box31
 )
-("C:\Documents and Settings\user\Application Data\MiKTeX\2.9\tex\latex\breakurl\breakurl.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\breakurl\breakurl.sty"
 Package: breakurl 2013/04/10 v1.40 Breakable hyperref URLs
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty"
-Package: xkeyval 2008/08/13 v2.6a package option processing (HA)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty"
+Package: xkeyval 2012/10/14 v2.6b package option processing (HA)
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex"
 \XKV@toks=\toks44
 \XKV@tempa@toks=\toks45
 \XKV@depth=\count126
-File: xkeyval.tex 2008/08/13 v2.6a key=value parser (HA)
+File: xkeyval.tex 2012/10/14 v2.6b key=value parser (HA)
 ))
 
 Package breakurl Warning: You are using breakurl while processing via pdflatex.
@@ -412,23 +426,18 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 
 Package hyperref Info: Option `pdfnewwindow' set `true' on input line 75.
 Package hyperref Info: Option `colorlinks' set `true' on input line 75.
-("C:\Documents and Settings\user\Asztal\UAV\TEX\diploma.aux"
-("C:\Documents and Settings\user\Asztal\UAV\TEX\titlepage.aux")
-("C:\Documents and Settings\user\Asztal\UAV\TEX\declaration.aux")
-("C:\Documents and Settings\user\Asztal\UAV\TEX\abstract.aux")
-("C:\Documents and Settings\user\Asztal\UAV\TEX\introduction.aux")
-("C:\Documents and Settings\user\Asztal\UAV\TEX\elozmenyek.aux"
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\diploma.aux (C:\Users\bojtip\Desktop\UAV\doksi\TEX\titlepage.aux)
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\declaration.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\abstract.aux)
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\introduction.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\elozmenyek.aux
 
 LaTeX Warning: Label `fig:sys' multiply defined.
 
-) ("C:\Documents and Settings\user\Asztal\UAV\TEX\tervezes.aux"
+) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\tervezes.aux
 
 LaTeX Warning: Label `tab:up' multiply defined.
 
-) ("C:\Documents and Settings\user\Asztal\UAV\TEX\kivitelezes.aux")
-("C:\Documents and Settings\user\Asztal\UAV\TEX\ertekeles.aux")
-("C:\Documents and Settings\user\Asztal\UAV\TEX\chapter4.aux")
-("C:\Documents and Settings\user\Asztal\UAV\TEX\appendices.aux"))
+) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\kivitelezes.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\ertekeles.aux)
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter4.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\appendices.aux))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 144.
 LaTeX Font Info:    ... okay on input line 144.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 144.
@@ -444,16 +453,16 @@ LaTeX Font Info:    ... okay on input line 144.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 144.
 LaTeX Font Info:    ... okay on input line 144.
 
-("C:\Documents and Settings\user\Application Data\MiKTeX\2.9\tex\context\base\supp-pdf.mkii"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count127
-\scratchdimen=\dimen139
+\scratchdimen=\dimen140
 \scratchbox=\box32
 \nofMPsegments=\count128
 \nofMParguments=\count129
 \everyMPshowfont=\toks46
 \MPscratchCnt=\count130
-\MPscratchDim=\dimen140
+\MPscratchDim=\dimen141
 \MPnumerator=\count131
 \makeMPintoPDFobject=\count132
 \everyMPtoPDFconversion=\toks47
@@ -472,10 +481,10 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box33
 Package hyperref Info: Link coloring ON on input line 144.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
-Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count134
@@ -484,35 +493,34 @@ LaTeX Info: Redefining \ref on input line 144.
 LaTeX Info: Redefining \pageref on input line 144.
 LaTeX Info: Redefining \nameref on input line 144.
 
-("C:\Documents and Settings\user\Asztal\UAV\TEX\diploma.out") ("C:\Documents and Settings\user\Asztal\UAV\TEX\diploma.ou
-t")
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\diploma.out) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\diploma.out)
 \@outlinefile=\write3
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\report.cls"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\report.cls"
 LaTeX Info: Redefining \cal on input line 586.
 LaTeX Info: Redefining \mit on input line 587.
-)
-("C:\Documents and Settings\user\Asztal\UAV\TEX\titlepage.tex" <figures/BMElogo.png, id=187, 975.645pt x 273.02pt>
+) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\titlepage.tex
+<figures/BMElogo.png, id=195, 975.645pt x 273.02pt>
 File: figures/BMElogo.png Graphic file (type png)
-
-<use figures/BMElogo.png>
+ <use figures/BMElogo.png>
 Package pdftex.def Info: figures/BMElogo.png used on input line 6.
 (pdftex.def)             Requested size: 170.71652pt x 47.77087pt.
 LaTeX Font Info:    Try loading font information for U+msa on input line 17.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
-File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 17.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
-File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 
 
-{C:/Documents and Settings/user/Local Settings/Application Data/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Documents and S
-ettings/user/Asztal/UAV/TEX/figures/BMElogo.png>])
-("C:\Documents and Settings\user\Asztal\UAV\TEX\diploma.toc"pdfTeX warning (ext4): destination with the same identifier 
-(name{page.1}) has been already used, duplicate ignored
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/BMElogo.png>]) (C:\U
+sers\bojtip\Desktop\UAV\doksi\TEX\diploma.tocpdfTeX warning (ext4): destination with the same identifier (name{page.1}) 
+has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.48 ...ol\'ogi\'ak bemutat\'asa}{27}{section.2.5}
@@ -524,18 +532,17 @@ l.48 ...ol\'ogi\'ak bemutat\'asa}{27}{section.2.5}
 pdfTeX warning: pdflatex.exe: pop empty color page stack 0
 ])
 \tf@toc=\write4
- [2] ("C:\Documents and Settings\user\Asztal\UAV\TEX\declaration.tex" [3
+ [2] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\declaration.tex [3
 
-])
-("C:\Documents and Settings\user\Asztal\UAV\TEX\abstract.tex" [4
+]) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\abstract.tex
+[4
 
 
 
 
 ]) [5
 
-]
-("C:\Documents and Settings\user\Asztal\UAV\TEX\introduction.tex"
+] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\introduction.tex
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 2.
@@ -544,7 +551,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 
 
 
-] ("C:\Documents and Settings\user\Asztal\UAV\TEX\elozmenyek.tex"
+] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\elozmenyek.tex
 1. fejezet.
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
@@ -554,7 +561,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 9.
 
-<figures/orca.png, id=274, 415.5525pt x 235.63031pt>
+<figures/orca.png, id=284, 415.5525pt x 235.63031pt>
 File: figures/orca.png Graphic file (type png)
  <use figures/orca.png>
 Package pdftex.def Info: figures/orca.png used on input line 16.
@@ -566,31 +573,31 @@ Package pdftex.def Info: figures/orca.png used on input line 16.
 ]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 26.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 26.
- <figures/sys.png, id=281, 6441.06375pt x 4899.30376pt>
+ <figures/sys.png, id=291, 6441.06375pt x 4899.30376pt>
 File: figures/sys.png Graphic file (type png)
 
 <use figures/sys.png>
 Package pdftex.def Info: figures/sys.png used on input line 37.
 (pdftex.def)             Requested size: 6441.04814pt x 4899.29187pt.
- [8 <C:/Documents and Settings/user/Asztal/UAV/TEX/figures/orca.png>] [9 <C:/Documents and Settings/user/Asztal/UAV/TEX/
-figures/sys.png>] <figures/xbee.png, id=306, 328.97906pt x 254.45062pt>
+ [8 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/orca.png>] [9 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/sys.png>
+] <figures/xbee.png, id=316, 328.97906pt x 254.45062pt>
 File: figures/xbee.png Graphic file (type png)
  <use figures/xbee.png>
 Package pdftex.def Info: figures/xbee.png used on input line 82.
 (pdftex.def)             Requested size: 328.97826pt x 254.45pt.
-
-[10] <figures/lrwpan.png, id=320, 336.65775pt x 336.65775pt>
+ [10]
+<figures/lrwpan.png, id=330, 336.65775pt x 336.65775pt>
 File: figures/lrwpan.png Graphic file (type png)
  <use figures/lrwpan.png>
 Package pdftex.def Info: figures/lrwpan.png used on input line 96.
 (pdftex.def)             Requested size: 336.6569pt x 336.6569pt.
- [11 <C:/Documents and Settings/user/Asztal/UAV/TEX/figures/xbee.png> <C:/Documents and Settings/user/Asztal/UAV/TEX/fig
-ures/lrwpan.png>]
+ [11 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/xbee.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/lrwpan.png>
+]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 123.
@@ -599,58 +606,57 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 123.
 
-[12] [13] <figures/ardu.png, id=358, 752.8125pt x 420.06938pt>
+[12] [13] <figures/ardu.png, id=368, 752.8125pt x 420.06938pt>
 File: figures/ardu.png Graphic file (type png)
  <use figures/ardu.png>
 Package pdftex.def Info: figures/ardu.png used on input line 173.
 (pdftex.def)             Requested size: 752.81065pt x 420.06836pt.
 
-<figures/ardu_plan.png, id=359, 531.78674pt x 119.84775pt>
+<figures/ardu_plan.png, id=369, 531.78674pt x 119.84775pt>
 File: figures/ardu_plan.png Graphic file (type png)
  <use figures/ardu_plan.png>
 Package pdftex.def Info: figures/ardu_plan.png used on input line 186.
 (pdftex.def)             Requested size: 531.78545pt x 119.84744pt.
- [14 <C:/Documents and Settings/user/Asztal/UAV/TEX/figures/ardu.png>] [15 <C:/Documents and Settings/user/Asztal/UAV/TE
-X/figures/ardu_plan.png>]
-<figures/paparazzi.png, id=377, 794.97pt x 612.75734pt>
+ [14 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/ardu.png>] [15 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/ardu_p
+lan.png>]
+<figures/paparazzi.png, id=387, 794.97pt x 612.75734pt>
 File: figures/paparazzi.png Graphic file (type png)
  <use figures/paparazzi.png>
 Package pdftex.def Info: figures/paparazzi.png used on input line 219.
 (pdftex.def)             Requested size: 794.96806pt x 612.75584pt.
- [16 <C:/Documents and Settings/user/Asztal/UAV/TEX/figures/paparazzi.png>] <figures/micropilot.png, id=388, 758.835pt x
- 474.27188pt>
+ [16 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/paparazzi.png>] <figures/micropilot.png, id=398, 758.835pt x 474.271
+88pt>
 File: figures/micropilot.png Graphic file (type png)
-
-<use figures/micropilot.png>
+ <use figures/micropilot.png>
 Package pdftex.def Info: figures/micropilot.png used on input line 241.
 (pdftex.def)             Requested size: 758.83316pt x 474.27072pt.
- [17 <C:/Documents and Settings/user/Asztal/UAV/TEX/figures/micropilot.png>]
-<figures/openpilot.png, id=400, 977.45175pt x 518.53725pt>
+
+[17 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/micropilot.png>]
+<figures/openpilot.png, id=410, 977.45175pt x 518.53725pt>
 File: figures/openpilot.png Graphic file (type png)
  <use figures/openpilot.png>
 Package pdftex.def Info: figures/openpilot.png used on input line 283.
 (pdftex.def)             Requested size: 977.44937pt x 518.53598pt.
  [18]
-<figures/qground.png, id=413, 903.375pt x 554.07pt>
+<figures/qground.png, id=423, 903.375pt x 554.07pt>
 File: figures/qground.png Graphic file (type png)
  <use figures/qground.png>
 Package pdftex.def Info: figures/qground.png used on input line 301.
 (pdftex.def)             Requested size: 903.3728pt x 554.06865pt.
- [19 <C:/Documents and Settings/user/Asztal/UAV/TEX/figures/openpilot.png>] <figures/hk.png, id=423, 480.5955pt x 264.38
-776pt>
+ [19 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/openpilot.png>] <figures/hk.png, id=433, 480.5955pt x 264.38776pt>
 File: figures/hk.png Graphic file (type png)
  <use figures/hk.png>
 Package pdftex.def Info: figures/hk.png used on input line 314.
 (pdftex.def)             Requested size: 480.59433pt x 264.3871pt.
- [20 <C:/Documents and Settings/user/Asztal/UAV/TEX/figures/qground.png> <C:/Documents and Settings/user/Asztal/UAV/TEX/
-figures/hk.png>]
+ [20 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/qground.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/hk.png>]
+
 Overfull \hbox (51.73853pt too wide) in paragraph at lines 329--350
  [] 
  []
 
-) [21] ("C:\Documents and Settings\user\Asztal\UAV\TEX\tervezes.tex"
+) [21] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\tervezes.tex
 2. fejezet.
-<figures/downprot.png, id=439, 681.14474pt x 1064.778pt>
+<figures/downprot.png, id=449, 681.14474pt x 1064.778pt>
 File: figures/downprot.png Graphic file (type png)
  <use figures/downprot.png>
 Package pdftex.def Info: figures/downprot.png used on input line 19.
@@ -667,7 +673,7 @@ Overfull \hbox (2.43181pt too wide) in paragraph at lines 17--20
 ]
 Overfull \vbox (59.44225pt too high) has occurred while \output is active []
 
- [23 <C:/Documents and Settings/user/Asztal/UAV/TEX/figures/downprot.png>] [24]
+ [23 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/downprot.png>] [24]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 116.
@@ -689,20 +695,20 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 138.
 
-[26] <figures/net.png, id=467, 404.712pt x 351.11176pt>
+[26] <figures/net.png, id=477, 404.712pt x 351.11176pt>
 File: figures/net.png Graphic file (type png)
  <use figures/net.png>
 Package pdftex.def Info: figures/net.png used on input line 151.
 (pdftex.def)             Requested size: 404.71101pt x 351.11089pt.
- [27 <C:/Documents and Settings/user/Asztal/UAV/TEX/figures/net.png>]
+ [27 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/net.png>]
 Overfull \hbox (1.52452pt too wide) in paragraph at lines 173--174
 \T1/cmr/m/n/10.95 Grafikus meg-je-le-ní-tést biz-to-sít az al-kal-ma-zá-sok-nak, kü-lön-bö-z® ele-mek (be-vi-te-li me-z®
 , gomb,
  []
 
-) [28] ("C:\Documents and Settings\user\Asztal\UAV\TEX\kivitelezes.tex"
+) [28] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\kivitelezes.tex
 3. fejezet.
-<figures/classdiagram.png, id=503, 505.28775pt x 266.1945pt>
+<figures/classdiagram.png, id=513, 505.28775pt x 266.1945pt>
 File: figures/classdiagram.png Graphic file (type png)
  <use figures/classdiagram.png>
 Package pdftex.def Info: figures/classdiagram.png used on input line 15.
@@ -711,96 +717,102 @@ Package pdftex.def Info: figures/classdiagram.png used on input line 15.
 
 
 
- <C:/Documents and Settings/user/Asztal/UAV/TEX/figures/classdiagram.png>]
+ <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/classdiagram.png>] [30]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\H' on input line 33.
+(hyperref)                removing `\H' on input line 39.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\H' on input line 33.
+(hyperref)                removing `\H' on input line 39.
 
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 44.
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
-File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-Overfull \hbox (450.25615pt too wide) in paragraph at lines 65--65
-[]\T1/cmtt/m/n/10.95 g.TranslateTransform(center.X + (float)((size / 2) - 20) * (float)Math.Sin(angle2) - 0, center.Y + 
-(float)((size / 2) - 20) * (float)Math.Cos(angle2) - 0);[] 
- []
-
-[30]
-Overfull \hbox (20.21996pt too wide) in paragraph at lines 65--65
-[]\T1/cmtt/m/n/10.95 g.DrawString(degree, new Font("Arial", 8), new SolidBrush(Color.Blue), 0F, 0F);[] 
- []
-
-<figures/fokepernyo.png, id=521, 583.58025pt x 311.36325pt>
+<figures/fokepernyo.png, id=529, 593.8185pt x 348.70274pt>
 File: figures/fokepernyo.png Graphic file (type png)
  <use figures/fokepernyo.png>
-Package pdftex.def Info: figures/fokepernyo.png used on input line 74.
-(pdftex.def)             Requested size: 583.57881pt x 311.36249pt.
-
+Package pdftex.def Info: figures/fokepernyo.png used on input line 46.
+(pdftex.def)             Requested size: 593.81705pt x 348.70187pt.
+ [31 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/fokepernyo.png>]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\H' on input line 79.
+(hyperref)                removing `\H' on input line 66.
 
-<figures/tervkepernyo.png, id=522, 585.98924pt x 314.3745pt>
+<figures/tervkepernyo.png, id=537, 593.21625pt x 353.52075pt>
 File: figures/tervkepernyo.png Graphic file (type png)
  <use figures/tervkepernyo.png>
-Package pdftex.def Info: figures/tervkepernyo.png used on input line 84.
-(pdftex.def)             Requested size: 585.98781pt x 314.37372pt.
- [31 <C:/Documents and Settings/user/Asztal/UAV/TEX/figures/fokepernyo.png>]
+Package pdftex.def Info: figures/tervkepernyo.png used on input line 73.
+(pdftex.def)             Requested size: 593.2148pt x 353.51988pt.
+
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\H' on input line 89.
+(hyperref)                removing `\H' on input line 78.
 
-<figures/comnull.png, id=531, 416.30531pt x 362.10281pt>
+<figures/diagkepernyo.png, id=538, 595.023pt x 349.90726pt>
+File: figures/diagkepernyo.png Graphic file (type png)
+ <use figures/diagkepernyo.png>
+Package pdftex.def Info: figures/diagkepernyo.png used on input line 85.
+(pdftex.def)             Requested size: 595.02155pt x 349.90639pt.
+ [32 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/tervkepernyo.png>]
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\H' on input line 91.
+
+<figures/terminalkepernyo.png, id=547, 592.614pt x 349.90726pt>
+File: figures/terminalkepernyo.png Graphic file (type png)
+ <use figures/terminalkepernyo.png>
+Package pdftex.def Info: figures/terminalkepernyo.png used on input line 97.
+(pdftex.def)             Requested size: 592.61255pt x 349.90639pt.
+ [33 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/diagkepernyo.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/ter
+minalkepernyo.png>]
+<figures/comnull.png, id=558, 416.30531pt x 362.10281pt>
 File: figures/comnull.png Graphic file (type png)
  <use figures/comnull.png>
-Package pdftex.def Info: figures/comnull.png used on input line 102.
+Package pdftex.def Info: figures/comnull.png used on input line 110.
 (pdftex.def)             Requested size: 416.30429pt x 362.10191pt.
 
-Overfull \hbox (7.11565pt too wide) in paragraph at lines 101--103
+Overfull \hbox (7.11565pt too wide) in paragraph at lines 109--111
 [][] 
  []
 
 
-Overfull \hbox (64.01936pt too wide) in paragraph at lines 103--103
+Overfull \hbox (64.01936pt too wide) in paragraph at lines 111--111
 [] [] 
  []
 
-<figures/sorossend.png, id=532, 405.01312pt x 287.57437pt>
+<figures/sorossend.png, id=559, 327.02174pt x 202.95825pt>
 File: figures/sorossend.png Graphic file (type png)
  <use figures/sorossend.png>
-Package pdftex.def Info: figures/sorossend.png used on input line 109.
-(pdftex.def)             Requested size: 405.01212pt x 287.57367pt.
+Package pdftex.def Info: figures/sorossend.png used on input line 117.
+(pdftex.def)             Requested size: 327.02094pt x 202.95775pt.
 
-Overfull \hbox (7.10986pt too wide) in paragraph at lines 108--110
+Overfull \hbox (7.12013pt too wide) in paragraph at lines 116--118
 [][] 
  []
 
 
-Overfull \hbox (64.01936pt too wide) in paragraph at lines 110--110
+Overfull \hbox (64.01936pt too wide) in paragraph at lines 118--118
 [] [] 
  []
 
-[32 <C:/Documents and Settings/user/Asztal/UAV/TEX/figures/tervkepernyo.png>]
-<figures/xvi.png, id=541, 575.14874pt x 404.26031pt>
+<figures/xvi.png, id=560, 575.14874pt x 404.26031pt>
 File: figures/xvi.png Graphic file (type png)
  <use figures/xvi.png>
-Package pdftex.def Info: figures/xvi.png used on input line 120.
+Package pdftex.def Info: figures/xvi.png used on input line 127.
 (pdftex.def)             Requested size: 575.14734pt x 404.25932pt.
-) [33 <C:/Documents and Settings/user/Asztal/UAV/TEX/figures/comnull.png> <C:/Documents and Settings/user/Asztal/UAV/TEX
-/figures/sorossend.png> <C:/Documents and Settings/user/Asztal/UAV/TEX/figures/xvi.png>] ("C:\Documents and Settings\use
-r\Asztal\UAV\TEX\ertekeles.tex"
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 134.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
+File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)) [34 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/comnull.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/soross
+end.png>] [35 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/xvi.png>] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\ertekeles.
+tex
 4. fejezet.
-) [34
+) [36
 
 
 
-] ("C:\Documents and Settings\user\Asztal\UAV\TEX\chapter4.tex"
+] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter4.tex
 5. fejezet.
-) [35
+) [37
 
 
 
@@ -829,7 +841,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 221--222
 []\T1/cmr/m/n/10.95 http://msdn.microsoft.com/en-us/library/windows/desktop/ms533798.aspx,
  []
 
-[36
+[38
 
 
 ]
@@ -837,7 +849,7 @@ Overfull \hbox (22.15868pt too wide) in paragraph at lines 239--240
 []\T1/cmr/m/n/10.95 http://www.inf.mit.bme.hu/sites/default/files/materials/category/kategória/oktatás/bsc-
  []
 
-[37] ("C:\Documents and Settings\user\Asztal\UAV\TEX\appendices.tex") [38
+[39] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\appendices.tex) [40
 
 
 ]
@@ -846,21 +858,16 @@ Overfull \hbox (22.15868pt too wide) in paragraph at lines 239--240
 AED: lastpage setting LastPage
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 252.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 252.
-("C:\Documents and Settings\user\Asztal\UAV\TEX\diploma.aux"
-("C:\Documents and Settings\user\Asztal\UAV\TEX\titlepage.aux")
-("C:\Documents and Settings\user\Asztal\UAV\TEX\declaration.aux")
-("C:\Documents and Settings\user\Asztal\UAV\TEX\abstract.aux")
-("C:\Documents and Settings\user\Asztal\UAV\TEX\introduction.aux")
-("C:\Documents and Settings\user\Asztal\UAV\TEX\elozmenyek.aux")
-("C:\Documents and Settings\user\Asztal\UAV\TEX\tervezes.aux")
-("C:\Documents and Settings\user\Asztal\UAV\TEX\kivitelezes.aux")
-("C:\Documents and Settings\user\Asztal\UAV\TEX\ertekeles.aux")
-("C:\Documents and Settings\user\Asztal\UAV\TEX\chapter4.aux")
-("C:\Documents and Settings\user\Asztal\UAV\TEX\appendices.aux"))
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\diploma.aux (C:\Users\bojtip\Desktop\UAV\doksi\TEX\titlepage.aux)
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\declaration.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\abstract.aux)
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\introduction.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\elozmenyek.aux)
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\tervezes.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\kivitelezes.aux)
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\ertekeles.aux) (C:\Users\bojtip\Desktop\UAV\doksi\TEX\chapter4.aux)
+(C:\Users\bojtip\Desktop\UAV\doksi\TEX\appendices.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 252.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 252.
 Package rerunfilecheck Info: File `diploma.out' has not changed.
-(rerunfilecheck)             Checksum: FD8B9DAD46E789389865D06B78634114;3187.
+(rerunfilecheck)             Checksum: 32D845C40D664D3FA1DA37C4E5DA452E;3355.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -868,31 +875,28 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 252.
  ) 
 Here is how much of TeX's memory you used:
- 10574 strings out of 494045
- 163205 string characters out of 3148336
- 266439 words of memory out of 3000000
- 13455 multiletter control sequences out of 15000+200000
+ 10713 strings out of 493921
+ 165154 string characters out of 3144872
+ 262892 words of memory out of 3000000
+ 13584 multiletter control sequences out of 15000+200000
  25770 words of font info for 62 fonts, out of 3000000 for 9000
- 715 hyphenation exceptions out of 8191
- 39i,9n,77p,1333b,552s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Documents and Settings\user\Local Settings\Application Data\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt109
-5.pk> <C:\Documents and Settings\user\Local Settings\Application Data\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti
-0900.pk> <C:\Documents and Settings\user\Local Settings\Application Data\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\e
-crm0900.pk> <C:\Documents and Settings\user\Local Settings\Application Data\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi60
-0\ecrm0600.pk> <C:\Documents and Settings\user\Local Settings\Application Data\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dp
-i600\ecrm0800.pk> <C:\Documents and Settings\user\Local Settings\Application Data\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec
-\dpi600\ecbx1000.pk> <C:\Documents and Settings\user\Local Settings\Application Data\MiKTeX\2.9\fonts\pk\ljfour\jknappen
-\ec\dpi600\ecbx1200.pk> <C:\Documents and Settings\user\Local Settings\Application Data\MiKTeX\2.9\fonts\pk\ljfour\jknap
-pen\ec\dpi600\ecbx2488.pk> <C:\Documents and Settings\user\Local Settings\Application Data\MiKTeX\2.9\fonts\pk\ljfour\jk
-nappen\ec\dpi600\ecrm1200.pk> <C:\Documents and Settings\user\Local Settings\Application Data\MiKTeX\2.9\fonts\pk\ljfour
-\jknappen\ec\dpi600\ecti1095.pk> <C:\Documents and Settings\user\Local Settings\Application Data\MiKTeX\2.9\fonts\pk\ljf
-our\jknappen\ec\dpi600\eccc1440.pk> <C:\Documents and Settings\user\Local Settings\Application Data\MiKTeX\2.9\fonts\pk\
-ljfour\jknappen\ec\dpi600\ecbx2074.pk> <C:\Documents and Settings\user\Local Settings\Application Data\MiKTeX\2.9\fonts\
-pk\ljfour\jknappen\ec\dpi600\ecrm1095.pk> <C:\Documents and Settings\user\Local Settings\Application Data\MiKTeX\2.9\fon
-ts\pk\ljfour\jknappen\ec\dpi600\ecbx1095.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on diploma.pdf (39 pages, 7657736 bytes).
+ 841 hyphenation exceptions out of 8191
+ 39i,9n,77p,1375b,556s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1095.pk> <C:\Users\bojtip\AppData\Lo
+cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti0900.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour
+\jknappen\ec\dpi600\ecrm0900.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0600.p
+k> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0800.pk> <C:\Users\bojtip\AppData\Lo
+cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1000.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour
+\jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.p
+k> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\bojtip\AppData\Lo
+cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1095.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour
+\jknappen\ec\dpi600\eccc1440.pk> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2074.p
+k> <C:\Users\bojtip\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1095.pk> <C:\Users\bojtip\AppData\Lo
+cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1095.pk><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmsy10.pfb>
+Output written on diploma.pdf (41 pages, 7590437 bytes).
 PDF statistics:
- 1202 PDF objects out of 1440 (max. 8388607)
- 167 named destinations out of 1000 (max. 500000)
- 469 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1204 PDF objects out of 1440 (max. 8388607)
+ 173 named destinations out of 1000 (max. 500000)
+ 495 words of extra memory for PDF output out of 10000 (max. 10000000)
 

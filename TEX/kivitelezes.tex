@@ -7,7 +7,7 @@ Az elõzõ fejezetekben összegyûjtöttem a megvalósításhoz szükséges információkat,
 
 \section{Program felépítése}
 
-A \figref{class} ábrán láthatóak a programban használt osztályok. A \textit{Program} statikus osztály a main függvényt, mint belépési pontot tartalmazza. Ez példányosítja az \textit{Instruments} osztályt, mely a különbözõ \textit{View}-ok megjelenítéséért felelõs.
+A \figref{class} ábrán láthatóak a programban használt osztályok. A \textit{Program} statikus osztály a main függvényt, mint belépési pontot tartalmazza. Ez példányosítja az \textit{Instruments} osztályt, mely a különbözõ \textit{View}-ok megjelenítéséért felelõs. Az Altimeter, Compass, Speed, Vario a mûszereket megvalósító osztályok, a PlanView a tervezõképernyõ, az ErrorOverview osztály a diagnosztikai képernyõ implementációja. A soros portból érkezõ adatokat a SerialUtil statikus osztály dolgozza fel, a kapott csomag egy-egy adattagját egy DataElement objektumba helyezi, mely a hibadiagnosztikát valósítja meg a benne található elemre.
 
 \begin{figure}[H]
 	\centering
@@ -19,11 +19,17 @@ A \figref{class} ábrán láthatóak a programban használt osztályok. A \textit{Prog
 
 \subsection{Kapcsolódás megvalósítása}
 
-Sorosportok, SerialUtil
+A \sectref{fejlesztes} fejezetben biztosítom a program számára a küldõ és fogadó oldalt, mely a repülõgépet hivatott helyettesíteni. A kapott adatok soros porton keresztül érkeznek, egy elõre meghatározott protokoll szerint (\sectref{protokoll} fejezet. A kapcsolódást megkönnyíti az elõre elkészített \textit{SerialPort} könyvtár csomag, mely minden szükséges mûveletet rendelkezésre bocsájt. Eseményvezérelt mûveletei közé tartozik a \textit{DataReceived()} függvény, mely akkor hívódik meg, ha a felépített kapcsolaton keresztül adat érkezett. Jelen esetben a kapcsolat sebességén múlhat, hogy egy ilyen adatcsomagban egy egész számunkra megfelelõ csomag érkezett-e. Elõfordulhat az az eset, hogy a repülõgép már küldi az adatait és a program ennek az adatfolyamnak a közepébe kapcsolódik bele, így egy elõzõ csomag eleje és a következõ csomag vége lemaradhat. Ezért szükséges egy puffert alkalmazni, melynek végére minden egyes beérkezõ bitet elrak, ha a puffer mérete elérte a fogadandó csomag kétszeresét, biztosak lehetünk abban, hogy ebbe egy csomag már belefér. Ekkor a puffer elejérõl egy iteráció elindul, mely az ``UUT'' fejlécet keresi, ha megtalálta, onnan a megtalált index + csomag hossza indexig iterálva feltölt egy byte tömböt, melyet a \textit{SerialUtil} osztály \textit{Decode()} függvénye fogad.
+
 
 \subsection{Redundáns adatok feldolgozása}
 
-DataElement...
+Mivel párhuzamos csatornákon kapja az adatokat, így az elõzõ fejezetben ismertetett folyamat kétszerezve van, két külön soros portra. Végeredményben a kapott, értelmezhetõ megfelelõ fejléccel kezdõdõ csomagokat a \textit{SerialUtil.Decode()} függvény alakít át double értékekké, mellyel már kényelmesen lehet dolgozni. A dekódolás után minden egyes érték egy hozzá tartozó \textit{DataElement} objektumban tárolódik, az ezeket tartalmazó tömb a 2 port számára közös erõforrás, így a kölcsönös kizárásról gondoskodni kell. Mivel egy tömb írása nem atomi mûvelet, így a preemtív ütemezéssel ellátott operációs rendszer a portokhoz tartozó szálakat bármikor megszakíthatja, így elõfordulhat az az eset, hogy egyik soros portból érkezõ csomagot a dekódolás után éppen írja az egyik szál, közben a másik porthoz tatozó másik szál is elkezdené írni. Ezt elkerülendõ egy Lock objektumon történik a zárolás az írás megkezdésekor, melyet az írás befejezése szabadít fel, míg az objektum zárolt van, a másik szál kénytelen várakozni.
+
+\subsection{Redundáns adatok hibadetektációja}
+
+Minden fogadott adat egy DataElement objektumban tárolódik, ebben 2 FIFO lista szerepel, egyik az ``A'', másik a ``B'' portból érkezõeknek. Mikor ``A''-ból érkezik egy, az AddA(double item) függvénye teszi bele az ``A'' FIFO végére, ugyanez a másik portra is érvényes. Mikor egy mûszer elkéri az értéket, melyet mutatni szeretne, akkor a GetData() függvényhívással megkapja. A hibakezelés ezen függvényekben van megoldva, mindkettõ FIFO sor rendelkezik egy hibaszámlálóval, mely különbözõ feltételek mellett nõ vagy csökken. A GetData() függvény aszerint, hogy mely sornak kisebb ez a hibaszámlálója, dönti el, hogy melyikbõl veszi ki az elemet.
+TODO
 
 
 \section{Megjelenítés}
@@ -34,40 +40,6 @@ Bal oldalon a létrehozott UserControllok megjelenítése és elhelyezése a \figref{
 
 A HappyKillmore (\sectref{happy} fejezet) forráskódjának tanulmányozása során látható, hogy minden mûszert külön View-ként valósít meg, így ezt a megoldást célszerû használni. Elkészítettem a magasságmérõ, emelkedésjelzõ, sebességmérõ és iránytû UserControll-t melyek tervezõ nézetben ``Drag and Drop'' technológiával a megfelelõ helyre húzható és könnyen beköthetõ.
 
-\subsubsection{Sebességmérõ}
-A \textit{View} egy \textit{UserControll}-ból származik, annak a \textit{OnPaint()} metódusát írom felül, melyben a mûszer különbözõ elemeit pozicionálom a megfelelõ helyre. Az \textit{OnPaint()} függvény minden olyan esetben meghívódik, mikor valamely része érvénytelenné, nem láthatóvá válik. Ekkor szükséges az elem újra rajzolása, ezt mi a View Invalidate() metódusával explicit is kiválthatjuk.
-GDI+ segítségével egy piros kört rajzolok
-
-\subsubsection{Iránytû}
-Az iránytû felépítése hasonló , mint a sebességmérõ mûszernek, jelentõs változás az égtájak és a fokok forgatását végzõ transzformáció. Elõször a kiírandó karaktert a grafikai koordináta-rendszer középpontjába tolom el, ekkor lehetséges az adott szöggel történõ elforgatás, majd a megfelelõ helyre eltolás, mely az a látszatot kelti, mintha úgy lenne egy tárcsára felírva, hogy az csak akkor olvasható, amikor felsõ helyzetben van.
-A kirajzolást végzõ grafikus megjelenítõ pipeline tulajdonsága miatt ezeket a mûveleteket fordított sorrendben kell elvégezni a \textit{private void DrawNumbers(Graphics g)} metódusban:
-\begin{verbatim}
-//measure the size of the degree, which is written
- SizeF stringSize = g.MeasureString(degree, this.Font);
-
-//calculate the radian of i.th iteration's degree
-float angle2 = -CalculateRadian((float)i * 30+(float)heading +180);
- 
-//translate to the proper position
-g.TranslateTransform(center.X + (float)((size / 2) - 20) * (float)Math.Sin(angle2) - 0, center.Y + (float)((size / 2) - 20) * (float)Math.Cos(angle2) - 0);
-
-//rotate with the needed degree
-g.RotateTransform(i * 30 + (float)heading + 180 + 180);
-
-//translate to the center of the string
-g.TranslateTransform(-stringSize.Width / 2, -stringSize.Height / 2);
-
-//draw the string
-g.DrawString(degree, new Font("Arial", 8), new SolidBrush(Color.Blue), 0F, 0F);
-
-//reset the matrices
-g.ResetTransform();
-\end{verbatim}
-
-
-\subsubsection{Kapcsolódás}
-Folyamatosan látszódik...
-
 \begin{figure}[H]
 	\centering
 	\resizebox{15cm}{!}{
@@ -76,7 +48,24 @@ Folyamatosan látszódik...
 	\label{fig:fokepernyo}
 \end{figure}
 
+
+\subsubsection{Sebességmérõ}
+A \textit{View} egy \textit{UserControll}-ból származik, annak a \textit{OnPaint()} metódusát írom felül, melyben a mûszer különbözõ elemeit pozicionálom a megfelelõ helyre. Az \textit{OnPaint()} függvény minden olyan esetben meghívódik, mikor valamely része érvénytelenné, nem láthatóvá válik. Ekkor szükséges az elem újra rajzolása, ezt mi a View Invalidate() metódusával explicit is kiválthatjuk.
+GDI+ segítségével egy piros kört rajzolok
+
+\subsubsection{Iránytû}
+Az iránytû felépítése hasonló , mint a sebességmérõ mûszernek, jelentõs változás az égtájak és a fokok forgatását végzõ transzformáció. Elõször a kiírandó karaktert a grafikai koordináta-rendszer középpontjába tolom el, ekkor lehetséges az adott szöggel történõ elforgatás, majd a megfelelõ helyre eltolás. Ez azt a látszatot kelti, mintha úgy lenne egy tárcsára felírva, hogy az csak akkor olvasható, amikor felsõ helyzetben van.
+A kirajzolást végzõ grafikus megjelenítõ pipeline tulajdonsága miatt ezeket a mûveleteket fordított sorrendben kell elvégezni a \textit{private void DrawNumbers(Graphics g)} metódusban.
+
+
+
+\subsubsection{Csatlakozás sáv}
+
+A program grafikus felületén a különbözõ oldalak fülek segítségével válthatóak, ezek felett található a csatlakozáshoz szükséges sáv, mely mindig látszódik, hogy éppen csatlakozott-e a program a kiválasztott portokra. Csatlakozás elõtt lehetõség van egy lenyíló listából a portokat és a jelsebességeket kiválasztani. Mivel valószínûsíthetõ, hogy a 2 port azonos sebességgel kommunikál, így az elsõ kiválasztásával a második is átállítódik, persze ha ez az eset mégsem állna fenn, az külön módosítható.
+
 \subsection{Tervezés képernyõ}
+
+TODO
 
 \begin{figure}[H]
 	\centering
@@ -87,12 +76,31 @@ Folyamatosan látszódik...
 \end{figure}
 
 \section{Diagnosztikai képernyõ}
-Diagnoszta
+
+TODO
+
+\begin{figure}[H]
+	\centering
+	\resizebox{15cm}{!}{
+		\includegraphics{figures/diagkepernyo.png}}
+	\caption{}
+	\label{fig:diagkepernyo}
+\end{figure}
 
 
+\section{Terminál képernyõ}
+TODO
+
+\begin{figure}[H]
+	\centering
+	\resizebox{15cm}{!}{
+		\includegraphics{figures/terminalkepernyo.png}}
+	\caption{}
+	\label{fig:terminalkepernyo}
+\end{figure}
 
 \section{Fejlesztés menete}
-
+\label{sect:fejlesztes}
 Az önálló, otthoni fejlesztést megkönnyítendõ, a repülõgép HIL\footnote{Hardware In the Loop, todo} szimulációjából nyert log file-okat használtam fel, így nem volt szükséges ez idõ alatt a repülõ közelében lennem, elég volt csak a végleges stádiumban kipróbálni a mûködést. A kapott file-ok felhasználásához elõször is biztosítani kellett, hogy a fejlesztendõ program soros porton keresztül ugyanúgy fogadhassa a csomagokat, mintha azt a repülõgép modemei küldenék. Ehhez készítettem 1-1 programot melyek ezeket a file-okat beolvassák és két kiválasztott soros portra 500 ms-onként egy csomagot küldenek, melyet egy emulátor programmal hoztam létre. Ez az \cite{bib:null} emulátor képes null-modemként viselkedni, melynek lényege, hogy software-es úton biztosít két soros port között kapcsolatot. Így létrehoztam egy COM20-COM21 és egy COM10-COM11 összeköttetést, az egyik program a COM20-ra másik a COM10-re csatlakozik, a fejlesztendõ program ezen párok másik portját használja kommunikációra. Mivel szükséges a kétirányú kapcsolat kiépítése, így a log file-okat feldolgozó programba beépítésre került egy beérkezõ üzeneteket feldolgozó függvény, mely kiírja a konzolos felületére a beérkezett csomagot, így ellenõrizhetõ, hogy azt küldi-e el amit szeretnék.
 
 \begin{figure}[H]
@@ -112,7 +120,6 @@ Az önálló, otthoni fejlesztést megkönnyítendõ, a repülõgép HIL\footnote{Hardware
 	\end{minipage}
 \end{figure}
 
-153 bájtos egy csomag, melyet egy UUT  3 bájtos fejléc és egy 2 bájtos checksum zár. A checksum a hasznos bájtok 16 bitre csonkolt összege. Minden fogadott csomagnál, a feldolgozás elõtt kiszámolom az összeget és ellenõrzöm, az egyezést, a rossz csomagok egyelõre eldobásra kerülnek.
 
 \begin{figure}[!ht]
 	\centering
@@ -122,7 +129,7 @@ Az önálló, otthoni fejlesztést megkönnyítendõ, a repülõgép HIL\footnote{Hardware
 	\label{fig:xvi}
 \end{figure}
 
-Fogadó oldalon a két sorosport aszinkron ír 1-1 byte tömböt, melybõl egy dekódoló függvénnyel nyerjük ki a sebesség, pozíció, irány, stb. adatokat.
+TODO
 
 \begin{verbatim}
 public double[] Decode(byte[] array)
