@@ -10,9 +10,12 @@
 %\numberwithin{tabular}{section}
 
 %----------------------------------------------------------------------------
-\section{Függelék}
+\section{Program elindítása}
 %----------------------------------------------------------------------------
 
+Ahhoz, hogy a programot érdemlegesen lehessen futtatni, a \sectref{fejlesztes} fejezetben ismertetett programok telepítését írom le.
+
+A program futtatásához Windows XP/Vista/7 és .NET 4.5-s verzió szükséges. Telepítõje a mellékleten szerepel \textit{dotNetFx45.exe}\footnote{Internet elérés szükséges} néven. A repülõgéppel történõ kommunikáció szimulálásához szükséges egy nullmodem telepítése, ezt követõen COM10-COMXX és COM20-COMYY párok létrehozása.  Windows7 x64 rendszeren a \textit{com0comW7.exe} telepítése, míg XP esetén a \textit{com0comXP.zip} telepítése ajánlott. A COM10 és COM20 portokat fixen a log file beolvasását végzõ konzolos programok használják, XX és YY helyett szabadon választható. Ha kész az összeköttetés, akkor a \textit{sorossendA.exe} és \textit{sorossendB.exe} futtatásával a log file-ok soros portra íródnak. A \textit{GroundControl.exe} elindításával és a portok kiválasztásával látható a program mûködése. A kapott log file San Francisco repterén készül HIL szimulációval.
 
 
 
@@ -20,4 +23,13 @@
 \section{Térkép letöltése}
 %----------------------------------------------------------------------------
 \label{sect:gmap}
-Gmaps A programmal a területet kijelölni Alt billentyû hosszan nyomásával és egér mozgatásával lehetséges
+
+Új terület letöltésére a \textit{GMap.Net/Demo.WindowsForms.exe} pogramot lehet használni. Az új területet Alt billentyû hosszan nyomásával és egér mozgatásával lehetséges kijelölni. Ha ez megvan akkor, a ``cache'' fülön a ``Prefech'' gomb hatására letöltõdik kiválasztható részletezettséggel, majd az ``Export'' gombra kattintva megjelenik a mentés útvonala, itt kiválasztva a /map/TileDBv5/en mappában a Data.gmdb file-t, felülírható az offline térképszelvény.
+
+\begin{figure}[H]
+	\centering
+	\resizebox{8cm}{!}{
+		\includegraphics{figures/gmap.png}}
+	\caption{}
+	\label{fig:gmap}
+\end{figure}

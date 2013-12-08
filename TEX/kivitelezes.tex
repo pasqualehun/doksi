@@ -87,13 +87,34 @@ void AddCoordinate(PointLatLng receivedCoordinate)
 
 A \textit{planeMarker} ikont, a fogadott mágneses irány szerint elforgatom, így látszódik a repülõ haladási iránya is. A mágneses irányt a kapott Euler szög ``psi'' értékével állítom be.
 
-A térkép egy lokális cache-bõl töltõdik be, mely Budapest környékét nagy felbontásban, Magyarországot közepes felbontásban tartalmazza, így a terepen, a program mûködõképes lesz internet kapcsolat nélkül is. Ha szükséges újabb területeket hozzáadni, az a mellékelt Demo.WindowsForms.exe programmal könnyen megtehetõ, a generált könyvtárstruktúrával felül kell írni a program által használtat, bõvebb információ a \sectref{gmap} fejezetben található.
+A térkép egy lokális cache-bõl töltõdik be, mely Budapest környékét nagy felbontásban, Magyarországot közepes felbontásban tartalmazza, így a terepen, a program mûködõképes lesz internet kapcsolat nélkül is. Ha szükséges újabb területeket hozzáadni, az a mellékelt GMapDemo.WindowsForms.exe programmal könnyen megtehetõ, a generált könyvtárstruktúrával felül kell írni a program által használtat, bõvebb információ a \sectref{gmap} fejezetben található.
 
 
 
 \subsection{Tervezés képernyõ}
 
-Egyik megoldandó feladatom volt, hogy lehetõséget biztosítsak útvonal feltöltésére is, ezt hivatott a tervezés képernyõ megvalósítani. Ezen a felületen dupla egérkattintással rakható le új útvonalpont, mely hosszan nyomva szerkeszthetõ, jobb kattintással törölhetõ.
+A tervezõ képernyõn lehetséges az útvonal kijelölése és feltöltése, új útvonalpont a felületen dupla egérkattintással rakható le, mely hosszan nyomva szerkeszthetõ, jobb kattintással törölhetõ. A pontokat összekötõ szakaszok hosszát jobb oldalt megjelenítem és összegzem. A feltöltés gombra kattintva, az útvonalpontokat tartalmazó listát átadom a SerialUtil.Code() függvénynek, mely a \sectref{up_prot} fejezetben ismertetett protokoll szerint átalakítja bináris formába, ezt az átalakított byte tömböt küldöm el mindkettõ soros portra. Mivel az útvonal maximum 10 db pontot tartalmazhat, ezért új pont lerakásánál ezt szükséges ellenõrizni.
+\begingroup
+    \fontsize{10pt}{12pt}\selectfont
+			\begin{verbatim}
+			private void gmap_plan_MouseDoubleClick(object sender, MouseEventArgs e)
+			{
+				 if (plannedRoute.Points.Count < MAX_POINTS && e.Button == MouseButtons.Left)
+				 {
+					     PointLatLng currentPos = new PointLatLng(gmap_plan.FromLocalToLatLng(e.X, e.Y).Lat,
+                                             gmap_plan.FromLocalToLatLng(e.X, e.Y).Lng);
+					     GMarkerGoogle marker = new GMarkerGoogle(currentPos, GMarkerGoogleType.blue_small);
+					     marker.ToolTipText = (numberOfPoints++).ToString();
+					     planeMarkerOverlay.Markers.Add(marker);
+					     markerOverlay.Markers.Add(marker);
+					     plannedRoute.Points.Add(currentPos);
+					     planView.Invalidate();
+				 }
+			}
+			\end{verbatim}
+\endgroup
+
+Útvonalpont szerkesztésénél vizsgálni kell, hogy a kurzor aktuális pozíciója egy lerakott pont közelében van-e, ha igen és bal kattintás történik, akkor törölni kell a régi pontot a hozzá kapcsolódó élekkel együtt és új pontot kell létrehozni az aktuális pozícióban.
 
 \begin{figure}[H]
 	\centering
@@ -105,7 +126,7 @@ Egyik megoldandó feladatom volt, hogy lehetõséget biztosítsak útvonal feltöltésé
 
 \subsection{Diagnosztikai képernyõ}
 
-TODO
+A diagnosztikai képernyõn a portokon érkezõ adatok és hozzájuk tatozó hibaszámláló látható. Ha az egyik érték hibaszámlálója elér egy kritikus szintet, akkor pirossá válik és egy felugró ablakon figyelmezteti az operátort, hogy valamilyen hiba történt. Õ eldöntheti, hogy ez csak az egyik mûszer meghibásodása vagy esetleg egy fontos összetevõ kiesését jelenti. Ennek függvényében mérlegelhet, hogy a repülõ folytathatja-e a küldetését vagy érdemes kézi vezérlésre váltani és landolni.
 
 \begin{figure}[H]
 	\centering
@@ -117,7 +138,8 @@ TODO
 
 
 \subsection{Terminál képernyõ}
-TODO
+
+A fogadott csomagokat a terminál képernyõ jeleníti meg, ha nem jelennének meg adatok az elõzõ képernyõkön, akkor itt megbizonyosodhat a felhasználó, hogy a program fogadja-e a csomagokat. Ez a legalacsonyabb szintû kijelzés, ez csak a nyerj bájtokat iratja ki, választhatóan hexadecimális vagy decimális formában. Ha itt sincs változás, érdemes a csatlakoztatott portot vagy a jelsebességet változtatni.
 
 \begin{figure}[H]
 	\centering
@@ -148,11 +170,11 @@ Az önálló, otthoni fejlesztést megkönnyítendõ, a repülõgép HIL\footnote{Hardware
 	\end{minipage}
 \end{figure}
 
-A kapott log file-ok szerkezetét XVI32 nevû programmal tanulmányoztam és ismertem meg egy csomag felépítését és méretét. Látható, hogy egy csomag mérete valóban a specifikációban megadott 75 byte. Ezt a programot használtam az elküldött iránypontok csomagjának helyességérõl is.
+A kapott log file-ok szerkezetét XVI32 nevû programmal tanulmányoztam és ismertem meg egy csomag felépítését és méretét. Látható, hogy egy csomag mérete valóban a specifikációban megadott 75 byte. Ezt a programot használtam az elküldött útvonalpontok csomagjának vizsgálatához is, hogy valóban úgy került-e elküldésre a csomag, ahogy azt a specifikációban meghatároztam.
 
 \begin{figure}[H]
 	\centering
-	\resizebox{10cm}{!}{
+	\resizebox{15cm}{!}{
 		\includegraphics{figures/xvi.png}}
 	\caption{}
 	\label{fig:xvi}
