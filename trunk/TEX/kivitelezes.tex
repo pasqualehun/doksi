@@ -70,9 +70,30 @@ A kirajzolást végzõ grafikus megjelenítõ pipeline tulajdonsága miatt ezeket a mû
 
 A program grafikus felületén a különbözõ oldalak fülek segítségével válthatóak, ezek felett található a csatlakozáshoz szükséges sáv, mely mindig látszódik, hogy éppen csatlakozott-e a program a kiválasztott portokra. Csatlakozás elõtt lehetõség van egy lenyíló listából a portokat és a jelsebességeket kiválasztani. Mivel valószínûsíthetõ, hogy a 2 port azonos sebességgel kommunikál, így az elsõ kiválasztásával a második is átállítódik, persze ha ez az eset mégsem állna fenn, az külön módosítható.
 
+
+\subsubsection{Térképes vizualizáció}
+
+A felület jobb oldalán egy Google Maps alapú térkép látható, melyet a GMap.NET API segítségével jelenítek meg. A térképre egy réteget helyeztem el, melyre a fogadott GPS pozíciókat törött vonallal összekötve rajzolom ki a gép által lerepült nyomvonalat, illetve a repülõt szimbolizáló \textit{planeMarker} ikont is a legutóbb kapott pozícióra állítom. 
+Az ezt megvalósító programrészlet:
+\begin{verbatim}
+void AddCoordinate(PointLatLng receivedCoordinate)
+{			
+     flightRoute.Points.Add(receivedCoordinate);
+     gmap.UpdateRouteLocalPosition(flightRoute);
+     planeMarker.Position = receivedCoordinate;
+     gmap.Invalidate();
+}
+\end{verbatim}
+
+A \textit{planeMarker} ikont, a fogadott mágneses irány szerint elforgatom, így látszódik a repülõ haladási iránya is. A mágneses irányt a kapott Euler szög ``psi'' értékével állítom be.
+
+A térkép egy lokális cache-bõl töltõdik be, mely Budapest környékét nagy felbontásban, Magyarországot közepes felbontásban tartalmazza, így a terepen, a program mûködõképes lesz internet kapcsolat nélkül is. Ha szükséges újabb területeket hozzáadni, az a mellékelt Demo.WindowsForms.exe programmal könnyen megtehetõ, a generált könyvtárstruktúrával felül kell írni a program által használtat, bõvebb információ a \sectref{gmap} fejezetben található.
+
+
+
 \subsection{Tervezés képernyõ}
 
-TODO
+Egyik megoldandó feladatom volt, hogy lehetõséget biztosítsak útvonal feltöltésére is, ezt hivatott a tervezés képernyõ megvalósítani. Ezen a felületen dupla egérkattintással rakható le új útvonalpont, mely hosszan nyomva szerkeszthetõ, jobb kattintással törölhetõ.
 
 \begin{figure}[H]
 	\centering
@@ -82,7 +103,7 @@ TODO
 	\label{fig:tervkepernyo}
 \end{figure}
 
-\section{Diagnosztikai képernyõ}
+\subsection{Diagnosztikai képernyõ}
 
 TODO
 
@@ -95,7 +116,7 @@ TODO
 \end{figure}
 
 
-\section{Terminál képernyõ}
+\subsection{Terminál képernyõ}
 TODO
 
 \begin{figure}[H]
@@ -136,4 +157,3 @@ A kapott log file-ok szerkezetét XVI32 nevû programmal tanulmányoztam és ismerte
 	\caption{}
 	\label{fig:xvi}
 \end{figure}
-
