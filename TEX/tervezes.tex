@@ -7,12 +7,12 @@ A kommunikáció csatornánként 2 db modem segítségével történik, a modemek egymás 
 
 \section{Adatok fogadása}
 
-A redundanciából következõen külön, külön kell kezelni a 2 párhuzamos csatornán kapott adatokat. Mivel aszinkron módon érkeznek a csomagok, így kettõ tároló kell, mely a legutóbb küldötteket tárolja egy FIFO listában. 
+A redundanciából következõen külön--külön kell kezelni a 2 párhuzamos csatornán kapott adatokat. Mivel aszinkron módon érkeznek a csomagok, így kettõ FIFO tároló szükséges, mely a legutóbb küldötteket tárolja.
 
 \subsection{Protokoll}
 \label{sect:protokoll}
-Az adatokat a repülõgép 2 Hz-s frekvenciával küldi, ezek csomagokban érkeznek, melyeknek a felépítése:
-Egy UUT fejléc, adattagok, checksum, ha a ez nem egyezik a csomag összegével, akkor az a csomag eldobásra kerül.
+Az adatokat a repülõgép 2 Hz-s frekvenciával küldi, ezek az adatok csomagokban érkeznek egy elõre meghatározott protokoll szerint, melyeknek a felépítése:
+A csomag eleje egy UUT fejlécet tartalmaz a beazonosítás végett, ezt követik az adattagok, majd az utolsó 2 bájt checksum, mely a csomag tartalmának bináris összegét tartalmazza 16 bitre csonkolva. Egy csomag fogadásánál elõször ezt az összeget számolom ki, ha a fogadott checksum-mal nem egyezik, akkor az egész csomag eldobásra kerül.
 
 \begin{figure}[H]
  \hspace*{-2cm}  
@@ -174,6 +174,8 @@ A .NET nyelvfüggetlen, így a keretrendszer szolgáltatásai hozzáférhetõek minden 
 Grafikus megjelenítést biztosít az alkalmazásoknak, különbözõ elemek (beviteli mezõ, gomb, kép, választó lista) helyezhetõek el rá. GDI\footnote{Graphic Device Interface} \cite{bib:gdi} segítségével történik a kirajzolás. A GDI olyan függvények gyûjteménye, amelyek a grafikus elemek (görbék, alakzatok, BMP képek) megjelenítését, szövegek kiíratását teszi lehetõvé. A GDI+ ennek továbbfejlesztett változata, mely képes ezen elemek manipulációjához alkalmas mátrixtranszfomációkat kezelni és egyéb képformátumok támogatása is megjelent.
 
 \subsubsection{C\# nyelv} 
-A C/C++ család elsõ valódi objektumorientált tagja, a keretrendszer nagy része C\#-ban készült \cite{bib:aut} .
+A C/C++ család elsõ valódi objektumorientált tagja, a keretrendszer nagy része C\#-ban készült \cite{bib:aut}.
 Más nyelvekkel összehasonlítva tisztább, mint a C++, nagy hasonlóságot mutat a Java nyelvvel.
 
+\subsection{GMap.NET}
+\cite{bib:gmap}
