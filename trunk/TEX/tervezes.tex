@@ -1,9 +1,12 @@
 %----------------------------------------------------------------------------
 \chapter{Tervezés}
 %----------------------------------------------------------------------------
+
+A bevezetés fejezeteben ismertettem a feladatom részlépéseit, illetve az elõzõ alkotásokból levont következtetéseket és megoldásokat felhasználom.
+
 \section{Kommunikáció}
 
-A kommunikáció csatornánként 2 db modem segítségével történik, a modemek egymás közt vezeték nélkül csatlakoznak, felhasználói oldalon soros portot biztosítanak. Így az elkészítendõ programnak elég csak a soros port jeleinek vételével foglalkoznia. A modemek adatátviteli sebessége változó lehet, így azt a felhasználó egy listából választhatja csatlakozás elõtt. Átalakítóval lehetõség adatik USB-n keresztül soros port megvalósítására, így könnyen kezelhetõvé válik a periféria illesztés
+A kommunikáció csatornánként 2 db modem segítségével történik, a modemek egymás közt vezeték nélkül csatlakoznak, felhasználói oldalon soros portot biztosítanak. Így az elkészítendõ programnak elég csak a soros port jeleinek vételével foglalkoznia. A modemek adatátviteli sebessége változó lehet, így azt a felhasználó egy listából választhatja csatlakozás elõtt. Átalakítóval lehetõség adatik USB-n keresztül soros port megvalósítására, így könnyen kezelhetõvé válik a periféria illesztés.
 
 \section{Adatok fogadása}
 
@@ -64,7 +67,7 @@ A repülõgép által lerepülendõ feladat útvonalpontjait hasonlóképpen, mint az ada
 Felmerül a kérdés, hogy a küldés mikor engedélyezett, a felszállás elõtt vagy repülés közben is? Láthattuk néhány megoldásban, hogy lehetõség van az útvonal módosítására menet közben is, ez egy jó opció, így érdemes ezt is megvalósítani. Egyetlen probléma ennek mikéntje, ha csak egy pont koordinátáját módosítjuk, akkor csak ezt vagy az összeset küldjük? Ennek egyik megoldása az lehet, hogy korlátozzuk az elõször feltöltött pontok számára és az összes pontot újra elküldjük. A módosítás feldolgozását rábízzuk a fedélzeti implementációra, hogyha egy ponton áthaladt, akkor az utólag hiába lett módosítva, a következõ fordulópont felé halad. További stratégiák is elképzelhetõek, de a további fejezetekben taglaltak miatt, ezt érdemes választani.
 
 \subsection{Protokoll}
-
+\label{sect:up_prot}
 Több megoldás is lehetséges a fordulópontok feltöltésére:
 \begin{itemize}
 \item Rögzített maximális darabszám elküldése egy csomagban
@@ -171,11 +174,12 @@ A .NET nyelvfüggetlen, így a keretrendszer szolgáltatásai hozzáférhetõek minden 
 
 \subsubsection{Windows Forms} 
 
-Grafikus megjelenítést biztosít az alkalmazásoknak, különbözõ elemek (beviteli mezõ, gomb, kép, választó lista) helyezhetõek el rá. GDI\footnote{Graphic Device Interface} \cite{bib:gdi} segítségével történik a kirajzolás. A GDI olyan függvények gyûjteménye, amelyek a grafikus elemek (görbék, alakzatok, BMP képek) megjelenítését, szövegek kiíratását teszi lehetõvé. A GDI+ ennek továbbfejlesztett változata, mely képes ezen elemek manipulációjához alkalmas mátrixtranszfomációkat kezelni és egyéb képformátumok támogatása is megjelent.
+Grafikus megjelenítést biztosít az alkalmazásoknak, különbözõ elemek (beviteli mezõ, gomb, kép, választó lista) helyezhetõek el rá. GDI\footnote{Graphic Device Interface, Microsoft API, mely az operációs rendszer része, feladata grafikus elemek megjelenítése } \cite{bib:gdi} segítségével történik a kirajzolás. A GDI olyan függvények gyûjteménye, amelyek a grafikus elemek (görbék, alakzatok, BMP képek) megjelenítését, szövegek kiíratását teszi lehetõvé. A GDI+ ennek továbbfejlesztett változata, mely képes ezen elemek manipulációjához alkalmas mátrixtranszfomációkat kezelni és egyéb képformátumok támogatása is megjelent.
 
 \subsubsection{C\# nyelv} 
 A C/C++ család elsõ valódi objektumorientált tagja, a keretrendszer nagy része C\#-ban készült \cite{bib:aut}.
 Más nyelvekkel összehasonlítva tisztább, mint a C++, nagy hasonlóságot mutat a Java nyelvvel.
 
 \subsection{GMap.NET}
-\cite{bib:gmap}
+A térkép alapú vizualizációhoz egy külsõ komponenst, a GMap.NET \cite{bib:gmap} könyvtárcsomagot használom fel. C\# nyelven készült, Google Maps-on kívül még számos térkép megjelenítésére képes, API-ján keresztül minden olyan funkció megvalósítható, melyhez a felhasználó hozzászokhatott a Google Maps online felületén. Többek között: útvonalterv összeállítás, pontok kijelölése, .GPX formátumú exportálás, offline üzemmód támogatása. 
+Az én feladatom minden részfeladatát támogatja, ezért is esett erre a csomagra a választásom. A fejlesztõje aktív, nagy érdeklõdés mutatkozik munkájára, így a talált hibák kijavítása, újítások gyakran feltöltésre kerülnek. Jelenlegi verziója: 1.6, mely Windows Forms, Windows Presentation és Mobile platformokat támogat.
