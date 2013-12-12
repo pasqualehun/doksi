@@ -33,19 +33,19 @@ A \sectref{terv_diagkepernyo} fejezetben ismertetett hibatípusokat a következõ d
 
 \textbf{Port kiesése:} Ha egyik porton érkezõ adat és érvényes csomag és azt dekódolás után a hozzátartozó tárolóba teszem, akkor egy számlálót is növelek. Amelyik porton érkezett az adat annak a számlálóját nullázom, így ha csak az egyik portról érkezik adat, akkor csak a másik számlálója növekszik. Ha ez a számláló elérte a FIFO sor méretét, akkor növekszik az adott port hibaszámlálója, ez a port kiesését jelenti.
 
-\textbf{Beragadás:} Egy jelet akkor tekintek beragadt állapotúnak, ha értéke egy bizonyos ideig változatlan marad, jelen esetben a tároló körbefordulási ideje. Ha a sor legutóbbi és a legújabb eleme közti különbség egy $\epsilon$\footnote{ez esetben 0.0001}-nál kisebb, akkor növelem a port hibaszámlálóját.
+\textbf{Beragadás:} Egy jelet akkor tekintek beragadt állapotúnak, ha értéke egy bizonyos ideig változatlan marad, jelen esetben a tároló körbefordulási ideje. Ha a sor legutóbbi és a legújabb eleme közti különbség egy $\epsilon_1$\footnote{ez esetben 0.0001}-nál kisebb, akkor növelem a port hibaszámlálóját.
 
-\textbf{Túl nagy ugrás:}   TODO
+\textbf{Túl nagy ugrás:} Egy új elem érkezésekor a FIFO-ban lévõ elemek átlagát kiszámítom és ha az újonnan érkezett érték $\epsilon_2$-ször nagyobb különbséget mutat, akkor növekszik a hibaszámlálója.
 
-\textbf{Kettõ jel eltérése:} TODO
+\textbf{Kettõ jel eltérése:} A két jel túl nagy eltérésénél nem tudja az algoritmus eldönteni, hogy melyik érték a helyesebb, így az eddigi hibaértékek alapján dõl el a választás.
 
-\section{Megjelenítés}
+\section{Megjelenítési felületek}
 
 Bal oldalon a létrehozott \textit{UserControl}-ok megjelenítése és elhelyezése a \figref{fokepernyo} ábrán látható. A terület nagyobb részét a térkép foglalja el, melyen a repülõgép aktuális pozíciója látható, illetve a múltban fogadott koordináták tört vonallal összekötve, mely a lerepült útvonalat ábrázolja. A program minimális méretében minden mûszer látszódik, a méret módosításával ezek fix pozícióban maradnak, a jobb oldali térkép a jobb alsó sarokhoz van horgonyozva, így ha nagyobb területen szeretné bárki is szemlélni a térképet, akkor látszódik ennek a megoldásnak az elõnye.
 
 \subsection{Fõképernyõ}
 
-A HappyKillmore (\sectref{happy} fejezet) forráskódjának tanulmányozása során látható, hogy minden mûszert külön View-ként valósít meg, így ezt a megoldást célszerû használni. Elkészítettem a magasságmérõ, emelkedésjelzõ, sebességmérõ és iránytû UserControll-t melyek tervezõ nézetben ``Drag and Drop'' technológiával a megfelelõ helyre húzható és könnyen beköthetõ.
+A HappyKillmore (\sectref{happy} fejezet) forráskódjának tanulmányozása során látható, hogy minden mûszert külön View-ként valósít meg, így ezt a megoldást célszerû használni. Elkészítettem a magasságmérõ, emelkedésjelzõ, sebességmérõ és iránytû \textit{UserControll}-t melyek tervezõ nézetben ``Drag and Drop'' technológiával a megfelelõ helyre húzható és könnyen beköthetõ.
 
 \begin{figure}[H]
 	\centering
@@ -57,7 +57,7 @@ A HappyKillmore (\sectref{happy} fejezet) forráskódjának tanulmányozása során lá
 
 
 \subsubsection{Sebességmérõ}
-A \textit{View} egy \textit{UserControll}-ból származik, annak a \textit{OnPaint()} metódusát írom felül, melyben a mûszer különbözõ elemeit pozicionálom a megfelelõ helyre. Az \textit{OnPaint()} függvény minden olyan esetben meghívódik, mikor valamely része érvénytelenné, nem láthatóvá válik. Ekkor szükséges az elem újra rajzolása, ezt mi a View Invalidate() metódusával explicit is kiválthatjuk.
+A \textit{View} egy \textit{UserControll}-ból származik, annak a \textit{OnPaint()} metódusát írom felül, melyben a mûszer különbözõ elemeit pozicionálom a megfelelõ helyre. Az \textit{OnPaint()} függvény minden olyan esetben meghívódik, mikor valamely része érvénytelenné, nem láthatóvá válik. Ekkor szükséges az elem újra rajzolása, ez a \textit{View Invalidate()} metódusával explicit is kiváltható.
 GDI+ segítségével egy piros kört rajzolok
 
 \subsubsection{Iránytû}
