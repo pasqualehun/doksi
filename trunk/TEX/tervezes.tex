@@ -2,69 +2,41 @@
 \chapter{Tervezés}
 %----------------------------------------------------------------------------
 
-A bevezetés fejezeteben ismertettem a feladatom részlépéseit, illetve az elõzõ alkotásokból levont következtetéseket és megoldásokat felhasználom.
+A bevezetés fejezeteben ismertettem a feladatom lépéseit, illetve az elõzõ alkotásokból levont következtetéseket és megoldásokat felhasználom.
+
+A következõ fejezetben leírom, hogy miket szükség megoldani a program megvalósítása során. 
 
 \section{Kommunikáció megvalósítása}
 
-A kommunikáció csatornánként 2 db modem segítségével történik, a modemek egymás közt vezeték nélkül csatlakoznak, felhasználói oldalon soros portot biztosítanak. Így az elkészítendõ programnak elég csak a soros port jeleinek vételével foglalkoznia. A modemek adatátviteli sebessége változó lehet, így azt a felhasználó egy listából választhatja csatlakozás elõtt. Átalakítóval lehetõség adatik USB-n keresztül soros port megvalósítására, így könnyen kezelhetõvé válik a periféria illesztés.
+Az elkészítendõ program (GroundControl) és a repülõgép között kommunikáció csatornánként 2 db modem segítségével történik, a modemek egymás közt vezeték nélkül csatlakoznak, felhasználói oldalon soros portot biztosítanak. Így a programnak elég csak a soros port jeleinek vételével foglalkoznia. A modemek adatátviteli sebessége változó lehet, így azt a felhasználó egy listából választhatja csatlakozás elõtt. Átalakítóval lehetõség adatik USB-n keresztül soros port megvalósítására, így könnyen kezelhetõvé válik a periféria illesztés.
 
 \section{Adatok fogadása}
 
-A redundanciából következõen külön--külön kell kezelni a 2 párhuzamos csatornán kapott adatokat. Mivel aszinkron módon érkeznek a csomagok, így kettõ FIFO tároló szükséges, mely a legutóbb küldötteket tárolja.
+A redundanciából következõen külön--külön kell kezelni a két párhuzamos csatornán kapott adatokat. Mivel a csomagok aszinkron módon érkeznek, ezért kettõ FIFO tároló szükséges, mely a legutóbb küldötteket tárolja.
 
 \subsection{Protokoll}
 \label{sect:protokoll}
-Az adatokat a repülõgép 2 Hz-s frekvenciával küldi, ezek az adatok csomagokban érkeznek egy elõre meghatározott protokoll szerint, melyeknek a felépítése:
-A csomag eleje egy UUT fejlécet tartalmaz a beazonosítás végett, ezt követik az adattagok, majd az utolsó 2 bájt checksum, mely a csomag tartalmának bináris összegét tartalmazza 16 bitre csonkolva. Egy csomag fogadásánál elõször ezt az összeget számolom ki, ha a fogadott checksum-mal nem egyezik, akkor az egész csomag eldobásra kerül.
+Az adatokat a repülõgép 2 Hz-s frekvenciával küldi, ezek az adatok csomagokban érkeznek egy elõre meghatározott protokoll szerint, melyeknek a felépítése a következõ:
+
+A csomag eleje egy UUT fejlécet tartalmaz a beazonosítás végett, ezt követik az adattagok, majd az utolsó 2 bájt checksum, mely a csomag tartalmának bináris összegét tartalmazza 16 bitre csonkolva. Egy csomag fogadásánál elõször ezt az összeget számolom ki. Amennyiben nem egyezik a fogadott checksum-mal, akkor az egész csomag eldobásra kerül.
 
 \begin{figure}[H]
  \hspace*{-2cm}  
 	\resizebox{17cm}{!}{
 		\includegraphics{figures/downprot.png}}
+			%\caption{Fogadott csomag protokollja}
+	%\label{fig:downprot}
 \end{figure}
-
-
-%\begin{table}[H]
-%\begin{center}
-%		\begin{tabular}{| l | l | l | l |l |}
-%			\hline    bájt index 	& leírás 				& típus & skálázás 		       & offset \\ \hline
-%				1 					& start 				& char(fix 'U') &   					       &    						 \\ \hline
-%				2 					& start 				& char(fix 'U') &   					       &    						 \\ \hline
-%				3						& start 				& char(fix 'T') &   					       &    						 \\ \hline
-%				4 					& idõ  					& uint32 				& 10000 			       & 0  						 \\ \hline
-%				8 					& magasság 			& uin16 				& 0x7fff/1000	       &    						 \\ \hline
-%				\dots 			&   						&   						&   					       &    						 \\ \hline
-%				\dots 			&   						&   						&   					       &    						 \\ \hline
-%				\dots 			&   						&   						&   					       &    						 \\ \hline
-%				\dots 			&   						&   						&   					       &    						 \\ \hline
-%				\dots 			&   						&   						&   					       &    						 \\ \hline
-%				\dots 			&   						&   						&   					       &    						 \\ \hline
-%				\dots 			&   						&   						&   					       &    						 \\ \hline
-%				\dots 			&   						&   						&   					       &    						 \\ \hline
-%				\dots 			&   						&   						&   					       &    						 \\ \hline
-%				\dots 			&   						&   						&   					       &    						 \\ \hline
-%				\dots 			&   						&   						&   					       &    						 \\ \hline
-%				\dots 			&   						&   						&   					       &    						 \\ \hline
-%				TODO & északi irány 1/2 	& unsigned short & 0x7FFF/400 &  200 \\ \hline
-%				28 & keleti irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
-%				30 & lefelé irány 1/2 & unsigned short & 0x7FFF/400 &  200 \\ \hline
-%			
-%				\dots &   &   &   &    \\ \hline
-%			\end{tabular}
-%\end{center}
-%	\caption{Fogadás protokollja}
-% \label{tab:down}
-%\end{table}
 
 A skálázás és offset képzés azért szükséges, hogy az adott szélességen (8, 16, 32 bit) minél több biten legyen ábrázolva egy érték, mivel kis változások esetén a Hamming-távolság\footnote{Bináris számok XOR képzésével kapott 1-esek száma} kicsi lenne az eredeti számábrázoláson. Ahol szükséges, ott a  visszakódolás az alábbi formában történik : \\
 \textit{eredeti  = (nyers adat/skálazás) - offset} \\
-Az értékek megfelelõ kiválasztása a minél nagyobb szétszóráshoz szükséges, érdemes a legnagyobb értékkel elosztani és annak felével eltolni.
+Az értékek megfelelõ kiválasztása a minél nagyobb szétszóráshoz szükséges, ezért érdemes a legnagyobb értékkel elosztani és annak felével eltolni.
 
 \section{Adatok küldése}
 
-A repülõgép által lerepülendõ feladat útvonalpontjait hasonlóképpen, mint az adatok fogadását, vezeték nélküli csatornán küldjük fel. A feltöltendõ adat küldésének protokollja létfontosságú, mivel ha valamilyen hiba kerül a kommunikációba akkor az akár végzetes is lehet. Gondolok itt olyan hibára, hogy egy fordulópont koordinátája úgy kerül feltöltésre, hogy az kiesik a repülõ hatósugarából és ezzel nem számolva, lemerül a tápellátást szolgáló akkumulátor. Az ilyen hibák ellen célszerû a feltöltés protokolljába hibadetektálást építeni, hogy ezek a feldolgozás elõtt derüljenek ki.
+A repülõgép által lerepülendõ feladat útvonalpontjait az adatok fogadásához hasonlóan vezeték nélküli csatornán küldjük fel. A feltöltendõ adat küldésének protokollja létfontosságú, mivel ha valamilyen hiba kerül a kommunikációba, akkor az akár végzetes is lehet. Például ha egy fordulópont koordinátája úgy kerül feltöltésre, hogy az kiesik a repülõ hatósugarából és ezzel nem számolva lemerül a tápellátást szolgáló akkumulátor, akkor a gép lezuhanhat. Az ilyen hibák ellen célszerû a feltöltés protokolljába hibadetektálást építeni, hogy ezek a feldolgozás elõtt kiderüljenek.
 
-Felmerül a kérdés, hogy a küldés mikor engedélyezett, a felszállás elõtt vagy repülés közben is? Láthattuk néhány megoldásban, hogy lehetõség van az útvonal módosítására menet közben is, ez egy jó opció, így érdemes ezt is megvalósítani. Egyetlen probléma ennek mikéntje, ha csak egy pont koordinátáját módosítjuk, akkor csak ezt vagy az összeset küldjük? Ennek egyik megoldása az lehet, hogy korlátozzuk az elõször feltöltött pontok számára és az összes pontot újra elküldjük. A módosítás feldolgozását rábízzuk a fedélzeti implementációra, hogyha egy ponton áthaladt, akkor az utólag hiába lett módosítva, a következõ fordulópont felé halad. További stratégiák is elképzelhetõek, de a további fejezetekben taglaltak miatt, ezt érdemes választani.
+Felmerül a kérdés, hogy az adatküldés mikor engedélyezett, a felszállás elõtt vagy repülés közben is? A bemutatott földi állomások közül néhány lehetõséget biztosított az útvonal repülés közbeni módosítására. Ennek a megoldásánál dönteni kell, hogy ha csak egy pont koordinátája módosul, akkor csak az vagy az összes újraküldésre kerüljön-e? Egyik megoldási lehetõség csak a módosított pontot elküldeni és annak feldolgozását a fedélzeti implementációra bízni. Ha a repülõ egy ponton áthaladt és az utólag került módosításra, figyelmen kívül hagyja és folytatja útvonalát, viszont ha egy elõtte lévõ módosult, akkor az újat követi. További stratégiák is elképzelhetõek, a következõ fejezetekbõl kiderül, melyiket érdemes választani.
 
 \subsection{Protokoll}
 \label{sect:up_prot}
@@ -75,16 +47,15 @@ Több megoldás is lehetséges a fordulópontok feltöltésére:
 \end{itemize}
 
 
-Az elsõ megoldásban rögzítenénk a fordulópontok maximális számát. Mely azt eredményezné, hogy egy csomagban el lehetne küldeni az egész lerepülendõ feladatot. Ha egy pont koordinátájának ábrázolására elég 2*4 byte, így ha feltételezünk egy 10 pontot tartalmazó (10*2*4 byte adat) csomagot, akkor annak mérete fejléccel (3 bájt), checksum mezõvel (2 bájt) 85 bájt. Ehhez hozzájönne még a pontok száma, mely a fogadó oldali feldolgozást segítené, ennek mérete 1 bájt.
+Az elsõ megoldásban rögzített a fordulópontok maximális száma. Ez azt eredményezné, hogy egy csomagban el lehet küldeni az egész lerepülendõ feladatot. Ha egy pont koordinátájának ábrázolására 2*4 bájt szükséges és felépítek egy 10 pontot tartalmazó (10*2*4 bájt adat) csomagot, akkor annak mérete fejléccel (3 bájt), checksum mezõvel (2 bájt) 85 bájt. Ehhez hozzájön még a pontok száma (1 bájt), ami a fogadó oldali feldolgozáshoz szükséges.
 
+Másik lehetõségnél bármennyi pont feltöltése lehetséges, ez esetben egy csomag a következõket tartalmazza: fejléc, küldendõ pontok száma, aktuális pont sorszáma, koordinátái, checksum. Amennyiben a küldendõ pontok száma és az aktuális pont sorszáma megegyezik és minden csomag megérkezett, akkor ACK-val válaszol a fogadó fél, jelezve, hogy kész a feltöltés. Ez hibakezelés szempontjából kedvezõbb, hiszen ha egy pont sorszáma nem egyezik meg az elvárttal, akkor újraküldés kérésével elég csak az adott pont újraküldésével terhelni a csatornát.
 
-Másik lehetõségnél bármennyit (N db) lehetne feltölteni: egy csomag szerkezete: fejléc, küldendõ pontok száma, aktuális pont sorszáma, koordinátái, checksum. Ha a  küldendõ pontok száma és az aktuális pont sorszáma megegyezik és megérkezett minden csomag akkor ACK-val válaszol ha kész a feltöltés. Ez hibakezelés szempontjából kedvezõbb, mivel ha egy pont sorszáma nem egyezik meg az elvárttal, akkor újraküldés kérésével elég csak az adott pont újraküldésével terhelni a csatornát.
+Mivel az eddig használt megoldásban a kódba ,,bele volt égetve'' az útvonalterv, mely 5-6 pontot tartalmazott, az elsõ megoldás tûnik kedvezõbbnek. Fogadó oldalon is könnyebb egy ilyen lehetõségre felkészíteni a fedélzeti programot. 
 
-Mivel az eddig használt megoldásban a kódba ,,bele volt égetve'' az útvonalterv, mely 5-6 pontot tartalmazott, az elsõ megoldás tûnik kedvezõbbnek. Fogadó oldalon is könnyebb egy ilyen lehetõségre felkészíteni. Ha esetlegesen a jövõben több fordulópontont feltöltésére lesz igény, az is megoldható módosításokkal.
+A feltöltés során mindkettõ csatlakoztatott modem segítségével redundánsan küldöm el az elõállított csomagot. Ha a csomag sértetlenül megérkezett, ACK jelzést küld a repülõgép, amit fogadva a GroundControl visszajelzést ad a kezelõnek.
 
-A feltöltés során mindkettõ csatlakoztatott modem segítségével redundánsan küldjük el az elõállított csomagot. Ha a csomag sértetlenül megérkezett, ACK jelzéssel válaszolnak, melyet fogadunk és visszajelezzük a kezelõnek.
-
-Egy 86 bájtos csomag tartalma:
+Egy 86 bájtos csomag felépítése a következõ:
 \begin{table}[H]
 	\begin{center}
 			\begin{tabular}{| l | l | l | l |l |}
@@ -111,37 +82,37 @@ Egy 86 bájtos csomag tartalma:
 	\label{tab:up}
 \end{table}
 
-Felmerülhet a kérdés, hogy a feltöltés ezzel a protokollal elég hibatûrõ-e, mivel a fogadás protokollja is hasonló hibadetektálást biztosít, így elégségesnek tûnik, tovább, ha a küldés megfelelõen lezajlott, kapunk visszajelzést. Ha ez elmaradna, akkor lehetõség van az üzenet újbóli elküldésre.
+Felmerülhet a kérdés, hogy a feltöltés ezzel a protokollal elég hibatûrõ-e. Mivel a fogadás protokollja is hasonló hibadetektálást biztosít, így ez a megoldás elégségesnek tûnik. Továbbá, ha a küldés sikerességének visszajelzése elmaradna, akkor lehetõség van az üzenet újbóli elküldésére.
 
 \section{Grafikus felület}
 
-Az elõzõ fejezetben ismertetett grafikus felületekbõl levonva a következtetéseket, nyilvánvaló, hogy a GUI kialakításában fontos a repülõgép aktuális pozíciójának térképen való mutatása, az repülési állapot könnyen értelmezhetõ megjelenítése, illetve az esetlegesen elõforduló problémák feltûnõ jelzése.
+Az elõzõ részben ismertetett grafikus felületekbõl látszik, hogy a GUI kialakításában fontos a repülõgép aktuális pozíciójának térképen való mutatása, a repülési állapot könnyen értelmezhetõ megjelenítése és az esetlegesen elõforduló problémák feltûnõ jelzése.
 
 \subsection{Fõképernyõ}
 
-A fõképernyõn látható lesz a repülõgép aktuális pozíciója és iránya. A pozicionálást segítendõ, egy térkép lesz egy repülõgép ikon hátterében. Ez a rész a képernyõ kb. 2/3-át fogja elfoglalni. Az oldalsó sávban a ``Glass Cockpit'' kerül kialakításra, ez a nézet tartalmazza a gép aktuális sebességét, iránytû segítségével irányát, magasságát, emelkedésének sebességét. Valószínûleg ez a képernyõ lesz legnagyobb százalékban használva, így a kritikus hibákról itt kell feltûnõ értesítést adni. Melyet a háttérben dolgozó hibadetektáló algoritmus vált ki. Az értesítés egy felugró ablak lenne, mely tartalmazza, mely érték hibájából keletkezett.
+A GroundControl fõképernyõn látható a repülõgép aktuális pozíciója és iránya. A térképen a repülõgép pozícióját egy repülõgép ikon szemlélteti. Ez a rész a képernyõ kb. 2/3-át foglalja el. Az oldalsó sávban a ``Glass Cockpit'' kerül kialakításra, ez a nézet tartalmazza a gép aktuális sebességét, iránytû segítségével irányát, magasságát, emelkedésének sebességét. Valószínûleg ez a képernyõt fogják a leggyakrabban használni, így a kritikus hibákról itt kell feltûnõ értesítést adni, melyet a háttérben dolgozó hibadetektáló algoritmus vált ki. Az értesítés egy felugró ablak, ami mutatja, mely érték hibájából keletkezett.
 
 \subsection{Tervezés képernyõ}
 
-Ezen a képernyõn a felhasználó kijelölheti a lerepülendõ útvonalhoz tartozó fordulópontokat, melyet csatlakozás után aszinkron módon feltölthet a repülõre. Mivel a kommunikációs protokoll 10 pontot enged meg, így ennél többet itt ki sem jelölhet, a lerakott pontok helyét a megszokott Google Maps-hoz hasonló módon hosszan kattintva átrakhatónak kell lennie, illetve köztes pontoknak törölhetõeknek kell lenniük. Láthattuk, hogy érdemes a kijelölt útvonal hosszáról tájékoztatni a felhasználót, így ez egy hasznos funkció.
+A tervezés képernyõn a felhasználó kijelölheti a lerepülendõ útvonalhoz tartozó fordulópontokat, melyeket csatlakozás után aszinkron módon feltölthet a repülõre. Mivel a kommunikációs protokoll 10 pontot enged meg, így ennél többet itt ki sem jelölhet. Az operátor a lerakott pontok helyét a megszokott Google Maps-hez hasonló módon hosszan kattintva átrakhatja, illetve köztes pontokat törölheti. A már létezõ megoldások összehasonlításából kiderült, hogy érdemes a kijelölt útvonal hosszáról tájékoztatni a felhasználót.
 
 \subsection{Diagnosztikai képernyõ}
 \label{sect:terv_diagkepernyo}
-A 2 porton érkezõ dekódolt értékek látszódnának 2 oszlopban, mellettük egy hibaérték, mely a különbözõ hibatípusok hibaszámának összege lenne. 
+A diagnosztikai képernyõn a két porton érkezõ dekódolt értékek látszódnak két oszlopban, mellettük egy hibaérték, mely a különbözõ hibatípusok hibaszámának összege. 
 
 \subsubsection{Hibatípusok}
 \begin{itemize}
 \item beragadás
 \item túl nagy változás
-\item túl nagy különbség a 2 vett értéken
+\item túl nagy különbség a két vett érték között
 \end{itemize}
 
-Ezek feldolgozására 2 FIFO sort kell alkalmazni, melyek visszamenõleg tárolják a beérkezõ értékeket. Ez azért szükséges, mivel így a túlságosan kiugró értékeket detektálni lehet, illetve, ha az egész sorban ugyanazok az értékek vannak, gyanús a beragadás esélye.
-A harmadik esetben sajnos nem lehetséges a ``jó'' kiválasztása, mivel nem tudjuk, melyik modembõl érkezett adat a megfelelõ. Ezt csak háromszorozással és többségi szavazással lehetne megoldani. Így a kettõ érték átlagát lehet csak felhasználni.
+Ezen hibák feldolgozására két FIFO sort érdemes alkalmazni, melyek visszamenõleg tárolják a beérkezõ értékeket. Ez azért szükséges, mert így a túlságosan kiugró értékeket detektálni lehet, illetve, ha az egész sorban ugyanazok az értékek vannak, gyanús a beragadás esélye.
+A harmadik esetben sajnos nem lehetséges a ``jó'' kiválasztása, mivel nem tudjuk, melyik modembõl érkezett adat a megfelelõ. Ezt csak háromszorozással és többségi szavazással lehetne megoldani, de mivel jelen esetben ez a lehetõség nem áll fenn, így a kisebb hibaértékû adtot használja fela  program.
 
 \subsection{Terminál képernyõ}
 
-Lehetõség nyílik a fogadott csomagok hexadecimális vagy decimális formában történõ megjelenítése, így az operátor alacsony szinten megbizonyosodhat a kapcsolat létrejöttében, mivel láthatja a csomagok beérkezését. Ha a fejléc a csomag elején látszódik, akkor mûködnie kell a további dekódolásnak, melyet a többi nézet használ fel. Ha nem lát itt adatokat, akkor ellenõrizheti, hogy valóban jó portot illetve adatsebességet választott-e ki.
+Ebben a nézetben lehetõség nyílik a fogadott csomagok hexadecimális vagy decimális formában történõ megjelenítésére, így az operátor alacsony szinten (a fogadott csomagok feldolgozatlan formájából) megbizonyosodhat a kapcsolat létrejöttérõl, mivel láthatja, hogy csomagok beérkezeznek-e. Ha a fejléc a csomag elején látszódik, akkor mûködnie kell a további dekódolásnak, melyet a többi nézet használ fel. Ha nem lát itt adatokat, akkor ellenõrizheti, hogy valóban jó portot illetve adatsebességet választott-e ki.
 
 \section{Használt technológiák bemutatása}
 
@@ -151,22 +122,22 @@ A programot C\# nyelven, Microsoft Visual Studio 2010-es verziójával készítem, a
 
 \begin{figure}[H]
 	\centering
-	\resizebox{10cm}{!}{ 
+	\resizebox{8cm}{!}{ 
 		\includegraphics{figures/net.png}} 
 	\caption{}
 	\label{fig:net}
 \end{figure}
 
-A .NET \cite{bib:netstart} egy menedzselt végrehajtási környezetet biztosító keretrendszer, mely számos szolgáltatást nyújt a benne futtatott programoknak. Két fõ részbõl áll: CLR\footnote{Common Language Runtime (közös nyelvi futtatókörnyezet) }, mely a programok végrehajtásáért felelõs és a .NET BLR\footnote{Base Class Library}, mely tesztelt, újra felhasználható programkönyvtárakat tartalmaz.
+A .NET \cite{bib:netstart} egy menedzselt végrehajtási környezetet biztosító keretrendszer, mely számos szolgáltatást nyújt a benne futtatott programoknak. Két fõ részbõl áll: CLR (Common Language Runtime)\footnote{közös nyelvi futtatókörnyezet}, mely a programok végrehajtásáért felelõs és a .NET BCL (Base Class Library), mely tesztelt, újra felhasználható programkönyvtárakat tartalmaz.
 
 
 \subsubsection{Common Language Runtime} 
 
-A menedzselt környezetet a CLR \cite{bib:net} biztosítja, a memóriakezelést kiveszi a programozók feladatai közül, mely az egyik legnagyobb odafigyelést igényelte, további feladata a kód végrehajtása, verifikációja, fordítása. Garbage Collector nevû memóriafelszabadítást végzõ eszköze automatikusan törli a memóriából a már nem hivatkozott elemeket.
+A menedzselt környezetet a CLR \cite{bib:net} biztosítja, a memóriakezelést kiveszi a programozók feladatai közül, mely eddig az egyik legnagyobb odafigyelést igényelte. További feladatai a kód végrehajtása, verifikációja és fordítása. Garbage Collector nevû memóriafelszabadítást végzõ eszköze automatikusan törli a memóriából a már nem hivatkozott elemeket.
 
 \subsubsection{Base Class Library}
 
-API\footnote{Application Programming Interface, mely elõre megírt komponensek használatához biztosít interfészt}-k összesége, célja hogy megkönnyítse és gyorsítsa fejlesztés folyamatát. A feladatom megoldásához egyik legfontosabb osztály a \textit{SerialPort}\cite{bib:serial} osztály, mely megkönnyíti a soros port kezelését.
+API-k (Application Programming Interface)\footnote{mely elõre megírt komponensek használatához biztosít interfészt} összesége, célja hogy megkönnyítse és gyorsítsa a fejlesztés folyamatát. A feladatom megoldásához az egyik legfontosabb osztály a \textit{SerialPort}\cite{bib:serial} osztály, mely megkönnyíti a soros port kezelését.
 
 \subsubsection{Common Language Specification} 
 
@@ -174,12 +145,15 @@ A .NET nyelvfüggetlen, így a keretrendszer szolgáltatásai hozzáférhetõek minden 
 
 \subsubsection{Windows Forms} 
 
-Grafikus megjelenítést biztosít az alkalmazásoknak, különbözõ elemek (beviteli mezõ, gomb, kép, választó lista) helyezhetõek el rá. GDI\footnote{Graphic Device Interface, Microsoft API, mely az operációs rendszer része, feladata grafikus elemek megjelenítése } \cite{bib:gdi} segítségével történik a kirajzolás. A GDI olyan függvények gyûjteménye, amelyek a grafikus elemek (görbék, alakzatok, BMP képek) megjelenítését, szövegek kiíratását teszi lehetõvé. A GDI+ ennek továbbfejlesztett változata, mely képes ezen elemek manipulációjához alkalmas mátrixtranszfomációkat kezelni és egyéb képformátumok támogatása is megjelent.
+Grafikus megjelenítést biztosít az alkalmazásoknak, különbözõ elemek (beviteli mezõ, gomb, kép, választó lista) helyezhetõek el rá. GDI (Graphic Device Interface)\footnote{ Microsoft API, mely az operációs rendszer része, feladata grafikus elemek megjelenítése } \cite{bib:gdi} segítségével történik a kirajzolás. A GDI olyan függvények gyûjteménye, amelyek a grafikus elemek (görbék, alakzatok, BMP képek) megjelenítését, szövegek kiíratását teszi lehetõvé. A GDI+ ennek továbbfejlesztett változata, mely képes ezen elemek manipulációjához alkalmas mátrixtranszfomációkat kezelni és egyéb, új képformátumokat is támogat.
 
 \subsubsection{C\# nyelv} 
 A C/C++ család elsõ valódi objektumorientált tagja, a keretrendszer nagy része C\#-ban készült \cite{bib:aut}.
-Más nyelvekkel összehasonlítva tisztább, mint a C++, nagy hasonlóságot mutat a Java nyelvvel.
+Más nyelvekkel összehasonlítva tisztább, mint a C++ és nagy hasonlóságot mutat a Java nyelvvel.
 
 \subsection{GMap.NET}
-A térkép alapú vizualizációhoz egy külsõ komponenst, a GMap.NET \cite{bib:gmap} könyvtárcsomagot használom fel. C\# nyelven készült, Google Maps-on kívül még számos térkép megjelenítésére képes, API-ján keresztül minden olyan funkció megvalósítható, melyhez a felhasználó hozzászokhatott a Google Maps online felületén. Többek között: útvonalterv összeállítás, pontok kijelölése, .GPX formátumú exportálás, offline üzemmód támogatása. 
-Az én feladatom minden részfeladatát támogatja, ezért is esett erre a csomagra a választásom. A fejlesztõje aktív, nagy érdeklõdés mutatkozik munkájára, így a talált hibák kijavítása, újítások gyakran feltöltésre kerülnek. Jelenlegi verziója: 1.6, mely Windows Forms, Windows Presentation és Mobile platformokat támogat.
+A térkép alapú vizualizációhoz egy külsõ komponenst, a GMap.NET \cite{bib:gmap} könyvtárcsomagot használom fel. C\# nyelven készült, Google Maps-en kívül még számos térkép megjelenítésére képes. API-ján keresztül minden olyan funkció megvalósítható, melyhez a felhasználó hozzászokhatott a Google Maps online felületén, például útvonalterv összeállítás, pontok kijelölése. Továbbá hasznos funkciói a .GPX formátumú exportálás és az offline üzemmód támogatása. 
+
+A fejlesztõje aktív, nagy érdeklõdés mutatkozik munkájára, így a talált hibák kijavítása és az újítások gyakran feltöltésre kerülnek. Jelenlegi verziója: 1.6, mely Windows Forms, Windows Presentation és Mobile platformokat támogat.
+
+A programom térképes megjelenítéséhez minden funkciót támogat, ezért is esett erre a csomagra a választásom.
