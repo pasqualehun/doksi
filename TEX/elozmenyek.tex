@@ -154,7 +154,7 @@ Feladatom a földi állomás elkészítése egy program formájában, ehhez szükséges a 
 
 \subsection{Mi a földi irányító állomás feladata?} 
 
-Egy UAV vezetéséhez elengedhetetlen egy bázis, ahonnan a földi személyzet irányíthatja és monitorozhatja a repülést. Egy állomás általában több funkciót lát el \cite{bib:aimofuav}:
+Egy UAV vezetéséhez elengedhetetlen egy GCS (Ground Control Station), ahonnan a földi személyzet irányíthatja és monitorozhatja a repülést. Egy állomás általában több funkciót lát el \cite{bib:aimofuav}:
 \begin{itemize}
 \item Küldetés tervezése: útvonal meghatározása, illetve a célpontok kijelölése
 \item Küldetés végrehajtása: az operátor távirányítással hajtja végre a feladatot
@@ -211,13 +211,13 @@ Sikerességének fõ oka a nyílt forráskód, az Arduino panel alacsony ára és a proj
 
 \subsubsection{Fõképernyõ}
 
-A program funkcionalitása több nézet segítségével könnyen átlátható. A fõképernyõn repülés szempontjából a legfontosabb adatok találhatóak. A repülõgép orientációját, sebességét, irányát egy mûhorizonton láthatja a felhasználó, ez vizuálisan szemlélteti, hogy hány fokos bedöntéssel repül, milyen állásszöggel emelkedik. Alatta lévõ területen elõre beállított adatokat jelenít meg, pl. GPS magasság, GPS sebesség, szélirány (valós mágneses irány és a sebesség vektor különbségébõl számítható). A felületen a legnagyobb területet a térkép foglalja el, melyen az aktuális irány, a lerepült útvonal és a fordulópontok láthatóak.
+A program funkcionalitása több nézet segítségével könnyen átlátható. A \figref{ardu} ábrán látható fõképernyõn repülés szempontjából a legfontosabb adatok találhatóak. A repülõgép orientációját, sebességét, irányát egy mûhorizonton láthatja a felhasználó, ez vizuálisan szemlélteti, hogy hány fokos bedöntéssel repül, milyen állásszöggel emelkedik. Alatta lévõ területen elõre beállított adatokat jelenít meg, pl. GPS magasság, GPS sebesség, szélirány (valós mágneses irány és a sebesség vektor különbségébõl számítható). A felületen a legnagyobb területet a térkép foglalja el, melyen az aktuális irány, a lerepült útvonal és a fordulópontok láthatóak.
 
 \begin{figure}[H]
 	\centering
 	\resizebox{15cm}{!}{
 		\includegraphics{figures/ardu.png}}
-	\caption{}
+	\caption{MissionPlanner }
 	\label{fig:ardu}
 \end{figure}
 
@@ -225,13 +225,13 @@ Ez a nézet akkor jöhet jól, ha olyan meghibásodás történik, melyre nincs felkész
 
 \subsubsection{Tervezõ és útvonalfeltöltõ képernyõ}
 
-A tervezõ nézet lehetõséget biztosít a lerepülendõ útvonal meghatározására. Az útvonalat meghatározó útvonalpontok típusa (indulási-, forduló- vagy végpont) egy listából választható. Az útvonalpontok pozíciója egérrel módosítható, törölhetõ. A képernyõ bal felsõ sarkában a kijelölt útvonaltervnek hossza látható. Ennek segítségével elkerülhetõ, hogy a repülés során a gép túllépje a rádiókapcsolat és a saját hatósugarát. Az elkészített tervet feltölthetjük a csatlakoztatott eszközre.
+A tervezõ nézet lehetõséget biztosít a lerepülendõ útvonal meghatározására. Az útvonalat meghatározó útvonalpontok típusa (indulási-, forduló- vagy végpont (\figref{ardu_plan} ábra)) egy listából választható. Az útvonalpontok pozíciója egérrel módosítható, törölhetõ. A képernyõ bal felsõ sarkában a kijelölt útvonaltervnek hossza látható. Ennek segítségével elkerülhetõ, hogy a repülés során a gép túllépje a rádiókapcsolat és a saját hatósugarát. Az elkészített tervet feltölthetjük a csatlakoztatott eszközre.
 
 \begin{figure}[H]
 	\centering
 	\resizebox{15cm}{!}{
 		\includegraphics{figures/ardu_plan.png}} %plan
-	\caption{}
+	\caption{MissionPlanner tervezõképernyõ, pontok típusai}
 	\label{fig:ardu_plan}
 \end{figure}
 
@@ -262,7 +262,7 @@ A program a következõ funkciókkal rendelkezik:
 	\centering
 	\resizebox{15cm}{!}{ 
 		\includegraphics{figures/paparazzi.png}} %conn
-	\caption{}
+	\caption{Paparazzi program}
 	\label{fig:paparazzi}
 \end{figure}
 
@@ -279,14 +279,28 @@ Ugyanaz a képernyõ szolgál a navigációra és az útvonal-kijelölésre, ami szerinte
 \subsection{MicroPilot Horizon}
 
 ``Az 1995 óta mûködõ kanadai MicroPilot \cite{bib:micropilot} a világ egyik legismertebb robotpilóta gyártó cége, 65 országban több mint 750 alkalmazó használja az eszközeiket. Népszerûek az iskolákban, egyetemeken, kutató intézetekben, a gazdaság különbözõ területein, de a védelmi szféra is szép számmal használ robot légi jármûvein MicroPilot berendezéseket. Az adatátviteli csatorna ugyanazokat a funkciókat képes biztosítani, mint a programbevitelnél használt kábeles összeköttetés, így ezen keresztül repülés közben is módosítható az útvonal, a repülési paraméterek és az egyéb beállítások. A MicroPilot fedélzeti egysége ezen kívül egy rádió távirányító vevõberendezést is fogad, amely lehetõséget teremt a földi adó konzoljáról az irányítás átvételére és botkormányos kézi vezérlésre. Ezt alapvetõen a fel és leszállás idejére, illetve az útvonal kritikus szakaszain használják. Amennyiben az RC távirányítóval mûködõ repülõgép veszti el a kapcsolatot, akkor a fedélzeti vevõberendezés Failsafe üzemmódra kapcsol és annak beállítása szerint mûködteti a repülõgépet. A Failsafe vagy az utolsó szervó állást õrzi meg, vagy egy elõre programozott legbiztonságosabb földet érést ígérõ beállításra ugrik.''\cite{bib:makkay} 
+
 A hozzá készített földi irányító egység a MicroPilot Horizon nevet viseli. 
+
 \begin{figure}[h]
-	\centering
-	\resizebox{15cm}{!}{ 
+	\centering	
+	\begin{minipage}[b]{0.45\linewidth}
+		\centering
+			\resizebox{10cm}{!}{ 
 		\includegraphics{figures/micropilot.png}} 
-	\caption{}
+	\caption{MicroPilot fõképernyõje}
 	\label{fig:micropilot}
+	\end{minipage}
+	\quad
+	\begin{minipage}[b]{0.45\linewidth}
+		\centering
+	\resizebox{4cm}{!}{ 
+		\includegraphics{figures/microhud.png}} 
+	\caption{MicroPilot kamera képe}
+	\label{fig:micropilothud}
+	\end{minipage}
 \end{figure}
+
 
 \subsubsection{Fõképernyõ}
 
@@ -299,7 +313,7 @@ A repülési terv könnyen, kattintással összeállítható és módosítható, repülés elõ
 
 \subsubsection{Összegzés}
 
-Ez a program elsõsorban távirányításos vezérlés támogatására készült, aminek során az operátor irányítja a gépet. Így kulcsfontosságú a videókép átvitel támogatása és a legfelhasználóbarátabb megjelenítés. Érdekesség a POI (Point Of Interest)\footnote{GPS koordinátával megjelölhetõ érdekes hely} gomb, mellyel egy pozíció késõbbi kivizsgálásra megjelölhetõ, ha esetleg valami olyat lát az operátor, melyet érdemes felkeresni.
+Ez a program elsõsorban távirányításos vezérlés támogatására készült, aminek során az operátor irányítja a gépet. Így kulcsfontosságú a videókép átvitel támogatása és a legfelhasználóbarátabb megjelenítés. Érdekesség a POI (Points Of Interest)\footnote{GPS koordinátával megjelölhetõ érdekes hely} gomb, mellyel egy pozíció késõbbi kivizsgálásra megjelölhetõ, ha esetleg valami olyat lát az operátor, melyet érdemes felkeresni.
 
 
 %http://www.szrfk.hu/rtk/folyoirat/2013_1/2013-1-04-Imre_Makkay.pdf
@@ -309,15 +323,15 @@ Ez a program elsõsorban távirányításos vezérlés támogatására készült, aminek sor
 
 
 \subsection{OpenPilot}
-Az OpenPilot projekt \cite{bib:openpilot} célja, hogy nyílt forráskódú, magas minõségû robot pilótát kínáljon autonóm légijármûvek vezérléséhez. 2009-ben alakult, azóta már több mint 200 tagja vesz részt a fejlesztésben a világ 140 országából. A jelenlegi verzió, képes irányítani fix szárnyas repülõt és helikoptert kettõtõl nyolc rotorig. 
+Az OpenPilot projekt \cite{bib:openpilot} célja, hogy nyílt forráskódú, magas minõségû robot pilótát kínáljon autonóm légijármûvek vezérléséhez. A projekt 2009-ben alakult, azóta már több mint 200 tagja vesz részt a fejlesztésben a világ 140 országából. A jelenlegi verzió képes irányítani fix szárnyas repülõt és helikoptert kettõtõl nyolc rotorig. 
 
-A hozzá készült földi irányító program több platformon mûködik: Windows, Mac OS, Linux és tervben van az Android támogatása is. A program segítségével tölthetõ fel a panelra a fedélzeti program.
+A hozzá készült földi irányító program több platformon mûködik: Windows, Mac OS, Linux és tervben van az Android támogatása is. Ez a program nem csupán az elõbbi programok funkcióival bír (útvonal tervezés, megjelenítés), hanem a fedélzeti számítógépet tartalmazó panel felprogramozására is alkalmas.
 
 \subsubsection{Fõképernyõ}
 
-A képernyõ bal oldalán egy mûhorizont látható, alatta a jármû orientációja külsõ nézetbõl, jobb oldalon a térkép az aktuális pozíció megjelenítésével.
+A képernyõ bal oldalán egy mûhorizont látható, alatta a jármû orientációja látszik külsõ nézetbõl, míg jobb oldalon a térkép az aktuális pozíciót jeleníti meg.
 
-Ez a nézet szabadon módosítható különféle ``gadget''-ek kiválasztásával, pl. a külsõ nézet egy mért érték grafikus megjelenítésére kicserélhetõ. Ezek egy .xml fájlba elmenthetõek és visszatölthetõek, különbözõ konfiguráció igényeihez igazodva.
+Ez a nézet szabadon módosítható különféle ``gadget''-ek kiválasztásával, pl. a külsõ nézet egy mért érték grafikus megjelenítésére kicserélhetõ. Egy .xml fájlba elmenthetõek és visszatölthetõek, így igazodva különbözõ a konfigurációk igényeihez.
 
 
 \begin{figure}[H]
@@ -329,34 +343,30 @@ Ez a nézet szabadon módosítható különféle ``gadget''-ek kiválasztásával, pl. a k
 \end{figure}
 
 \subsubsection{Összegzés}
-Rengeteg beállítási lehetõséget nyújt ez a program, lelkes közösség áll mögötte, minden olyan fontos igényt kielégít, mely napjainkban felmerülhet egy UAV adatainak megjelenítésével kapcsolatban.
-
-\subsection{QGroundControl}
-\cite{bib:qground} MAVLink protokollt használ a kommunikációra, a repülõgép a programon keresztül vezethetõ, ha átkapcsolás szükséges. A MAVLink kifejezetten GCS--UAV összeköttetésére lett kifejlesztve. 
-
-\subsubsection{Fõképernyõ}
-Érdekesség, hogy 3D-ben is meg tudja jeleníteni a repülõ aktuális pozícióját. A protokollnak köszönhetõen 255 jármû egyidejû kezelésére alkalmas.
-Útvonalpontok menet közben is változtathatóak.
+A projekt mögött egy igen lelkes és aktív közösség áll, hiszen az OpenPilot minden olyan fontos igényt kielégít, mely napjainkban felmerülhet egy UAV adatainak megjelenítésével és konfigurálásával kapcsolatban.
 
 
+\subsection{Egyéb megoldások}
+
+\subsubsection{QGroundControl}
+Ez a program \cite{bib:qground} nyílt forráskódú és a MAVLink protokollt használja a csatlakoztatott eszközzel történõ kommunikációra. Érdekesség, hogy a program a repülõgép aktuális pozícióját a \figref{qground} látható módon 3D-ben is meg tudja jeleníteni és videókép fogadására is alkalmas. Az útvonalpontok szerkesztése felszállás után is lehetséges. A protokollnak köszönhetõen a program képes 255 jármû egyidejû kezelésére.
 \begin{figure}[H]
 	\centering
 	\resizebox{15cm}{!}{
 		\includegraphics{figures/qground.png}}
-		\caption{}
+		\caption{QGroundControl program}
 	\label{fig:qground}
 \end{figure}
 
-\subsection{HappyKillmore}
+\subsubsection{HappyKillmore}
 \label{sect:happy}
-\cite{bib:hk} ArduPilot-hoz készült nyílt forráskódú GCS, a Planner-hez képest ez inkább az egyszerûség híve, kevés mûszer található rajta, de ezekrõl minden információ megtudható. Itt is a térkép nézet dominál, oldalt mozgathatjuk számunkra megfelelõ elrendezésbe a mûszereket. Útvonalpontok feltöltésére szintén van lehetõség.
-Támogatja többek között az ArduPilot és a MAVLINK protokollokat.
+Az ArduPilot-hoz készült nyílt forráskódú GCS \cite{bib:hk} a Mission Planner-hez képest inkább az egyszerûség híve. Kevés mûszer található rajta, de ezekrõl minden információ megtudható. Itt is a térkép nézet dominál, a képernyõ oldalsó részén mozgathatjuk számunkra megfelelõ elrendezésbe a mûszereket. Útvonalpontok feltöltésére szintén van lehetõség. A program támogatja többek között az ArduPilot és a MAVLINK protokollokat.
 
 \begin{figure}[H]
 	\centering
 	\resizebox{15cm}{!}{
 		\includegraphics{figures/hk.png}}
-		\caption{}
+		\caption{HappyKillMore program}
 	\label{fig:hk}
 \end{figure}
 
@@ -385,13 +395,14 @@ A repülõ, melyhez a programot készítem, nagy megbízhatóságú, így szükséges megol
 				%HappyKillMore 	& Visual Basic, nyílt			&			-							 &				-					   & 	-									\\ \hline
 				
 				\hline
-				\textbf{Program}    	& \textbf{Ardupilot}			&\textbf{Paparazzi}	 &\textbf{MicroPilot}		& \textbf{QGroundControl} & 	\textbf{HappyKillMore}				  	\\ \hline \hline
-				Forráskód							& C\#, nyílt 							& 		?, nem nyílt	 &?, nem nyílt				 & C++, nyílt 		&		VB, nyílt		\\ \hline
-				Több eszköz 					&     		        				&			 							 &				 					   & 	-	      			&			\\ \hline
-				Útvonal 							& -												&			+							 &				+				     & -	          	&	\\ 
-				szerkesztése 					&    											&			 							 &				  			     &  	          	&	\\ \hline
-				Elõny 								&             						&			+							 &				-					   & 	-	          	&\\ \hline
-				új 										&       		-							 &				-					   & 	-								&							        &\\ \hline
+				\textbf{Program}    	& \textbf{Ardupilot}			&\textbf{Paparazzi}	 &\textbf{MicroPilot}		& \textbf{QGround} & 	\textbf{HappyKillMore}				  	\\ 
+				          						&           							& 		            	 &             				 &  \textbf{Control}&		          		\\ \hline
+				Forráskód							& C\#, nyílt 							& 		?, nem nyílt	 &?, nem nyílt				 & C++, nyílt 	            &		VB, nyílt		\\ \hline
+				Több eszköz 					&     		        				&			 							 &				 					   & 	-	      		            &			\\ \hline
+				Útvonal 							& -												&			+							 &				+				     & -	                      &	\\ 
+				szerkesztése 					&    											&			 							 &				  			     &  	                      &	\\ \hline
+				Elõny 								&             						&			+							 &				-					   & 	-	                      &\\ \hline
+				új 										&       		-							 &				-					   & 	-								&							              &\\ \hline
 				
 				
 			\end{tabular}                                                                         
