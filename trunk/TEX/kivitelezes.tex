@@ -172,43 +172,49 @@ A diagnosztikai képernyõn a portokon érkezõ adatok és hozzájuk tatozó hibaszámlá
 
 \subsection{Terminál képernyõ}
 
-A fogadott csomagokat a terminál képernyõ jeleníti meg, ha nem jelennének meg adatok az elõzõ képernyõkön, akkor itt megbizonyosodhat a felhasználó, hogy a program fogadja-e a csomagokat. Ez a legalacsonyabb szintû kijelzés, ez csak a nyerj bájtokat iratja ki, választhatóan hexadecimális vagy decimális formában. Ha itt sincs változás, érdemes a csatlakoztatott portot vagy a jelsebességet változtatni.
+A fogadott csomagokat a terminál képernyõ (\figref{terminalkepernyo}) jeleníti meg. Ha az elõzõ képernyõkön nem jelennének meg adatok, akkor itt megbizonyosodhat a felhasználó, hogy a kapcsolat egyáltalán mûködik-e. Ez a felület biztosítja egy csomag legalacsonyabb szintû kijelzését, mivel csak a fogadott csomag bájtjait írja ki választhatóan hexadecimális vagy decimális formában. Ha itt nem látható semmi, érdemes a csatlakoztatott portot vagy a jelsebességet megváltoztatni.
 
 \begin{figure}[H]
 	\centering
 	\resizebox{15cm}{!}{
 		\includegraphics{figures/terminalkepernyo.png}}
-	\caption{}
+	\caption{GroundControl terminál képernyõ}
 	\label{fig:terminalkepernyo}
 \end{figure}
 
 \section{Fejlesztés menete}
 \label{sect:fejlesztes}
-Az önálló, otthoni fejlesztést megkönnyítendõ, a repülõgép HIL\footnote{Hardware In the Loop, todo} szimulációjából nyert log file-okat használtam fel, így nem volt szükséges ez idõ alatt a repülõ közelében lennem, elég volt csak a végleges stádiumban kipróbálni a mûködést. A kapott file-ok felhasználásához elõször is biztosítani kellett, hogy a fejlesztendõ program soros porton keresztül ugyanúgy fogadhassa a csomagokat, mintha azt a repülõgép modemei küldenék. Ehhez készítettem 1-1 programot melyek ezeket a file-okat beolvassák és két kiválasztott soros portra 500 ms-onként egy csomagot küldenek, melyet egy emulátor programmal hoztam létre. Ez az emulátor \cite{bib:null} képes null-modemként viselkedni, melynek lényege, hogy software-es úton biztosít két soros port között kapcsolatot. Így létrehoztam egy COM20-COM21 és egy COM10-COM11 összeköttetést, az egyik program a COM20-ra másik a COM10-re csatlakozik, a fejlesztendõ program ezen párok másik portját használja kommunikációra. Mivel szükséges a kétirányú kapcsolat kiépítése, így a log file-okat feldolgozó programba beépítésre került egy beérkezõ üzeneteket feldolgozó függvény, mely kiírja a konzolos felületére a beérkezett csomagot, így ellenõrizhetõ, hogy azt küldi-e el amit szeretnék.
+Az önálló, otthoni fejlesztést megkönnyítendõ, a repülõgép HIL (Hardware In the Loop)\footnote{olyan szimuláció, ami a tesztelendõ beágyazott rendszernek olyan környezetet biztosít, mintha az valódi érzékelõk adatait fogadná és valódi aktuátorokat irányítana} szimulációjából nyert log fájlokat használtam fel. Ennek segítségével nem volt szükséges ez idõ alatt a repülõ közelében lennem, a program mûködését elég volt csak a végleges stádiumban kipróbálni a repülõgép valódi adataival. 
+
+A kapott log fájlok felhasználásához elõször is biztosítani kellett, hogy a GroundControl soros porton keresztül ugyanúgy fogadhassa a csomagokat, mintha azt a repülõgép modemei küldenék. Ehhez készítettem egy-egy programot, melyek ezeket a fájlokat beolvassák és két kiválasztott soros portra 500 ms-onként egy-egy csomagot küldenek belõlük. 
+
+A repülõgépet helyettesítõ programok és a GroundControl közti kapcsolatot egy emulátor programmal hoztam létre. Az emulátor program \cite{bib:null} képes null-modemként viselkedni, melynek lényege, hogy szoftveres úton biztosít két soros port között összeköttetést. Létrehoztam egy COM20-COM21 és egy COM10-COM11 port párosítást (\figref{comnull} ábra), melyekbõl az egyik program a COM20-ra, míg a másik a COM10-re csatlakozik. A GroundControl a párok másik portjait használja a kommunikációra. 
+
+Mivel szükséges a kétirányú kapcsolat kiépítése, így a log fájlokat feldolgozó programokba beépítettem egy beérkezõ üzeneteket feldolgozó függvény is. Ez kiírja a program konzolos felületére a beérkezett csomagot, így ellenõrizhetõ, hogy valóban mûködik-e a GroundControl szemszögébõl az adatküldés. A \figref{sorossend} ábrán egy ilyen csomag látható a 264. és 265. küldött csomag között.
 
 \begin{figure}[H]
 	\centering	
 	\begin{minipage}[b]{0.45\linewidth}
 		\resizebox{7cm}{!}{
 			\includegraphics{figures/comnull.png}}
-		\caption{}
+		\caption{Com0com nullmodem program}
 	\label{fig:comnull}
 	\end{minipage}
 	\quad
 	\begin{minipage}[b]{0.45\linewidth}
 		\resizebox{7cm}{!}{
 			\includegraphics{figures/sorossend.png}}
-		\caption{}
+		\caption{Log fájlt feldolgozó program}
 		\label{fig:sorossend}
 	\end{minipage}
 \end{figure}
 
-A kapott log file-ok szerkezetét XVI32 nevû programmal tanulmányoztam és ismertem meg egy csomag felépítését és méretét. Látható, hogy egy csomag mérete valóban a specifikációban megadott 75 byte. Ezt a programot használtam az elküldött útvonalpontok csomagjának vizsgálatához is, hogy valóban úgy került-e elküldésre a csomag, ahogy azt a specifikációban meghatároztam.
+A kapott log fájlok szerkezetét egy XVI32 nevû programmal tanulmányoztam. Egy csomag felépítését és méretét ezzel ellenõriztem. A \figref{xvi} ábrán látható, hogy egy csomag mérete valóban a specifikációban megadott 75 byte. Ezt a programot használtam az elküldött útvonalpontok csomagjának vizsgálatához is, hogy valóban úgy került-e elküldésre a csomag, ahogy azt a specifikációban meghatároztam.
 
 \begin{figure}[H]
 	\centering
 	\resizebox{15cm}{!}{
 		\includegraphics{figures/xvi.png}}
-	\caption{}
+	\caption{XVI nevû hexa editor}
 	\label{fig:xvi}
 \end{figure}

@@ -69,7 +69,7 @@
 \select@language {magyar} \contentsline {subsection}{\numberline {3.2.2}Tervez\'es k\'eperny\H o}{35}{subsection.3.2.2}
 \select@language {magyar} \contentsline {subsection}{\numberline {3.2.3}Diagnosztikai k\'eperny\H o}{36}{subsection.3.2.3}
 \select@language {magyar} \contentsline {subsection}{\numberline {3.2.4}Termin\'al k\'eperny\H o}{37}{subsection.3.2.4}
-\select@language {magyar} \contentsline {section}{\numberline {3.3}Fejleszt\'es menete}{38}{section.3.3}
+\select@language {magyar} \contentsline {section}{\numberline {3.3}Fejleszt\'es menete}{37}{section.3.3}
 \select@language {magyar} \contentsline {chapter}{\numberline {4}\"Osszefoglal\'as}{40}{chapter.4}
 \select@language {magyar} \contentsline {chapter}{F\"uggel\'ek}{43}{appendix*.58}
 \select@language {magyar} \contentsline {section}{\numberline {F.1}Program elind\IeC {\'\i }t\'asa}{43}{section.F.1}
