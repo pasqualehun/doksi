@@ -10,15 +10,15 @@ MinPos.y=-1
 MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
-NormalPos.top=26
-NormalPos.right=1066
-NormalPos.bottom=199
+NormalPos.top=32
+NormalPos.right=1701
+NormalPos.bottom=659
 Class=LaTeXView
-Document=tervezes.tex
+Document=elozmenyek.tex
 
 [Frame0_View0,0]
-TopLine=96
-Cursor=6019
+TopLine=476
+Cursor=37402
 
 [Frame1]
 Flags=0
@@ -28,15 +28,15 @@ MinPos.y=-1
 MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
-NormalPos.top=26
-NormalPos.right=1066
-NormalPos.bottom=199
+NormalPos.top=32
+NormalPos.right=1701
+NormalPos.bottom=659
 Class=LaTeXView
-Document=diploma.tex
+Document=tervezes.tex
 
 [Frame1_View0,0]
-TopLine=165
-Cursor=7027
+TopLine=188
+Cursor=14821
 
 [Frame2]
 Flags=0
@@ -46,15 +46,15 @@ MinPos.y=-1
 MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
-NormalPos.top=26
-NormalPos.right=1066
-NormalPos.bottom=199
+NormalPos.top=32
+NormalPos.right=1701
+NormalPos.bottom=659
 Class=LaTeXView
-Document=introduction.tex
+Document=diploma.tex
 
 [Frame2_View0,0]
-TopLine=0
-Cursor=1338
+TopLine=112
+Cursor=5013
 
 [Frame3]
 Flags=0
@@ -64,15 +64,15 @@ MinPos.y=-1
 MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
-NormalPos.top=26
-NormalPos.right=1066
-NormalPos.bottom=199
+NormalPos.top=32
+NormalPos.right=1701
+NormalPos.bottom=659
 Class=LaTeXView
-Document=ertekeles.tex
+Document=introduction.tex
 
 [Frame3_View0,0]
 TopLine=0
-Cursor=283
+Cursor=1460
 
 [Frame4]
 Flags=0
@@ -82,15 +82,15 @@ MinPos.y=-1
 MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
-NormalPos.top=26
-NormalPos.right=1066
-NormalPos.bottom=199
+NormalPos.top=32
+NormalPos.right=1701
+NormalPos.bottom=659
 Class=LaTeXView
-Document=elozmenyek.tex
+Document=kivitelezes.tex
 
 [Frame4_View0,0]
-TopLine=0
-Cursor=7700
+TopLine=228
+Cursor=12868
 
 [Frame5]
 Flags=0
@@ -100,15 +100,15 @@ MinPos.y=-1
 MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
-NormalPos.top=26
-NormalPos.right=1066
-NormalPos.bottom=199
+NormalPos.top=32
+NormalPos.right=1701
+NormalPos.bottom=659
 Class=LaTeXView
-Document=abstract.tex
+Document=ertekeles.tex
 
 [Frame5_View0,0]
 TopLine=0
-Cursor=1871
+Cursor=294
 
 [Frame6]
 Flags=0
@@ -118,17 +118,17 @@ MinPos.y=-1
 MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
-NormalPos.top=26
-NormalPos.right=1066
-NormalPos.bottom=199
+NormalPos.top=32
+NormalPos.right=1701
+NormalPos.bottom=659
 Class=LaTeXView
-Document=kivitelezes.tex
+Document=chapter4.tex
 
 [Frame6_View0,0]
-TopLine=91
-Cursor=3849
+TopLine=0
+Cursor=1496
 
 [SessionInfo]
 FrameCount=7
-ActiveFrame=0
+ActiveFrame=4
 
