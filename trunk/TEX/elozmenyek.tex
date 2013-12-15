@@ -351,7 +351,7 @@ A projekt mögött egy igen lelkes és aktív közösség áll, hiszen az OpenPilot mind
 \subsection{Egyéb megoldások}
 
 \subsubsection{QGroundControl}
-Ez a program \cite{bib:qground} nyílt forráskódú és a MAVLink protokollt használja a csatlakoztatott eszközzel történõ kommunikációra. Érdekesség, hogy a program a repülõgép aktuális pozícióját a \figref{qground} látható módon 3D-ben is meg tudja jeleníteni és videókép fogadására is alkalmas. Az útvonalpontok szerkesztése felszállás után is lehetséges. A protokollnak köszönhetõen a program képes 255 jármû egyidejû kezelésére.
+Ez a program \cite{bib:qground} nyílt forráskódú és a MAVLink\footnote{pehelysúlyú protokoll, C nyelvû header fájlok írják le. Változó csomagformátumú, egy csomag tartalmazza a tartalmának típusát, melyet a fogadó oldal felhasznál az adattartalom értelmezéséhez.} protokollt használja a csatlakoztatott eszközzel történõ kommunikációra. Érdekesség, hogy a program a repülõgép aktuális pozícióját a \figref{qground} látható módon 3D-ben is meg tudja jeleníteni és videókép fogadására is alkalmas. Az útvonalpontok szerkesztése felszállás után is lehetséges. A protokollnak köszönhetõen a program képes 255 jármû egyidejû kezelésére.
 \begin{figure}[H]
 	\centering
 	\resizebox{15cm}{!}{
