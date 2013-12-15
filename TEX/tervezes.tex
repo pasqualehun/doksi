@@ -14,7 +14,7 @@ Az elkészítendõ program (GroundControl) és a repülõgép között kommunikáció csato
 
 A redundanciából következõen külön--külön kell kezelni a két párhuzamos csatornán kapott adatokat. Mivel a csomagok aszinkron módon érkeznek, ezért kettõ FIFO tároló szükséges, mely a legutóbb küldötteket tárolja.
 
-\subsection{Protokoll}
+\subsection{Fogadás protokollja}
 \label{sect:protokoll}
 Az adatokat a repülõgép 2 Hz-s frekvenciával küldi, ezek az adatok csomagokban érkeznek egy elõre meghatározott protokoll szerint, melyeknek a felépítése a következõ:
 
@@ -38,7 +38,7 @@ A repülõgép által lerepülendõ feladat útvonalpontjait az adatok fogadásához haso
 
 Felmerül a kérdés, hogy az adatküldés mikor engedélyezett, a felszállás elõtt vagy repülés közben is? A bemutatott földi állomások közül néhány lehetõséget biztosított az útvonal repülés közbeni módosítására. Ennek a megoldásánál dönteni kell, hogy ha csak egy pont koordinátája módosul, akkor csak az vagy az összes újraküldésre kerüljön-e? Egyik megoldási lehetõség csak a módosított pontot elküldeni és annak feldolgozását a fedélzeti implementációra bízni. Ha a repülõ egy ponton áthaladt és az utólag került módosításra, figyelmen kívül hagyja és folytatja útvonalát, viszont ha egy elõtte lévõ módosult, akkor az újat követi. További stratégiák is elképzelhetõek, a következõ fejezetekbõl kiderül, melyiket érdemes választani.
 
-\subsection{Protokoll}
+\subsection{Küldés protokollja}
 \label{sect:up_prot}
 Több megoldás is lehetséges a fordulópontok feltöltésére:
 \begin{itemize}

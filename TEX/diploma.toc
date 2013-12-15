@@ -38,9 +38,9 @@
 \select@language {magyar} \contentsline {chapter}{\numberline {2}Tervez\'es}{23}{chapter.2}
 \select@language {magyar} \contentsline {section}{\numberline {2.1}Kommunik\'aci\'o megval\'os\IeC {\'\i }t\'asa}{23}{section.2.1}
 \select@language {magyar} \contentsline {section}{\numberline {2.2}Adatok fogad\'asa}{23}{section.2.2}
-\select@language {magyar} \contentsline {subsection}{\numberline {2.2.1}Protokoll}{23}{subsection.2.2.1}
+\select@language {magyar} \contentsline {subsection}{\numberline {2.2.1}Fogad\'as protokollja}{23}{subsection.2.2.1}
 \select@language {magyar} \contentsline {section}{\numberline {2.3}Adatok k\"uld\'ese}{25}{section.2.3}
-\select@language {magyar} \contentsline {subsection}{\numberline {2.3.1}Protokoll}{25}{subsection.2.3.1}
+\select@language {magyar} \contentsline {subsection}{\numberline {2.3.1}K\"uld\'es protokollja}{25}{subsection.2.3.1}
 \select@language {magyar} \contentsline {section}{\numberline {2.4}Grafikus fel\"ulet}{26}{section.2.4}
 \select@language {magyar} \contentsline {subsection}{\numberline {2.4.1}F\H ok\'eperny\H o}{27}{subsection.2.4.1}
 \select@language {magyar} \contentsline {subsection}{\numberline {2.4.2}Tervez\'es k\'eperny\H o}{27}{subsection.2.4.2}

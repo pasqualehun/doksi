@@ -3,7 +3,9 @@
 A pilóta nélküli légijármû, azaz UAV (Unamanned Aerial Vehicle) \cite{bib:uav} gondolata egészen a XX. század elejére nyúlik vissza, amikor az I. világháborúban egy olyan távirányítású repülõt alkottak, amely robbanószerrel a fedélzetén a célpontba csapódva okozott kárt.
 Késõbb a vietnámi háborúban az UAV-k több mint 3000 küldetésben vettek részt. Akkoriban a technológiai korlátok miatt az alkalmazott UAV-k fõ funkcionalitása videófelvétel készítése volt. Az akkori eszközök egy meghatározott útvonalat tudtak berepülni (ami tipikusan egyenes szakaszokkal leírt pálya volt, egyes pontokon a megfigyelés érdekében körökkel kiegészítve) repülve, majd a bevetés végén a bázisra való visszaérkezés volt az utolsó feladatuk.
 
-Idõvel a technika fejlõdésének köszönhetõen az UAV-k egyre összetettebb feladatok elvégzésére lettek képesek. A fejlettek rádiótechnika által biztosított nagyobb átviteli sebességnek köszönhetõen lehetõvé vált, hogy a gépet irányító operátor valós idõben, monitoron keresztül kezelhesse a távirányítású légijármûvet. A korszerû UAV-k ezért több üzemmódot is támogatnak, amelyek között megtalálhatõ az említett távirányítás, valamint a fedélzeti intelligenciára támaszkodó önálló repülés, azaz az autonóm mûködés is. Az alkalmazási területek köre is szélesebb lett, így a katonai feladatok mellett a polgári repülés, a mezõgazdaság és a katasztrófaelhárítás is rendszeresen alkalmaz ma már pilóta nélküli légijármûveket. Az autonóm mûködés emellet a pilóta által vezetett kaptonai és polgári repülõgépekben is egyre szélesebb felhasználási teret nyert. Ennek oka, hogy fontos és célszerû is az emberi terhelés csökkentése, ezzel növelve a repülésbiztonságot és csökkentve a költségeket. Utasszállító gépek esetében például a robotpilóta elvégez minden olyan korrekciót, amelyhez azelõtt a pilóta folyamatos figyelme, koncentrációja volt szükséges. Ám hiába a fejlett eszközháttér, mind a pilótával, mind a pilóta nélkül repülõ légijármûvek teljes körû automatikus üzemeltetése egyelõre távoli cél. Ma még az emberi beavatkozásnak rendelkezésre kell állnia olyan helyzetekben, amelyekre nincs elõre felkészítve az az automatikus irányítórendszer. UAV-k esetében ilyen beavatkozásokhoz létfontosságú, hogy az operátor lássa a gép aktuális pozícióját, diagnosztikai adatait. Ezt a feladatot látja el az ún. földi irányító állomás, azaz GCS (Ground Control Station). Szakdolgozatom célja egy meglevõ pilóta nélküli légijármû földi irányító állomásának megtervezése és elkészítése, a megbízható mûködés követelményeinek figyelembe vételével.
+Idõvel a technika fejlõdésének köszönhetõen az UAV-k egyre összetettebb feladatok elvégzésére lettek képesek. A fejlettek rádiótechnika által biztosított nagyobb átviteli sebességnek köszönhetõen lehetõvé vált, hogy a gépet irányító operátor valós idõben, monitoron keresztül kezelhesse a távirányítású légijármûvet. A korszerû UAV-k ezért több üzemmódot is támogatnak, amelyek között megtalálható az említett távirányítás, valamint a fedélzeti intelligenciára támaszkodó önálló repülés, azaz az autonóm mûködés is. Az alkalmazási területek köre is szélesebb lett, így a katonai feladatok mellett a polgári repülés, a mezõgazdaság és a katasztrófaelhárítás is rendszeresen alkalmaz ma már pilóta nélküli légijármûveket. 
+
+Az autonóm mûködés emellett a pilóta által vezetett katonai és polgári repülõgépekben is egyre szélesebb felhasználási teret nyert. Ennek oka, hogy fontos és célszerû is az emberi terhelés csökkentése, ezzel növelve a repülésbiztonságot és csökkentve a költségeket. Utasszállító gépek esetében például a robotpilóta elvégez minden olyan korrekciót, amelyhez azelõtt a pilóta folyamatos figyelme, koncentrációja volt szükséges. Ám hiába a fejlett eszközháttér, mind a pilótával, mind a pilóta nélkül repülõ légijármûvek teljes körû automatikus üzemeltetése egyelõre távoli cél. Ma még az emberi beavatkozásnak rendelkezésre kell állnia olyan helyzetekben, amelyekre nincs elõre felkészítve az az automatikus irányítórendszer. UAV-k esetében ilyen beavatkozásokhoz létfontosságú, hogy az operátor lássa a gép aktuális pozícióját, diagnosztikai adatait. Ezt a feladatot látja el az ún. földi irányító állomás, azaz GCS (Ground Control Station). Szakdolgozatom célja egy meglevõ pilóta nélküli légijármû földi irányító állomásának megtervezése és elkészítése, a megbízható mûködés követelményeinek figyelembe vételével.
 
 \section{Motiváció}
 
@@ -150,7 +152,7 @@ Az XBee a Zigbee protokollt megvalósító bejegyzett márkaneve, melynek tulajdonos
 
 \section{Földi irányító állomás}
 
-Feladatom a földi állomás elkészítése egy program formájában, ehhez szükséges a kapcsolat kiépítése a repülõgép és a földi állomás között, melynek során meg kell oldanom a soros porti kommunikáció létrehozását majd a fogadott független adatok feldolgozását és kijelzését.
+Feladatom a földi állomás elkészítése egy program formájában. Ehhez szükséges a kapcsolat kiépítése a repülõgép és a földi állomás között, melynek során meg kell oldanom a soros porti kommunikáció létrehozását majd a fogadott független adatok feldolgozását és kijelzését.
 
 \subsection{Mi a földi irányító állomás feladata?} 
 
@@ -277,7 +279,7 @@ A képernyõ alsó részének közepén egy több füllel ellátott rész található, ahol k
 Ugyanaz a képernyõ szolgál a navigációra és az útvonal-kijelölésre, ami szerintem nem a legjobb megoldás, mivel nincs elválasztva ez a két funkcionalitás. Egyértelmûbb, ha a program a tervezéshez egy olyan perspektívát nyújt, ahol minden szükséges információ rendelkezésre áll az útvonallal kapcsolatban. Repülés közben ezek az információk nem szükségesek, sõt zavaróak is lehetnek. Összességében ez is egy nagyon jól használható program, ami minden olyan funkciót biztosít, mely egy UAV használatához szükséges.
 
 \subsection{MicroPilot Horizon}
-
+\label{sect:micropilot}
 ``Az 1995 óta mûködõ kanadai MicroPilot \cite{bib:micropilot} a világ egyik legismertebb robotpilóta gyártó cége, 65 országban több mint 750 alkalmazó használja az eszközeiket. Népszerûek az iskolákban, egyetemeken, kutató intézetekben, a gazdaság különbözõ területein, de a védelmi szféra is szép számmal használ robot légi jármûvein MicroPilot berendezéseket. Az adatátviteli csatorna ugyanazokat a funkciókat képes biztosítani, mint a programbevitelnél használt kábeles összeköttetés, így ezen keresztül repülés közben is módosítható az útvonal, a repülési paraméterek és az egyéb beállítások. A MicroPilot fedélzeti egysége ezen kívül egy rádió távirányító vevõberendezést is fogad, amely lehetõséget teremt a földi adó konzoljáról az irányítás átvételére és botkormányos kézi vezérlésre. Ezt alapvetõen a fel és leszállás idejére, illetve az útvonal kritikus szakaszain használják. Amennyiben az RC távirányítóval mûködõ repülõgép veszti el a kapcsolatot, akkor a fedélzeti vevõberendezés Failsafe üzemmódra kapcsol és annak beállítása szerint mûködteti a repülõgépet. A Failsafe vagy az utolsó szervó állást õrzi meg, vagy egy elõre programozott legbiztonságosabb földet érést ígérõ beállításra ugrik.''\cite{bib:makkay} 
 
 A hozzá készített földi irányító egység a MicroPilot Horizon nevet viseli. 
@@ -364,7 +366,7 @@ Az ArduPilot-hoz készült nyílt forráskódú GCS \cite{bib:hk} a Mission Planner-he
 
 \begin{figure}[H]
 	\centering
-	\resizebox{15cm}{!}{
+	\resizebox{14cm}{!}{
 		\includegraphics{figures/hk.png}}
 		\caption{HappyKillMore program}
 	\label{fig:hk}
@@ -374,12 +376,22 @@ Az ArduPilot-hoz készült nyílt forráskódú GCS \cite{bib:hk} a Mission Planner-he
 
 \subsection{Összehasonlítás}
 
-A felsorolt megoldások összehasonlításából kiderül, hogy egyik sem alkalmaz redundanciát a kommunikáció megvalósítására. Az összesre jellemzõ, hogy a repülõgép pozíciója valamilyen térképen kerül megjelenítésre. Általában a fõképernyõn a sebesség, magasság adatok mindig látszódnak, így az elkészítendõ felületre célszerû egy térképes megjelenítést és a legfontosabb információk kijelzését megoldani. Számos program különválasztotta az útvonal-kijelölés felületét a fõképernyõtõl, így ebbõl merítve készíthetõ egy olyan felület, melyen útvonalpontok hozzáadhatóak, módosíthatóak és feltölthetõk. Mivel redundanciával nem foglalkozik egyik sem, így a dolgozat szempontjából érdekes hibadetektációra nem találunk példát. Láthattuk néhány program több eszköz párhuzamos kiszolgálását támogatta, jelenleg a feladatom egy eszközhöz való csatlakozás megoldása, ám ha szükséges, látható, ezt már sikerült megoldani.
-A megoldások forráskódja elég változatos a választott nyelv tekintetében, mondhatni, a nyílt forráskódúak az összes manapság használatos programozási nyelvet felhasználják. A nem nyílt programokról sajnos nem találtam információt. A nyílt forráskódúak tanulmányozásával lehetõség van ötleteket meríteni a tervezéshez és megvalósításhoz.
+A fentebb bemutatott földi irányító állomások tulajdonságait a \tabref{compare} táblázatban összefoglaltam. 
 
+Látható, hogy megoldások forráskódja elég változatos a választott nyelv tekintetében. A nyílt forráskódúak az összes manapság használatos programozási nyelvet felhasználják. Ezek tanulmányozásával lehetõség van ötleteket meríteni a tervezéshez és megvalósításhoz.
 
+Az összesre jellemzõ, hogy a repülõgép pozíciója valamilyen térképen kerül megjelenítésre. Általában a fõképernyõn a sebesség és a magasság adatok mindig látszódnak, így az elkészítendõ felületre célszerû egy térképes megjelenítést és a legfontosabb információk kijelzését megoldani. 
 
-A repülõ, melyhez a programot készítem, nagy megbízhatóságú, így szükséges megoldani a két port kezelését és az azokon érkezõ adatok feldolgozását.Azonban
+Számos program különválasztotta az útvonal-kijelölés felületét a fõképernyõtõl, így ebbõl merítve készíthetõ egy olyan felület, melyen útvonalpontok hozzáadhatóak, módosíthatóak és feltölthetõk. 
+
+Hasznos funkció az útvonal repülés közbeni módosítása, ezért érdemes ezt a lehetõséget beépíteni az elkészítendõ programba.
+
+Néhány megoldás több eszköz párhuzamos kiszolgálását támogatta, jelenleg a feladatom egy eszközhöz való csatlakozás megoldása, ám ha szükséges, látható, ez nem egy megoldhatatlan probléma.
+
+Egyik sem alkalmaz redundanciát a kommunikáció megvalósítására, így a dolgozat szempontjából érdekes hibadetektációra nem találtam példát.
+A repülõgép, melyhez a programot készítem, nagy megbízhatóságú, így adatai duplikált csatornán küldi. Ezért a két port kezelése és az azokon érkezõ adatok feldolgozása megoldandó probléma.
+
+A MicroPilot program (\sectref{micropilot} fejezet) elsõdleges funkciója a repülõgép távvezérléséhez kapcsolatos információk kijelzése, ezért az operátor figyelmét különféle figyelmeztetõ üzenetekkel hívja fel (elõre beállított tiltott légtér). Ilyen figyelemfelkeltõ üzeneteket érdemes használni hibadetektálás eredményének kijelzésére.
 
 
 \begin{table}[H]
@@ -395,18 +407,26 @@ A repülõ, melyhez a programot készítem, nagy megbízhatóságú, így szükséges megol
 				%HappyKillMore 	& Visual Basic, nyílt			&			-							 &				-					   & 	-									\\ \hline
 				
 				\hline
-				\textbf{Program}    	& \textbf{Ardupilot}			&\textbf{Paparazzi}	 &\textbf{MicroPilot}		& \textbf{QGround} & 	\textbf{HappyKillMore}				  	\\ 
-				          						&           							& 		            	 &             				 &  \textbf{Control}&		          		\\ \hline
+				\textbf{Program}    	& \textbf{Ardupilot}			&\textbf{Paparazzi}	 &\textbf{MicroPilot}		& \textbf{QGround} & 	\textbf{HappyKillmore}				  	\\ 
+				          						& \textbf{MissionPlanner}         							& 		            	 &             				 &  \textbf{Control}&		          		\\ \hline
 				Forráskód							& C\#, nyílt 							& 		?, nem nyílt	 &?, nem nyílt				 & C++, nyílt 	            &		VB, nyílt		\\ \hline
-				Több eszköz 					&     		        				&			 							 &				 					   & 	-	      		            &			\\ \hline
-				Útvonal 							& -												&			+							 &				+				     & -	                      &	\\ 
-				szerkesztése 					&    											&			 							 &				  			     &  	                      &	\\ \hline
-				Elõny 								&             						&			+							 &				-					   & 	-	                      &\\ \hline
-				új 										&       		-							 &				-					   & 	-								&							              &\\ \hline
+				Térképes 							&       		+							 &				 +				   & 	 	+							&					+		              &  +   \\ 
+				vizualizáció					&       									 &									   &    								&							              &     \\ \hline
+				Tervezés 							&       		+							 &				 -				   & 	 	+							&					+		              &  +   \\ 
+				képernyõ    					&       									 &									   &    								&							              &     \\ \hline
+				Több eszköz 					&     		        				&			 							 &				 					   & 	         		            &			\\ 
+				egyidejû  						& -												&			+							 &				+				     & +	                      &	 +  \\ 
+				kezelése    					&     		        				&			 							 &				 					   & 	        		            &			\\ \hline
+				Útvonal 							& -												&			+							 &				+				     & -	                      &	  - \\ 
+				szerkesztése 					&    											&			 							 &				  			     &  	                      &	    \\ 
+				``on-the-fly''				&    											&			 							 &				  			     &  	                      &     \\ \hline
+				Figyelmeztetés				&   -          						&			-							 &				+					   & 	-	                      &  -  \\ \hline
+				Redundáns					&       		-							 &				 -				   & 	 -							&					-		              & -   \\  
+				hibatûrés					&       									 &									   &    								&							              &     \\ \hline
 				
 				
 			\end{tabular}                                                                         
 	\end{center}
-	\caption{Összefoglalás}
-	\label{tab:up}
+	\caption{Földi irányító állomások összehasonlítása}
+	\label{tab:compare}
 \end{table}
