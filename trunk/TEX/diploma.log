@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.26)  15 DEC 2013 13:37
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.26)  17 DEC 2013 00:16
 entering extended mode
 **diploma.tex
 (C:\Users\bojtip\Desktop\UAV\doksi\TEX\diploma.tex
@@ -688,7 +688,7 @@ File: figures/hk.png Graphic file (type png)
 Package pdftex.def Info: figures/hk.png used on input line 370.
 (pdftex.def)             Requested size: 480.59433pt x 264.3871pt.
  [20 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/qground.png>]
-Overfull \hbox (53.05301pt too wide) in paragraph at lines 399--429
+Overfull \hbox (17.04091pt too wide) in paragraph at lines 399--429
  [] 
  []
 
@@ -697,10 +697,10 @@ Overfull \hbox (53.05301pt too wide) in paragraph at lines 399--429
 <figures/downprot.png, id=475, 681.14474pt x 1064.778pt>
 File: figures/downprot.png Graphic file (type png)
  <use figures/downprot.png>
-Package pdftex.def Info: figures/downprot.png used on input line 26.
+Package pdftex.def Info: figures/downprot.png used on input line 27.
 (pdftex.def)             Requested size: 681.14308pt x 1064.7754pt.
 
-Overfull \hbox (2.43181pt too wide) in paragraph at lines 24--29
+Overfull \hbox (2.43181pt too wide) in paragraph at lines 25--30
 []|  [] 
  []
 
@@ -714,32 +714,32 @@ Overfull \vbox (59.44225pt too high) has occurred while \output is active []
  [24 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/downprot.png>] [25]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\H' on input line 91.
+(hyperref)                removing `\H' on input line 92.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\H' on input line 91.
+(hyperref)                removing `\H' on input line 92.
 
 [26]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\H' on input line 95.
+(hyperref)                removing `\H' on input line 96.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\H' on input line 99.
+(hyperref)                removing `\H' on input line 100.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\H' on input line 113.
+(hyperref)                removing `\H' on input line 114.
 
 [27] <figures/net.png, id=503, 404.712pt x 351.11176pt>
 File: figures/net.png Graphic file (type png)
  <use figures/net.png>
-Package pdftex.def Info: figures/net.png used on input line 126.
+Package pdftex.def Info: figures/net.png used on input line 127.
 (pdftex.def)             Requested size: 404.71101pt x 351.11089pt.
  [28 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/net.png>]
-Overfull \hbox (1.52452pt too wide) in paragraph at lines 148--149
+Overfull \hbox (1.52452pt too wide) in paragraph at lines 149--150
 \T1/cmr/m/n/10.95 Grafikus meg-je-le-ní-tést biz-to-sít az al-kal-ma-zá-sok-nak, kü-lön-bö-z® ele-mek (be-vi-te-li me-z®
 , gomb,
  []
@@ -942,7 +942,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 279.
 Here is how much of TeX's memory you used:
  11454 strings out of 493921
  172002 string characters out of 3144872
- 320046 words of memory out of 3000000
+ 321046 words of memory out of 3000000
  14261 multiletter control sequences out of 15000+200000
  27936 words of font info for 69 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -963,7 +963,7 @@ x1095.pk><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi1
 /Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
 /public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/bera/fvmb8a.pfb><C:/Program Files (x86)/MiK
 TeX 2.9/fonts/type1/bera/fvmr8a.pfb>
-Output written on diploma.pdf (45 pages, 8798122 bytes).
+Output written on diploma.pdf (45 pages, 8798533 bytes).
 PDF statistics:
  1379 PDF objects out of 1440 (max. 8388607)
  229 named destinations out of 1000 (max. 500000)

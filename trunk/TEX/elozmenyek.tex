@@ -152,7 +152,7 @@ Az XBee a Zigbee protokollt megvalósító bejegyzett márkaneve, melynek tulajdonos
 
 \section{Földi irányító állomás}
 
-Feladatom a földi állomás elkészítése egy program formájában. Ehhez szükséges a kapcsolat kiépítése a repülõgép és a földi állomás között, melynek során meg kell oldanom a soros porti kommunikáció létrehozását majd a fogadott független adatok feldolgozását és kijelzését.
+Feladatom egy program formájában egy olyan grafikus felhasználói felülettel ellátott földi állomás elkészítése, ami képes a redundáns kommunikációs csatornák adatainak kezelésére és hatékony megjelenítésére. Ehhez szükséges a kapcsolat kiépítése a repülõgép és a földi állomás között, melynek során meg kell oldanom a soros porti kommunikáció létrehozását majd a fogadott független adatok feldolgozását és kijelzését.
 
 \subsection{Mi a földi irányító állomás feladata?} 
 
@@ -407,23 +407,23 @@ A MicroPilot program (\sectref{micropilot} fejezet) elsõdleges funkciója a repül
 				%HappyKillMore 	& Visual Basic, nyílt			&			-							 &				-					   & 	-									\\ \hline
 				
 				\hline
-				\textbf{Program}    	& \textbf{Ardupilot}			&\textbf{Paparazzi}	 &\textbf{MicroPilot}		& \textbf{QGround} & 	\textbf{HappyKillmore}				  	\\ 
-				          						& \textbf{MissionPlanner}         							& 		            	 &             				 &  \textbf{Control}&		          		\\ \hline
+				\textbf{Program}    	& \textbf{Ardupilot}			&\textbf{Paparazzi}	 &\textbf{MicroPilot}		& \textbf{QGround} & 	\textbf{Happy}			\\ 
+				          						& \textbf{MissionPlanner} & 		            	 &             				 &  \textbf{Control}&		 \textbf{Killmore}	\\ \hline
 				Forráskód							& C\#, nyílt 							& 		?, nem nyílt	 &?, nem nyílt				 & C++, nyílt 	            &		VB, nyílt		\\ \hline
-				Térképes 							&       		+							 &				 +				   & 	 	+							&					+		              &  +   \\ 
-				vizualizáció					&       									 &									   &    								&							              &     \\ \hline
-				Tervezés 							&       		+							 &				 -				   & 	 	+							&					+		              &  +   \\ 
-				képernyõ    					&       									 &									   &    								&							              &     \\ \hline
-				Több eszköz 					&     		        				&			 							 &				 					   & 	         		            &			\\ 
-				egyidejû  						& -												&			+							 &				+				     & +	                      &	 +  \\ 
-				kezelése    					&     		        				&			 							 &				 					   & 	        		            &			\\ \hline
-				Útvonal 							& -												&			+							 &				+				     & -	                      &	  - \\ 
-				szerkesztése 					&    											&			 							 &				  			     &  	                      &	    \\ 
-				``on-the-fly''				&    											&			 							 &				  			     &  	                      &     \\ \hline
-				Figyelmeztetés				&   -          						&			-							 &				+					   & 	-	                      &  -  \\ \hline
-				Redundáns					&       		-							 &				 -				   & 	 -							&					-		              & -   \\  
-				hibatûrés					&       									 &									   &    								&							              &     \\ \hline
-				
+				Térképes 							&       		+							 &				 +				   & 	 	+							&					+		              &  +            \\ 
+				vizualizáció					&       									 &									   &    								&							              &             \\ \hline
+				Tervezés 							&       		+							 &				 -				   & 	 	+							&					+		              &  +            \\ 
+				képernyõ    					&       									 &									   &    								&							              &             \\ \hline
+				Több eszköz 					&     		        				&			 							 &				 					   & 	         		            &			          \\ 
+				egyidejû  						& -												&			+							 &				+				     & +	                      &	 +            \\ 
+				kezelése    					&     		        				&			 							 &				 					   & 	        		            &			          \\ \hline
+				Útvonal 							& -												&			+							 &				+				     & -	                      &	  ?           \\ 
+				szerkesztése 					&    											&			 							 &				  			     &  	                      &	              \\ 
+				``on-the-fly''				&    											&			 							 &				  			     &  	                      &               \\ \hline
+				Figyelmeztetés				&   -          						&			-							 &				+					   & 	+	                      &  -            \\ \hline
+				Redundáns					    &       		-							 &				 -				   & 	 -							&					-		              & -             \\  
+				hibatûrés					    &       									 &									   &    								&							              &             \\ \hline
+				                                                                                                                                      
 				
 			\end{tabular}                                                                         
 	\end{center}

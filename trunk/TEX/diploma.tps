@@ -17,8 +17,8 @@ Class=LaTeXView
 Document=elozmenyek.tex
 
 [Frame0_View0,0]
-TopLine=476
-Cursor=37402
+TopLine=217
+Cursor=17622
 
 [Frame1]
 Flags=0
@@ -35,8 +35,8 @@ Class=LaTeXView
 Document=tervezes.tex
 
 [Frame1_View0,0]
-TopLine=188
-Cursor=14821
+TopLine=0
+Cursor=612
 
 [Frame2]
 Flags=0
@@ -126,9 +126,27 @@ Document=chapter4.tex
 
 [Frame6_View0,0]
 TopLine=0
-Cursor=1496
+Cursor=40
+
+[Frame7]
+Flags=0
+ShowCmd=1
+MinPos.x=-1
+MinPos.y=-1
+MaxPos.x=-1
+MaxPos.y=-1
+NormalPos.left=4
+NormalPos.top=32
+NormalPos.right=1701
+NormalPos.bottom=659
+Class=LaTeXView
+Document=abstract.tex
+
+[Frame7_View0,0]
+TopLine=13
+Cursor=3263
 
 [SessionInfo]
-FrameCount=7
-ActiveFrame=4
+FrameCount=8
+ActiveFrame=6
 
