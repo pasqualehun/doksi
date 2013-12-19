@@ -17,8 +17,8 @@ Class=LaTeXView
 Document=elozmenyek.tex
 
 [Frame0_View0,0]
-TopLine=217
-Cursor=17622
+TopLine=124
+Cursor=11206
 
 [Frame1]
 Flags=0
@@ -143,10 +143,10 @@ Class=LaTeXView
 Document=abstract.tex
 
 [Frame7_View0,0]
-TopLine=13
+TopLine=12
 Cursor=3263
 
 [SessionInfo]
 FrameCount=8
-ActiveFrame=6
+ActiveFrame=0
 

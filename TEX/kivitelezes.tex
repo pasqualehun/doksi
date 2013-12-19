@@ -2,20 +2,12 @@
 \chapter{Megvalósítás}
 %--------------------------------------
 
-Az elõzõ fejezetekben összegyûjtöttem a megvalósításhoz szükséges információkat, tervezési lépéseket. Ebben a fejezetben a konkrét implementációt fogom bemutatni.
+Az elõzõ fejezetekben összegyûjtöttem a megvalósításhoz szükséges információkat és lépéseket. Ebben a fejezetben a konkrét implementációt mutatom be.
 
 
-\section{Program felépítése}
+\section{Program funkciónak megvalósítása}
 
-A \figref{class} ábrán láthatóak a programban használt osztályok. A \textit{Program} statikus osztály a main függvényt, mint belépési pontot tartalmazza. Ez példányosítja az \textit{Instruments} osztályt, mely a különbözõ \textit{View}-ok megjelenítéséért felelõs. Az \textit{Altimeter, Compass, Speed, Vario} a mûszereket megvalósító osztályok. A \textit{PlanView} osztály a tervezõképernyõ, míg az \textit{ErrorOverview} osztály a diagnosztikai képernyõ implementációja. A soros portból érkezõ adatokat a \textit{SerialUtil} statikus osztály dolgozza fel, a kapott csomag egy-egy adattagját egy \textit{DataElement} objektumba helyezi, mely egyben a hibadiagnosztikát is megoldja.
-
-\begin{figure}[H]
-	\centering
-	\resizebox{13cm}{!}{
-		\includegraphics{figures/classdiagram.png}}
-	\caption{Felhasznált osztályok}
-	\label{fig:class}
-\end{figure}
+A program megfelelõ mûködéséhez különbözõ funkciók megoldása szükséges, ezek megoldását az alábbiakban írom le.
 
 \subsection{Kapcsolódás megvalósítása}
 
@@ -35,11 +27,84 @@ A \sectref{terv_diagkepernyo} fejezetben ismertetett hibatípusokat a következõ d
 
 \textbf{Port kiesése:} Mikor az egyik porton egy érvényes csomag érkezik, akkor dekódolás után az elemeit a hozzájuk tartozó tárolóba teszem és abban egy számlálót is növelek. Amelyik porton érkezett az adat annak a számlálóját nullázom, így ha csak az egyik portról érkezik adat, akkor a másik számlálója növekszik. Ha ez a számláló elérte a FIFO sor méretét, akkor növekszik az adott adattag hibaszámlálója, mely a hozzá tartozó port kiesését jelenti.
 
-\textbf{Beragadás:} Egy jelet akkor tekintek beragadt állapotúnak, ha értéke egy bizonyos ideig változatlan marad, jelen esetben a tároló feltöltõdésének ideje ideje. Ha a sor legutóbbi és a legújabb eleme közti különbség egy $\epsilon_1$-nél (ez esetben 0.0001) kisebb, akkor növelem a jel hibaszámlálóját.
+\textbf{Beragadás:} Egy jelet akkor tekintek beragadt állapotúnak, ha értéke egy bizonyos ideig változatlan marad, jelen esetben a tároló feltöltõdésének ideje ideje. Ha a sor legutóbbi és a legújabb eleme közti különbség egy $\epsilon_1$-nél (ez esetben 0.000001) kisebb, akkor növelem a jel hibaszámlálóját. Ha ez a számláló elér egy küszöböt, akkor gyanús a beragadás esélye. Ezt a kijelzés során piros ``Beragadás'' üzenettel jelzem a beragadt jel sorában.
 
-\textbf{Túl nagy ugrás:} Egy új elem érkezésekor a FIFO-ban lévõ elemek átlagát kiszámítom és ha az újonnan érkezett érték $\epsilon_2$-ször (ez esetben 0.01) nagyobb különbséget mutat, akkor növekszik az érték és port hibaszámlálója.
+\textbf{Túl nagy ugrás:} Egy új elem érkezésekor a FIFO-ban lévõ elemek átlagát kiszámítom és ha az újonnan érkezett érték $\epsilon_2$-ször (ez esetben 0.1) nagyobb különbséget mutat, akkor növekszik az érték és port hibaszámlálója.
 
 \textbf{Kettõ jel eltérése:} A két jel túl nagy eltérésénél nem tudja az algoritmus eldönteni, hogy melyik érték a helyesebb, így az eddigi hibaértékek alapján dõl el a választás.
+
+\subsection{Adatküldés megvalósítása}
+
+A visszirányú kommunikáció során a Tervezés képernyõn (\sectref{terv} fejezet) kijelölt útvonalhoz tartozó fordulópontok listáját párhuzamos csatornákon küldi el a program. A \figref{tervkepernyo} ábrán látható feltöltés gombra kattintva, az útvonalpontokat tartalmazó listát átadom a \mbox{SerialUtil.Code()} függvénynek, mely a \sectref{up_prot} fejezetben ismertetett protokoll szerint átalakítja bináris formába. Ezt az átalakított bájt tömböt küldöm el mindkettõ soros portra, végsõ soron a repülõgépre. Mivel az útvonal maximum 10 db pontot tartalmazhat, ezért új pont lerakásánál a lista méretét a következõ kódrészlettel szükséges ellenõrizni:\\
+
+\begingroup
+    \fontsize{10pt}{12pt}\selectfont
+			\begin{lstlisting}
+private void gmap_plan_MouseDoubleClick(object sender, MouseEventArgs e)
+{
+	 if (plannedRoute.Points.Count < MAX_POINTS && e.Button == MouseButtons.Left)
+	 {
+		  PointLatLng currentPos = new PointLatLng(gmap_plan.FromLocalToLatLng(e.X, e.Y).Lat,
+                                  gmap_plan.FromLocalToLatLng(e.X, e.Y).Lng);
+		  GMarkerGoogle marker = new GMarkerGoogle(currentPos, GMarkerGoogleType.blue_small);
+		  marker.ToolTipText = (numberOfPoints++).ToString();
+		  planeMarkerOverlay.Markers.Add(marker);
+		  markerOverlay.Markers.Add(marker);
+		  plannedRoute.Points.Add(currentPos);
+		  planView.Invalidate();
+	 }
+}
+			\end{lstlisting}
+\endgroup
+
+Ha a feltöltött lista sértetlenül megérkezett, a repülõgép az aktuális kommunikációs csatornáján egy ``ACK'' üzenettel jelez. Ezt fogadva az operátort egy tájékoztató ablak formájában (\figref{uploadsuccess} ábra) tájékoztatja a program.
+
+Az ``ACK'' jelzést fogadó programrészlet, mely kiváltja a tájékoztató ablak megjelenítését:
+\begingroup
+    \fontsize{10pt}{12pt}\selectfont
+			\begin{lstlisting}
+int i = 0;
+for (; i < pufferB.Count; i++)
+{
+if (pufferB[i] == 'A' && pufferB[i + 1] == 'C' && pufferB[i + 2] == 'K')
+	{
+		int k = 0;
+		for (int j = i; j < i + 3; j++)
+		{
+			receivedBytesB[k++] = pufferB[i];
+			pufferB.RemoveAt(i);
+		}
+		pufferB.RemoveRange(0, i);
+		MessageBox.Show("Sikeres feltöltés: " + serialPort2.PortName, "Feltöltés sikeres", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		break;
+	}
+}
+\end{lstlisting}
+\endgroup
+
+A porthoz tartozó pufferen iterálva megkeresem az ACK üzenetet (ha van) és törlöm az ACK üzenetet hordozó 3 bájtot. Ez után egy felugró ablakot jelenítek meg, mely tartalmazza a port nevét és egy ``Feltöltés sikeres'' üzenetet.
+
+
+\begin{figure}[h]
+	\centering
+	\resizebox{5cm}{!}{
+		\includegraphics{figures/uploadsuccess.png}}
+	\caption{Sikeres feltöltés tájékoztató ablaka}
+	\label{fig:uploadsuccess}
+\end{figure}
+
+\subsection{Felhasznált osztályok}
+
+A \figref{class} ábrán láthatóak a programban használt osztályok. A \textit{Program} statikus osztály a main függvényt, mint belépési pontot tartalmazza. Ez példányosítja az \textit{Instruments} osztályt, mely a különbözõ \textit{UserControl}\footnote{olyan összetett grafikus elem, ami tervezési idõben vizuálisan elkészíthetõ, pont úgy, ahogy egy ûrlap. Haszna, hogy ûrlapokra, illetve más UserControlokra lehet elhelyezni.}-ok megjelenítéséért felelõs. Az \textit{Altimeter, Compass, Speed, Vario} a mûszereket megvalósító osztályok. A \textit{PlanView} osztály a tervezõképernyõ, míg az \textit{ErrorOverview} osztály a diagnosztikai képernyõ implementációja. A soros portból érkezõ adatokat a \textit{SerialUtil} statikus osztály dolgozza fel, a kapott csomag egy-egy adattagját egy \textit{DataElement} objektumba helyezi, mely egyben a hibadiagnosztikát is megoldja.
+
+\begin{figure}[H]
+	\centering
+	\resizebox{13cm}{!}{
+		\includegraphics{figures/classdiagram.png}}
+	\caption{Felhasznált osztályok}
+	\label{fig:class}
+\end{figure}
+
 
 \section{Megjelenítési felületek}
 
@@ -68,7 +133,8 @@ GDI+ segítségével egy piros kört rajzolok, egy iterációval $36^{\circ}$-onként e
 \subsubsection{Iránytû}
 Az iránytû felépítése hasonló, mint a sebességmérõ mûszernek, jelentõs változás az égtájak és a fokok forgatását végzõ transzformáció. Elõször a kiírandó karaktert a grafikai koordináta-rendszer középpontjába tolom el, ekkor lehetséges az adott szöggel történõ elforgatás, majd a megfelelõ helyre eltolás. Ez azt a látszatot kelti, mintha egy tárcsára felírva, ami csak felsõ helyzetben olvasható.
 A kirajzolást végzõ grafikus megjelenítõ pipeline tulajdonsága miatt ezeket a mûveleteket fordított sorrendben kell elvégezni a \textit{private void DrawNumbers(Graphics g)} metódusban:
-
+\begingroup
+    \fontsize{10pt}{12pt}\selectfont
 \begin{lstlisting}
 //measure the size of the degree, which is written
 SizeF stringSize = g.MeasureString(degree, this.Font);
@@ -84,7 +150,7 @@ g.TranslateTransform(-stringSize.Width / 2, -stringSize.Height / 2);
 g.DrawString(degree, new Font("Arial", 8), new SolidBrush(Color.Blue), 0F, 0F);
 g.ResetTransform();
 \end{lstlisting}
-
+\endgroup
 
 
 \subsubsection{Csatlakozás sáv}
@@ -96,6 +162,8 @@ A program grafikus felületén a különbözõ oldalak fülek segítségével válthatóak. 
 
 A felület jobb oldalán egy Google Maps alapú térkép látható, melyet a GMap.NET API segítségével jelenítek meg. A térképre egy réteget helyeztem el, melyre a fogadott GPS pozíciókat törött vonallal összekötve rajzolom ki a gép által lerepült nyomvonalat. Erre a rétegre kerül a repülõt szimbolizáló \textit{planeMarker} ikont is, aminek pozícióját mindig legutóbb kapott koordináta határozza mmeg.
 Az ezt megvalósító programrészlet:
+\begingroup
+    \fontsize{10pt}{12pt}\selectfont
 \begin{lstlisting}
 void AddCoordinate(PointLatLng receivedCoordinate)
 {			
@@ -105,6 +173,7 @@ void AddCoordinate(PointLatLng receivedCoordinate)
      gmap.Invalidate();
 }
 \end{lstlisting}
+\endgroup
 
 A \textit{planeMarker} ikont, a fogadott mágneses irány szerint elforgatom, így látszódik a repülõ haladási iránya is. A mágneses irányt a kapott Euler szög ``psi''\footnote{a repülõgép függõleges tengelye körüli elfordulás mértéke a mágneses Északi-sarkhoz viszonyítva} értékével állítom be.
 
@@ -113,33 +182,30 @@ A térkép egy lokális cache-bõl töltõdik be, mely Budapest környékét nagy felbont
 
 
 \subsection{Tervezés képernyõ}
-
+\label{sect:terv}
 A tervezõ képernyõn (\figref{tervkepernyo} ábra) lehetséges az útvonal kijelölése és feltöltése. Új útvonalpont a felületen dupla egérkattintással rakható le, mely hosszan nyomva szerkeszthetõ, jobb kattintással törölhetõ. A pontokat összekötõ szakaszok hossza jobb oldalt megjelenik és a tervezhetõség kedvéért összegzésre is kerül.
 
-A feltöltés gombra kattintva, az útvonalpontokat tartalmazó listát átadom a SerialUtil.Code() függvénynek, mely a \sectref{up_prot} fejezetben ismertetett protokoll szerint átalakítja bináris formába. Ezt az átalakított bájt tömböt küldöm el mindkettõ soros portra, végsõ soron a repülõgépre. Mivel az útvonal maximum 10 db pontot tartalmazhat, ezért új pont lerakásánál ezt szükséges ellenõrizni.
+Útvonalpont szerkesztésénél vizsgálni kell, hogy a kurzor aktuális pozíciója egy lerakott pont közelében van-e. Ha igen és bal kattintás történik, akkor törölni kell a régi pontot a hozzá kapcsolódó élekkel együtt és új pontot kell létrehozni az aktuális pozícióban. Ezt új ponthoz az elõtte és utána lévõ pontokkal össze kell kötni. Így egy pont újrapozicionálása kényelmessé válik. A mozgatást végzõ programrészlet:
+
 \begingroup
     \fontsize{10pt}{12pt}\selectfont
-			\begin{lstlisting}
-private void gmap_plan_MouseDoubleClick(object sender, MouseEventArgs e)
+\begin{lstlisting}
+private void gmap_plan_MouseMove(object sender, MouseEventArgs e)
 {
-	 if (plannedRoute.Points.Count < MAX_POINTS && e.Button == MouseButtons.Left)
-	 {
-		  PointLatLng currentPos = new PointLatLng(gmap_plan.FromLocalToLatLng(e.X, e.Y).Lat,
-                                  gmap_plan.FromLocalToLatLng(e.X, e.Y).Lng);
-		  GMarkerGoogle marker = new GMarkerGoogle(currentPos, GMarkerGoogleType.blue_small);
-		  marker.ToolTipText = (numberOfPoints++).ToString();
-		  planeMarkerOverlay.Markers.Add(marker);
-		  markerOverlay.Markers.Add(marker);
-		  plannedRoute.Points.Add(currentPos);
-		  planView.Invalidate();
-	 }
+ if (e.Button==MouseButtons.Left && isDraggingMarker && currentMarker!= null)
+ {
+	 currentMarker.Position = gmap_plan.FromLocalToLatLng(e.X, e.Y);		
+	 PointLatLng newPos = gmap_plan.FromLocalToLatLng(e.X, e.Y);		
+	 plannedRoute.Points.RemoveAt(indexOfCurrentPoint);
+	 plannedRoute.Points.Insert(indexOfCurrentPoint, newPos);
+
+	 gmap_plan.UpdateRouteLocalPosition(plannedRoute);
+	 gmap_plan.Refresh();
+	 planView.Invalidate();
+ }
 }
-			\end{lstlisting}
+\end{lstlisting}
 \endgroup
-
-Ha a feltöltött lista sértetlenül megérkezett, a repülõgép az aktuális kommunikációs csatornáján egy ``ACK'' üzenettel jelez. Ezt fogadva az operátort egy tájékoztató ablak formájában (\figref{uploadsuccess} ábra) tájékoztatja a program.
-
-Útvonalpont szerkesztésénél vizsgálni kell, hogy a kurzor aktuális pozíciója egy lerakott pont közelében van-e. Ha igen és bal kattintás történik, akkor törölni kell a régi pontot a hozzá kapcsolódó élekkel együtt és új pontot kell létrehozni az aktuális pozícióban. Ezt új ponthoz az elõtte és utána lévõ pontokkal össze kell kötni. Így egy pont újrapozicionálása kényelmessé válik.
 
 \begin{figure}[H]
 	\centering
@@ -149,13 +215,6 @@ Ha a feltöltött lista sértetlenül megérkezett, a repülõgép az aktuális kommuniká
 	\label{fig:tervkepernyo}
 \end{figure}
 
-\begin{figure}[h]
-	\centering
-	\resizebox{5cm}{!}{
-		\includegraphics{figures/uploadsuccess.png}}
-	\caption{Sikeres feltöltés tájékoztató ablaka}
-	\label{fig:uploadsuccess}
-\end{figure}
 
 \subsection{Diagnosztikai képernyõ}
 
@@ -182,7 +241,11 @@ A fogadott csomagokat a terminál képernyõ (\figref{terminalkepernyo} ábra) jelen
 	\label{fig:terminalkepernyo}
 \end{figure}
 
-\section{Fejlesztés menete}
+\section{Összefoglalás}
+
+A program ellátja a kívánt funkcionalitást, sikerült megvalósítanom a repülõgép és a GroundControl közti kommunikáció kiépítését, a repülõgép pozíciójának térkép alapú vizualizációját. A fogadott jelek eltérésének hibadetektációján alapuló figyelmeztetések megfelelõen mûködnek.
+
+\chapter{Ellenõrzés}
 \label{sect:fejlesztes}
 Az önálló, otthoni fejlesztést megkönnyítendõ, a repülõgép HIL (Hardware In the Loop)\footnote{olyan szimuláció, ami a tesztelendõ beágyazott rendszernek olyan környezetet biztosít, mintha az valódi érzékelõk adatait fogadná és valódi aktuátorokat irányítana} szimulációjából nyert log fájlokat használtam fel. Ennek segítségével nem volt szükséges ez idõ alatt a repülõ közelében lennem, a program mûködését elég volt csak a végleges stádiumban kipróbálni a repülõgép valódi adataival. 
 
@@ -218,3 +281,5 @@ A kapott log fájlok szerkezetét egy XVI32 nevû programmal tanulmányoztam. Egy cs
 	\caption{XVI nevû hexa editor}
 	\label{fig:xvi}
 \end{figure}
+
+Sajnos valós körülmények közt nem volt lehetõség a programot használni, mert a repülõgép jelenleg nincs abban a fejlesztési fázisban, hogy a redundáns hardver elemeket megfelelõen használja. Így csak a HIL szimulációból kapott adatokra hagyatkozhattam. A repülõgép a jelenlegi állapotában csak egy modemet használ, de természetesen egy csatorna használatával is mûködik a program. Csatlakozás után a GroundControl érzékeli az egyik modem kiesését, mely figyelmezteti az operátort errõl a hibáról. 
