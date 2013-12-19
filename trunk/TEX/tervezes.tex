@@ -1,5 +1,5 @@
 %----------------------------------------------------------------------------
-\chapter{Tervezés}
+\chapter{Kialakítás}
 %----------------------------------------------------------------------------
 
 Az elõzõ fejezetben ismertettem a feladatomat, azaz egy redundáns kommunikációs csatornák adatainak kezelésére és hatékony megjelenítésére képes grafikus felhasználói felülettel ellátott földi irányító állomás kifejlesztésének egyes lépéseit, illetve bemutattam már létezõ megoldásokat, amik tanulságait felhasználok saját programom tervezése és implementációja során. 
@@ -9,7 +9,7 @@ Ebben a fejezetben sorra veszem és leírom azokat a problémákat, amiket meg kell 
 
 \section{Kommunikáció megvalósítása}
 
-Az elkészítendõ program (GroundControl) és a repülõgép között kommunikáció csatornánként 2 db modem segítségével történik, a modemek egymás közt vezeték nélkül csatlakoznak, felhasználói oldalon soros portot biztosítanak. Így a programnak elég csak a soros port jeleinek vételével foglalkoznia. A modemek adatátviteli sebessége változó lehet, így azt a felhasználó egy listából választhatja csatlakozás elõtt. Átalakítóval lehetõség adatik USB-n keresztül soros port megvalósítására, így könnyen kezelhetõvé válik a periféria illesztés.
+Az elkészítendõ program (GroundControl) és a repülõgép között kommunikáció csatornánként 2 db modem segítségével történik. A modemek egymás közt vezeték nélkül csatlakoznak, felhasználói oldalon soros portot biztosítanak. Így a programnak elég csak a soros port jeleinek vételével foglalkoznia. A modemek adatátviteli sebessége változó lehet, így azt a felhasználó egy listából választhatja csatlakozás elõtt. Átalakítóval lehetõség adatik USB-n keresztül soros port megvalósítására, így könnyen kezelhetõvé válik a periféria illesztés.
 
 \section{Adatok fogadása}
 
@@ -22,16 +22,33 @@ Az adatokat a repülõgép 2 Hz-s frekvenciával küldi, ezek az adatok csomagokban é
 A csomag eleje egy UUT fejlécet tartalmaz a beazonosítás végett, ezt követik az adattagok, majd az utolsó 2 bájt checksum, mely a csomag tartalmának bináris összegét tartalmazza 16 bitre csonkolva. Egy csomag fogadásánál elõször ezt az összeget számolom ki. Amennyiben nem egyezik a fogadott checksum-mal, akkor az egész csomag eldobásra kerül.
 
 \begin{figure}[H]
- \hspace*{-2cm}  
-	\resizebox{17cm}{!}{
+ \hspace*{-0.8cm}  
+	\resizebox{16cm}{!}{
 		\includegraphics{figures/downprot.png}}
 			%\caption{Fogadott csomag protokollja}
 	%\label{fig:downprot}
 \end{figure}
 
-A skálázás és offset képzés azért szükséges, hogy az adott szélességen (8, 16, 32 bit) minél több biten legyen ábrázolva egy érték, mivel kis változások esetén a Hamming-távolság\footnote{Bináris számok XOR képzésével kapott 1-esek száma} kicsi lenne az eredeti számábrázoláson. Ahol szükséges, ott a  visszakódolás az alábbi formában történik : \\
+A skálázás és offset képzés azért szükséges, hogy az adott szélességen (8, 16, 32 bit) minél több biten legyen ábrázolva egy érték, mivel kis változások esetén a Hamming-távolság\footnote{Bináris számok XOR képzésével kapott 1-esek száma} kicsi lenne az eredeti számábrázoláson. Ahol szükséges, ott a  visszakódolás az alábbi formában történik :
+\begin{center}
 \textit{eredeti  = (nyers adat/skálazás) - offset} \\
+\end{center}
+
 Az értékek megfelelõ kiválasztása a minél nagyobb szétszóráshoz szükséges, ezért érdemes a legnagyobb értékkel elosztani és annak felével eltolni.
+
+\subsection{Fogadott adatok hibadetektálása}
+
+Az adatok fogadása során különbözõ hibatípusok fordulhatnak elõ:
+
+\begin{itemize}
+\item beragadás
+\item túl nagy változás
+\item túl nagy különbség a két vett érték között
+\end{itemize}
+
+Ezen hibák feldolgozására két FIFO sort érdemes alkalmazni, melyek visszamenõleg tárolják a beérkezõ értékeket. Ez azért szükséges, mert így a túlságosan kiugró értékeket detektálni lehet, illetve, ha az egész sorban ugyanazok az értékek vannak, gyanús a beragadás esélye.
+A harmadik esetben sajnos nem lehetséges a ``jó'' kiválasztása, mivel nem tudjuk, melyik modembõl érkezett adat a megfelelõ. Ezt csak háromszorozással és többségi szavazással lehetne megoldani, de mivel jelen esetben ez a lehetõség nem áll fenn, így a kisebb hibaértékû adtot használja fela  program.
+
 
 \section{Adatok küldése}
 
@@ -87,33 +104,58 @@ Felmerülhet a kérdés, hogy a feltöltés ezzel a protokollal elég hibatûrõ-e. Mive
 
 \section{Grafikus felület}
 
-Az elõzõ részben ismertetett grafikus felületekbõl látszik, hogy a GUI kialakításában fontos a repülõgép aktuális pozíciójának térképen való mutatása, a repülési állapot könnyen értelmezhetõ megjelenítése és az esetlegesen elõforduló problémák feltûnõ jelzése.
+Az elõzõ részben ismertetett grafikus felületekbõl látszik, hogy a GUI kialakításában fontos a repülõgép aktuális pozíciójának térképen való mutatása, a repülési állapot könnyen értelmezhetõ megjelenítése és az esetlegesen elõforduló problémák feltûnõ jelzése. A különbözõ funkcionalitásokhoz tartozó nézetek közt érdemes lehet fülek segítségével váltani. Az alábbiakban ezekre adok egy elképzelt kialakítási formát.
 
 \subsection{Fõképernyõ}
 
-A GroundControl fõképernyõn látható a repülõgép aktuális pozíciója és iránya. A térképen a repülõgép pozícióját egy repülõgép ikon szemlélteti. Ez a rész a képernyõ kb. 2/3-át foglalja el. Az oldalsó sávban a ``Glass Cockpit'' kerül kialakításra, ez a nézet tartalmazza a gép aktuális sebességét, iránytû segítségével irányát, magasságát, emelkedésének sebességét. Valószínûleg ez a képernyõt fogják a leggyakrabban használni, így a kritikus hibákról itt kell feltûnõ értesítést adni, melyet a háttérben dolgozó hibadetektáló algoritmus vált ki. Az értesítés egy felugró ablak, ami mutatja, mely érték hibájából keletkezett.
+A GroundControl fõképernyõjén látható a repülõgép aktuális pozíciója és iránya. A térképen a repülõgép pozícióját egy repülõgép ikon szemlélteti. Ez a rész a képernyõ kb. 2/3-át foglalja el. Az oldalsó sávban a ``Glass Cockpit'' kerül kialakításra, ez a nézet tartalmazza a gép aktuális sebességét, iránytû segítségével irányát, magasságát, emelkedésének sebességét. Valószínûleg ez a képernyõt fogják a leggyakrabban használni, így a kritikus hibákról itt kell feltûnõ értesítést adni, melyet a háttérben dolgozó hibadetektáló algoritmus vált ki. Az értesítés egy felugró ablak, ami mutatja, mely érték hibájából keletkezett. Az elképzelt képernyõ terv a \figref{mainmock} ábrán látható
+
+\begin{figure}[H]
+	\centering
+	\resizebox{12cm}{!}{ 
+		\includegraphics{figures/mainmock.png}} 
+	\caption{Fõképernyõ terve}
+	\label{fig:mainmock}
+\end{figure}
+
 
 \subsection{Tervezés képernyõ}
 
-A tervezés képernyõn a felhasználó kijelölheti a lerepülendõ útvonalhoz tartozó fordulópontokat, melyeket csatlakozás után aszinkron módon feltölthet a repülõre. Mivel a kommunikációs protokoll 10 pontot enged meg, így ennél többet itt ki sem jelölhet. Az operátor a lerakott pontok helyét a megszokott Google Maps-hez hasonló módon hosszan kattintva átrakhatja, illetve köztes pontokat törölheti. A már létezõ megoldások összehasonlításából kiderült, hogy érdemes a kijelölt útvonal hosszáról tájékoztatni a felhasználót.
+A tervezés képernyõn a felhasználó kijelölheti a lerepülendõ útvonalhoz tartozó fordulópontokat, melyeket csatlakozás után aszinkron módon feltölthet a repülõre. Mivel a kommunikációs protokoll 10 pontot enged meg, így ennél többet itt ki sem jelölhet. Az operátor a lerakott pontok helyét a megszokott Google Maps-hez hasonló módon hosszan kattintva átrakhatja, illetve köztes pontokat törölheti. A már létezõ megoldások összehasonlításából kiderült, hogy érdemes a kijelölt útvonal hosszáról tájékoztatni a felhasználót, ez látszódik a \figref{planmock} ábrán.
+
+\begin{figure}[H]
+	\centering
+	\resizebox{12cm}{!}{ 
+		\includegraphics{figures/planmock.png}} 
+	\caption{Tervezés képernyõ terve}
+	\label{fig:planmock}
+\end{figure}
 
 \subsection{Diagnosztikai képernyõ}
 \label{sect:terv_diagkepernyo}
-A diagnosztikai képernyõn a két porton érkezõ dekódolt értékek látszódnak két oszlopban, mellettük egy hibaérték, mely a különbözõ hibatípusok hibaszámának összege. 
+A diagnosztikai képernyõn a két porton érkezõ dekódolt értékek látszódnak (lásd \figref{faultmock} ábra) két oszlopban, mellettük egy hibaérték, mely a különbözõ hibatípusok hibaszámának összege. 
 
-\subsubsection{Hibatípusok}
-\begin{itemize}
-\item beragadás
-\item túl nagy változás
-\item túl nagy különbség a két vett érték között
-\end{itemize}
+\begin{figure}[H]
+	\centering
+	\resizebox{12cm}{!}{ 
+		\includegraphics{figures/faultmock.png}} 
+	\caption{Diagnosztikai képernyõ terve}
+	\label{fig:faultmock}
+\end{figure}
 
-Ezen hibák feldolgozására két FIFO sort érdemes alkalmazni, melyek visszamenõleg tárolják a beérkezõ értékeket. Ez azért szükséges, mert így a túlságosan kiugró értékeket detektálni lehet, illetve, ha az egész sorban ugyanazok az értékek vannak, gyanús a beragadás esélye.
-A harmadik esetben sajnos nem lehetséges a ``jó'' kiválasztása, mivel nem tudjuk, melyik modembõl érkezett adat a megfelelõ. Ezt csak háromszorozással és többségi szavazással lehetne megoldani, de mivel jelen esetben ez a lehetõség nem áll fenn, így a kisebb hibaértékû adtot használja fela  program.
 
 \subsection{Terminál képernyõ}
 
-Ebben a nézetben lehetõség nyílik a fogadott csomagok hexadecimális vagy decimális formában történõ megjelenítésére, így az operátor alacsony szinten (a fogadott csomagok feldolgozatlan formájából) megbizonyosodhat a kapcsolat létrejöttérõl, mivel láthatja, hogy csomagok beérkezeznek-e. Ha a fejléc a csomag elején látszódik, akkor mûködnie kell a további dekódolásnak, melyet a többi nézet használ fel. Ha nem lát itt adatokat, akkor ellenõrizheti, hogy valóban jó portot illetve adatsebességet választott-e ki.
+A \figref{receivedmock} ábrán látható terminál képernyõn lehetõség nyílik a fogadott csomagok hexadecimális vagy decimális formában történõ megjelenítésére, így az operátor alacsony szinten (a fogadott csomagok feldolgozatlan formájából) megbizonyosodhat a kapcsolat létrejöttérõl, mivel láthatja, hogy csomagok beérkeznek-e. Ha a fejléc a csomag elején látszódik, akkor mûködnie kell a további dekódolásnak, melyet a többi nézet használ fel. Ha nem lát itt adatokat, akkor ellenõrizheti, hogy valóban jó portot illetve adatsebességet választott-e ki.
+Az elképzelt képernyõ terv 
+
+\begin{figure}[H]
+	\centering
+	\resizebox{12cm}{!}{ 
+		\includegraphics{figures/receivedmock.png}} 
+	\caption{Terminál képernyõ terve}
+	\label{fig:receivedmock}
+\end{figure}
 
 \section{Használt technológiák bemutatása}
 
@@ -125,7 +167,7 @@ A programot C\# nyelven, Microsoft Visual Studio 2010-es verziójával készítem, a
 	\centering
 	\resizebox{8cm}{!}{ 
 		\includegraphics{figures/net.png}} 
-	\caption{}
+	\caption{.NET keresztrendszer felépítése}
 	\label{fig:net}
 \end{figure}
 

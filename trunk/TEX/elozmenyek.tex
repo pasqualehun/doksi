@@ -10,16 +10,17 @@ Az autonóm mûködés emellett a pilóta által vezetett katonai és polgári repülõgép
 \section{Motiváció}
 
 
-Az MTA SZTAKI Rendszer és Irányításelméleti Kutatólaboratóriumában folyó kutatások eredményének demonstrálásához szükség volt egy kézzelfogható eszköz megalkotására. A kifejlesztett szabályozó algoritmusok mûködésének bemutatásának az egyik látványos módja egy autonóm  repülõgép megépítése. Az autonóm légijármû stabil repülési tulajdonságait garantáló algoritmusok kidolgozásához és implementálásához elengedhetetlen a kormányszervek harmonikus mozgatása és a tolóerõ szabályozása. Abban az esetben ha a repülõgépet feladatokkal látjuk el, pl. fordulópontokat követve térképezze fel az alatta lévõ területet, már számolni kell a széllel, ami eltérítheti az útvonaláról. Fontos, hogy az ehhez hasonló környezeti hatásokra a gép megfelelõen reagáljon.
+Az MTA SZTAKI Rendszer és Irányításelméleti Kutatólaboratóriumában folyó kutatások eredményének demonstrálásához szükség volt egy kézzelfogható eszköz megalkotására. A kifejlesztett szabályozó algoritmusok mûködésének bemutatásának az egyik látványos módja egy autonóm  repülõgép megépítése. Az autonóm légijármû stabil repülési tulajdonságait garantáló algoritmusok kidolgozásához és implementálásához elengedhetetlen a kormányszervek harmonikus mozgatása és a tolóerõ szabályozása. Abban az esetben, ha a repülõgépet feladatokkal látjuk el, pl. fordulópontokat követve feltérképezni egy elõre kijelölt területet, már számolni kell a széllel, ami eltérítheti az útvonaláról. Fontos, hogy az ehhez hasonló környezeti hatásokra a gép megfelelõen reagáljon.
 
-Mivel egy teljesen felszerelt repülõ összeállítása, felprogramozása nagy szakértelmet, sok idõt, energiát és nem utolsó sorban anyagi ráfordítást igényel, egy esetleges meghibásodás jelentõs kárt okozna. Ezen okok miatt felmerült az igény a repülõ megbízhatóságának növelésére, így a most folyamatban lévõ ``Nagy megbízhatóságú pilóta nélküli légijármû projekt'' keretében egy olyan avionikai rendszer fejlesztése is folyik, amelynek célja minden egyes repülõgép alrendszer meghibásodásának diagnosztizálása és hiba esetén a diagnosztikai információkat felhasználva a repülõgép átkonfigurálása. 
+Mivel egy teljesen felszerelt repülõ összeállítása, felprogramozása nagy szakértelmet, sok idõt, energiát és nem utolsó sorban anyagi ráfordítást igényel, egy esetleges meghibásodás jelentõs kárt okozna. Ezen okok miatt felmerült az igény a repülõ megbízhatóságának növelésére. Így a most folyamatban lévõ ``Nagy megbízhatóságú pilóta nélküli légijármû projekt'' keretében egy olyan avionikai rendszer fejlesztése is folyik, amelynek célja minden egyes repülõgép alrendszer meghibásodásának diagnosztizálása és ezen diagnosztikai információkat felhasználva a repülõgép átkonfigurálása. 
 
-Feladatom egy olyan -- grafikus felhasználói felülettel ellátott -- földi irányító állomás kifejlesztése egy biztonságkritikus robotrepülõhöz, amely képes redundáns kommunikációs csatornán küldött adatok kezelésére és megjelenítésére. Ehhez több részfeladat megoldása is szükséges. Elsõ lépésként meg kell oldanom a kapcsolatot biztosító modem jeleinek vételét. Mivel a robotrepülõgép hibatûrõ kialakítása révén ez az egység is redundánsan szerelt, így az adatok két független csatornán, párhuzamosan érkeznek a földi irányító állomáshoz. Mivel az így beérkezõ adatok szükségszerûen eltérnek egymástól, ennek az eltérésnek a kijelzése és kezelése is megvalósítandó.
-Továbbá, mivel a földi irányító állomáshoz a repülõt távolról megfigyelõ és szükség szerint irányító földi személyzet kiszolgálására készül, így a legfontosabb cél, hogy õk a repülõvel kapcsolatos információkat könnyen értelmezhessék, és az esetleges meghibásodásokról is idõben értesüljenek.
+Feladatom tehát egy olyan -- grafikus felhasználói felülettel ellátott -- földi irányító állomás kifejlesztése egy biztonságkritikus robotrepülõhöz, amely képes redundáns kommunikációs csatornán küldött adatok kezelésére és megjelenítésére. Ehhez több részfeladat megoldása is szükséges. Elsõ lépésként meg kell oldanom a kapcsolatot biztosító modem jeleinek vételét. Mivel a robotrepülõgép hibatûrõ kialakítása révén ez az egység is redundánsan szerelt, így az adatok két független csatornán, párhuzamosan érkeznek a földi irányító állomáshoz. Mivel az így beérkezõ adatok szükségszerûen eltérnek egymástól, ennek az eltérésnek a kijelzése és kezelése is megvalósítandó.
+Feladatom tehát egy olyan -- grafikus felhasználói felülettel ellátott -- földi irányító állomás kifejlesztése egy biztonságkritikus robotrepülõhöz, amely képes redundáns kommunikációs csatornán küldött adatok kezelésére és megjelenítésére. Ehhez több részfeladat megoldása is szükséges. Elsõ lépésként meg kell oldanom a kapcsolatot biztosító modem jeleinek vételét. A repülõgép hibatûrõ kialakítása révén ez az egység is redundánsan szerelt, így az adatok két független csatornán, párhuzamosan érkeznek a földi irányító állomáshoz. Mivel az így beérkezõ adatok szükségszerûen eltérnek egymástól, ennek az eltérésnek a kijelzése és kezelése is megvalósítandó.
+Továbbá, a földi irányító állomáshoz a repülõt távolról megfigyelõ és szükség szerint irányító földi személyzet kiszolgálására készül, így a legfontosabb cél, hogy õk a repülõvel kapcsolatos információkat könnyen értelmezhessék, és az esetleges meghibásodásokról is idõben értesüljenek.
 
 \section{Elõzmények}
 
-A jelenlegi repülõ egy az MTA SZTAKI munkatársai által épített 3.2 m fesztávolságú modell, amelybe diagnosztikai és hibadetekciós célokra egyedi tervezésû komponenseket szereltek be, mivel a kereskedelmi forgalomban beszerezhetõ szervó motorok nem szolgálnak elég információval a kitérésükrõl, fogyasztásukról, gondoskodni kellett ezen adatok mérhetõségérõl.
+A jelenlegi repülõ egy az MTA SZTAKI munkatársai által épített 3.2 m fesztávolságú modell, amelybe diagnosztikai és hibadetekciós célokra egyedi tervezésû komponenseket szereltek be. Figyelembe véve, hogy a kereskedelmi forgalomban beszerezhetõ szervó motorok nem szolgálnak elég információval a kitérésükrõl, fogyasztásukról, gondoskodni kellett ezen adatok mérhetõségérõl.
 
 
 \subsection{Az MTA SZTAKI ORCA 2 felépítése}
@@ -44,7 +45,9 @@ A MTA SZTAKI ``Nagy megbízhatóságú pilóta nélküli légijármû'' projektjében  elsõ
 \item központi számítógép
 \end{itemize}
 
+\setlength{\parindent}{0cm}
 A \figref{sys} ábrán látható a kialakított architektúra. Elemei:
+\setlength{\parindent}{0.5cm}
 
 \begin{itemize}
 \item \textbf{FCC} (Flight Control Computer) repülõgép irányítása
@@ -52,11 +55,12 @@ A \figref{sys} ábrán látható a kialakított architektúra. Elemei:
 \item \textbf{MOD} (Modem) modem, kommunikáció
 \item \textbf{Gateway} CAN-FlexRay átjáró
 \item \textbf{PWR} (Power) feszültségválasztó
+\item \textbf{S1, S2, S3, S4} (Servo) kormányfelületeket mozgató szervó motorok
+\item \textbf{SX1, SX2, SX3, SX4} szervó motorok szabályzóelektronikája
 \item \textbf{M1, M2} (Motor) motorok
-\item \textbf{S1, S2, S3, S4} (Servo) szervók
-\item \textbf{Sx, Mx} (Microcontroller) szabályzóelektronika
-\item \textbf{RC} (Remote Control) távirányító, manuális vezérlés
-\item \textbf{PIC} (PIC Microcontroller) PWM\footnote{Pulse-Width Modulation, impulzusszélesség moduláció, mely a szabályzást nem feszültségszint növelésével, hanem annak idõtartamával éri el}-CAN\footnote{Control Area Network, egy számítógépes hálózati protokoll és adatbusz szabvány melyet mikrokontrollerek és egyéb gazdaszámítógép nélkül mûködõ eszközök kommunikációjára terveztek \cite{bib:canwiki}} átalakítás
+\item \textbf{MX1, MX2} motorok szabályzóelektronikája
+\item \textbf{RC} (Remote Control) távvezérlõ egység, manuális vezérlés
+\item \textbf{PIC} (PIC Microcontroller) PWM (Pulse-Width Modulation)\footnote{impulzusszélesség moduláció, mely a szabályzást nem feszültségszint növelésével, hanem annak idõtartamával éri el}-CAN (Controller Area Network)\footnote{egy számítógépes hálózati protokoll és adatbusz szabvány melyet mikrokontrollerek és egyéb gazdaszámítógép nélkül mûködõ eszközök kommunikációjára terveztek \cite{bib:canwiki}} átalakítás
 
 \end{itemize}
 \begin{figure}[H]
@@ -67,13 +71,13 @@ A \figref{sys} ábrán látható a kialakított architektúra. Elemei:
 	\label{fig:sys}
 \end{figure}
 
-A központi számítógépek(ábrán zölddel jelölve 1-es 2-es) 1--1 szendvics panelen helyezkednek el, központi elemük az FCC, mely az irányításért felelõs. A navigációs eszköz szolgáltatja a GPS-bõl érkezõ magasság és pozíció adatokat, az IMU (Inertial Measurement Unit)\footnote{orientáció- és gyorsulásmérõ berendezés}-ból érkezõ orientációt, a nyomásmérõbõl a légsebesség és magasság értékeket. Ezen egy mikrokontroller elõfeldolgozást végez, így már csak a ténylegesen feldolgozandó információval kell az FCC-nek számolnia. Az FCC és a NAV közötti kommunikáció CAN(Controller Area Network) buszon keresztül zajlik. Az ábrán látható S és M-mel jelölt elemek rendre a szervó motorok és a meghajtásért felelõs motorok, melyek redundáns FlexRay kommunikációs csatornán kapják az utasításokat az FCC-bõl.
+A központi számítógépek (ábrán zölddel jelölve 1-es 2-es) 1--1 szendvics panelen helyezkednek el, központi elemük az FCC, mely az irányításért felelõs. A navigációs eszköz szolgáltatja a GPS-bõl érkezõ magasság és pozíció adatokat, illetve egy, az ábrán nem látható IMU (Inertial Measurement Unit)\footnote{orientáció- és gyorsulásmérõ berendezés}-ból érkezõ orientáció és gyorsulás értékeket. A navigációs egységen egy mikrokontroller elõfeldolgozást végez, így már csak a ténylegesen feldolgozandó információval kell az FCC-nek számolnia. Az FCC és a NAV közötti kommunikáció CAN buszon keresztül zajlik. Az ábrán látható S és M-mel jelölt elemek rendre a kormányfelületeket mozgató szervó motorok és a meghajtásért felelõs motorok. Ezek az elemek redundáns FlexRay kommunikációs csatornán kapják az utasításokat az FCC-bõl.
 
-A CAN--FlexRay és FlexRay--CAN átalakítást a Gateway egység végzi. A szervók és motorok nem szolgálnak elég információval saját állapotukról, így ezeket átalakították, hogy a FlexRay hálózatra illesztésért felelõs szabályozóelektronika (Sx, Mx) megfelelõen mûködhessen. Ezekre bármilyen szabályzóalgoritmus írható, hibadiagnosztikai célokra fault detection filtert vagy Kármán szûrõ alkalmazható. A szervók mágneses enkódere a kitérésrõl, a motorok elektronikája a fogyasztásról ad információt. 
+A CAN--FlexRay és FlexRay--CAN átalakítást a Gateway egység végzi. A szervók és motorok nem szolgálnak elég információval saját állapotukról, így ezeket átalakították, hogy a FlexRay hálózatra illesztésért felelõs szabályozóelektronika megfelelõen mûködhessen. Ezekre bármilyen szabályzóalgoritmus írható, hibadiagnosztikai célokra fault detection filter-t vagy Kármán szûrõ alkalmazható. A szervók mágneses enkódere a kitérésrõl, a motorok elektronikája a fogyasztásról ad információt. 
 
-Hibatûrésbõl adódóan az energiaforrások is redundánsan szerepelnek, a központi számítógépek a B3 és B4-gyel jelölt akkumulátorból nyerhetnek energiát, a választást a PWR néven jelzett egység végzi. Különbözõ stratégiák választhatók az akkumulátor átkapcsolását illetõen, lehetséges mindig a legnagyobb feszültséggel operálót választani vagy egyiket lemeríteni bizonyos százalékig és ezután váltani. A B5 és B6 a motorokat hivatottak kiszolgálni, ezek a legnagyobb fogyasztásúak, így ezek kapacitása a legnagyobb. B1 és B2 biztosítja az aktuátoroknak, az hozzájuk tartozó vezérlõknek az áramforrást.
+Hibatûrésbõl adódóan az energiaforrások is redundánsan szerepelnek, a központi számítógépek a B3 és B4-gyel jelölt akkumulátorból nyerhetnek energiát, a választást a PWR néven jelzett egység végzi. Különbözõ stratégiák választhatók az akkumulátor átkapcsolását illetõen. Lehetséges mindig a legnagyobb feszültséggel operálót választani vagy egyiket lemeríteni bizonyos százalékig és ezután váltani. A B5 és B6 jelzésû akkumulátorok a legnagyobb fogyasztású egységeket, azaz a motorokat hivatottak kiszolgálni, ezért ezek kapacitása a legnagyobb. A B1 és B2 akkumulátor biztosítja a beavatkozó szervek, és a hozzájuk tartozó vezérlõelektronikáknak az áramforrást.
 
-Mivel a repülõgép jelenleg csak távirányítással tud felszállni, így a távvezérlõ egység (RC) és a PWM-CAN átalakításért felelõs PIC is ezt a két akkumulátort használja. A PIC közvetlenül a szabályzó elektronikákhoz csatlakozik CAN buszon, mivel jelen felépítésben ez a legközvetlenebb módja a kézi irányításnak.
+A repülõgép jelenleg csak távirányítással tud felszállni, így a távvezérlõ egység és a PWM-CAN átalakításért felelõs PIC egység is ezt a két akkumulátort használja. A PIC közvetlenül a szabályzó elektronikákhoz csatlakozik CAN buszon, mivel jelen felépítésben ez a legközvetlenebb módja a kézi irányításnak.
 
 Dolgozatom szempontjából a legérdekesebb egység a modem mely az FCC-vel soros porton kommunikál.
 
@@ -82,20 +86,19 @@ Dolgozatom szempontjából a legérdekesebb egység a modem mely az FCC-vel soros po
 
 A fedélzeti MOD egységek XBee-PRO 868 típusú modemek \cite{bib:xbee} (lásd \figref{xbee} ábra), melyek alacsony fogyasztásuk és nagy hatótávolságuk miatt ideálisak egy szûkös energiaforrással rendelkezõ robotrepülõbe. Ugyanilyen modemek csatlakoznak a földi irányító egységhez, melyek a fedélzeti modemekhez hasonlóan soros porton keresztül küldik a vett jeleket. A modempárok közötti vezeték nélküli protokoll: 802.15.4, amivel a \sectref{prot} fejezet foglalkozik.
 
-\subsubsection{XBee-PRO 868 modem}
-
-A kiválasztott modem kétféleképpen képes kommunikálni a csatlakoztatott eszközzel:
+A kiválasztott XBee-PRO 868 modem kétféleképpen képes kommunikálni a csatlakoztatott eszközzel:
 
 \begin{itemize}
 \item AT transzparens
 \item API (Application Programming Interface)\footnote{elõre megírt komponensek használatához biztosít interfészt} csomagküldés
 \end{itemize}
 
-\textbf{AT:} Alapértelmezetten transzparens módon zajlik a kommunikáció a modemhez csatlakoztatott eszköz és a modem között \cite{bib:startxbee}. Ennek lényege, hogy a csatlakoztatott eszköz számára a kommunikáció ugyanúgy zajlik, mintha közvetlen összeköttetésben állna a másik eszközzel. A modem a soros portján bejövõ UART (Universal Asynchronous Receiver/Transmitter) üzeneteket rádiójelekké alakítja, melyet a virtuális kapcsolat végpontja fogad és visszaalakít. Egy pont-pont kapcsolat kiépítése ebben a módban a legegyszerûbb. 
+\begin{description}
+\item[AT:] Alapértelmezetten transzparens módon zajlik a kommunikáció a modemhez csatlakoztatott eszköz és a modem között \cite{bib:startxbee}. Ennek lényege, hogy a csatlakoztatott eszköz számára a kommunikáció ugyanúgy zajlik, mintha soros protokollon keresztül megvalósított közvetlen összeköttetésben állna másik eszközzel. A modem a soros portján bejövõ üzeneteket rádiójelekké alakítja, melyet a virtuális kapcsolat végpontja fogad és visszaalakít. Egy pont-pont kapcsolat kiépítése ebben a módban a legegyszerûbb. 
 
-\textbf{API: } API mód lényege, hogy a csatlakoztatott eszköz a modem által biztosított API-n keresztül kommunikál. Az AT módhoz képest nagyobb rugalmasságot biztosít, mivel egy csomag a programozó szándéka szerint tartalmazhatja a küldõ és fogadó eszköz címét, a csomag típusát, checksum-ját. A küldõ fél a csomagok megérkezésérõl ACK (Acknowledgement)\footnote{nyugtázó üzenet, melyet a fogadó küld a feladónak egy csomag sikeres vétele esetén} jelzéssel bizonyosodhat meg, ennek elmaradásnál újbóli küldés lehetséges.
-A csomagok többletinformációjával lehetséges broadcast üzenetek\footnote{olyan üzenet, melyet egy csomópont az összes vele kapcsolatban álló csomópontnak elküld} küldése, egy-több kapcsolt felépítése.
-
+\item[API:] API mód lényege, hogy a csatlakoztatott eszköz a modem által biztosított API-n keresztül kommunikál. Az AT módhoz képest nagyobb rugalmasságot biztosít, mivel egy csomag a programozó szándéka szerint tartalmazhatja a küldõ és fogadó eszköz címét, a csomag típusát, checksum-ját. A küldõ fél a csomagok megérkezésérõl ACK (Acknowledgement)\footnote{nyugtázó üzenet, melyet a fogadó küld a feladónak egy csomag sikeres vétele esetén} jelzéssel bizonyosodhat meg, ennek elmaradásnál újbóli küldés lehetséges.
+A csomagok többletinformációjával lehetséges broadcast üzenetek\footnote{olyan üzenet, melyet egy csomópont az összes vele kapcsolatban álló csomópontnak elküld} küldése, egy-több kapcsolat felépítése.
+\end{description}
 \begin{figure}[H]
 	\centering
 	\resizebox{5cm}{!}{
@@ -106,7 +109,7 @@ A csomagok többletinformációjával lehetséges broadcast üzenetek\footnote{olyan ü
 
 \subsubsection{IEEE 802.15.4 vezeték nélküli protokoll}
 \label{sect:prot}
-Az IEEE (Institute of Electrical and Electronics Engineers)-nek egy szabványa a 802.15 mely a WPAN (Wireless Personal Area Network) hálózatokkal foglalkozik, hét alcsoportja közül a 802.15.4 \cite{bib:ieee} a Low-Rate WPAN nevet viseli. Ez a szabvány a kis fogyasztású, olcsó és alacsony sávszélességû vezeték nélküli kommunikációt foglalja magában. Az OSI (Open Systems Interconnection)\footnote{rétegekbe szervezett rendszer absztrakt leírása, ami a számítógépek kommunikációjához szükséges hálózati protokollt határozza meg \cite{bib:osiwiki}} modell elsõ (fizikai) és második (adatkapcsolati) rétegét valósítja meg (\figref{lrwpan} ábra), erre építkezik a ZigBee \cite{bib:zigbee} cég által specifikált protokoll verem (\figref{zigbeestack} ábra), ami a hálózati és az alkalmazási réteggel egészíti ki.
+Az IEEE (Institute of Electrical and Electronics Engineers)-nek egy szabványa a 802.15, mely a WPAN (Wireless Personal Area Network) hálózatokkal foglalkozik. Hét alcsoportja közül a 802.15.4 \cite{bib:ieee} a Low-Rate WPAN nevet viseli. Ez a szabvány a kis fogyasztású, olcsó és alacsony sávszélességû vezeték nélküli kommunikációt foglalja magában. Az OSI (Open Systems Interconnection)\footnote{rétegekbe szervezett rendszer absztrakt leírása, ami a számítógépek kommunikációjához szükséges hálózati protokollt határozza meg \cite{bib:osiwiki}} modell elsõ (fizikai) és második (adatkapcsolati) rétegét valósítja meg (\figref{lrwpan} ábra), erre építkezik a ZigBee \cite{bib:zigbee} cég által specifikált protokoll verem (\figref{zigbeestack} ábra), ami a hálózati és az alkalmazási réteggel egészíti ki.
 
 \textbf{A fizikai réteg} átjárást biztosít a felette lévõ adatkapcsolati rétegnek és összeköttetést teremt a hardverrel, specifikálja a mûködési feszültséget, szabályozza a használandó frekvenciát, ami Európában 868-868.6 MHz, Észak-Amerikában 902-928 MHz, világszerte 2.4-2.4835 GHz-es ISM (Industrial, Scientific and Medical)\footnote{sávok, melyek szabadon használhatóak ipari, tudományos és orvosi területen} tartományban helyezkedik el.
 
@@ -132,9 +135,8 @@ Az IEEE (Institute of Electrical and Electronics Engineers)-nek egy szabványa a 
 
 \textbf{A hálózati réteg} feladata az eszközök hálózathoz való le- és felcsatlakozásának kezelése, illetve szomszédos eszközök felderítése.
 
-\textbf{Az alkalmazási réteg} összeköti a hálózati réteg adatkommunikációs és menedzsment részét a ZDO(ZigBee Device Objects)-k között. A ZDO TODO
-
-
+\textbf{Az alkalmazási réteg} összeköti a hálózati réteg adatkommunikációs és menedzsment részét a ZDO (ZigBee Device Objects)-k között. A ZDO-k 
+a kapcsolódó eszközök azonosításában és a kommunikáció titkosításában segédkeznek. 
 \subsubsection{A protokoll jellemzõi}
 \begin{description}
 
@@ -168,18 +170,20 @@ Egy UAV vezetéséhez elengedhetetlen egy GCS (Ground Control Station), ahonnan a 
 
 A repülõgép és a fejlesztendõ program közti megbízható kommunikációhoz az alábbi feladatok megoldása szükséges:
 
+\begin{itemize}
+\item {Modem kommunikáció:}
 
-\subsubsection{Modem kommunikáció}
+A modem soros port interface-t biztosít, egy USB-RS232 átalakítóval USB porton keresztül megoldható egy olyan számítógéppel is az összeköttetés, mely nem rendelkezik soros porttal. Ilyen lehet például egy saját energiaellátással rendelkezõ modern laptop. Feladataim közé tartozik, hogy biztosítsam az útvonalpontok feltöltésének lehetõségét. Ehhez kétirányú kommunikáció kiépítése szükséges. 
 
-A modem soros port interface-t biztosít, egy USB-RS232 átalakítóval USB porton keresztül megoldható egy olyan számítógéppel is az összeköttetés, mely nem rendelkezik soros porttal, pl. saját energiaellátással rendelkezõ modern laptop. Feladataim közé tartozik, hogy biztosítsam az útvonalpontok feltöltésének lehetõségét. Ehhez kétirányú kommunikáció kiépítése szükséges. 
+\item {Párhuzamos csatornák:}
 
-\subsubsection{Párhuzamos csatornák}
+Mivel a repülõgépen duplikáltak az elemek, így a küldõ oldali modem is, a független jelek vételére megoldást kell találnom. Az esetleges eltérések kiértékelését és az ezen alapuló hibadetektációt meg kell oldanom.
 
-Mivel a repülõgépen duplikáltak az elemek, így a küldõ oldali modem is, a független jelek vételére megoldást kell találni és az esetleges eltérésekkel is számolni kell.
-
-\subsubsection{Biztonságos protokoll}
+\item {Biztonságos protokoll:}
 
 Kétirányú kommunikáció kialakítása a cél, így a küldendõ adatok csomagjának biztonságos protokollját ki kell dolgozni, mely az adatintegritás megõrzése érdekében hibajelzésre alkalmazható.
+\end{itemize}
+
 
 \subsection{Grafikus felhasználói felület}
 
@@ -196,7 +200,7 @@ Ahhoz hogy a kialakítandó földi irányítóállomás kezelõfelülete kényelmes és haté
 
 Számos megoldás született földi állomások GUI (Graphical User Interface)\footnote{grafikus megjelenítés}-jainak kialakítására. Elsõdleges követelmény, hogy az operátor mindig a legfontosabb információkat láthassa, ehhez szoftverergonómiailag kell megtervezni a grafikus felületet. Kísérleteket folytattak, milyen elrendezésben, hány képernyõn érdemes megjeleníteni az adatokat, úgy, hogy az még ne terhelje túl az operátort \cite{bib:multimodal}. Ebben a kísérletben bebizonyosodott, hogy pl. egy nagy prioritású eseménynél a figyelmeztetõ ablak megjelenésénél érdemes hangjelzést is adni. 
 
-Alábbiakban összehasonlításra kerülnek a piacon lévõ megjelenítési felületek, megoldások.
+Alábbiakban bemutatom a piacon lévõ megjelenítési felületeket és megoldásokat, melyeket a fejezet végén összehasonlítok.
 
 
 \subsection{ArduPilot}
@@ -335,24 +339,23 @@ A képernyõ bal oldalán egy mûhorizont látható, alatta a jármû orientációja látsz
 
 Ez a nézet szabadon módosítható különféle ``gadget''-ek kiválasztásával, pl. a külsõ nézet egy mért érték grafikus megjelenítésére kicserélhetõ. Egy .xml fájlba elmenthetõek és visszatölthetõek, így igazodva különbözõ a konfigurációk igényeihez.
 
+\subsubsection{Összegzés}
+A projekt mögött egy igen lelkes és aktív közösség áll, hiszen az OpenPilot minden olyan fontos igényt kielégít, mely napjainkban felmerülhet egy UAV adatainak megjelenítésével és konfigurálásával kapcsolatban.
 
 \begin{figure}[H]
 	\centering
 	\resizebox{15cm}{!}{ 
 		\includegraphics{figures/openpilot.png}} 
-	\caption{}
+	\caption{OpenPilot fõképernõje}
 	\label{fig:openpilot}
 \end{figure}
-
-\subsubsection{Összegzés}
-A projekt mögött egy igen lelkes és aktív közösség áll, hiszen az OpenPilot minden olyan fontos igényt kielégít, mely napjainkban felmerülhet egy UAV adatainak megjelenítésével és konfigurálásával kapcsolatban.
 
 
 \subsection{Egyéb megoldások}
 
 \subsubsection{QGroundControl}
-Ez a program \cite{bib:qground} nyílt forráskódú és a MAVLink\footnote{pehelysúlyú protokoll, C nyelvû header fájlok írják le. Változó csomagformátumú, egy csomag tartalmazza a tartalmának típusát, melyet a fogadó oldal felhasznál az adattartalom értelmezéséhez.} protokollt használja a csatlakoztatott eszközzel történõ kommunikációra. Érdekesség, hogy a program a repülõgép aktuális pozícióját a \figref{qground} látható módon 3D-ben is meg tudja jeleníteni és videókép fogadására is alkalmas. Az útvonalpontok szerkesztése felszállás után is lehetséges. A protokollnak köszönhetõen a program képes 255 jármû egyidejû kezelésére.
-\begin{figure}[H]
+Ez a program \cite{bib:qground} nyílt forráskódú és a MAVLink\footnote{pehelysúlyú protokoll, C nyelvû header fájlok írják le. Változó csomagformátumú, egy csomag tartalmazza a tartalmának típusát, melyet a fogadó oldal felhasznál az adattartalom értelmezéséhez.} protokollt használja a csatlakoztatott eszközzel történõ kommunikációra. Érdekesség, hogy a program a repülõgép aktuális pozícióját a \figref{qground} ábrán látható módon 3D-ben is meg tudja jeleníteni és videókép fogadására is alkalmas. Az útvonalpontok szerkesztése felszállás után is lehetséges. A protokollnak köszönhetõen a program képes 255 jármû egyidejû kezelésére.
+\begin{figure}[h]
 	\centering
 	\resizebox{15cm}{!}{
 		\includegraphics{figures/qground.png}}
@@ -362,7 +365,7 @@ Ez a program \cite{bib:qground} nyílt forráskódú és a MAVLink\footnote{pehelysúl
 
 \subsubsection{HappyKillmore}
 \label{sect:happy}
-Az ArduPilot-hoz készült nyílt forráskódú GCS \cite{bib:hk} a Mission Planner-hez képest inkább az egyszerûség híve. Kevés mûszer található rajta, de ezekrõl minden információ megtudható. Itt is a térkép nézet dominál, a képernyõ oldalsó részén mozgathatjuk számunkra megfelelõ elrendezésbe a mûszereket. Útvonalpontok feltöltésére szintén van lehetõség. A program támogatja többek között az ArduPilot és a MAVLINK protokollokat.
+Az ArduPilot-hoz készült nyílt forráskódú GCS \cite{bib:hk} a Mission Planner-hez képest inkább az egyszerûség híve. Kevés mûszer található rajta, de ezekrõl minden információ megtudható (\figref{hk} ábra). Itt is a térkép nézet dominál, a képernyõ oldalsó részén mozgathatjuk számunkra megfelelõ elrendezésbe a mûszereket. Útvonalpontok feltöltésére szintén van lehetõség. A program támogatja többek között az ArduPilot és a MAVLINK protokollokat.
 
 \begin{figure}[H]
 	\centering
@@ -376,11 +379,9 @@ Az ArduPilot-hoz készült nyílt forráskódú GCS \cite{bib:hk} a Mission Planner-he
 
 \subsection{Összehasonlítás}
 
-A fentebb bemutatott földi irányító állomások tulajdonságait a \tabref{compare} táblázatban összefoglaltam. 
+A fentebb bemutatott földi irányító állomások tulajdonságait a \tabref{compare} táblázatban foglaltam össze. Látható, hogy megoldások forráskódja elég változatos a választott nyelv tekintetében. A nyílt forráskódúak az összes napjainkban használat programozási nyelvet felhasználják. Ezek tanulmányozásával ötleteket lehet meríteni a tervezéshez és megvalósításhoz.
 
-Látható, hogy megoldások forráskódja elég változatos a választott nyelv tekintetében. A nyílt forráskódúak az összes manapság használatos programozási nyelvet felhasználják. Ezek tanulmányozásával lehetõség van ötleteket meríteni a tervezéshez és megvalósításhoz.
-
-Az összesre jellemzõ, hogy a repülõgép pozíciója valamilyen térképen kerül megjelenítésre. Általában a fõképernyõn a sebesség és a magasság adatok mindig látszódnak, így az elkészítendõ felületre célszerû egy térképes megjelenítést és a legfontosabb információk kijelzését megoldani. 
+Az összes vizsgált megoldásra jellemzõ, hogy a repülõgép pozíciója valamilyen térképen kerül megjelenítésre. Általában a fõképernyõn a sebesség és a magasság adatok mindig láthatók, így az elkészítendõ felületre célszerû egy térképes megjelenítést és a legfontosabb információk kijelzését megoldani. 
 
 Számos program különválasztotta az útvonal-kijelölés felületét a fõképernyõtõl, így ebbõl merítve készíthetõ egy olyan felület, melyen útvonalpontok hozzáadhatóak, módosíthatóak és feltölthetõk. 
 
@@ -391,11 +392,12 @@ Néhány megoldás több eszköz párhuzamos kiszolgálását támogatta, jelenleg a felad
 Egyik sem alkalmaz redundanciát a kommunikáció megvalósítására, így a dolgozat szempontjából érdekes hibadetektációra nem találtam példát.
 A repülõgép, melyhez a programot készítem, nagy megbízhatóságú, így adatai duplikált csatornán küldi. Ezért a két port kezelése és az azokon érkezõ adatok feldolgozása megoldandó probléma.
 
-A MicroPilot program (\sectref{micropilot} fejezet) elsõdleges funkciója a repülõgép távvezérléséhez kapcsolatos információk kijelzése, ezért az operátor figyelmét különféle figyelmeztetõ üzenetekkel hívja fel (elõre beállított tiltott légtér). Ilyen figyelemfelkeltõ üzeneteket érdemes használni hibadetektálás eredményének kijelzésére.
+A MicroPilot program (\sectref{micropilot} fejezet) elsõdleges funkciója a repülõgép távvezérléséhez kapcsolatos információk kijelzése, ezért az operátort különféle üzenetekkel figyelmezteti például elõre beállított tiltott légtér megközelítése. Ilyen figyelemfelkeltõ üzeneteket érdemes használni hibadetektálás eredményének kijelzésére.
 
 
 \begin{table}[H]
 	\begin{center}
+	\resizebox{!}{125px}{
 			\begin{tabular}{| l | l | l | l  | l | l | }
 				\hline
 				%Program		 			& Forráskód 							&Több          			 &Útvonal  						 & Elõny 					  	\\
@@ -425,7 +427,7 @@ A MicroPilot program (\sectref{micropilot} fejezet) elsõdleges funkciója a repül
 				hibatûrés					    &       									 &									   &    								&							              &             \\ \hline
 				                                                                                                                                      
 				
-			\end{tabular}                                                                         
+			\end{tabular}   }                                                                      
 	\end{center}
 	\caption{Földi irányító állomások összehasonlítása}
 	\label{tab:compare}
