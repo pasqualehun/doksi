@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.26)  19 DEC 2013 15:59
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.10.26)  20 DEC 2013 14:02
 entering extended mode
 **diploma.tex
 (C:\Users\bojtip\Desktop\UAV\doksi\TEX\diploma.tex
@@ -718,11 +718,11 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 109.
 
-<figures/mainmock.png, id=515, 485.4135pt x 255.354pt>
+<figures/mainmock.png, id=515, 484.209pt x 254.1495pt>
 File: figures/mainmock.png Graphic file (type png)
  <use figures/mainmock.png>
 Package pdftex.def Info: figures/mainmock.png used on input line 116.
-(pdftex.def)             Requested size: 485.41231pt x 255.35338pt.
+(pdftex.def)             Requested size: 484.20781pt x 254.14888pt.
  [27]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
@@ -749,11 +749,11 @@ k.png>]
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 147.
 
-<figures/receivedmock.png, id=535, 487.8225pt x 257.763pt>
+<figures/receivedmock.png, id=535, 487.22025pt x 255.95625pt>
 File: figures/receivedmock.png Graphic file (type png)
  <use figures/receivedmock.png>
 Package pdftex.def Info: figures/receivedmock.png used on input line 155.
-(pdftex.def)             Requested size: 487.8213pt x 257.76237pt.
+(pdftex.def)             Requested size: 487.21906pt x 255.95561pt.
 
 <figures/net.png, id=536, 404.712pt x 351.11176pt>
 File: figures/net.png Graphic file (type png)
@@ -843,7 +843,7 @@ Overfull \vbox (1.06534pt too high) has occurred while \output is active []
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 219.
 
-<figures/diagkepernyo.png, id=711, 594.42075pt x 286.671pt>
+<figures/diagkepernyo.png, id=712, 594.42075pt x 286.671pt>
 File: figures/diagkepernyo.png Graphic file (type png)
  <use figures/diagkepernyo.png>
 Package pdftex.def Info: figures/diagkepernyo.png used on input line 226.
@@ -854,7 +854,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 232.
 
 [39 <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/tervkepernyo.png> <C:/Users/bojtip/Desktop/UAV/doksi/TEX/figures/diag
-kepernyo.png>] <figures/terminalkepernyo.png, id=719, 593.21625pt x 205.36725pt>
+kepernyo.png>] <figures/terminalkepernyo.png, id=720, 593.21625pt x 205.36725pt>
 File: figures/terminalkepernyo.png Graphic file (type png)
  <use figures/terminalkepernyo.png>
 Package pdftex.def Info: figures/terminalkepernyo.png used on input line 239.
@@ -866,7 +866,7 @@ Package pdftex.def Info: figures/terminalkepernyo.png used on input line 239.
 Package hyperref Warning: Glyph not defined in PD1 encoding,
 (hyperref)                removing `\H' on input line 248.
 
-<figures/comnull.png, id=730, 416.30531pt x 362.10281pt>
+<figures/comnull.png, id=731, 416.30531pt x 362.10281pt>
 File: figures/comnull.png Graphic file (type png)
  <use figures/comnull.png>
 Package pdftex.def Info: figures/comnull.png used on input line 262.
@@ -881,7 +881,7 @@ Overfull \hbox (64.01936pt too wide) in paragraph at lines 263--263
 [] [] 
  []
 
-<figures/sorossend.png, id=731, 327.02174pt x 202.95825pt>
+<figures/sorossend.png, id=732, 327.02174pt x 202.95825pt>
 File: figures/sorossend.png Graphic file (type png)
  <use figures/sorossend.png>
 Package pdftex.def Info: figures/sorossend.png used on input line 269.
@@ -898,7 +898,7 @@ Overfull \hbox (64.01936pt too wide) in paragraph at lines 270--270
 
 [41
 
-] <figures/xvi.png, id=740, 485.4135pt x 255.354pt>
+] <figures/xvi.png, id=741, 485.4135pt x 255.354pt>
 File: figures/xvi.png Graphic file (type png)
  <use figures/xvi.png>
 Package pdftex.def Info: figures/xvi.png used on input line 280.
@@ -943,7 +943,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 264--265
 []\T1/cmr/m/n/10.95 http://msdn.microsoft.com/en-us/library/windows/desktop/ms533798.aspx,
  []
 
-[45] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\appendices.tex <figures/gmap.png, id=765, 379.4175pt x 201.75375pt>
+[45] (C:\Users\bojtip\Desktop\UAV\doksi\TEX\appendices.tex <figures/gmap.png, id=766, 379.4175pt x 201.75375pt>
 File: figures/gmap.png Graphic file (type png)
 
 <use figures/gmap.png>
@@ -977,7 +977,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 279.
 Here is how much of TeX's memory you used:
  11545 strings out of 493921
  173485 string characters out of 3144872
- 322046 words of memory out of 3000000
+ 321046 words of memory out of 3000000
  14310 multiletter control sequences out of 15000+200000
  27316 words of font info for 67 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -998,7 +998,7 @@ x1095.pk><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi1
 /Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
 /public/amsfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/bera/fvmb8a.pfb><C:/Program Files (x86)/MiK
 TeX 2.9/fonts/type1/bera/fvmr8a.pfb>
-Output written on diploma.pdf (48 pages, 8903063 bytes).
+Output written on diploma.pdf (48 pages, 8902829 bytes).
 PDF statistics:
  1466 PDF objects out of 1728 (max. 8388607)
  268 named destinations out of 1000 (max. 500000)
