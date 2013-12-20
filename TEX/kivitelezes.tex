@@ -7,11 +7,11 @@ Az elõzõ fejezetekben összegyûjtöttem a megvalósításhoz szükséges információkat 
 
 \section{Program funkciónak megvalósítása}
 
-A program megfelelõ mûködéséhez különbözõ funkciók megoldása szükséges, ezek megoldását az alábbiakban írom le.
+A program megfelelõ mûködéséhez különbözõ funkciók megoldása szükséges, ezek megvalósítását az alábbiakban írom le.
 
 \subsection{Kapcsolódás megvalósítása}
 
-A kapcsolódást megkönnyíti az elõre elkészített \textit{SerialPort} könyvtár csomag, mely minden szükséges mûveletet rendelkezésre bocsájt. Eseményvezérelt mûveletei közé tartozik a \textit{DataReceived()} függvény, mely akkor hívódik meg, ha a felépített kapcsolaton keresztül adat érkezett. Jelen esetben a kapcsolat sebességén múlhat, hogy egy ilyen adatcsomagban egy egész számunkra megfelelõ csomag érkezett-e. Elõfordulhat az az eset, hogy a repülõgép már küldi az adatait és a program ennek az adatfolyamnak a közepébe kapcsolódik bele, így egy elõzõ csomag eleje és a következõ csomag vége lemaradhat. Ezért szükséges egy puffert alkalmazni, melynek végére minden egyes beérkezõ bájt elraktározódik. Ha a puffer mérete elérte a fogadandó csomag kétszeresét, biztosak lehetünk abban, hogy ebbe egy csomag már belefér. Ekkor a puffer elejérõl egy iteráció elindul, mely az ``UUT'' fejlécet keresi. Ha megtalálta, onnan a megtalált index + csomag hossza indexig iterálva feltölt egy byte tömböt, melyet a \textit{SerialUtil} osztály \textit{Decode()} függvénye fogad.
+A kapcsolódást megkönnyíti az elõre elkészített \textit{SerialPort} könyvtárcsomag, mely minden szükséges mûveletet rendelkezésre bocsát. Eseményvezérelt mûveletei közé tartozik a \textit{DataReceived()} függvény, mely akkor hívódik meg, ha a felépített kapcsolaton keresztül adat érkezett. Jelen esetben a kapcsolat sebességén múlhat, hogy egy ilyen adatcsomagban egy egész számunkra megfelelõ csomag érkezett-e. Elõfordulhat az az eset, hogy a repülõgép már küldi az adatait és a program ennek az adatfolyamnak a közepébe kapcsolódik bele, így egy elõzõ csomag eleje és a következõ csomag vége lemaradhat. Ezért szükséges egy puffert alkalmazni, melynek végére minden egyes beérkezõ bájt elraktározódik. Ha a puffer mérete elérte a fogadandó csomag kétszeresét, biztosak lehetünk abban, hogy ebbe egy csomag már belefér. Ekkor a puffer elejérõl egy iteráció elindul, mely az ``UUT'' fejlécet keresi. Ha megtalálta, onnan a megtalált index + csomag hossza indexig iterálva feltölt egy byte tömböt, melyet a \textit{SerialUtil} osztály \textit{Decode()} függvénye fogad.
 
 
 \subsection{Redundáns adatok feldolgozása}
@@ -27,7 +27,7 @@ A \sectref{terv_diagkepernyo} fejezetben ismertetett hibatípusokat a következõ d
 
 \textbf{Port kiesése:} Mikor az egyik porton egy érvényes csomag érkezik, akkor dekódolás után az elemeit a hozzájuk tartozó tárolóba teszem és abban egy számlálót is növelek. Amelyik porton érkezett az adat annak a számlálóját nullázom, így ha csak az egyik portról érkezik adat, akkor a másik számlálója növekszik. Ha ez a számláló elérte a FIFO sor méretét, akkor növekszik az adott adattag hibaszámlálója, mely a hozzá tartozó port kiesését jelenti.
 
-\textbf{Beragadás:} Egy jelet akkor tekintek beragadt állapotúnak, ha értéke egy bizonyos ideig változatlan marad, jelen esetben a tároló feltöltõdésének ideje ideje. Ha a sor legutóbbi és a legújabb eleme közti különbség egy $\epsilon_1$-nél (ez esetben 0.000001) kisebb, akkor növelem a jel hibaszámlálóját. Ha ez a számláló elér egy küszöböt, akkor gyanús a beragadás esélye. Ezt a kijelzés során piros ``Beragadás'' üzenettel jelzem a beragadt jel sorában.
+\textbf{Beragadás:} Egy jelet akkor tekintek beragadt állapotúnak, ha értéke egy bizonyos ideig változatlan marad, jelen esetben a tároló feltöltõdésének ideje. Ha a sor legutóbbi és a legújabb eleme közti különbség egy $\epsilon_1$-nél (ez esetben 0.000001) kisebb, akkor növelem a jel hibaszámlálóját. Ha ez a számláló elér egy küszöböt, akkor gyanús a beragadás esélye. Ezt a kijelzés során piros ``Beragadás'' üzenettel jelzem a beragadt jel sorában.
 
 \textbf{Túl nagy ugrás:} Egy új elem érkezésekor a FIFO-ban lévõ elemek átlagát kiszámítom és ha az újonnan érkezett érték $\epsilon_2$-ször (ez esetben 0.1) nagyobb különbséget mutat, akkor növekszik az érték és port hibaszámlálója.
 
@@ -112,7 +112,7 @@ Felhasználói szempontból a grafikus megjelenítés a legérdekesebb, ez ha nincs me
 
 \subsection{Fõképernyõ}
 
-A HappyKillmore (\sectref{happy} fejezet) forráskódjának tanulmányozása során láttam, hogy az alkotók minden mûszert külön View-ként valósítottak meg. Mivel ez átláthatóbbá teszi a mûszerek funkcióját ezt a megoldást célszerû használnom. Elkészítettem a magasságmérõ, emelkedésjelzõ, sebességmérõ és iránytû \textit{UserControll}-jait melyek tervezõ nézetben ``Drag and Drop'' technológiával a megfelelõ helyre húzhatóak és könnyen beköthetõek.
+A HappyKillmore (\sectref{happy} fejezet) forráskódjának tanulmányozása során láttam, hogy az alkotók minden mûszert külön View-ként valósítottak meg. Mivel ez átláthatóbbá teszi a mûszerek funkcióját ezt a megoldást célszerû használnom. Elkészítettem a magasságmérõ, emelkedésjelzõ, sebességmérõ és iránytû \textit{UserControl}-jait melyek tervezõ nézetben ``Drag and Drop'' technológiával a megfelelõ helyre húzhatóak és könnyen beköthetõek.
 
 A \figref{fokepernyo} ábrán látható képernyõ bal oldalán látható a létrehozott \textit{UserControl}-ok megjelenítése és elhelyezése. A terület nagy részét a térkép foglalja el, melyen a repülõgép aktuális pozíciója látható. A fogadott koordináták tört vonallal vannak összekötve, mely a lerepült útvonalat ábrázolja. A program minimális méretében minden mûszer megfelelõen látszódik, a méret módosításával ezek fix pozícióban maradnak. A térkép a program jobb alsó sarkához van horgonyozva, így átméretezéskor a térkép területe is változik.
 
@@ -126,12 +126,12 @@ A \figref{fokepernyo} ábrán látható képernyõ bal oldalán látható a létrehozott \
 
 
 \subsubsection{Sebességmérõ}
-A sebességmérõ egy \textit{UserControll}-ból származik, annak a \textit{OnPaint()} metódusát írom felül, melyben a mûszer különbözõ elemeit pozicionálom a megfelelõ helyre. Az \textit{OnPaint()} függvény minden olyan esetben meghívódik, mikor valamely része érvénytelenné, nem láthatóvá válik. Ekkor szükséges az elem újrarajzolása, ez a \textit{View Invalidate()} metódusával explicit is kiváltható.
+A sebességmérõ egy \textit{UserControl}-ból származik, annak a \textit{OnPaint()} metódusát írom felül, melyben a mûszer különbözõ elemeit pozicionálom a megfelelõ helyre. Az \textit{OnPaint()} függvény minden olyan esetben meghívódik, mikor valamely része érvénytelenné, nem láthatóvá válik. Ekkor szükséges az elem újrarajzolása, ez a \textit{View Invalidate()} metódusával explicit is kiváltható.
 GDI+ segítségével egy piros kört rajzolok, egy iterációval $36^{\circ}$-onként egy sugárirányú szakaszt rajzolok és tízesével növelve kiíratok egy számot, mely a sebességértéket jelöli. Az osztály tartalmaz egy \verb|private float maxSpeed;| változót, ez jelöli a kijelezendõ legnagyobb sebességet (most 100 km/h). A \textit{private float currenSpeed;} változó értéke alapján egy mutató mutatja a beállított aktuális sebességet. Ez a kör középpontjából indul és a \verb|currentSpeed / (maxSpeed - minSpeed)| összefüggésbõl származó szöget zár be a 0 km/h-t jelölõ ponttal.
 
 
 \subsubsection{Iránytû}
-Az iránytû felépítése hasonló, mint a sebességmérõ mûszernek, jelentõs változás az égtájak és a fokok forgatását végzõ transzformáció. Elõször a kiírandó karaktert a grafikai koordináta-rendszer középpontjába tolom el, ekkor lehetséges az adott szöggel történõ elforgatás, majd a megfelelõ helyre eltolás. Ez azt a látszatot kelti, mintha egy tárcsára felírva, ami csak felsõ helyzetben olvasható.
+Az iránytû felépítése hasonló, mint a sebességmérõ mûszernek, jelentõs változás az égtájak és a fokok forgatását végzõ transzformáció. Elõször a kiírandó karaktert a grafikai koordináta-rendszer középpontjába tolom el, ekkor lehetséges az adott szöggel történõ elforgatás, majd a megfelelõ helyre eltolás. Ez azt a látszatot kelti, mintha az égtáj egy tárcsára lenne felírva, ami csak felsõ helyzetben olvasható.
 A kirajzolást végzõ grafikus megjelenítõ pipeline tulajdonsága miatt ezeket a mûveleteket fordított sorrendben kell elvégezni a \textit{private void DrawNumbers(Graphics g)} metódusban:
 \begingroup
     \fontsize{10pt}{12pt}\selectfont
@@ -160,7 +160,7 @@ A program grafikus felületén a különbözõ oldalak fülek segítségével válthatóak. 
 
 \subsubsection{Térképes vizualizáció}
 
-A felület jobb oldalán egy Google Maps alapú térkép látható, melyet a GMap.NET API segítségével jelenítek meg. A térképre egy réteget helyeztem el, melyre a fogadott GPS pozíciókat törött vonallal összekötve rajzolom ki a gép által lerepült nyomvonalat. Erre a rétegre kerül a repülõt szimbolizáló \textit{planeMarker} ikont is, aminek pozícióját mindig legutóbb kapott koordináta határozza mmeg.
+A felület jobb oldalán egy Google Maps alapú térkép látható, melyet a GMap.NET API segítségével jelenítek meg. A térképre egy réteget helyeztem el, melyre a fogadott GPS pozíciókat törött vonallal összekötve rajzolom ki a gép által lerepült nyomvonalat. Erre a rétegre kerül a repülõt szimbolizáló \textit{planeMarker} ikon is, aminek pozícióját mindig legutóbb kapott koordináta határozza meg.
 Az ezt megvalósító programrészlet:
 \begingroup
     \fontsize{10pt}{12pt}\selectfont
@@ -218,7 +218,7 @@ private void gmap_plan_MouseMove(object sender, MouseEventArgs e)
 
 \subsection{Diagnosztikai képernyõ}
 
-A diagnosztikai képernyõn a portokon érkezõ adatok és hozzájuk tatozó hibaszámláló látható. Ha az egyik érték hibaszámlálója elér egy kritikus szintet, akkor pirossá válik és egy felugró ablakon figyelmezteti az operátort, hogy valamilyen hiba történt. Õ eldöntheti, hogy ez csak az egyik mûszer meghibásodása vagy esetleg egy fontos összetevõ kiesését jelenti. Ennek függvényében mérlegelhet, hogy a repülõ folytathatja-e a küldetését vagy érdemes kézi vezérlésre váltani és landolni.
+A \figref{diagkepernyo} ábrán a portokon érkezõ adatok és a hozzájuk tartozó hibaszámláló látható. Ha az egyik érték hibaszámlálója elér egy kritikus szintet, akkor pirossá válik. Az operátor eldöntheti, hogy ez csak az egyik mûszer meghibásodását vagy esetleg egy fontos összetevõ kiesését jelenti. Ennek függvényében mérlegelhet, hogy a repülõ folytathatja-e a küldetését vagy érdemes kézi vezérlésre váltani és landolni. Ha az egyik port kiesik, akkor egy felugró ablak figyelmezteti az operátort, a port kiesésérõl.
 
 \begin{figure}[H]
 	\centering
