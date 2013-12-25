@@ -1,7 +1,7 @@
 %----------------------------------------------------------------------------
 \chapter{Megvalósítás}
 %--------------------------------------
-
+\label{sect:megvalóstás}
 Az elõzõ fejezetekben összegyûjtöttem a megvalósításhoz szükséges információkat és lépéseket. Ebben a fejezetben a konkrét implementációt mutatom be.
 
 
@@ -11,31 +11,34 @@ A program megfelelõ mûködéséhez különbözõ funkciók megoldása szükséges, ezek meg
 
 \subsection{Kapcsolódás megvalósítása}
 
-A kapcsolódást megkönnyíti az elõre elkészített \textit{SerialPort} könyvtárcsomag, mely minden szükséges mûveletet rendelkezésre bocsát. Eseményvezérelt mûveletei közé tartozik a \textit{DataReceived()} függvény, mely akkor hívódik meg, ha a felépített kapcsolaton keresztül adat érkezett. Jelen esetben a kapcsolat sebességén múlhat, hogy egy ilyen adatcsomagban egy egész számunkra megfelelõ csomag érkezett-e. Elõfordulhat az az eset, hogy a repülõgép már küldi az adatait és a program ennek az adatfolyamnak a közepébe kapcsolódik bele, így egy elõzõ csomag eleje és a következõ csomag vége lemaradhat. Ezért szükséges egy puffert alkalmazni, melynek végére minden egyes beérkezõ bájt elraktározódik. Ha a puffer mérete elérte a fogadandó csomag kétszeresét, biztosak lehetünk abban, hogy ebbe egy csomag már belefér. Ekkor a puffer elejérõl egy iteráció elindul, mely az ``UUT'' fejlécet keresi. Ha megtalálta, onnan a megtalált index + csomag hossza indexig iterálva feltölt egy byte tömböt, melyet a \textit{SerialUtil} osztály \textit{Decode()} függvénye fogad.
+A kapcsolódást megkönnyíti a .NET \textit{SerialPort} könyvtárcsomagja, mely minden szükséges mûveletet rendelkezésre bocsát soros portok kezelésével kapcsolatban. Eseményvezérelt mûveletei közé tartozik a \textit{DataReceived()} függvény, ez akkor hívódik meg, ha a felépített kapcsolaton keresztül adat érkezett. Jelen esetben a kapcsolat sebességén múlhat, hogy egy ilyen adatcsomagban egy egész, számunkra megfelelõ csomag érkezett-e. Elõfordulhat az az eset, hogy a repülõgép már küldi az adatait, és a program ennek az adatfolyamnak a közepébe kapcsolódik bele, így egy elõzõ csomag eleje, és a következõ csomag vége lemaradhat. Ezért szükséges egy puffert alkalmazni, aminek a végéhez fûzõdnek hozzá a beérkezõ bájtok (FIFO tárolási mechanizmus). Ha a puffer mérete elérte a fogadandó csomag kétszeresét, biztosak lehetünk abban, hogy ebbe egy csomag már belefér. Ekkor a puffer elejérõl egy iterációt elindítok, mely az ``UUT'' fejlécet keresi. Ha megtalálom, onnan a megtalált index + csomag hossza indexig iterálva feltöltök egy byte tömböt, melyet a \textit{SerialUtil} osztály \textit{Decode()} függvénye fogad.
 
 
 \subsection{Redundáns adatok feldolgozása}
 
-Mivel a program párhuzamos csatornákon kapja az adatokat, így az elõzõ fejezetben ismertetett folyamat kétszerezve van, két külön soros portra. Végeredményben a kapott, értelmezhetõ megfelelõ fejléccel kezdõdõ csomagokat a \textit{SerialUtil.Decode()} függvény alakít át double értékekké, mellyel már kényelmesen lehet dolgozni. A dekódolás után minden egyes érték egy hozzá tartozó \textit{DataElement} objektumban tárolódik, az ezeket tartalmazó tömb a két port számára közös erõforrás, így a kölcsönös kizárásról gondoskodni kell. Mivel egy tömb írása nem atomi mûvelet, így a preemtív ütemezéssel ellátott operációs rendszer a portokhoz tartozó szálakat bármikor megszakíthatja. Ebben az esetben elõfordulhat, hogy az egyik soros portból érkezõ csomagot a dekódolás után az egyik szál éppen írja a csomaghoz tartozó \textit{DataElement-be}, miközben a másik porthoz tatozó szál is elkezdené írni ugyanezt. Ezt elkerülendõ az írás megkezdésekor egy \textit{Lock} objektumon történik a zárolás, melyet az írás befejezése szabadít fel. Amíg ez az objektum zárolt, a másik szál kénytelen várakozni.
+Mivel a program párhuzamos csatornákon kapja az adatokat, így az elõzõ fejezetben ismertetett folyamat kétszer szerepel a két külön soros portra. Végeredményben a kapott, értelmezhetõ és megfelelõ fejléccel kezdõdõ csomagokat a \textit{SerialUtil.Decode()} függvényben alakítom át double értékekké, mellyel már kényelmesen lehet dolgozni. A dekódolás után minden egyes érték egy hozzá tartozó \textit{DataElement} objektumban tárolódik, az ezeket tartalmazó tömb a két port számára közös erõforrás, így a kölcsönös kizárásról gondoskodni kell. Mivel egy tömb írása nem atomi mûvelet, így a preemtív ütemezéssel ellátott operációs rendszer a portokhoz tartozó szálakat bármikor megszakíthatja. Ebben az esetben elõfordulhat, hogy a soros portból érkezõ csomagot a dekódolás után az egyik szál éppen írja a csomaghoz tartozó \textit{DataElement-be}, miközben a másik porthoz tartozó szál is elkezdené írni ugyanezt. Ezt elkerülendõ, az írás megkezdésekor egy \textit{Lock} objektumon történik a zárolás, melyet az írás befejezése szabadít fel. Amíg ez az objektum zárolt, a késõbb érkezõ szál kénytelen várakozni.
 
-\subsection{Redundáns adatok hibadetektációja}
+\subsection{Hibadetektálás a rendundáns adatok alapján}
 
-Minden fogadott adat egy hozzá tartozó \textit{DataElement} objektumban tárolódik, ezekben két FIFO lista szerepel, egyik az ``A'', másik a ``B'' portból érkezõeknek. Ha az ``A'' portból érkezik egy csomag, akkor dekódolás után az elemein végigiterálva a \textit{dataElements[i].AddA(double item)} függvény meghívásával kerülnek az ``A'' FIFO végére, ugyanez a másik portra is érvényes. 
+Minden fogadott adatot egy hozzá tartozó \textit{DataElement} objektumban tárolok, ezekben két FIFO lista szerepel, egyik az ``A'', másik a ``B'' portból érkezõeknek. Ha az ``A'' portból érkezik egy csomag, akkor dekódolás után az elemein végigiterálva a \textit{dataElements[i].AddA()} függvény meghívásával kerülnek az ``A'' porthoz tartozó FIFO végére. Ugyanez a másik portra is érvényes. 
 
-Mikor egy mûszer elkéri az értéket, melyet mutatni szeretne, akkor a \textit{GetData()} függvényhívással megkapja. A hibakezelés ebben függvényekben van megoldva, ugyanis mindkettõ FIFO sor rendelkezik egy hibaszámlálóval, mely különbözõ feltételek mellett nõ vagy csökken. A \textit{GetData()} függvény aszerint, hogy mely sornak kisebb ez a hibaszámlálója, dönti el, hogy melyiket választja.
+Az egyes mûszerek a \textit{GetData()} függvény meghívásával kérdezik le a megjelenítendõ értékeket. A hibakezelés ebben a függvényben van megoldva, ugyanis mindkettõ FIFO sor rendelkezik egy hibaszámlálóval, mely különbözõ feltételek mellett nõ vagy csökken. A \textit{GetData()} függvény mindig a kisebb hibaszámlálóval rendelkezõ sort választja az adatok kiolvasásához.
 A \sectref{terv_diagkepernyo} fejezetben ismertetett hibatípusokat a következõ detektációs algoritmusok érzékelik:
 
-\textbf{Port kiesése:} Mikor az egyik porton egy érvényes csomag érkezik, akkor dekódolás után az elemeit a hozzájuk tartozó tárolóba teszem és abban egy számlálót is növelek. Amelyik porton érkezett az adat annak a számlálóját nullázom, így ha csak az egyik portról érkezik adat, akkor a másik számlálója növekszik. Ha ez a számláló elérte a FIFO sor méretét, akkor növekszik az adott adattag hibaszámlálója, mely a hozzá tartozó port kiesését jelenti.
+\begin{itemize}
 
-\textbf{Beragadás:} Egy jelet akkor tekintek beragadt állapotúnak, ha értéke egy bizonyos ideig változatlan marad, jelen esetben a tároló feltöltõdésének ideje. Ha a sor legutóbbi és a legújabb eleme közti különbség egy $\epsilon_1$-nél (ez esetben 0.000001) kisebb, akkor növelem a jel hibaszámlálóját. Ha ez a számláló elér egy küszöböt, akkor gyanús a beragadás esélye. Ezt a kijelzés során piros ``Beragadás'' üzenettel jelzem a beragadt jel sorában.
+\item \textbf{Port kiesése:} Mikor az egyik porton egy érvényes csomag érkezik, akkor dekódolás után az elemeit a hozzájuk tartozó tárolóba teszem, és abban egy számlálót is növelek. Amelyik porton érkezett az adat, annak a számlálóját nullázom, így ha csak az egyik portról érkezik adat, akkor a másik számlálója növekszik. Ha ez a számláló elérte a FIFO sor méretét, akkor növekszik az adott adattag hibaszámlálója, mely a hozzá tartozó port kiesését jelenti.
 
-\textbf{Túl nagy ugrás:} Egy új elem érkezésekor a FIFO-ban lévõ elemek átlagát kiszámítom és ha az újonnan érkezett érték $\epsilon_2$-ször (ez esetben 0.1) nagyobb különbséget mutat, akkor növekszik az érték és port hibaszámlálója.
+\item \textbf{Beragadás:} Egy jelet akkor tekintek beragadt állapotúnak, ha értéke egy bizonyos ideig változatlan marad, jelen esetben a tároló feltöltõdésének ideje. Ha a sor legutóbbi és a legújabb eleme közti különbség egy $\epsilon_1$-nél (ez esetben 0.000001) kisebb, akkor növelem a jel hibaszámlálóját. Ha ez a számláló elér egy küszöböt, akkor gyanús a beragadás esélye. Ezt a kijelzés során piros ``Beragadás'' üzenettel jelzem a beragadt jel sorában.
 
-\textbf{Kettõ jel eltérése:} A két jel túl nagy eltérésénél nem tudja az algoritmus eldönteni, hogy melyik érték a helyesebb, így az eddigi hibaértékek alapján dõl el a választás.
+\item \textbf{Túl nagy ugrás:} Egy új elem érkezésekor a FIFO-ban lévõ elemek átlagát kiszámítom, és ha az újonnan érkezett érték $\epsilon_2$-ször (ez esetben 0.1) nagyobb különbséget mutat, akkor növekszik az érték és port hibaszámlálója.
 
+\item \textbf{Kettõ jel eltérése:} A két jel túl nagy eltérésénél nem tudja az algoritmus eldönteni, hogy melyik érték a helyesebb, így az eddigi hibaértékek alapján dõl el a választás.
+
+\end{itemize}
 \subsection{Adatküldés megvalósítása}
 
-A visszirányú kommunikáció során a Tervezés képernyõn (\sectref{terv} fejezet) kijelölt útvonalhoz tartozó fordulópontok listáját párhuzamos csatornákon küldi el a program. A \figref{tervkepernyo} ábrán látható feltöltés gombra kattintva, az útvonalpontokat tartalmazó listát átadom a \mbox{SerialUtil.Code()} függvénynek, mely a \sectref{up_prot} fejezetben ismertetett protokoll szerint átalakítja bináris formába. Ezt az átalakított bájt tömböt küldöm el mindkettõ soros portra, végsõ soron a repülõgépre. Mivel az útvonal maximum 10 db pontot tartalmazhat, ezért új pont lerakásánál a lista méretét a következõ kódrészlettel szükséges ellenõrizni:\\
+A visszirányú kommunikáció során a Tervezés képernyõn (\sectref{terv} fejezet) kijelölt útvonalhoz tartozó fordulópontok listáját párhuzamos csatornákon küldi el a program. A \figref{tervkepernyo} ábrán látható feltöltés gombra kattintva, az útvonalpontokat tartalmazó listát átadom a \mbox{\textit{SerialUtil.Code()}} függvénynek, mely a \sectref{up_prot} fejezetben ismertetett protokoll szerint átalakítja bináris formába. Ezt az átalakított bájt tömböt küldöm el mindkettõ soros portra, végsõ soron a repülõgépre. Mivel az útvonal maximum 10 db pontot tartalmazhat, ezért új pont lerakásánál a lista méretét a következõ kódrészlettel szükséges ellenõrizni:\\
 
 \begingroup
     \fontsize{10pt}{12pt}\selectfont
@@ -57,9 +60,9 @@ private void gmap_plan_MouseDoubleClick(object sender, MouseEventArgs e)
 			\end{lstlisting}
 \endgroup
 
-Ha a feltöltött lista sértetlenül megérkezett, a repülõgép az aktuális kommunikációs csatornáján egy ``ACK'' üzenettel jelez. Ezt fogadva az operátort egy tájékoztató ablak formájában (\figref{uploadsuccess} ábra) tájékoztatja a program.
+Ha a feltöltött lista sértetlenül megérkezett, a repülõgép az aktuális kommunikációs csatornáján egy ``ACK'' üzenettel jelez. Ezt fogadva az operátort egy tájékoztató ablak formájában (\figref{uploadsuccess} ábra) informálja a program.
 
-Az ``ACK'' jelzést fogadó programrészlet, mely kiváltja a tájékoztató ablak megjelenítését:
+Az ``ACK'' jelzést fogadó programrészlet, mely elõidézi a tájékoztató ablak megjelenítését:
 \begingroup
     \fontsize{10pt}{12pt}\selectfont
 			\begin{lstlisting}
@@ -82,7 +85,7 @@ if (pufferB[i] == 'A' && pufferB[i + 1] == 'C' && pufferB[i + 2] == 'K')
 \end{lstlisting}
 \endgroup
 
-A porthoz tartozó pufferen iterálva megkeresem az ACK üzenetet (ha van) és törlöm az ACK üzenetet hordozó 3 bájtot. Ez után egy felugró ablakot jelenítek meg, mely tartalmazza a port nevét és egy ``Feltöltés sikeres'' üzenetet.
+A porthoz tartozó pufferen iterálva megkeresem az ``ACK'' üzenetet (ha van) és törlöm az ``ACK'' üzenetet hordozó 3 bájtot. Ez után egy felugró ablakot jelenítek meg, mely tartalmazza a port nevét és egy ``Feltöltés sikeres'' üzenetet.
 
 
 \begin{figure}[h]
@@ -108,13 +111,13 @@ A \figref{class} ábrán láthatóak a programban használt osztályok. A \textit{Prog
 
 \section{Megjelenítési felületek}
 
-Felhasználói szempontból a grafikus megjelenítés a legérdekesebb, ez ha nincs megfelelõen elkészítve a fentebb tárgyalt megoldások akár értelmüket is veszthetik. Ezért a felület kényelmes kezelhetõségére és az ablakok elhelyezésére ügyelni kell. A továbbiakban az elkészített képernyõket mutatom be.
+Felhasználói szempontból a grafikus megjelenítés a legérdekesebb, ez ha nincs megfelelõen elkészítve, a fentebb tárgyalt megoldások akár értelmüket is veszthetik. Ezért a felület kényelmes kezelhetõségére és az ablakok elhelyezésére ügyelni kell. A továbbiakban az elkészített képernyõket mutatom be.
 
 \subsection{Fõképernyõ}
 
-A HappyKillmore (\sectref{happy} fejezet) forráskódjának tanulmányozása során láttam, hogy az alkotók minden mûszert külön View-ként valósítottak meg. Mivel ez átláthatóbbá teszi a mûszerek funkcióját ezt a megoldást célszerû használnom. Elkészítettem a magasságmérõ, emelkedésjelzõ, sebességmérõ és iránytû \textit{UserControl}-jait melyek tervezõ nézetben ``Drag and Drop'' technológiával a megfelelõ helyre húzhatóak és könnyen beköthetõek.
+A HappyKillmore (\sectref{happy} fejezet) forráskódjának tanulmányozása során láttam, hogy az alkotók minden mûszert külön View-ként valósítottak meg. Mivel ez átláthatóbbá teszi a mûszerek funkcióját, ezért úgy döntöttem, hogy ezt a megoldást célszerû használnom. Elkészítettem a magasságmérõ, az emelkedésjelzõ, a sebességmérõ és az iránytû \textit{UserControl}-jait, amik tervezõ nézetben ``Drag and Drop'' technológiával a megfelelõ helyre húzhatóak és könnyen beköthetõek.
 
-A \figref{fokepernyo} ábrán látható képernyõ bal oldalán látható a létrehozott \textit{UserControl}-ok megjelenítése és elhelyezése. A terület nagy részét a térkép foglalja el, melyen a repülõgép aktuális pozíciója látható. A fogadott koordináták tört vonallal vannak összekötve, mely a lerepült útvonalat ábrázolja. A program minimális méretében minden mûszer megfelelõen látszódik, a méret módosításával ezek fix pozícióban maradnak. A térkép a program jobb alsó sarkához van horgonyozva, így átméretezéskor a térkép területe is változik.
+A \figref{fokepernyo} ábra bal oldalán látható a létrehozott \textit{UserControl}-ok megjelenítése és elhelyezése. A terület nagy részét a térkép foglalja el, melyen a repülõgép aktuális pozíciója látható. A fogadott koordinátapontokat a térképen egyenes vonalszakaszokkal kötöm össze, amely így a lerepült útvonalat egy törtvonalas megjelenítéssel ábrázolja. A program minimális méretében minden mûszer megfelelõen látszódik, a méret módosításával ezek fix pozícióban maradnak. A térképet a program jobb alsó sarkához horgonyoztam, így átméretezéskor a térkép területe is változik.
 
 \begin{figure}[H]
 	\centering
@@ -127,12 +130,13 @@ A \figref{fokepernyo} ábrán látható képernyõ bal oldalán látható a létrehozott \
 
 \subsubsection{Sebességmérõ}
 A sebességmérõ egy \textit{UserControl}-ból származik, annak a \textit{OnPaint()} metódusát írom felül, melyben a mûszer különbözõ elemeit pozicionálom a megfelelõ helyre. Az \textit{OnPaint()} függvény minden olyan esetben meghívódik, mikor valamely része érvénytelenné, nem láthatóvá válik. Ekkor szükséges az elem újrarajzolása, ez a \textit{View Invalidate()} metódusával explicit is kiváltható.
-GDI+ segítségével egy piros kört rajzolok, egy iterációval $36^{\circ}$-onként egy sugárirányú szakaszt rajzolok és tízesével növelve kiíratok egy számot, mely a sebességértéket jelöli. Az osztály tartalmaz egy \verb|private float maxSpeed;| változót, ez jelöli a kijelezendõ legnagyobb sebességet (most 100 km/h). A \textit{private float currenSpeed;} változó értéke alapján egy mutató mutatja a beállított aktuális sebességet. Ez a kör középpontjából indul és a \verb|currentSpeed / (maxSpeed - minSpeed)| összefüggésbõl származó szöget zár be a 0 km/h-t jelölõ ponttal.
+GDI+ segítségével egy piros kört rajzolok, egy iterációval $36^{\circ}$-onként egy sugárirányú szakaszt rajzolok és tízesével növelve kiíratok egy számot, mely a sebességértéket jelöli. Az osztály tartalmaz egy \textit{maxSpeed} változót, ez jelöli a kijelezendõ legnagyobb sebességet (most 100 km/h). A \textit{currenSpeed} változó értéke alapján egy mutató mutatja a beállított aktuális sebességet. Ez a kör középpontjából indul és a \verb|currentSpeed / (maxSpeed - minSpeed)| összefüggésbõl származó szöget zár be a 0 km/h-t jelölõ ponttal.
 
 
 \subsubsection{Iránytû}
-Az iránytû felépítése hasonló, mint a sebességmérõ mûszernek, jelentõs változás az égtájak és a fokok forgatását végzõ transzformáció. Elõször a kiírandó karaktert a grafikai koordináta-rendszer középpontjába tolom el, ekkor lehetséges az adott szöggel történõ elforgatás, majd a megfelelõ helyre eltolás. Ez azt a látszatot kelti, mintha az égtáj egy tárcsára lenne felírva, ami csak felsõ helyzetben olvasható.
-A kirajzolást végzõ grafikus megjelenítõ pipeline tulajdonsága miatt ezeket a mûveleteket fordított sorrendben kell elvégezni a \textit{private void DrawNumbers(Graphics g)} metódusban:
+
+Az iránytû felépítése a sebességmérõ mûszeréhez hasonló. Jelentõs változás az égtájak és a fokok forgatását végzõ transzformáció. Elõször a kiírandó karaktert a grafikai koordináta-rendszer középpontjába tolom el, ekkor lehetséges az adott szöggel történõ elforgatás, majd a megfelelõ helyre eltolás. Ez azt a látszatot kelti, mintha az égtáj egy tárcsára lenne felírva, ami csak felsõ helyzetben olvasható.
+A kirajzolást végzõ grafikus megjelenítõ pipeline tulajdonsága miatt ezeket a mûveleteket fordított sorrendben kell elvégezni a \textit{DrawNumbers()} metódusban:
 \begingroup
     \fontsize{10pt}{12pt}\selectfont
 \begin{lstlisting}
@@ -155,12 +159,12 @@ g.ResetTransform();
 
 \subsubsection{Csatlakozás sáv}
 
-A program grafikus felületén a különbözõ oldalak fülek segítségével válthatóak. Ezek felett található a csatlakozáshoz szükséges sáv, mely mindig látszódik, hogy éppen csatlakozott-e a program a kiválasztott portokra. Csatlakozás elõtt lehetõség van egy lenyíló listából a portokat és a jelsebességeket kiválasztani. Mivel valószínûsíthetõ, hogy a két port azonos sebességgel kommunikál, így az elsõ kiválasztásával a második is átállítódik, persze ha ez az eset mégsem állna fenn, az külön módosítható.
+A program grafikus felületén a különbözõ oldalak között fülek segítségével lehet váltani. Ezek felett található a csatlakozáshoz szükséges sáv, ami mindig látszódik, hogy éppen csatlakozott-e a program a kiválasztott portokra. Csatlakozás elõtt lehetõség van egy lenyíló listából a portokat és a jelsebességeket kiválasztani. Mivel valószínûsíthetõ, hogy a két port azonos sebességgel kommunikál, így az elsõ kiválasztásával a második is átállítódik. Persze ha ez az eset mégsem állna fenn, az külön módosítható.
 
 
 \subsubsection{Térképes vizualizáció}
 
-A felület jobb oldalán egy Google Maps alapú térkép látható, melyet a GMap.NET API segítségével jelenítek meg. A térképre egy réteget helyeztem el, melyre a fogadott GPS pozíciókat törött vonallal összekötve rajzolom ki a gép által lerepült nyomvonalat. Erre a rétegre kerül a repülõt szimbolizáló \textit{planeMarker} ikon is, aminek pozícióját mindig legutóbb kapott koordináta határozza meg.
+A felület jobb oldalán egy Google Maps alapú térkép látható, melyet a GMap.NET API segítségével jelenítek meg. A térképre egy réteget helyeztem el, melyre a fogadott GPS pozíciókat törött vonallal összekötve rajzolom ki a gép által lerepült nyomvonalat. Erre a rétegre kerül a repülõt szimbolizáló \textit{planeMarker} ikon is, aminek pozícióját mindig a legutóbb kapott koordináta határozza meg.
 Az ezt megvalósító programrészlet:
 \begingroup
     \fontsize{10pt}{12pt}\selectfont
@@ -175,7 +179,7 @@ void AddCoordinate(PointLatLng receivedCoordinate)
 \end{lstlisting}
 \endgroup
 
-A \textit{planeMarker} ikont, a fogadott mágneses irány szerint elforgatom, így látszódik a repülõ haladási iránya is. A mágneses irányt a kapott Euler szög ``psi''\footnote{a repülõgép függõleges tengelye körüli elfordulás mértéke a mágneses Északi-sarkhoz viszonyítva} értékével állítom be.
+A \textit{planeMarker} ikont a fogadott mágneses irány szerint elforgatom, így látszódik a repülõ haladási iránya is. A mágneses irányt a kapott Euler szög ``psi''\footnote{a repülõgép függõleges tengelye körüli elfordulás mértéke a mágneses Északi-sarkhoz viszonyítva} értékével állítom be.
 
 A térkép egy lokális cache-bõl töltõdik be, mely Budapest környékét nagy felbontásban, Magyarországot közepes felbontásban tartalmazza. Ennek segítségével a térkép mûködõképes internet kapcsolat nélkül is. Ha szükséges újabb területek hozzáadása, az a mellékelt GMapDemo.WindowsForms.exe programmal segítségével lehetséges. A generált fájllal felül kell írni a program által használtat, további tudnivaló a \sectref{gmap} fejezetben található.
 
@@ -183,9 +187,9 @@ A térkép egy lokális cache-bõl töltõdik be, mely Budapest környékét nagy felbont
 
 \subsection{Tervezés képernyõ}
 \label{sect:terv}
-A tervezõ képernyõn (\figref{tervkepernyo} ábra) lehetséges az útvonal kijelölése és feltöltése. Új útvonalpont a felületen dupla egérkattintással rakható le, mely hosszan nyomva szerkeszthetõ, jobb kattintással törölhetõ. A pontokat összekötõ szakaszok hossza jobb oldalt megjelenik és a tervezhetõség kedvéért összegzésre is kerül.
+A tervezõ képernyõn (\figref{tervkepernyo} ábra) lehetséges az útvonal kijelölése és feltöltése. Új útvonalpont a felületen dupla egérkattintással rakható le, mely hosszan nyomva szerkeszthetõ, jobb kattintással törölhetõ. A pontokat összekötõ szakaszok valós hossza km-ben jobb oldalt megjelenik, és a tervezhetõség kedvéért összegzésre is kerül.
 
-Útvonalpont szerkesztésénél vizsgálni kell, hogy a kurzor aktuális pozíciója egy lerakott pont közelében van-e. Ha igen és bal kattintás történik, akkor törölni kell a régi pontot a hozzá kapcsolódó élekkel együtt és új pontot kell létrehozni az aktuális pozícióban. Ezt új ponthoz az elõtte és utána lévõ pontokkal össze kell kötni. Így egy pont újrapozicionálása kényelmessé válik. A mozgatást végzõ programrészlet:
+Útvonalpont szerkesztésénél vizsgálni kell, hogy a kurzor aktuális pozíciója egy lerakott pont közelében van-e. Ha igen, és bal kattintás történik, akkor törölni kell a régi pontot a hozzá kapcsolódó élekkel együtt, és új pontot kell létrehozni az aktuális pozícióban. Ezt az új pontot az elõtte és utána lévõ pontokkal újra össze kell kötni. Így egy pont újrapozicionálása kényelmessé válik. A mozgatást végzõ programrészlet:
 
 \begingroup
     \fontsize{10pt}{12pt}\selectfont
@@ -218,7 +222,7 @@ private void gmap_plan_MouseMove(object sender, MouseEventArgs e)
 
 \subsection{Diagnosztikai képernyõ}
 
-A \figref{diagkepernyo} ábrán a portokon érkezõ adatok és a hozzájuk tartozó hibaszámláló látható. Ha az egyik érték hibaszámlálója elér egy kritikus szintet, akkor pirossá válik. Az operátor eldöntheti, hogy ez csak az egyik mûszer meghibásodását vagy esetleg egy fontos összetevõ kiesését jelenti. Ennek függvényében mérlegelhet, hogy a repülõ folytathatja-e a küldetését vagy érdemes kézi vezérlésre váltani és landolni. Ha az egyik port kiesik, akkor egy felugró ablak figyelmezteti az operátort, a port kiesésérõl.
+A \figref{diagkepernyo} ábrán a portokon érkezõ adatok és a hozzájuk tartozó hibaszámláló látható. Ha az egyik érték hibaszámlálója elér egy kritikus szintet, akkor pirossá válik. Az operátor eldöntheti, hogy ez csak az egyik mûszer meghibásodását, vagy esetleg egy fontos összetevõ kiesését jelenti. Ennek függvényében mérlegelhet, hogy a repülõ folytathatja-e a küldetését, vagy érdemes kézi vezérlésre váltani és landolni. Ha az egyik port kiesik, akkor egy felugró ablak figyelmezteti az operátort a port kiesésérõl.
 
 \begin{figure}[H]
 	\centering
@@ -237,23 +241,23 @@ A fogadott csomagokat a terminál képernyõ (\figref{terminalkepernyo} ábra) jelen
 	\centering
 	\resizebox{15cm}{!}{
 		\includegraphics{figures/terminalkepernyo.png}}
-	\caption{GroundControl terminál képernyõ}
+	\caption{Terminál képernyõ}
 	\label{fig:terminalkepernyo}
 \end{figure}
 
 \section{Összefoglalás}
 
-A program ellátja a kívánt funkcionalitást, sikerült megvalósítanom a repülõgép és a GroundControl közti kommunikáció kiépítését, a repülõgép pozíciójának térkép alapú vizualizációját. A fogadott jelek eltérésének hibadetektációján alapuló figyelmeztetések megfelelõen mûködnek.
+A földi rányító állomás ellátja a kívánt funkcionalitást, sikerült megvalósítanom a repülõgép és a program közti kommunikáció kiépítését, a repülõgép pozíciójának térkép alapú vizualizációját. A fogadott jelek eltérésének hibadetektációján alapuló figyelmeztetések megfelelõen mûködnek.
 
 \chapter{Ellenõrzés}
 \label{sect:fejlesztes}
-Az önálló, otthoni fejlesztést megkönnyítendõ, a repülõgép HIL (Hardware In the Loop)\footnote{olyan szimuláció, ami a tesztelendõ beágyazott rendszernek olyan környezetet biztosít, mintha az valódi érzékelõk adatait fogadná és valódi aktuátorokat irányítana} szimulációjából nyert log fájlokat használtam fel. Ennek segítségével nem volt szükséges ez idõ alatt a repülõ közelében lennem, a program mûködését elég volt csak a végleges stádiumban kipróbálni a repülõgép valódi adataival. 
+Az önálló fejlesztést megkönnyítendõ, a repülõgép HIL (Hardware In the Loop)\footnote{olyan szimuláció, ami a tesztelendõ beágyazott rendszernek olyan környezetet biztosít, mintha az valódi érzékelõk adatait fogadná és valódi aktuátorokat irányítana} szimulációjából nyert log fájlokat használtam fel. Ezek segítségével úgy dolgozhattam valós, a repülõgép kísérleti repülése során rögzített adatokkal, hogy nem volt szükséges ez idõ alatt a repülõ közelében lennem, a program mûködését elég volt csak a végleges stádiumban kipróbálni a repülõgép valódi adataival. 
 
-A kapott log fájlok felhasználásához elõször is biztosítani kellett, hogy a GroundControl soros porton keresztül ugyanúgy fogadhassa a csomagokat, mintha azt a repülõgép modemei küldenék. Ehhez készítettem egy-egy programot, melyek ezeket a fájlokat beolvassák és két kiválasztott soros portra 500 ms-onként egy-egy csomagot küldenek belõlük. 
+A kapott log fájlok felhasználásához elõször is biztosítani kellett, hogy at elkészítendõ program soros porton keresztül ugyanúgy fogadhassa a csomagokat, mintha azt a repülõgép modemei küldenék. Ehhez készítettem egy-egy programot, melyek ezeket a fájlokat beolvassák és két kiválasztott soros portra 500 ms-onként egy-egy csomagot küldenek belõlük. 
 
-A repülõgépet helyettesítõ programok és a GroundControl közti kapcsolatot egy emulátor programmal hoztam létre. Az emulátor program \cite{bib:null} képes null-modemként viselkedni, melynek lényege, hogy szoftveres úton biztosít két soros port között összeköttetést. Létrehoztam egy COM20-COM21 és egy COM10-COM11 port párosítást (\figref{comnull} ábra), melyekbõl az egyik program a COM20-ra, míg a másik a COM10-re csatlakozik. A GroundControl a párok másik portjait használja a kommunikációra. 
+A repülõgépet helyettesítõ programok és a földi irányító állomás programja közti kapcsolatot egy emulátor programmal hoztam létre. Az emulátor program \cite{bib:null} képes null-modemként viselkedni, melynek lényege, hogy szoftveres úton biztosít két soros port között összeköttetést. Létrehoztam egy COM20-COM21 és egy COM10-COM11 port párosítást (\figref{comnull} ábra), amikbõl az egyik program a COM20-ra, míg a másik a COM10-re csatlakozik. A földi állomás a párok másik portjait használja a kommunikációra. 
 
-Mivel szükséges a kétirányú kapcsolat kiépítése, így a log fájlokat feldolgozó programokba beépítettem egy beérkezõ üzeneteket feldolgozó függvény is. Ez kiírja a program konzolos felületére a beérkezett csomagot, így ellenõrizhetõ, hogy valóban mûködik-e a GroundControl szemszögébõl az adatküldés. A \figref{sorossend} ábrán egy ilyen csomag látható a 264. és 265. küldött csomag között.
+Mivel szükséges a kétirányú kapcsolat kiépítése, így a log fájlokat feldolgozó programokba beépítettem egy beérkezõ üzeneteket feldolgozó függvényt is. Ez kiírja a program konzolos felületére a beérkezett csomagot, így ellenõrizhetõ, hogy valóban mûködik-e az adatküldés. A \figref{sorossend} ábrán egy ilyen csomag látható a 264. és 265. küldött csomag között.
 
 \begin{figure}[H]
 	\centering	
